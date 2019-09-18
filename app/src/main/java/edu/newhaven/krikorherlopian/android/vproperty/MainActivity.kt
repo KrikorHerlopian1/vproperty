@@ -97,6 +97,7 @@ class MainActivity : AppCompatActivity() {
                 passwordInputLayout.isErrorEnabled = true
                 passwordInputLayout.error = resources.getString(R.string.enter_password)
             } else {
+
                 emailAddressInputLayout.error = null
                 passwordInputLayout.error = null
                 emailAddressInputLayout.isErrorEnabled = false
@@ -108,6 +109,10 @@ class MainActivity : AppCompatActivity() {
         }
         registerLayout.setOnClickListener {
             val intent = Intent(this@MainActivity, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+        forgotLayout.setOnClickListener {
+            val intent = Intent(this@MainActivity, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
     }

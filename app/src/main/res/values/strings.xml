@@ -23,4 +23,8 @@
     <string name="register_new_account">Register new account</string>
     <string name="registration_failed">Registration failed! Please try again later</string>
     <string name="registration_success">Registration successful</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="resend_link">SEND RESET LINK</string>
+    <string name="reset_successful">A link sent to your email, check your email to reset password.</string>
+    <string name="forgot_password_ques"><u>Forgot Password? Reset here.</u></string>
 </resources>
