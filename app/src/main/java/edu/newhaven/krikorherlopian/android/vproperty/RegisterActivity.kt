@@ -78,12 +78,14 @@ class RegisterActivity : AppCompatActivity() {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
                 } else {
-                    val e = task.exception as FirebaseAuthException
-                    Toast.makeText(
-                        applicationContext,
-                        e.localizedMessage,
-                        Toast.LENGTH_LONG
-                    ).show()
+                    if (task.exception is FirebaseAuthException) {
+                        val e = task.exception as FirebaseAuthException
+                        Toast.makeText(
+                            applicationContext,
+                            e.localizedMessage,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             })
     }

@@ -60,12 +60,14 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 // failed!
-                val e = task.exception as FirebaseAuthException
-                Toast.makeText(
-                    applicationContext,
-                    e.localizedMessage,
-                    Toast.LENGTH_LONG
-                ).show()
+                if (task.exception is FirebaseAuthException) {
+                    val e = task.exception as FirebaseAuthException
+                    Toast.makeText(
+                        applicationContext,
+                        e.localizedMessage,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
     }

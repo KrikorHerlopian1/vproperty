@@ -1,11 +1,8 @@
 package edu.newhaven.krikorherlopian.android.vproperty
 
-import android.Manifest
 import android.app.ProgressDialog
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +10,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
-import androidx.core.app.ActivityCompat
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -48,21 +44,6 @@ class MainActivity : AppCompatActivity() {
             progressDialog.dismiss()
         }
     }
-
-    fun isPermissionGranted(context: Context): Boolean {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            return ActivityCompat.checkSelfPermission(
-                context,
-                Manifest.permission.USE_BIOMETRIC
-            ) == PackageManager.PERMISSION_GRANTED
-        } else {
-            return ActivityCompat.checkSelfPermission(
-                context,
-                Manifest.permission.USE_FINGERPRINT
-            ) == PackageManager.PERMISSION_GRANTED
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -75,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         auth = FirebaseAuth.getInstance()
+        auth.signOut()
         fingerPrintSetup()
         sign_in_button.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
@@ -136,12 +118,14 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    val e = task.exception as FirebaseAuthException
-                    loginButton.isEnabled = true
-                    Toast.makeText(
-                        baseContext, e.localizedMessage,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    if (task.exception is FirebaseAuthException) {
+                        val e = task.exception as FirebaseAuthException
+                        loginButton.isEnabled = true
+                        Toast.makeText(
+                            baseContext, e.localizedMessage,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
     }
