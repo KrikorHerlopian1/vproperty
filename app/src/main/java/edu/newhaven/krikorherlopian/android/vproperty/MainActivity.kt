@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun isPermissionGranted(context: Context): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             return ActivityCompat.checkSelfPermission(
                 context,
                 Manifest.permission.USE_BIOMETRIC
@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.USE_FINGERPRINT
             ) == PackageManager.PERMISSION_GRANTED
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -190,7 +189,6 @@ class MainActivity : AppCompatActivity() {
                 lfingerprint.visibility = View.VISIBLE
             } else
                 lfingerprint.visibility = View.GONE
-
 
             val executor = Executors.newSingleThreadExecutor()
             val biometricPrompt =
