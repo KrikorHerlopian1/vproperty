@@ -55,10 +55,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
-            android:layout_marginTop="5dp"
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="@dimen/buttonHeight"
+            android:layout_marginTop="5dp"
             android:background="@drawable/border">
 
             <ProgressBar
