@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">VProperty</string>
+    <string name="login">LOGIN</string>
+    <string name="email">Email Address</string>
+    <string name="loading">Loading...</string>
+    <string name="password">Password</string>
+    <string name="enter_email">Please enter email</string>
+    <string name="enter_password">Please enter password</string>
+    <string name="enter_valid_email">Please enter valid email address</string>
+    <string name="dont_you_have_account_register_now">Don\'t you have account? Register now</string>
+    <string name="google_login">Sign in with google</string>
+    <string name="auth_succeeded">Authentication succeeded.</string>
+    <string name="google_succeeded">Google login succeeded</string>
+    <string name="google_failed">Google login failed</string>
+    <string name="auth_failed">Authentication failed.</string>
+    <string name="biometric_unrecognized">Biometric is valid but not recognized.</string>
+    <string name="biometric_recognized">Biometric is valid and recognized.</string>
+    <string name="biometric_failed">Unrecoverable error has been encountered.</string>
+    <string name="fingerprint">Fingerprint</string>
+    <string name="fingerprint_login">Login with the sensor</string>
+    <string name="cancel">Cancel</string>
+    <string name="register">REGISTER</string>
+    <string name="register_new_account">Register new account</string>
+    <string name="registration_failed">Registration failed! Please try again later</string>
+    <string name="registration_success">Registration successful</string>
+</resources>

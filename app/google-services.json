@@ -1,0 +1,96 @@
+{
+  "project_info": {
+    "project_number": "788570445078",
+    "firebase_url": "https://real-estate-a932b.firebaseio.com",
+    "project_id": "real-estate-a932b",
+    "storage_bucket": "real-estate-a932b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788570445078:android:665bbda290c12b37c0ec37",
+        "android_client_info": {
+          "package_name": "edu.newhaven.krikorherlopian.android.vproperty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788570445078-47ivsftmr64le048qna5435122p7g0do.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.newhaven.krikorherlopian.android.vproperty",
+            "certificate_hash": "76a789c2592b0c8ccd09502a964a189ff7feb166"
+          }
+        },
+        {
+          "client_id": "788570445078-9f5jnnua4a99sbh2dd85poo3tmnimqq4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.newhaven.krikorherlopian.android.vproperty",
+            "certificate_hash": "7dc89a5eefd384580c15c79580065104435d91f3"
+          }
+        },
+        {
+          "client_id": "788570445078-fhi0v77tnishshgsatdcp99k73jaobi9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.newhaven.krikorherlopian.android.vproperty",
+            "certificate_hash": "eb21e67e86a947d8438787e0c249542a7de42f37"
+          }
+        },
+        {
+          "client_id": "788570445078-v5vgkksar1ami015bm1vmiv0rl662ltn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.newhaven.krikorherlopian.android.vproperty",
+            "certificate_hash": "82510812da95ca74e30dd94f5ba5968520e90b7c"
+          }
+        },
+        {
+          "client_id": "788570445078-pj4brkijmk2l678ic44hkbifmi1nn83q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.newhaven.krikorherlopian.android.vproperty",
+            "certificate_hash": "bffe332bb762b54c9f9f13a37da2e99507a1951b"
+          }
+        },
+        {
+          "client_id": "788570445078-je06qfdkhf5bjt9p5f5v8d4j49ucrv24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.newhaven.krikorherlopian.android.vproperty",
+            "certificate_hash": "96bf3a4c2c1957a8d8ef38737be8d4d5a09d5970"
+          }
+        },
+        {
+          "client_id": "788570445078-r1k0lmms9mqf98ul0bjvbb677oi6vsei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.newhaven.krikorherlopian.android.vproperty",
+            "certificate_hash": "d5e63cce64d7dfe8143bf4b99831e8611b663b89"
+          }
+        },
+        {
+          "client_id": "788570445078-25mk95nts0aonfdvfk1rji3lrocetoct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOOF8qaN-Seu9SI50I24p8mnMA7XKaiCo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788570445078-25mk95nts0aonfdvfk1rji3lrocetoct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
