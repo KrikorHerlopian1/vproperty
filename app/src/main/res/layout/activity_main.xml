@@ -21,6 +21,7 @@
             android:src="@mipmap/ic_launcher"></androidx.appcompat.widget.AppCompatImageView>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailAddressInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email">
@@ -36,6 +37,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -53,6 +55,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
+            android:layout_marginTop="5dp"
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="@dimen/buttonHeight"

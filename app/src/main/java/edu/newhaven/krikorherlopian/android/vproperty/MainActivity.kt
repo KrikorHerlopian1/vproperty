@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -81,21 +82,25 @@ class MainActivity : AppCompatActivity() {
         }
         loginButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
-                Toast.makeText(
-                    baseContext, R.string.enter_email,
-                    Toast.LENGTH_SHORT
-                ).show()
+                passwordInputLayout.error = null
+                passwordInputLayout.isErrorEnabled = false
+                emailAddressInputLayout.isErrorEnabled = true
+                emailAddressInputLayout.error = resources.getString(R.string.enter_email)
             } else if (!isEmailValid(email.text.toString())) {
-                Toast.makeText(
-                    baseContext, R.string.enter_valid_email,
-                    Toast.LENGTH_SHORT
-                ).show()
+                passwordInputLayout.error = null
+                passwordInputLayout.isErrorEnabled = false
+                emailAddressInputLayout.isErrorEnabled = true
+                emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
             } else if (password.text.isNullOrBlank()) {
-                Toast.makeText(
-                    baseContext, R.string.enter_password,
-                    Toast.LENGTH_SHORT
-                ).show()
+                emailAddressInputLayout.error = null
+                emailAddressInputLayout.isErrorEnabled = false
+                passwordInputLayout.isErrorEnabled = true
+                passwordInputLayout.error = resources.getString(R.string.enter_password)
             } else {
+                emailAddressInputLayout.error = null
+                passwordInputLayout.error = null
+                emailAddressInputLayout.isErrorEnabled = false
+                passwordInputLayout.isErrorEnabled = false
                 progressbar.visibility = View.VISIBLE
                 loginButton.isEnabled = false
                 login(email.text.toString(), password.text.toString())
@@ -107,11 +112,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun login(em: String, pass: String) {
+    fun login(em: String, pass: String, showDialog: Boolean = false) {
+        if (showDialog)
+            showProgressDialog()
         auth.signInWithEmailAndPassword(em, pass)
             .addOnCompleteListener(this) { task ->
                 progressbar.visibility = View.GONE
                 loginButton.isEnabled = true
+                if (showDialog)
+                    hideProgressDialog()
                 if (task.isSuccessful) {
                     val editor = sharedPref?.edit()
                     editor?.putString(PREF_EMAIL, em)
@@ -179,16 +188,17 @@ class MainActivity : AppCompatActivity() {
             || sharedPref?.getString(PREF_PASS, "").isNullOrEmpty()
             || Build.VERSION.SDK_INT < Build.VERSION_CODES.M
         ) {
+            Log.w("tag", "got here e")
             lfingerprint.visibility = View.GONE
         } else {
             val fingerprintManager = FingerprintManagerCompat.from(this)
-
             if (fingerprintManager.isHardwareDetected &&
                 fingerprintManager.hasEnrolledFingerprints() && isPermissionGranted(this)
             ) {
                 lfingerprint.visibility = View.VISIBLE
             } else
                 lfingerprint.visibility = View.GONE
+
 
             val executor = Executors.newSingleThreadExecutor()
             val biometricPrompt =
@@ -199,7 +209,7 @@ class MainActivity : AppCompatActivity() {
                         this@MainActivity.runOnUiThread(java.lang.Runnable {
                             login(
                                 sharedPref?.getString(PREF_EMAIL, "").toString(),
-                                sharedPref?.getString(PREF_PASS, "").toString()
+                                sharedPref?.getString(PREF_PASS, "").toString(), true
                             )
                         })
                     }

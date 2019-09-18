@@ -35,21 +35,25 @@ class RegisterActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         registerButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
-                Toast.makeText(
-                    baseContext, R.string.enter_email,
-                    Toast.LENGTH_SHORT
-                ).show()
+                passwordInputLayout.error = null
+                passwordInputLayout.isErrorEnabled = false
+                emailAddressInputLayout.isErrorEnabled = true
+                emailAddressInputLayout.error = resources.getString(R.string.enter_email)
             } else if (!isEmailValid(email.text.toString())) {
-                Toast.makeText(
-                    baseContext, R.string.enter_valid_email,
-                    Toast.LENGTH_SHORT
-                ).show()
+                passwordInputLayout.error = null
+                passwordInputLayout.isErrorEnabled = false
+                emailAddressInputLayout.isErrorEnabled = true
+                emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
             } else if (password.text.isNullOrBlank()) {
-                Toast.makeText(
-                    baseContext, R.string.enter_password,
-                    Toast.LENGTH_SHORT
-                ).show()
+                emailAddressInputLayout.error = null
+                emailAddressInputLayout.isErrorEnabled = false
+                passwordInputLayout.isErrorEnabled = true
+                passwordInputLayout.error = resources.getString(R.string.enter_password)
             } else {
+                emailAddressInputLayout.error = null
+                emailAddressInputLayout.isErrorEnabled = false
+                passwordInputLayout.error = null
+                passwordInputLayout.isErrorEnabled = false
                 progressbar.visibility = View.VISIBLE
                 registerButton.isEnabled = false
                 register(email.text.toString(), password.text.toString())
@@ -60,13 +64,14 @@ class RegisterActivity : AppCompatActivity() {
     fun register(em: String, pass: String) {
         auth.createUserWithEmailAndPassword(em, pass)
             .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+                progressbar.visibility = View.GONE
+                registerButton.isEnabled = true
                 if (task.isSuccessful) {
                     Toast.makeText(
                         applicationContext,
                         resources.getString(R.string.registration_success),
                         Toast.LENGTH_LONG
                     ).show()
-                    progressbar.visibility = View.GONE
                     val editor = sharedPref?.edit()
                     editor?.putString(PREF_EMAIL, em)
                     editor?.putString(PREF_PASS, pass)
@@ -81,7 +86,6 @@ class RegisterActivity : AppCompatActivity() {
                         e.localizedMessage,
                         Toast.LENGTH_LONG
                     ).show()
-                    progressbar.visibility = View.GONE
                 }
             })
     }
