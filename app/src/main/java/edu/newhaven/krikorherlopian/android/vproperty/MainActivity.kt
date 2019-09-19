@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     var sharedPref: SharedPreferences? = null
-    fun showProgressDialog() {
-        //hide google login and fingerprint buttons and show curve loader
+    private fun showProgressDialog() {
+        //hide google login and fingerprint buttons and show curve loader. also disable login button.
         curveLoader.visibility = View.VISIBLE
         lfingerprint.visibility = View.GONE
         googleLoginButton.visibility = View.GONE
@@ -43,10 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     fun hideProgressDialog() {
         curveLoader.visibility = View.GONE
-        if (fingerPrintAvailabilityCheck()) {
-            lfingerprint.visibility = View.VISIBLE
-        } else
-            lfingerprint.visibility = View.GONE
+        fingerPrintSetup()
         googleLoginButton.visibility = View.VISIBLE
         loginButton.isEnabled = true
     }
@@ -193,18 +190,10 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    fun fingerPrintSetup() {
+    private fun fingerPrintSetup() {
         //if no email or password stored on phone, or in case the device running the app is older then api level 23  Dont show fingerprint icon.
-        if (sharedPref?.getString(PREF_EMAIL, "").isNullOrEmpty()
-            || sharedPref?.getString(PREF_PASS, "").isNullOrEmpty()
-            || Build.VERSION.SDK_INT < Build.VERSION_CODES.M
-        ) {
-            lfingerprint.visibility = View.GONE
-        } else {
-            if (fingerPrintAvailabilityCheck()) {
-                lfingerprint.visibility = View.VISIBLE
-            } else
-                lfingerprint.visibility = View.GONE
+        if (fingerPrintAvailabilityCheck()) {
+            lfingerprint.visibility = View.VISIBLE
             val executor = Executors.newSingleThreadExecutor()
             val biometricPrompt =
                 BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
@@ -240,11 +229,18 @@ class MainActivity : AppCompatActivity() {
                     .build()
                 biometricPrompt.authenticate(promptInfo)
             }
-        }
+        } else
+            lfingerprint.visibility = View.GONE
     }
 
-    fun fingerPrintAvailabilityCheck(): Boolean {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    private fun fingerPrintAvailabilityCheck(): Boolean {
+        if (sharedPref?.getString(
+                PREF_EMAIL,
+                ""
+            ).isNullOrEmpty() || sharedPref?.getString(PREF_PASS, "").isNullOrEmpty()
+        ) {
+            return false
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             var hardwareDetected = false
             var hasEnrolledFingerprints = false
             val biometricManager = this.getSystemService(BiometricManager::class.java)
@@ -264,6 +260,7 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
+
     companion object {
         private const val RC_SIGN_IN = 9001
     }
