@@ -115,8 +115,7 @@ class MainActivity : AppCompatActivity() {
                 //re-enable button again, for user to be able to call login again if attempt failed.
                 loginButton.isEnabled = true
                 //hide progress dialog in case of fingerprint authentication
-                if (showDialog)
-                    hideProgressDialog()
+
                 if (task.isSuccessful) {
                     //successful login save username and password on device.
                     val editor = sharedPref?.edit()
@@ -147,7 +146,10 @@ class MainActivity : AppCompatActivity() {
                             true
                         ).show()
                     }
+
                 }
+                if (showDialog)
+                    hideProgressDialog()
             }
     }
 
