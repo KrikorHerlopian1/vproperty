@@ -80,6 +80,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT,
                         true
                     ).show()
+                } else {
+                    Toasty.error(
+                        this@ForgotPasswordActivity,
+                        R.string.connection_failed,
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
                 }
             }
         }

@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         loginButton.isEnabled = false
     }
 
-    fun hideProgressDialog() {
+    private fun hideProgressDialog() {
         curveLoader.visibility = View.GONE
         fingerPrintSetup()
         googleLoginButton.visibility = View.VISIBLE
@@ -139,6 +139,13 @@ class MainActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT,
                             true
                         ).show()
+                    } else {
+                        Toasty.error(
+                            this@MainActivity,
+                            R.string.auth_failed,
+                            Toast.LENGTH_SHORT,
+                            true
+                        ).show()
                     }
                 }
             }
@@ -181,6 +188,13 @@ class MainActivity : AppCompatActivity() {
                         Toasty.error(
                             this@MainActivity,
                             e.localizedMessage,
+                            Toast.LENGTH_SHORT,
+                            true
+                        ).show()
+                    } else {
+                        Toasty.error(
+                            this@MainActivity,
+                            R.string.google_failed,
                             Toast.LENGTH_SHORT,
                             true
                         ).show()

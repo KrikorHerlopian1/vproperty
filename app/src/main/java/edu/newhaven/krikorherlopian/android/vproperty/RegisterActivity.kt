@@ -100,6 +100,13 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT,
                             true
                         ).show()
+                    } else {
+                        Toasty.error(
+                            this@RegisterActivity,
+                            R.string.connection_failed,
+                            Toast.LENGTH_SHORT,
+                            true
+                        ).show()
                     }
                 }
             })

@@ -21,7 +21,7 @@
     <string name="cancel">Cancel</string>
     <string name="register">REGISTER</string>
     <string name="register_new_account">Register new account</string>
-    <string name="registration_failed">Registration failed! Please try again later</string>
+    <string name="connection_failed">Connection lost</string>
     <string name="registration_success">Registration successful</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="resend_link">SEND RESET LINK</string>
