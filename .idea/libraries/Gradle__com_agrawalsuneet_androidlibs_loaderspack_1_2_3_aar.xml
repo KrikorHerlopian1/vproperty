@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.agrawalsuneet.androidlibs:loaderspack:1.2.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61a2acc85bd83772ab746cbe2011fed4/loaderspack-1.2.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61a2acc85bd83772ab746cbe2011fed4/loaderspack-1.2.3/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.agrawalsuneet.androidlibs/loaderspack/1.2.3/b9d0754d4c9c55fd93176d947a65525f792ad368/loaderspack-1.2.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.agrawalsuneet.androidlibs/loaderspack/1.2.3/a41b7ffb187a8da60aad1de19db614fdf809afc1/loaderspack-1.2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

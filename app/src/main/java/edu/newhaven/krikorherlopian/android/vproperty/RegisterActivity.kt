@@ -10,8 +10,14 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_register.*
 
+/*
+    Registration page.Email, Password to enter. There is validation on username and email, in case user enters invalid email
+    or leaves them empty when clicking register. In case successfully registered, username and email is stored on phone
+    and user is navigated back to login screen.
+ */
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -52,38 +58,47 @@ class RegisterActivity : AppCompatActivity() {
                 emailAddressInputLayout.isErrorEnabled = false
                 passwordInputLayout.error = null
                 passwordInputLayout.isErrorEnabled = false
+                //show progress bar with firebase called
                 progressbar.visibility = View.VISIBLE
+                //disable registerbutton so that user doesnt register again while one call to firebase is running.
                 registerButton.isEnabled = false
                 register(email.text.toString(), password.text.toString())
             }
         }
     }
 
+    //call firebase to register user.
     fun register(em: String, pass: String) {
         auth.createUserWithEmailAndPassword(em, pass)
             .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+                //hide progressbar when done with firebase call
                 progressbar.visibility = View.GONE
+                //re-enable register button when done with the firebase call.
                 registerButton.isEnabled = true
                 if (task.isSuccessful) {
-                    Toast.makeText(
-                        applicationContext,
-                        resources.getString(R.string.registration_success),
-                        Toast.LENGTH_LONG
+                    Toasty.success(
+                        this@RegisterActivity,
+                        R.string.registration_success,
+                        Toast.LENGTH_SHORT,
+                        true
                     ).show()
+                    //on successfull registration store the email and username on device.
                     val editor = sharedPref?.edit()
                     editor?.putString(PREF_EMAIL, em)
                     editor?.putString(PREF_PASS, pass)
                     editor?.apply()
                     val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                    //this flag to close all activities and start the application back with loginscreen on top.
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
                 } else {
                     if (task.exception is FirebaseAuthException) {
                         val e = task.exception as FirebaseAuthException
-                        Toast.makeText(
-                            applicationContext,
+                        Toasty.error(
+                            this@RegisterActivity,
                             e.localizedMessage,
-                            Toast.LENGTH_LONG
+                            Toast.LENGTH_SHORT,
+                            true
                         ).show()
                     }
                 }
