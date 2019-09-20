@@ -124,7 +124,7 @@
 
         <LinearLayout
             android:id="@+id/lfingerprint"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
@@ -133,10 +133,9 @@
 
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
                 android:layout_gravity="center_horizontal">
-
 
                 <ImageView
                     android:id="@+id/loginTextF"
