@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
     var count = 1
+    var sec = 750L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -57,15 +58,21 @@ class SplashActivity : AppCompatActivity() {
                     10 -> Glide.with(this@SplashActivity).load(R.drawable.splash10).placeholder(R.drawable.splash9).into(
                         imageView
                     )
-                    11 -> Glide.with(this@SplashActivity).load(R.drawable.splash11).placeholder(R.drawable.splash10).into(
-                        imageView
-                    )
+                    11 -> lastImage()
                     12 -> goToLogin()
                 }
                 count++
                 animateImages()
             }
-        }, 750)
+        }, sec)
+    }
+
+    fun lastImage() {
+        Glide.with(this@SplashActivity).load(R.drawable.splash11).placeholder(R.drawable.splash10)
+            .into(
+                imageView
+            )
+        sec = 200L
     }
 
     fun goToLogin() {
