@@ -250,6 +250,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fingerPrintAvailabilityCheck(): Boolean {
+
         if (sharedPref?.getString(
                 PREF_EMAIL,
                 ""
@@ -259,6 +260,7 @@ class MainActivity : AppCompatActivity() {
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             var hardwareDetected = false
             var hasEnrolledFingerprints = false
+
             val biometricManager = this.getSystemService(BiometricManager::class.java)
             if (biometricManager != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 // canAuthenticate ()
@@ -267,6 +269,7 @@ class MainActivity : AppCompatActivity() {
                     (biometricManager.canAuthenticate() === BiometricManager.BIOMETRIC_SUCCESS)
                 hasEnrolledFingerprints = hardwareDetected
             } else {
+
                 // FOR api level 28 and below. check if fingerprint hardware detected and fingerprints enrolled.
                 val fingerprintManager = FingerprintManagerCompat.from(this)
                 hardwareDetected = fingerprintManager.isHardwareDetected
