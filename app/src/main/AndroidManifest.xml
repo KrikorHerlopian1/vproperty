@@ -41,6 +41,9 @@
         <activity
             android:name=".ForgotPasswordActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".HomeMenuActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

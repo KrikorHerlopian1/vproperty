@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
+import com.google.firebase.auth.FirebaseUser
 
 /*
     Common functions I will need accross various activities or fragments in application.
@@ -13,7 +14,7 @@ var PRIVATE_MODE = 0
 val PREFS_FILENAME = "vpropertyapp"
 val PREF_PASS = "password"
 val PREF_EMAIL = "email"
-
+var loggedInUser: FirebaseUser? = null
 fun isEmailValid(email: CharSequence): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }

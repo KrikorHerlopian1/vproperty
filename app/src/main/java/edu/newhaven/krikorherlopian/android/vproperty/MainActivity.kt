@@ -128,6 +128,14 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT,
                         true
                     ).show()
+                    loggedInUser = auth.currentUser
+                    val intent = Intent(this@MainActivity, HomeMenuActivity::class.java)
+                    intent.putExtra("email", loggedInUser?.email)
+                    intent.putExtra("email", loggedInUser?.displayName)
+                    intent.putExtra("email", loggedInUser?.phoneNumber)
+                    intent.putExtra("email", loggedInUser?.photoUrl)
+                    startActivity(intent)
+                    finish()
                 } else {
                     if (task.exception is FirebaseAuthException) {
                         val e = task.exception as FirebaseAuthException
@@ -183,7 +191,14 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT,
                         true
                     ).show()
-                    val user = auth.currentUser
+                    loggedInUser = auth.currentUser
+                    val intent = Intent(this@MainActivity, HomeMenuActivity::class.java)
+                    intent.putExtra("email", loggedInUser?.email)
+                    intent.putExtra("email", loggedInUser?.displayName)
+                    intent.putExtra("email", loggedInUser?.phoneNumber)
+                    intent.putExtra("email", loggedInUser?.photoUrl)
+                    startActivity(intent)
+                    finish()
                 } else {
                     if (task.exception is FirebaseAuthException) {
                         val e = task.exception as FirebaseAuthException
