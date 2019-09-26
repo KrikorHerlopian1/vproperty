@@ -39,25 +39,16 @@ class RegisterActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         registerButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
-                passwordInputLayout.error = null
-                passwordInputLayout.isErrorEnabled = false
-                emailAddressInputLayout.isErrorEnabled = true
+                setError(null, null, true, false)
                 emailAddressInputLayout.error = resources.getString(R.string.enter_email)
             } else if (!isEmailValid(email.text.toString())) {
-                passwordInputLayout.error = null
-                passwordInputLayout.isErrorEnabled = false
-                emailAddressInputLayout.isErrorEnabled = true
+                setError(null, null, true, false)
                 emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
             } else if (password.text.isNullOrBlank()) {
-                emailAddressInputLayout.error = null
-                emailAddressInputLayout.isErrorEnabled = false
-                passwordInputLayout.isErrorEnabled = true
+                setError(null, null, false, true)
                 passwordInputLayout.error = resources.getString(R.string.enter_password)
             } else {
-                emailAddressInputLayout.error = null
-                emailAddressInputLayout.isErrorEnabled = false
-                passwordInputLayout.error = null
-                passwordInputLayout.isErrorEnabled = false
+                setError(null, null, false, false)
                 //show progress bar with firebase called
                 progressbar.visibility = View.VISIBLE
                 //disable registerbutton so that user doesnt register again while one call to firebase is running.
@@ -67,6 +58,18 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun setError(
+        emailError: CharSequence?,
+        passwordError: CharSequence?,
+        emailErrorEnabled: Boolean,
+        passwordErrorEnabled: Boolean
+    ) {
+        emailAddressInputLayout.error = emailError
+        passwordInputLayout.error = passwordError
+        emailAddressInputLayout.isErrorEnabled = emailErrorEnabled
+        passwordInputLayout.isErrorEnabled = passwordErrorEnabled
+    }
     //call firebase to register user.
     fun register(em: String, pass: String) {
         auth.createUserWithEmailAndPassword(em, pass)

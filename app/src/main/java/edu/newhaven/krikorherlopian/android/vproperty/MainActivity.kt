@@ -68,25 +68,16 @@ class MainActivity : AppCompatActivity() {
         }
         loginButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
-                passwordInputLayout.error = null
-                passwordInputLayout.isErrorEnabled = false
-                emailAddressInputLayout.isErrorEnabled = true
+                setError(null, null, true, false)
                 emailAddressInputLayout.error = resources.getString(R.string.enter_email)
             } else if (!isEmailValid(email.text.toString())) {
-                passwordInputLayout.error = null
-                passwordInputLayout.isErrorEnabled = false
-                emailAddressInputLayout.isErrorEnabled = true
+                setError(null, null, true, false)
                 emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
             } else if (password.text.isNullOrBlank()) {
-                emailAddressInputLayout.error = null
-                emailAddressInputLayout.isErrorEnabled = false
-                passwordInputLayout.isErrorEnabled = true
+                setError(null, null, false, true)
                 passwordInputLayout.error = resources.getString(R.string.enter_password)
             } else {
-                emailAddressInputLayout.error = null
-                passwordInputLayout.error = null
-                emailAddressInputLayout.isErrorEnabled = false
-                passwordInputLayout.isErrorEnabled = false
+                setError(null, null, false, false)
                 //show progressbar before making firebase call.
                 progressbar.visibility = View.VISIBLE
                 //disable loginButton so that user doesnt click login again while one call to firebase is running.
@@ -104,6 +95,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setError(
+        emailError: CharSequence?,
+        passwordError: CharSequence?,
+        emailErrorEnabled: Boolean,
+        passwordErrorEnabled: Boolean
+    ) {
+        emailAddressInputLayout.error = emailError
+        passwordInputLayout.error = passwordError
+        emailAddressInputLayout.isErrorEnabled = emailErrorEnabled
+        passwordInputLayout.isErrorEnabled = passwordErrorEnabled
+    }
     fun login(em: String, pass: String, showDialog: Boolean = false) {
         //show  dialog in case fingerprint authentication is called.
         if (showDialog)

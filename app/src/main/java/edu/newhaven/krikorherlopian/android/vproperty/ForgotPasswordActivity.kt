@@ -34,14 +34,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         forgotPasswordButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
-                emailAddressInputLayout.isErrorEnabled = true
+                setError(null, true)
                 emailAddressInputLayout.error = resources.getString(R.string.enter_email)
             } else if (!isEmailValid(email.text.toString())) {
-                emailAddressInputLayout.isErrorEnabled = true
+                setError(null, true)
                 emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
             } else {
-                emailAddressInputLayout.error = null
-                emailAddressInputLayout.isErrorEnabled = false
+                setError(null, false)
                 //show progress bar with firebase called
                 progressbar.visibility = View.VISIBLE
                 //disable forgotpasswordbutton so that user doesnt reset link again while one call to firebase is running.
@@ -49,6 +48,11 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 reset(email.text.toString())
             }
         }
+    }
+
+    private fun setError(emailError: CharSequence?, emailErrorEnabled: Boolean) {
+        emailAddressInputLayout.error = emailError
+        emailAddressInputLayout.isErrorEnabled = emailErrorEnabled
     }
 
     //call firebase to reset password.
