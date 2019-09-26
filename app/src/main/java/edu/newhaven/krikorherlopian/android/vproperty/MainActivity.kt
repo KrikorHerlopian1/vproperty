@@ -130,10 +130,10 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                     loggedInUser = auth.currentUser
                     val intent = Intent(this@MainActivity, HomeMenuActivity::class.java)
-                    intent.putExtra("email", loggedInUser?.email)
-                    intent.putExtra("email", loggedInUser?.displayName)
-                    intent.putExtra("email", loggedInUser?.phoneNumber)
-                    intent.putExtra("email", loggedInUser?.photoUrl)
+                    intent.putExtra("email", loggedInUser?.email?.toString())
+                    intent.putExtra("displayName", loggedInUser?.displayName?.toString())
+                    intent.putExtra("phoneNumber", loggedInUser?.phoneNumber?.toString())
+                    intent.putExtra("photoUrl", loggedInUser?.photoUrl?.toString())
                     startActivity(intent)
                     finish()
                 } else {
@@ -193,10 +193,10 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                     loggedInUser = auth.currentUser
                     val intent = Intent(this@MainActivity, HomeMenuActivity::class.java)
-                    intent.putExtra("email", loggedInUser?.email)
-                    intent.putExtra("email", loggedInUser?.displayName)
-                    intent.putExtra("email", loggedInUser?.phoneNumber)
-                    intent.putExtra("email", loggedInUser?.photoUrl)
+                    intent.putExtra("email", loggedInUser?.email?.toString())
+                    intent.putExtra("displayName", loggedInUser?.displayName?.toString())
+                    intent.putExtra("phoneNumber", loggedInUser?.phoneNumber?.toString())
+                    intent.putExtra("photoUrl", loggedInUser?.photoUrl?.toString())
                     startActivity(intent)
                     finish()
                 } else {
