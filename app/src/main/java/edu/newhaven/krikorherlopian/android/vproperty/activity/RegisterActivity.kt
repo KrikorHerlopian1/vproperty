@@ -1,4 +1,4 @@
-package edu.newhaven.krikorherlopian.android.vproperty
+package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,8 +10,10 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import edu.newhaven.krikorherlopian.android.vproperty.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_register.*
+
 
 /*
     Registration page.Email, Password to enter. There is validation on username and email, in case user enters invalid email
@@ -35,7 +37,10 @@ class RegisterActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener(View.OnClickListener {
             super.onBackPressed()
         })
-        sharedPref = getSharedPreferences(PREFS_FILENAME, PRIVATE_MODE)
+        sharedPref = getSharedPreferences(
+            PREFS_FILENAME,
+            PRIVATE_MODE
+        )
         auth = FirebaseAuth.getInstance()
         registerButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
@@ -90,10 +95,16 @@ class RegisterActivity : AppCompatActivity() {
                     editor?.putString(PREF_EMAIL, em)
                     editor?.putString(PREF_PASS, pass)
                     editor?.apply()
-                    val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                    // val intent = Intent(this@RegisterActivity, MainActivity::class.java)
                     //this flag to close all activities and start the application back with loginscreen on top.
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    startActivity(intent)
+                    // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    //startActivity(intent)
+
+                    val data = Intent()
+                    data.putExtra("email", em)
+                    data.putExtra("pass", pass)
+                    setResult(RC_REGISTER, data)
+                    finish()
                 } else {
                     if (task.exception is FirebaseAuthException) {
                         val e = task.exception as FirebaseAuthException
@@ -113,5 +124,9 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+    companion object {
+        private const val RC_REGISTER = 9002
     }
 }

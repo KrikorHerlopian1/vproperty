@@ -7,8 +7,14 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="edu.newhaven.krikorherlopian.android.vproperty.PropertyFragment"
+        android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.PropertyFragment"
         android:label="@string/menu_home"
+        tools:layout="@layout/content_main" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.SettingsFragment"
+        android:label="@string/action_settings"
         tools:layout="@layout/content_main" />
 
 </navigation>

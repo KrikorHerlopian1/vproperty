@@ -14,6 +14,7 @@ var PRIVATE_MODE = 0
 val PREFS_FILENAME = "vpropertyapp"
 val PREF_PASS = "password"
 val PREF_EMAIL = "email"
+val PREF_DRAWER = "drawer"
 var loggedInUser: FirebaseUser? = null
 fun isEmailValid(email: CharSequence): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()

@@ -1,4 +1,4 @@
-package edu.newhaven.krikorherlopian.android.vproperty
+package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.isEmailValid
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
@@ -70,7 +72,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT,
                     true
                 ).show()
-                val intent = Intent(this@ForgotPasswordActivity, MainActivity::class.java)
+                val intent = Intent(this@ForgotPasswordActivity, LoginActivity::class.java)
                 //this flag to close all activities and start the application back with loginscreen on top.
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)

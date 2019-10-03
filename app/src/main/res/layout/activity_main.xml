@@ -15,8 +15,8 @@
         android:padding="20dp">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/vpropertyicon"></androidx.appcompat.widget.AppCompatImageView>
 

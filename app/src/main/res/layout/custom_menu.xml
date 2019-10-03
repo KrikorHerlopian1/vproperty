@@ -13,13 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.google.android.material.navigation.NavigationView
+    <com.rom4ek.arcnavigationview.ArcNavigationView
         android:id="@+id/navView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@android:color/white"
         android:fitsSystemWindows="true"
+        app:arc_cropDirection="cropInside"
+        app:arc_width="96dp"
         app:headerLayout="@layout/nav_header_main"
+        app:itemBackground="@android:color/white"
         app:menu="@menu/activity_main_drawer" />
 
 

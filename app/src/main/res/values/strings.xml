@@ -37,4 +37,8 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="drawer_style">Drawer Style</string>
+    <string name="default_drawer">Default</string>
+    <string name="custom">Custom</string>
+    <string name="navigation_drawer">Navigation Drawer</string>
 </resources>

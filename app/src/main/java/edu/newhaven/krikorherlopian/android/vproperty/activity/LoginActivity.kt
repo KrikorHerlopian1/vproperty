@@ -1,4 +1,4 @@
-package edu.newhaven.krikorherlopian.android.vproperty
+package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -18,6 +18,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.GoogleAuthProvider
+import edu.newhaven.krikorherlopian.android.vproperty.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
@@ -29,7 +30,7 @@ import java.util.concurrent.Executors
     There is validation on username and email, in case user enters invalid email or leaves them empty when clicking login button for email/username.
  */
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     var sharedPref: SharedPreferences? = null
@@ -51,7 +52,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        sharedPref = getSharedPreferences(PREFS_FILENAME, PRIVATE_MODE)
+        sharedPref = getSharedPreferences(
+            PREFS_FILENAME,
+            PRIVATE_MODE
+        )
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -64,7 +68,10 @@ class MainActivity : AppCompatActivity() {
         fingerPrintSetup()
         sign_in_button.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
+            startActivityForResult(
+                signInIntent,
+                RC_SIGN_IN
+            )
         }
         loginButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
@@ -86,14 +93,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
         registerLayout.setOnClickListener {
-            val intent = Intent(this@MainActivity, RegisterActivity::class.java)
-            startActivity(intent)
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivityForResult(
+                intent,
+                RC_REGISTER
+            )
         }
         forgotLayout.setOnClickListener {
-            val intent = Intent(this@MainActivity, ForgotPasswordActivity::class.java)
+            val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
     }
+
 
     private fun setError(
         emailError: CharSequence?,
@@ -106,6 +117,7 @@ class MainActivity : AppCompatActivity() {
         emailAddressInputLayout.isErrorEnabled = emailErrorEnabled
         passwordInputLayout.isErrorEnabled = passwordErrorEnabled
     }
+
     fun login(em: String, pass: String, showDialog: Boolean = false) {
         //show  dialog in case fingerprint authentication is called.
         if (showDialog)
@@ -125,32 +137,26 @@ class MainActivity : AppCompatActivity() {
                     editor?.putString(PREF_PASS, pass)
                     editor?.apply()
                     Toasty.success(
-                        this@MainActivity,
+                        this@LoginActivity,
                         R.string.auth_succeeded,
                         Toast.LENGTH_SHORT,
                         true
                     ).show()
                     loggedInUser = auth.currentUser
-                    val intent = Intent(this@MainActivity, HomeMenuActivity::class.java)
-                    intent.putExtra("email", loggedInUser?.email?.toString())
-                    intent.putExtra("displayName", loggedInUser?.displayName?.toString())
-                    intent.putExtra("phoneNumber", loggedInUser?.phoneNumber?.toString())
-                    intent.putExtra("photoUrl", loggedInUser?.photoUrl?.toString())
-                    startActivity(intent)
-                    finish()
+                    startHomeMenuActivity()
                 } else {
                     if (task.exception is FirebaseAuthException) {
                         val e = task.exception as FirebaseAuthException
                         loginButton.isEnabled = true
                         Toasty.error(
-                            this@MainActivity,
+                            this@LoginActivity,
                             e.localizedMessage,
                             Toast.LENGTH_SHORT,
                             true
                         ).show()
                     } else {
                         Toasty.error(
-                            this@MainActivity,
+                            this@LoginActivity,
                             R.string.auth_failed,
                             Toast.LENGTH_SHORT,
                             true
@@ -163,6 +169,25 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    private fun startHomeMenuActivity() {
+        var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
+        var intent: Intent? = null
+        if (drawer.equals("default")) {
+            intent = Intent(this@LoginActivity, HomeMenuActivity::class.java)
+
+        } else {
+            intent = Intent(this@LoginActivity, CustomHomeMenuActivity::class.java)
+        }
+        intent.putExtra("email", loggedInUser?.email?.toString())
+        intent.putExtra("displayName", loggedInUser?.displayName?.toString())
+        intent.putExtra("phoneNumber", loggedInUser?.phoneNumber?.toString())
+        intent.putExtra("photoUrl", loggedInUser?.photoUrl?.toString())
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        finish()
+
+    }
+
     //login result by google, returned here.RC_SIGN_IN will indicate what returned is from the google login.
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -172,9 +197,18 @@ class MainActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
-                Toasty.error(this@MainActivity, R.string.google_failed, Toast.LENGTH_SHORT, true)
+                Toasty.error(
+                    this@LoginActivity,
+                    R.string.google_failed, Toast.LENGTH_SHORT, true
+                )
                     .show()
             }
+        } else if (requestCode == RC_REGISTER) {
+            setError(null, null, false, false)
+            email.setText(data!!.getStringExtra("email"))
+            password.setText(data.getStringExtra("pass"))
+            fingerPrintSetup()
+            // login(email.text.toString(), password.text.toString(), true)
         }
     }
 
@@ -188,31 +222,25 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, process to next step.
                     Toasty.success(
-                        this@MainActivity,
+                        this@LoginActivity,
                         R.string.google_succeeded,
                         Toast.LENGTH_SHORT,
                         true
                     ).show()
                     loggedInUser = auth.currentUser
-                    val intent = Intent(this@MainActivity, HomeMenuActivity::class.java)
-                    intent.putExtra("email", loggedInUser?.email?.toString())
-                    intent.putExtra("displayName", loggedInUser?.displayName?.toString())
-                    intent.putExtra("phoneNumber", loggedInUser?.phoneNumber?.toString())
-                    intent.putExtra("photoUrl", loggedInUser?.photoUrl?.toString())
-                    startActivity(intent)
-                    finish()
+                    startHomeMenuActivity()
                 } else {
                     if (task.exception is FirebaseAuthException) {
                         val e = task.exception as FirebaseAuthException
                         Toasty.error(
-                            this@MainActivity,
+                            this@LoginActivity,
                             e.localizedMessage,
                             Toast.LENGTH_SHORT,
                             true
                         ).show()
                     } else {
                         Toasty.error(
-                            this@MainActivity,
+                            this@LoginActivity,
                             R.string.google_failed,
                             Toast.LENGTH_SHORT,
                             true
@@ -233,7 +261,7 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                         super.onAuthenticationSucceeded(result)
-                        this@MainActivity.runOnUiThread(java.lang.Runnable {
+                        this@LoginActivity.runOnUiThread(java.lang.Runnable {
                             login(
                                 sharedPref?.getString(PREF_EMAIL, "").toString(),
                                 sharedPref?.getString(PREF_PASS, "").toString(), true
@@ -243,9 +271,9 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onAuthenticationFailed() {
                         super.onAuthenticationFailed()
-                        this@MainActivity.runOnUiThread(java.lang.Runnable {
+                        this@LoginActivity.runOnUiThread(java.lang.Runnable {
                             Toasty.error(
-                                this@MainActivity,
+                                this@LoginActivity,
                                 R.string.biometric_unrecognized,
                                 Toast.LENGTH_SHORT,
                                 true
@@ -292,12 +320,15 @@ class MainActivity : AppCompatActivity() {
                 hardwareDetected = fingerprintManager.isHardwareDetected
                 hasEnrolledFingerprints = fingerprintManager.hasEnrolledFingerprints()
             }
-            return hardwareDetected && hasEnrolledFingerprints && isPermissionGranted(this)
+            return hardwareDetected && hasEnrolledFingerprints && isPermissionGranted(
+                this
+            )
         }
         return false
     }
 
     companion object {
         private const val RC_SIGN_IN = 9001
+        private const val RC_REGISTER = 9002
     }
 }
