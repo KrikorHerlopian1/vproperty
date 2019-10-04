@@ -53,7 +53,8 @@ class RegisterActivity : AppCompatActivity() {
         actionBar.setDisplayUseLogoEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener(View.OnClickListener {
-            super.onBackPressed()
+            setResult(0, Intent())
+            finish()
         })
         storage = FirebaseStorage.getInstance()
         sharedPref = getSharedPreferences(
@@ -263,6 +264,11 @@ class RegisterActivity : AppCompatActivity() {
                         )
                 }
         }
+    }
+
+    override fun onBackPressed() {
+        setResult(0, Intent())
+        finish()
     }
     companion object {
         private const val RC_REGISTER = 9002
