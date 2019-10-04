@@ -41,4 +41,8 @@
     <string name="default_drawer">Default</string>
     <string name="custom">Custom</string>
     <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="capture_photo">Capture photo...</string>
+    <string name="failed_upload">Failed to upload image</string>'
+    <string name="display_name">Display Name</string>
+    <string name="enter_display_name">Enter a display name</string>
 </resources>

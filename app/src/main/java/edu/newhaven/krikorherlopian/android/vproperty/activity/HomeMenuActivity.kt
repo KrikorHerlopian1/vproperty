@@ -46,7 +46,7 @@ class HomeMenuActivity : AppCompatActivity() {
 
         header.headerSubTitle.text = displayName
         header.headerTitle.text = email
-
+        //load user profile to menu
         Glide.with(this@HomeMenuActivity).load(photoUrl)
             .placeholder(R.drawable.profileplaceholder).apply(RequestOptions.circleCropTransform())
             .into(
@@ -69,7 +69,7 @@ class HomeMenuActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        //if  menu drawer is open close it on click of button, else go out of app.
+        //if  menu drawer is open close it on click of button, else go back in screen.
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer((Gravity.LEFT))
         } else {

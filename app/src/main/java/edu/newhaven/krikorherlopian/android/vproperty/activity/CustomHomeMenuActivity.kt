@@ -17,6 +17,10 @@ import kotlinx.android.synthetic.main.custom_menu.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
+/*
+        This page contains the custom menu (arc) , first page after login.
+        It has multiple menu options in navigation drawer, every menu assosciated with fragment.
+ */
 class CustomHomeMenuActivity : AppCompatActivity() {
 
     var photoUrl: String? = ""
@@ -42,6 +46,7 @@ class CustomHomeMenuActivity : AppCompatActivity() {
         header.headerSubTitle.text = displayName
         header.headerTitle.text = email
 
+        //load user profile to menu
         Glide.with(this@CustomHomeMenuActivity).load(photoUrl)
             .placeholder(R.drawable.profileplaceholder).apply(RequestOptions.circleCropTransform())
             .into(
@@ -62,7 +67,7 @@ class CustomHomeMenuActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
+        //if  menu drawer is open close it on click of button, else go back in screen.
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else if (drawerLayout.isDrawerOpen(GravityCompat.END)) {

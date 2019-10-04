@@ -18,6 +18,9 @@ import edu.newhaven.krikorherlopian.android.vproperty.adapter.TitleSubtitleAdapt
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
 import kotlinx.android.synthetic.main.settings.view.*
 
+/*
+    Settings Fragment.Options to change in app.
+ */
 class SettingsFragment : Fragment(), ListClick {
     var drawerSettingsItem: SettingsItem? = null
     var list: MutableList<SettingsItem> = mutableListOf<SettingsItem>()
@@ -33,6 +36,13 @@ class SettingsFragment : Fragment(), ListClick {
             PREFS_FILENAME,
             PRIVATE_MODE
         )
+        sharedPref = root?.context?.getSharedPreferences(
+            PREFS_FILENAME,
+            PRIVATE_MODE
+        )
+
+        // define the first setting item, the style of the navigation drawer.
+        // in normal cases its default, user can change it from this page into custom(arc).
         var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
         drawerSettingsItem = SettingsItem(
             root!!.resources.getString(R.string.navigation_drawer),
@@ -46,10 +56,6 @@ class SettingsFragment : Fragment(), ListClick {
         }
         list.add(drawerSettingsItem!!)
 
-        sharedPref = root?.context?.getSharedPreferences(
-            PREFS_FILENAME,
-            PRIVATE_MODE
-        )
 
         val adapter = TitleSubtitleAdapter(
             list, this
@@ -66,6 +72,7 @@ class SettingsFragment : Fragment(), ListClick {
         }
     }
 
+    // Show popupbox for user to select between default drawer or custom drawer.
     private fun showDrawerOptions() {
         val sel = "" + resources.getString(R.string.navigation_drawer)
         val alerBuilder = AlertDialog.Builder(root!!.context)
@@ -90,6 +97,7 @@ class SettingsFragment : Fragment(), ListClick {
             }
         ).setPositiveButton(ok, DialogInterface.OnClickListener { dialogInterface, ii ->
             try {
+                //user selected an option save it to shared preferences for next login situations and open the new style menu.
                 var param = ""
                 if (selectedChoice == 0) {
                     param = "default"
@@ -109,6 +117,8 @@ class SettingsFragment : Fragment(), ListClick {
         }).setCancelable(false).setTitle(sel).create().show()
     }
 
+    //open the home or custom menu when navigation drawer settings changed in the app.
+    //FLAG_ACTIVITY_CLEAR_TOP to close all activities in stack, and start new activity on top of stack.
     private fun startHomeMenuActivity(type: String) {
         var intent: Intent? = null
         if (type.equals("default")) {

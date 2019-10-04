@@ -11,6 +11,9 @@ import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
 import edu.newhaven.krikorherlopian.android.vproperty.viewholder.MyViewHolder
 
+/*
+    This page adapter, contains an icon plus two texts below each other.
+ */
 class TitleSubtitleAdapter(private val list: MutableList<SettingsItem>, var listClick: ListClick) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
