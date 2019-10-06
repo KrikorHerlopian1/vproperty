@@ -70,7 +70,7 @@
                 android:padding="5dp"
                 android:visibility="gone" />
 
-            <TextView
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
@@ -79,7 +79,7 @@
                 android:text="@string/login"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/normalTextSize"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -89,12 +89,12 @@
             android:layout_gravity="right"
             android:layout_marginTop="5dp">
 
-            <TextView
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/forgot_password_ques"
-                android:textColor="@color/colorPrimary"></TextView>
+                android:textColor="@color/colorPrimary"></edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView>
         </RelativeLayout>
 
     </LinearLayout>
@@ -178,7 +178,7 @@
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal">
 
-            <TextView
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
                 android:id="@+id/haveAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

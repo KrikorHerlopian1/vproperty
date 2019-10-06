@@ -45,4 +45,34 @@
     <string name="failed_upload">Failed to upload image</string>'
     <string name="display_name">Display Name</string>
     <string name="enter_display_name">Enter a display name</string>
+    <string name="add_property">Add House</string>
+    <string name="add_picture">Add a picture</string>
+    <string name="add">ADD</string>
+    <string name="android_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn-EQ4</string>
+    <string name="map_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn-EQ4</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="action_geolocate">Pick Place</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="leku_title_activity_location_picker">Location Picker</string>
+    <string name="leku_load_location_error">Something went wrong. Please try again.</string>
+    <string name="leku_no_search_results">There are no results for your search</string>
+    <string name="leku_unknown_location">unknown location</string>
+    <string name="leku_voice_search_promp">Search by voice…</string>
+    <string name="leku_voice_search_extra_language">en-EN</string>
+    <string name="leku_toolbar_action_voice_title">Voice</string>
+    <string name="leku_search_hint">Search</string>
+    <string name="leku_app_name" translatable="false">Leku Demo</string>
+    <string name="google_maps_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn</string>
+    <string name="launch_map_picker" translatable="false">LAUNCH MAP LOCATION PICKER ACTIVITY</string>
+    <string name="launch_map_picker_with_pois" translatable="false">LAUNCH MAP WITH POIS</string>
+    <string name="launch_map_picker_with_style" translatable="false">LAUNCH MAP WITH STYLE</string>
+    <string name="leku_lib_version" translatable="false">version 6.3.0</string>
+    <string name="default_info_snippet">No places found, because location permission is disabled.</string>
+    <string name="open_location">Open Place Picker</string>
+    <string name="property_name">House Name</string>
+    <string name="address">Address</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="zipcode">Zip Code</string>
+    <string name="description">Description</string>
 </resources>

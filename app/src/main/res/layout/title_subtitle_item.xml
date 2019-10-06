@@ -22,7 +22,7 @@
         android:background="@android:color/white"
         android:padding="10dp">
 
-        <TextView
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="?android:attr/textColorPrimary" />
 
-        <TextView
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -18,14 +18,14 @@
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
-    <TextView
+    <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
         android:id="@+id/headerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
+    <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
         android:id="@+id/headerSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
