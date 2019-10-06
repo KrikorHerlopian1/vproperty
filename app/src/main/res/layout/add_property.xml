@@ -64,24 +64,19 @@
 
 
             <RelativeLayout
+                android:id="@+id/addPictureLayout"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:layout_width="match_parent"
                     android:id="@+id/picture"
-                    android:layout_width="wrap_content"
+                    android:adjustViewBounds="true"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"></ImageView>
-
-                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="@string/add_picture"
-                    android:textColor="@android:color/white"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
+                    android:padding="10dp"
+                    android:layout_gravity="center"></ImageView>
             </RelativeLayout>
 
             <LinearLayout

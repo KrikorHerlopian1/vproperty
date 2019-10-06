@@ -3,6 +3,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -10,6 +11,11 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.mikelau.croperino.Croperino
+import com.mikelau.croperino.CroperinoConfig
+import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import kotlinx.android.synthetic.main.activity_register.toolbar
@@ -38,13 +44,35 @@ class AddPropertyActivity : AppCompatActivity() {
             android.Manifest.permission.ACCESS_NETWORK_STATE
         )
         ActivityCompat.requestPermissions(this, permissions, 0)
+        Glide.with(this@AddPropertyActivity).load(R.drawable.placeholderdetail)
+            .placeholder(R.drawable.placeholderdetail)
+            .into(
+                picture
+            )
+        prepareCroperino()
+        addPictureLayout.setOnClickListener {
+            Croperino.prepareChooser(
+                this@AddPropertyActivity,
+                "" + resources.getString(R.string.capture_photo),
+                ContextCompat.getColor(this@AddPropertyActivity, android.R.color.background_dark)
+            )
+        }
 
+    }
+
+    private fun prepareCroperino() {
+        //prepare camera, gallery and ask for storage permissions.
+        CroperinoConfig(
+            "IMG_" + System.currentTimeMillis() + ".jpg",
+            "/VProperty/Pictures",
+            "/sdcard/VProperty/Pictures"
+        )
+        CroperinoFileUtil.setupDirectory(this@AddPropertyActivity)
 
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.open_location) {
             showLocationPicker()
@@ -62,10 +90,6 @@ class AddPropertyActivity : AppCompatActivity() {
         val locationPickerIntent = LocationPickerActivity.Builder()
             .withGeolocApiKey(resources.getString(R.string.map_key))
             .withDefaultLocaleSearchZone()
-            .shouldReturnOkOnBackPressed()
-            .withStreetHidden()
-            .withCityHidden()
-            .withZipCodeHidden()
             .withSatelliteViewHidden()
             .withGooglePlacesEnabled()
             .withGoogleTimeZoneEnabled()
@@ -76,28 +100,55 @@ class AddPropertyActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && data != null) {
-            Log.d("RESULT****", "OK")
-            if (requestCode == RC_LCOATION) {
-                val latitude = data.getDoubleExtra(LATITUDE, 0.0)
-                val longitude = data.getDoubleExtra(LONGITUDE, 0.0)
-                val address = data.getStringExtra(LOCATION_ADDRESS)
-                val postalcode = data.getStringExtra(ZIPCODE)
-                latitudeInput.setText("" + latitude)
-                longitudeInput.setText("" + longitude)
-                addressName.setText(address.toString())
-                zipCodeInput.setText(postalcode.toString())
-            } else if (requestCode == 2) {
-                val latitude = data.getDoubleExtra(LATITUDE, 0.0)
-                Log.d("LATITUDE****", latitude.toString())
-                val longitude = data.getDoubleExtra(LONGITUDE, 0.0)
-                Log.d("LONGITUDE****", longitude.toString())
-                val address = data.getStringExtra(LOCATION_ADDRESS)
-                Log.d("ADDRESS****", address.toString())
-                val lekuPoi = data.getParcelableExtra<LekuPoi>(LEKU_POI)
-                Log.d("LekuPoi****", lekuPoi.toString())
+            when (requestCode) {
+                CroperinoConfig.REQUEST_TAKE_PHOTO ->
+                    if (resultCode == Activity.RESULT_OK) {
+                        /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
+                        Croperino.runCropImage(
+                            CroperinoFileUtil.getTempFile(),
+                            this@AddPropertyActivity,
+                            true,
+                            1,
+                            1,
+                            R.color.gray,
+                            R.color.gray_variant
+                        )
+                    }
+                CroperinoConfig.REQUEST_PICK_FILE ->
+                    if (resultCode == Activity.RESULT_OK) {
+                        CroperinoFileUtil.newGalleryFile(data, this@AddPropertyActivity)
+                        Croperino.runCropImage(
+                            CroperinoFileUtil.getTempFile(),
+                            this@AddPropertyActivity,
+                            true,
+                            0,
+                            0,
+                            R.color.gray,
+                            R.color.gray_variant
+                        )
+                    }
+                CroperinoConfig.REQUEST_CROP_PHOTO ->
+                    if (resultCode == Activity.RESULT_OK) {
+                        //cropped image returned is set to the imageview on  register layout
+                        var i = Uri.fromFile(CroperinoFileUtil.getTempFile())
+                        Glide.with(this@AddPropertyActivity).load(i)
+                            .placeholder(R.drawable.placeholderdetail)
+                            .into(
+                                picture
+                            )
+                    }
+                RC_LCOATION -> {
+                    val latitude = data.getDoubleExtra(LATITUDE, 0.0)
+                    val longitude = data.getDoubleExtra(LONGITUDE, 0.0)
+                    val address = data.getStringExtra(LOCATION_ADDRESS)
+                    val postalcode = data.getStringExtra(ZIPCODE)
+                    latitudeInput.setText("" + latitude)
+                    longitudeInput.setText("" + longitude)
+                    addressName.setText(address.toString())
+                    zipCodeInput.setText(postalcode.toString())
+                }
             }
-        }
-        if (resultCode == Activity.RESULT_CANCELED) {
+        } else if (resultCode == Activity.RESULT_CANCELED) {
             Log.d("RESULT****", "CANCELLED")
         }
         super.onActivityResult(requestCode, resultCode, data)
