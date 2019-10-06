@@ -3,6 +3,12 @@
         android:width="2dp"
         android:color="@android:color/transparent" />
     <solid android:color="@color/colorAccent" />
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/centerColor"
+        android:endColor="@color/endColor"
+        android:startColor="@color/startColor"
+        android:type="linear" />
     <padding
         android:bottom="5dp"
         android:left="5dp"

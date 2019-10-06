@@ -79,16 +79,18 @@ class SettingsFragment : Fragment(), ListClick {
         val settingsOptArr = arrayOfNulls<String>(2)
 
         var selectedChoice = 0
+        var previousChoice = 0
         if (drawerSettingsItem?.subtitle?.toUpperCase() == "CUSTOM")
-            selectedChoice = 1
+            previousChoice = 1
         else
-            selectedChoice = 0
+            previousChoice = 0
+        selectedChoice = previousChoice
         val ok = "" + resources.getString(android.R.string.ok)
         settingsOptArr[0] = resources.getString(R.string.default_drawer)
         settingsOptArr[1] = resources.getString(R.string.custom)
         alerBuilder.setSingleChoiceItems(
             settingsOptArr,
-            selectedChoice,
+            previousChoice,
             DialogInterface.OnClickListener { dialog, item ->
                 when (item) {
                     0 -> selectedChoice = 0
@@ -99,18 +101,21 @@ class SettingsFragment : Fragment(), ListClick {
             try {
                 //user selected an option save it to shared preferences for next login situations and open the new style menu.
                 var param = ""
-                if (selectedChoice == 0) {
-                    param = "default"
-                    drawerSettingsItem?.subtitle =
-                        root!!.resources.getString(R.string.default_drawer)
-                } else {
-                    param = "custom"
-                    drawerSettingsItem?.subtitle = root!!.resources.getString(R.string.custom)
+                if (selectedChoice != previousChoice) {
+                    if (selectedChoice == 0) {
+                        param = "default"
+                        drawerSettingsItem?.subtitle =
+                            root!!.resources.getString(R.string.default_drawer)
+                    } else {
+                        param = "custom"
+                        drawerSettingsItem?.subtitle = root!!.resources.getString(R.string.custom)
+                    }
+                    val editor = sharedPref?.edit()
+                    editor?.putString(PREF_DRAWER, param)
+                    editor?.apply()
+                    startHomeMenuActivity(param)
                 }
-                val editor = sharedPref?.edit()
-                editor?.putString(PREF_DRAWER, param)
-                editor?.apply()
-                startHomeMenuActivity(param)
+
 
             } catch (e: Exception) {
             }
