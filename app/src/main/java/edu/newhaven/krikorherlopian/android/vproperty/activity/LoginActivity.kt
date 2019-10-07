@@ -15,9 +15,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 import edu.newhaven.krikorherlopian.android.vproperty.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_main.*
@@ -61,6 +64,8 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
 
+        getTokenAndRegisterForNotifications()
+
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         auth = FirebaseAuth.getInstance()
@@ -103,6 +108,29 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun getTokenAndRegisterForNotifications() {
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    return@OnCompleteListener
+                }
+                // Get new Instance ID token
+                val token = task.result?.token
+                // Log and toast
+                val editor = sharedPref?.edit()
+                editor?.putString(PREF_TOKEN, token)
+                editor?.apply()
+            })
+
+        FirebaseMessaging.getInstance().subscribeToTopic("vproperty")
+            .addOnCompleteListener { task ->
+                var msg = getString(R.string.msg_subscribed)
+                if (!task.isSuccessful) {
+                    msg = getString(R.string.msg_subscribe_failed)
+                }
+            }
     }
 
 

@@ -75,4 +75,11 @@
     <string name="latitude">Latitude</string>
     <string name="zipcode">Zip Code</string>
     <string name="description">Description</string>
+    <string name="default_notification_channel_id">vproperty</string>
+    <string name="vproperty_channel">vproperty</string>
+    <string name="fcm_message">vproperty</string>
+    <string name="msg_subscribed">Subscribed to vproperty topic</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="default_notification_channel_name" translatable="true">vproperty</string>
+    <string name="msg_subscribe_failed">Failed to subscribe to vproperty topic</string>
 </resources>

@@ -2,7 +2,6 @@
     <stroke
         android:width="2dp"
         android:color="@android:color/transparent" />
-    <solid android:color="@color/colorAccent" />
     <gradient
         android:angle="0"
         android:centerColor="@color/centerColor"
@@ -14,5 +13,5 @@
         android:left="5dp"
         android:right="5dp"
         android:top="5dp" />
-    <corners android:radius="0dp" />
+    <corners android:radius="20dp" />
 </shape>
