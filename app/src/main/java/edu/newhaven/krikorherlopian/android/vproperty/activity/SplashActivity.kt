@@ -16,10 +16,14 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
     var count = 1
+    var fromNotification: Boolean? = false
     var sec = 750L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        var bundle: Bundle? = intent.extras
+        fromNotification = bundle?.getBoolean("fromNotification")
+        System.out.println("fromNotification" + fromNotification)
         Glide.with(this).load(R.drawable.splash0).into(imageView)
         animateImages()
     }
@@ -99,8 +103,12 @@ class SplashActivity : AppCompatActivity() {
     }
 
     fun goToLogin() {
+
+
         val intent = Intent(this@SplashActivity, LoginActivity::class.java)
         startActivity(intent)
         finish()
+
+
     }
 }
