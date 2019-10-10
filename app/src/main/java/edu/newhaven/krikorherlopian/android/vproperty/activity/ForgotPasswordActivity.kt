@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.isEmailValid
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_forgot_password.*
@@ -33,6 +35,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener(View.OnClickListener {
             super.onBackPressed()
         })
+        var tf = Typeface.createFromAsset(assets, "" + font)
+        emailAddressInputLayout.typeface = tf
+        email.typeface = tf
         auth = FirebaseAuth.getInstance()
         forgotPasswordButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {

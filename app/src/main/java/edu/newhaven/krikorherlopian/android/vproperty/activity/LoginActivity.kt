@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -78,6 +79,11 @@ class LoginActivity : AppCompatActivity() {
                 RC_SIGN_IN
             )
         }
+        var tf = Typeface.createFromAsset(assets, "" + font)
+        emailAddressInputLayout.typeface = tf
+        passwordInputLayout.typeface = tf
+        email.typeface = tf
+        password.typeface = tf
         loginButton.setOnClickListener {
             if (email.text.isNullOrBlank()) {
                 setError(null, null, true, false)

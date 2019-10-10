@@ -3,6 +3,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.mikelau.croperino.CroperinoConfig
 import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.font
 import kotlinx.android.synthetic.main.activity_register.toolbar
 import kotlinx.android.synthetic.main.add_property.*
 
@@ -43,6 +45,21 @@ class AddPropertyActivity : AppCompatActivity() {
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
             android.Manifest.permission.ACCESS_NETWORK_STATE
         )
+
+        var tf = Typeface.createFromAsset(assets, "" + font)
+        houseNameInputLayout.typeface = tf
+        houseName.typeface = tf
+        addressName.typeface = tf
+        zipCodeInput.typeface = tf
+        longitudeInput.typeface = tf
+        latitudeInput.typeface = tf
+        descriptionLayout.typeface = tf
+        addressInputLayout.typeface = tf
+        longitudeLayout.typeface = tf
+        latitudeLayout.typeface = tf
+        zipCodeLayout.typeface = tf
+        descriptionInputLayout.typeface = tf
+        descriptionInputLayout.typeface = tf
         ActivityCompat.requestPermissions(this, permissions, 0)
         Glide.with(this@AddPropertyActivity).load(R.drawable.placeholderdetail)
             .placeholder(R.drawable.placeholderdetail)

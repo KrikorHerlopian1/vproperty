@@ -17,6 +17,7 @@ val PREF_EMAIL = "email"
 val PREF_TOKEN = "token"
 val PREF_DRAWER = "drawer"
 var loggedInUser: FirebaseUser? = null
+var font = "Poppins-Light.ttf"
 fun isEmailValid(email: CharSequence): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }

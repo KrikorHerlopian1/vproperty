@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
+import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -65,6 +66,13 @@ class RegisterActivity : AppCompatActivity() {
 
         prepareCroperino()
 
+        var tf = Typeface.createFromAsset(assets, "" + font)
+        emailAddressInputLayout.typeface = tf
+        passwordInputLayout.typeface = tf
+        displayNamenputLayout.typeface = tf
+        email.typeface = tf
+        password.typeface = tf
+        displayName.typeface = tf
         registerButton.setOnClickListener {
             if (displayName.text.isNullOrBlank()) {
                 setError(null, null, null, true, false, false)
