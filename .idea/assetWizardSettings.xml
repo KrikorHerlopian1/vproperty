@@ -62,7 +62,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="57" />
+                                                <entry key="scalingPercent" value="36" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -74,7 +74,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/icons8-v-symbol-50.png" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/skyline.png" />
                                       <entry key="previewDensity" value="XXXHIGH" />
                                     </map>
                                   </option>
