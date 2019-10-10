@@ -56,64 +56,85 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        configureGoogleSign()
+        getTokenAndRegisterForNotifications()
         sharedPref = getSharedPreferences(
             PREFS_FILENAME,
             PRIVATE_MODE
         )
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        getTokenAndRegisterForNotifications()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-
         auth = FirebaseAuth.getInstance()
         auth.signOut()
         fingerPrintSetup()
+        setUpFonts()
         sign_in_button.setOnClickListener {
-            val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(
-                signInIntent,
-                RC_SIGN_IN
-            )
+            googleSignInClicked()
         }
+        loginButton.setOnClickListener {
+            loginButtonClicked()
+        }
+        registerLayout.setOnClickListener {
+            registerButtonClicked()
+        }
+        forgotLayout.setOnClickListener {
+            forgotPasswordClicked()
+        }
+    }
+
+    private fun googleSignInClicked() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(
+            signInIntent,
+            RC_SIGN_IN
+        )
+    }
+
+    private fun setUpFonts() {
         var tf = Typeface.createFromAsset(assets, "" + font)
         emailAddressInputLayout.typeface = tf
         passwordInputLayout.typeface = tf
         email.typeface = tf
         password.typeface = tf
-        loginButton.setOnClickListener {
-            if (email.text.isNullOrBlank()) {
-                setError(null, null, true, false)
-                emailAddressInputLayout.error = resources.getString(R.string.enter_email)
-            } else if (!isEmailValid(email.text.toString())) {
-                setError(null, null, true, false)
-                emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
-            } else if (password.text.isNullOrBlank()) {
-                setError(null, null, false, true)
-                passwordInputLayout.error = resources.getString(R.string.enter_password)
-            } else {
-                setError(null, null, false, false)
-                //show progressbar before making firebase call.
-                progressbar.visibility = View.VISIBLE
-                //disable loginButton so that user doesnt click login again while one call to firebase is running.
-                loginButton.isEnabled = false
-                login(email.text.toString(), password.text.toString(), true)
-            }
+    }
+
+    private fun registerButtonClicked() {
+        val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+        startActivityForResult(
+            intent,
+            RC_REGISTER
+        )
+    }
+
+    private fun loginButtonClicked() {
+        if (email.text.isNullOrBlank()) {
+            setError(null, null, true, false)
+            emailAddressInputLayout.error = resources.getString(R.string.enter_email)
+        } else if (!isEmailValid(email.text.toString())) {
+            setError(null, null, true, false)
+            emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
+        } else if (password.text.isNullOrBlank()) {
+            setError(null, null, false, true)
+            passwordInputLayout.error = resources.getString(R.string.enter_password)
+        } else {
+            setError(null, null, false, false)
+            //show progressbar before making firebase call.
+            progressbar.visibility = View.VISIBLE
+            //disable loginButton so that user doesnt click login again while one call to firebase is running.
+            loginButton.isEnabled = false
+            login(email.text.toString(), password.text.toString(), true)
         }
-        registerLayout.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivityForResult(
-                intent,
-                RC_REGISTER
-            )
-        }
-        forgotLayout.setOnClickListener {
-            val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
-            startActivity(intent)
-        }
+    }
+
+    private fun forgotPasswordClicked() {
+        val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun configureGoogleSign() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
     private fun getTokenAndRegisterForNotifications() {

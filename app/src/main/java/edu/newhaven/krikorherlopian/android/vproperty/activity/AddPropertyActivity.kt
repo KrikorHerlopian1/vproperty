@@ -27,16 +27,22 @@ class AddPropertyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_property)
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar!!.title = resources.getString(R.string.add_property)
-        actionBar.elevation = 4.0F
-        actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setDisplayUseLogoEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
-            super.onBackPressed()
-        })
+        setupToolBar()
+        setUpPermissions()
+        setUpFonts()
+        Glide.with(this@AddPropertyActivity).load(R.drawable.placeholderdetail)
+            .placeholder(R.drawable.placeholderdetail)
+            .into(
+                picture
+            )
+        prepareCroperino()
+        addPictureLayout.setOnClickListener {
+            addPictureClicked()
+        }
+
+    }
+
+    private fun setUpPermissions() {
         val permissions = arrayOf(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
             android.Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -45,7 +51,18 @@ class AddPropertyActivity : AppCompatActivity() {
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
             android.Manifest.permission.ACCESS_NETWORK_STATE
         )
+        ActivityCompat.requestPermissions(this, permissions, 0)
+    }
 
+    private fun addPictureClicked() {
+        Croperino.prepareChooser(
+            this@AddPropertyActivity,
+            "" + resources.getString(R.string.capture_photo),
+            ContextCompat.getColor(this@AddPropertyActivity, android.R.color.background_dark)
+        )
+    }
+
+    private fun setUpFonts() {
         var tf = Typeface.createFromAsset(assets, "" + font)
         houseNameInputLayout.typeface = tf
         houseName.typeface = tf
@@ -60,21 +77,19 @@ class AddPropertyActivity : AppCompatActivity() {
         zipCodeLayout.typeface = tf
         descriptionInputLayout.typeface = tf
         descriptionInputLayout.typeface = tf
-        ActivityCompat.requestPermissions(this, permissions, 0)
-        Glide.with(this@AddPropertyActivity).load(R.drawable.placeholderdetail)
-            .placeholder(R.drawable.placeholderdetail)
-            .into(
-                picture
-            )
-        prepareCroperino()
-        addPictureLayout.setOnClickListener {
-            Croperino.prepareChooser(
-                this@AddPropertyActivity,
-                "" + resources.getString(R.string.capture_photo),
-                ContextCompat.getColor(this@AddPropertyActivity, android.R.color.background_dark)
-            )
-        }
+    }
 
+    private fun setupToolBar() {
+        setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        actionBar!!.title = resources.getString(R.string.add_property)
+        actionBar.elevation = 4.0F
+        actionBar.setDisplayShowHomeEnabled(true)
+        actionBar.setDisplayUseLogoEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener(View.OnClickListener {
+            super.onBackPressed()
+        })
     }
 
     private fun prepareCroperino() {

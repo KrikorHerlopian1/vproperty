@@ -25,6 +25,32 @@ class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
+        setUpToolbar()
+        setUpFonts()
+        auth = FirebaseAuth.getInstance()
+        forgotPasswordButton.setOnClickListener {
+            forgotPasswordButtonClicked()
+        }
+    }
+
+    private fun forgotPasswordButtonClicked() {
+        if (email.text.isNullOrBlank()) {
+            setError(null, true)
+            emailAddressInputLayout.error = resources.getString(R.string.enter_email)
+        } else if (!isEmailValid(email.text.toString())) {
+            setError(null, true)
+            emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
+        } else {
+            setError(null, false)
+            //show progress bar with firebase called
+            progressbar.visibility = View.VISIBLE
+            //disable forgotpasswordbutton so that user doesnt reset link again while one call to firebase is running.
+            forgotPasswordButton.isEnabled = false
+            reset(email.text.toString())
+        }
+    }
+
+    private fun setUpToolbar() {
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar
         actionBar!!.title = resources.getString(R.string.forgot_password)
@@ -35,28 +61,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener(View.OnClickListener {
             super.onBackPressed()
         })
+    }
+
+    private fun setUpFonts() {
         var tf = Typeface.createFromAsset(assets, "" + font)
         emailAddressInputLayout.typeface = tf
         email.typeface = tf
-        auth = FirebaseAuth.getInstance()
-        forgotPasswordButton.setOnClickListener {
-            if (email.text.isNullOrBlank()) {
-                setError(null, true)
-                emailAddressInputLayout.error = resources.getString(R.string.enter_email)
-            } else if (!isEmailValid(email.text.toString())) {
-                setError(null, true)
-                emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
-            } else {
-                setError(null, false)
-                //show progress bar with firebase called
-                progressbar.visibility = View.VISIBLE
-                //disable forgotpasswordbutton so that user doesnt reset link again while one call to firebase is running.
-                forgotPasswordButton.isEnabled = false
-                reset(email.text.toString())
-            }
-        }
     }
-
     private fun setError(emailError: CharSequence?, emailErrorEnabled: Boolean) {
         emailAddressInputLayout.error = emailError
         emailAddressInputLayout.isErrorEnabled = emailErrorEnabled

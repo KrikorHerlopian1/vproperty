@@ -46,6 +46,69 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        setUpToolbar()
+        storage = FirebaseStorage.getInstance()
+        sharedPref = getSharedPreferences(
+            PREFS_FILENAME,
+            PRIVATE_MODE
+        )
+        auth = FirebaseAuth.getInstance()
+        prepareCroperino()
+        setUpFonts()
+        registerButton.setOnClickListener {
+            registerButtonClicked()
+        }
+        profile_image.setOnClickListener {
+            addProfileButtonClicked()
+        }
+    }
+
+    private fun addProfileButtonClicked() {
+        Croperino.prepareChooser(
+            this@RegisterActivity,
+            "" + resources.getString(R.string.capture_photo),
+            ContextCompat.getColor(this@RegisterActivity, android.R.color.background_dark)
+        )
+    }
+
+    private fun registerButtonClicked() {
+        if (displayName.text.isNullOrBlank()) {
+            setError(null, null, null, true, false, false)
+            displayNamenputLayout.error = resources.getString(R.string.enter_display_name)
+        } else if (email.text.isNullOrBlank()) {
+            setError(null, null, null, false, true, false)
+            emailAddressInputLayout.error = resources.getString(R.string.enter_email)
+        } else if (!isEmailValid(email.text.toString())) {
+            setError(null, null, null, false, true, false)
+            emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
+        } else if (password.text.isNullOrBlank()) {
+            setError(null, null, null, false, false, true)
+            passwordInputLayout.error = resources.getString(R.string.enter_password)
+        } else {
+            setError(null, null, null, false, false, false)
+            //show progress bar with firebase called
+            progressbar.visibility = View.VISIBLE
+            //disable registerbutton so that user doesnt register again while one call to firebase is running.
+            registerButton.isEnabled = false
+            register(
+                email.text.toString(),
+                password.text.toString(),
+                displayName.text.toString()
+            )
+        }
+    }
+
+    private fun setUpFonts() {
+        var tf = Typeface.createFromAsset(assets, "" + font)
+        emailAddressInputLayout.typeface = tf
+        passwordInputLayout.typeface = tf
+        displayNamenputLayout.typeface = tf
+        email.typeface = tf
+        password.typeface = tf
+        displayName.typeface = tf
+    }
+
+    private fun setUpToolbar() {
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar
         actionBar!!.title = resources.getString(R.string.register_new_account)
@@ -57,55 +120,6 @@ class RegisterActivity : AppCompatActivity() {
             setResult(0, Intent())
             finish()
         })
-        storage = FirebaseStorage.getInstance()
-        sharedPref = getSharedPreferences(
-            PREFS_FILENAME,
-            PRIVATE_MODE
-        )
-        auth = FirebaseAuth.getInstance()
-
-        prepareCroperino()
-
-        var tf = Typeface.createFromAsset(assets, "" + font)
-        emailAddressInputLayout.typeface = tf
-        passwordInputLayout.typeface = tf
-        displayNamenputLayout.typeface = tf
-        email.typeface = tf
-        password.typeface = tf
-        displayName.typeface = tf
-        registerButton.setOnClickListener {
-            if (displayName.text.isNullOrBlank()) {
-                setError(null, null, null, true, false, false)
-                displayNamenputLayout.error = resources.getString(R.string.enter_display_name)
-            } else if (email.text.isNullOrBlank()) {
-                setError(null, null, null, false, true, false)
-                emailAddressInputLayout.error = resources.getString(R.string.enter_email)
-            } else if (!isEmailValid(email.text.toString())) {
-                setError(null, null, null, false, true, false)
-                emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
-            } else if (password.text.isNullOrBlank()) {
-                setError(null, null, null, false, false, true)
-                passwordInputLayout.error = resources.getString(R.string.enter_password)
-            } else {
-                setError(null, null, null, false, false, false)
-                //show progress bar with firebase called
-                progressbar.visibility = View.VISIBLE
-                //disable registerbutton so that user doesnt register again while one call to firebase is running.
-                registerButton.isEnabled = false
-                register(
-                    email.text.toString(),
-                    password.text.toString(),
-                    displayName.text.toString()
-                )
-            }
-        }
-        profile_image.setOnClickListener {
-            Croperino.prepareChooser(
-                this@RegisterActivity,
-                "" + resources.getString(R.string.capture_photo),
-                ContextCompat.getColor(this@RegisterActivity, android.R.color.background_dark)
-            )
-        }
     }
 
     private fun prepareCroperino() {
@@ -278,6 +292,7 @@ class RegisterActivity : AppCompatActivity() {
         setResult(0, Intent())
         finish()
     }
+
     companion object {
         private const val RC_REGISTER = 9002
     }
