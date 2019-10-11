@@ -39,6 +39,10 @@ class AddPropertyActivity : AppCompatActivity() {
         addPictureLayout.setOnClickListener {
             addPictureClicked()
         }
+        setUpScroll()
+    }
+
+    private fun setUpScroll() {
         nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY > oldScrollY) {
                 toolbar.visibility = View.GONE
