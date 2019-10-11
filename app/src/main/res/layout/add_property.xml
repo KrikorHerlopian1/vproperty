@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
 
-    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
         android:minHeight="56dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:title="@string/register_new_account"
+        app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="@android:color/white"></androidx.appcompat.widget.Toolbar>
 
@@ -24,12 +24,13 @@
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/buttonHeight"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/border">
+        android:background="@drawable/border"
+        app:layout_anchorGravity="bottom">
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -52,10 +53,11 @@
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/addButton"
-        android:layout_below="@id/toolbar">
+        android:layout_marginBottom="@dimen/paddingFromButton"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,18 +68,18 @@
             <RelativeLayout
                 android:id="@+id/addPictureLayout"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
                     android:id="@+id/picture"
-                    android:adjustViewBounds="true"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_gravity="center"></ImageView>
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"></ImageView>
             </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,11 +96,11 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/houseName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_home"
                         android:drawablePadding="@dimen/drawable_padding"
-                        android:layout_width="match_parent"
                         android:drawableTint="@color/colorAccent"
-                        android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/normalTextSize" />
@@ -112,11 +114,11 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/addressName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_home_address"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/normalTextSize" />
@@ -130,11 +132,11 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/zipCodeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_zip_code1"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="text"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/normalTextSize" />
@@ -149,11 +151,11 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/longitudeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_longitude1"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="number"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/normalTextSize" />
@@ -167,11 +169,11 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/latitudeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_latitude_1"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="number"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/normalTextSize" />
@@ -186,11 +188,11 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/descriptionLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_description_black_24dp"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/normalTextSize" />
@@ -199,4 +201,4 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

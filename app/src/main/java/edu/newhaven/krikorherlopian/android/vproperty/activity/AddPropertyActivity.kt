@@ -13,6 +13,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.widget.NestedScrollView
 import com.bumptech.glide.Glide
 import com.mikelau.croperino.Croperino
 import com.mikelau.croperino.CroperinoConfig
@@ -20,7 +21,6 @@ import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
-import kotlinx.android.synthetic.main.activity_register.toolbar
 import kotlinx.android.synthetic.main.add_property.*
 
 class AddPropertyActivity : AppCompatActivity() {
@@ -39,7 +39,14 @@ class AddPropertyActivity : AppCompatActivity() {
         addPictureLayout.setOnClickListener {
             addPictureClicked()
         }
-
+        nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY > oldScrollY) {
+                toolbar.visibility = View.GONE
+            }
+            if (scrollY < oldScrollY) {
+                toolbar.visibility = View.VISIBLE
+            }
+        })
     }
 
     private fun setUpPermissions() {

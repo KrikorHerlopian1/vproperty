@@ -3,6 +3,7 @@
     <dimen name="normalTextSize">14sp</dimen>
     <dimen name="progress_bar_size">30dp</dimen>
     <dimen name="buttonHeight">40dp</dimen>
+    <dimen name="paddingFromButton">60dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
