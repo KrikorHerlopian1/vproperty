@@ -130,7 +130,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/zipCodeInput"
-                        android:drawableStart="@drawable/ic_zip_code"
+                        android:drawableStart="@drawable/ic_zip_code1"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
@@ -149,7 +149,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/longitudeInput"
-                        android:drawableStart="@drawable/ic_longitude"
+                        android:drawableStart="@drawable/ic_longitude1"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
@@ -167,7 +167,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/latitudeInput"
-                        android:drawableStart="@drawable/ic_latitude"
+                        android:drawableStart="@drawable/ic_latitude_1"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
