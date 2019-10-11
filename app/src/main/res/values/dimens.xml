@@ -12,4 +12,5 @@
     <dimen name="logo_size">150dp</dimen>
     <dimen name="settings_list_icon_sizes">24dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="drawable_padding">5dp</dimen>
 </resources>

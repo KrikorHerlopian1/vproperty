@@ -28,6 +28,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
+                android:drawableStart="@drawable/ic_email_24dp"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableTint="@color/colorAccent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -47,6 +50,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
+                android:drawableStart="@drawable/ic_lock_24dp"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableTint="@color/colorAccent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textWebPassword"

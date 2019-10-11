@@ -94,7 +94,10 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/houseName"
+                        android:drawableStart="@drawable/ic_home"
+                        android:drawablePadding="@dimen/drawable_padding"
                         android:layout_width="match_parent"
+                        android:drawableTint="@color/colorAccent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:textColor="@color/secondary_text"
@@ -109,6 +112,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/addressName"
+                        android:drawableStart="@drawable/ic_home_address"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
@@ -124,6 +130,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/zipCodeInput"
+                        android:drawableStart="@drawable/ic_zip_code"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -140,6 +149,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/longitudeInput"
+                        android:drawableStart="@drawable/ic_longitude"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -155,6 +167,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/latitudeInput"
+                        android:drawableStart="@drawable/ic_latitude"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -171,6 +186,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/descriptionLayout"
+                        android:drawableStart="@drawable/ic_description_black_24dp"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
