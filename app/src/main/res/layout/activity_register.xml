@@ -91,6 +91,24 @@
                     android:textSize="@dimen/normalTextSize" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="@string/confirmPassword"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textWebPassword"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/normalTextSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <RelativeLayout
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"

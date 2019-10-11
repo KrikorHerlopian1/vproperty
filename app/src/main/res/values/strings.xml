@@ -4,8 +4,11 @@
     <string name="email">Email Address</string>
     <string name="loading">Loading...</string>
     <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
     <string name="enter_email">Please enter email</string>
     <string name="enter_password">Please enter password</string>
+    <string name="enter_confirm_password">Please confirm your password</string>
+    <string name="passwords_dont_match">Passwords Don\'t match</string>
     <string name="enter_valid_email">Please enter valid email address</string>
     <string name="dont_you_have_account_register_now">Don\'t you have account? Register now</string>
     <string name="google_login">Sign in with google</string>

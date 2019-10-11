@@ -73,19 +73,26 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun registerButtonClicked() {
         if (displayName.text.isNullOrBlank()) {
-            setError(null, null, null, true, false, false)
+            setError(null, null, null, true, false, false, null, false)
             displayNamenputLayout.error = resources.getString(R.string.enter_display_name)
         } else if (email.text.isNullOrBlank()) {
-            setError(null, null, null, false, true, false)
+            setError(null, null, null, false, true, false, null, false)
             emailAddressInputLayout.error = resources.getString(R.string.enter_email)
         } else if (!isEmailValid(email.text.toString())) {
-            setError(null, null, null, false, true, false)
+            setError(null, null, null, false, true, false, null, false)
             emailAddressInputLayout.error = resources.getString(R.string.enter_valid_email)
         } else if (password.text.isNullOrBlank()) {
-            setError(null, null, null, false, false, true)
+            setError(null, null, null, false, false, true, null, false)
             passwordInputLayout.error = resources.getString(R.string.enter_password)
+        } else if (confirmPassword.text.isNullOrBlank()) {
+            setError(null, null, null, false, false, false, null, true)
+            confirmPasswordInputLayout.error = resources.getString(R.string.enter_confirm_password)
+        } else if (!confirmPassword.text.toString().equals(password.text.toString())) {
+            setError(null, null, null, false, false, true, null, true)
+            passwordInputLayout.error = resources.getString(R.string.passwords_dont_match)
+            confirmPasswordInputLayout.error = resources.getString(R.string.passwords_dont_match)
         } else {
-            setError(null, null, null, false, false, false)
+            setError(null, null, null, false, false, false, null, false)
             //show progress bar with firebase called
             progressbar.visibility = View.VISIBLE
             //disable registerbutton so that user doesnt register again while one call to firebase is running.
@@ -102,10 +109,13 @@ class RegisterActivity : AppCompatActivity() {
         var tf = Typeface.createFromAsset(assets, "" + font)
         emailAddressInputLayout.typeface = tf
         passwordInputLayout.typeface = tf
+        confirmPasswordInputLayout.typeface = tf
         displayNamenputLayout.typeface = tf
         email.typeface = tf
+        confirmPassword.typeface = tf
         password.typeface = tf
         displayName.typeface = tf
+
     }
 
     private fun setUpToolbar() {
@@ -140,11 +150,15 @@ class RegisterActivity : AppCompatActivity() {
         passwordError: CharSequence?,
         personErrorEnabled: Boolean,
         emailErrorEnabled: Boolean,
-        passwordErrorEnabled: Boolean
+        passwordErrorEnabled: Boolean,
+        confirmPasswordError: CharSequence?,
+        confirmPasswordErrorEnabled: Boolean
     ) {
         displayNamenputLayout.error = personError
         emailAddressInputLayout.error = emailError
         passwordInputLayout.error = passwordError
+        confirmPassword.error = confirmPasswordError
+        confirmPasswordInputLayout.isErrorEnabled = confirmPasswordErrorEnabled
         displayNamenputLayout.isErrorEnabled = personErrorEnabled
         emailAddressInputLayout.isErrorEnabled = emailErrorEnabled
         passwordInputLayout.isErrorEnabled = passwordErrorEnabled
