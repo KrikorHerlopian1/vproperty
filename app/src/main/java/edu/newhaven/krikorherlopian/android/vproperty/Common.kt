@@ -1,6 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
@@ -34,4 +35,16 @@ fun isPermissionGranted(context: Context): Boolean {
             Manifest.permission.USE_FINGERPRINT
         ) == PackageManager.PERMISSION_GRANTED
     }
+}
+
+fun setUpPermissions(activity: Activity) {
+    val permissions = arrayOf(
+        android.Manifest.permission.ACCESS_FINE_LOCATION,
+        android.Manifest.permission.ACCESS_COARSE_LOCATION,
+        android.Manifest.permission.CAMERA,
+        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        android.Manifest.permission.ACCESS_NETWORK_STATE
+    )
+    ActivityCompat.requestPermissions(activity, permissions, 0)
 }

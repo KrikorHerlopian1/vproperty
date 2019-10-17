@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
@@ -33,7 +34,7 @@ class HomeMenuActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val header = navView.getHeaderView(0)
-
+        setUpPermissions(this)
         var bundle: Bundle? = intent.extras
         var photoUrl = bundle!!.getString("photoUrl")
         var displayName = bundle.getString("displayName")
@@ -79,6 +80,7 @@ class HomeMenuActivity : AppCompatActivity() {
         }
 
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId

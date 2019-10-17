@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_menu.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
@@ -37,7 +38,7 @@ class CustomHomeMenuActivity : AppCompatActivity() {
         var displayName = bundle.getString("displayName")
         var email = bundle.getString("email")
         var page = bundle.getInt("page", 0)
-
+        setUpPermissions(this)
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,

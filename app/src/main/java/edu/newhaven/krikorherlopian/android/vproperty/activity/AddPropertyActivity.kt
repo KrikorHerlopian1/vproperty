@@ -14,7 +14,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
 import com.bumptech.glide.Glide
@@ -30,6 +29,7 @@ import com.schibstedspain.leku.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
+import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
 import java.io.ByteArrayOutputStream
@@ -41,7 +41,7 @@ class AddPropertyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_property)
         setupToolBar()
-        setUpPermissions()
+        setUpPermissions(this)
         setUpFonts()
         Glide.with(this@AddPropertyActivity).load(R.drawable.placeholderdetail)
             .placeholder(R.drawable.placeholderdetail)
@@ -132,17 +132,6 @@ class AddPropertyActivity : AppCompatActivity() {
         })
     }
 
-    private fun setUpPermissions() {
-        val permissions = arrayOf(
-            android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            android.Manifest.permission.ACCESS_NETWORK_STATE
-        )
-        ActivityCompat.requestPermissions(this, permissions, 0)
-    }
 
     private fun addPictureClicked() {
         Croperino.prepareChooser(

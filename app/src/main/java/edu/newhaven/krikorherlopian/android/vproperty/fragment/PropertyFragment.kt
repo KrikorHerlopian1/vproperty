@@ -1,11 +1,14 @@
 package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -18,6 +21,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 
 class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,8 +32,24 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(root.context)
         getData()
+        getLocation()
         return root
+    }
+
+    private fun getLocation() {
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    val sydney = LatLng(
+                        location.latitude.toDouble(),
+                        location.longitude.toDouble()
+                    )
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 4f))
+                }
+            }
     }
 
     private fun getData() {
@@ -52,7 +72,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                     propertyList.add(property)
                     val sydney = LatLng(property.latitude.toDouble(), property.longitude.toDouble())
                     mMap.addMarker(MarkerOptions().position(sydney).title("" + property.houseName))
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14f))
                 }
             }
             .addOnFailureListener { exception ->
