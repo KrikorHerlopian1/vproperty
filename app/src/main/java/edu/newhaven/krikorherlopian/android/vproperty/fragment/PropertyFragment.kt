@@ -54,7 +54,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                         location.latitude.toDouble(),
                         location.longitude.toDouble()
                     )
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 2f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10f))
                 }
             }
     }
@@ -103,11 +103,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                     val property = propertyList.get(i)
                                     val info = v.info
                                     info.text = "\u200e" + property.addressName
-                                    System.out.println(
-                                        "" + v.context + "got here" + propertyList.get(
-                                            i
-                                        ).photoUrl
-                                    )
                                     Picasso.get()
                                         .load(propertyList.get(i).photoUrl)
                                         .placeholder(R.drawable.placeholderdetail)
@@ -135,52 +130,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                             }
                                         })
                                     v.requestLayout()
-                                    /* Glide.with(v.context).load(propertyList.get(i).photoUrl)
-                                         .placeholder(R.drawable.placeholderdetail)
-                                         .listener(object : RequestListener<Drawable> {
-                                             override fun onLoadFailed(e: GlideException?, model: Any?, target: com.bumptech.glide.request.target.Target<Drawable>?, isFirstResource: Boolean): Boolean {
-                                                 return true
-                                             }
-
-                                             override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-
-                                                 Glide.with(v.context).load(propertyList.get(i).photoUrl)
-                                                         .placeholder(R.drawable.placeholderdetail).into(v.image)
-                                                 return true
-                                             }
-
-                                         }).submit()
-                                         .listener(object : RequestListener<Drawable> {
-                                             override fun onLoadFailed(
-                                                 p0: GlideException?,
-                                                 p1: Any?,
-                                                 p2: com.bumptech.glide.request.target.Target<Drawable>?,
-                                                 p3: Boolean
-                                             ): Boolean {
-                                                 Log.d("", "OnResourceReadyfailed")
-                                                 return false
-                                                 }
-
-                                             override fun onResourceReady(
-                                                 p0: Drawable?,
-                                                 p1: Any?,
-                                                 p2: com.bumptech.glide.request.target.Target<Drawable>?,
-                                                 p3: DataSource?,
-                                                 p4: Boolean
-                                             ): Boolean {
-                                                 Log.d("", "OnResourceReady")
-                                                 if (marker != null && marker.isInfoWindowShown) {
-                                                     marker.hideInfoWindow()
-                                                     Glide.with(v.context).load(propertyList.get(i).photoUrl)
-                                                         .placeholder(R.drawable.placeholderdetail).into(v.image)
-                                                     marker.showInfoWindow()
-                                                 }
-                                                 return false
-                                             }
-                                         })
-                                         .into(v.image)*/
-                                    v.requestLayout()
-                                    System.out.println("got here after")
                                 } else {
                                 }
                                 return v
