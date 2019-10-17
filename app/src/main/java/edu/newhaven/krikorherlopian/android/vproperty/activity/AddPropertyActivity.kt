@@ -29,6 +29,7 @@ import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
+import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
 import java.io.ByteArrayOutputStream
@@ -104,7 +105,8 @@ class AddPropertyActivity : AppCompatActivity() {
             longitudeInput.text.toString(),
             latitudeInput.text.toString(),
             descriptionLayout.text.toString(),
-            downloadUrl.toString()
+            downloadUrl.toString(),
+            loggedInUser?.email?.toString()
         )
         System.out.println(downloadUrl.toString())
 
