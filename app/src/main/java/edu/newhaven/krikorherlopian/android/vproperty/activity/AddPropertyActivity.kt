@@ -60,6 +60,8 @@ class AddPropertyActivity : AppCompatActivity() {
     }
 
     private fun uploadImage() {
+        progressbar.visibility = View.VISIBLE
+        addButton.isEnabled = false
         val storageRef = storage.reference
         var x = UUID.randomUUID()
         val mountainsRef = storageRef.child("" + (x) + ".jpg")
@@ -79,6 +81,8 @@ class AddPropertyActivity : AppCompatActivity() {
                 task.exception?.let {
                     throw it
                 }
+                progressbar.visibility = View.GONE
+                addButton.isEnabled = true
             }
             return@Continuation mountainImagesRef.downloadUrl
         }).addOnCompleteListener { task ->
@@ -86,6 +90,8 @@ class AddPropertyActivity : AppCompatActivity() {
                 val downloadUri = task.result
                 uploadProperty(downloadUri)
             } else {
+                progressbar.visibility = View.GONE
+                addButton.isEnabled = true
                 Toasty.success(
                     this@AddPropertyActivity,
                     R.string.failed_upload,
@@ -113,10 +119,24 @@ class AddPropertyActivity : AppCompatActivity() {
         db.collection("properties")
             .add(property)
             .addOnSuccessListener { documentReference ->
-                Log.d("", "DocumentSnapshot added with ID: ${documentReference.id}")
+                progressbar.visibility = View.GONE
+                addButton.isEnabled = true
+                Toasty.success(
+                    this@AddPropertyActivity,
+                    R.string.success_property,
+                    Toast.LENGTH_SHORT,
+                    true
+                ).show()
             }
             .addOnFailureListener { e ->
-                Log.w("", "Error adding document", e)
+                Toasty.success(
+                    this@AddPropertyActivity,
+                    R.string.error_adding_property,
+                    Toast.LENGTH_SHORT,
+                    true
+                ).show()
+                progressbar.visibility = View.GONE
+                addButton.isEnabled = true
             }
 
     }
