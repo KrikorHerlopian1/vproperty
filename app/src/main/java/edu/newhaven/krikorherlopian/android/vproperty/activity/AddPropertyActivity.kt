@@ -3,27 +3,39 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Typeface
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
 import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import com.mikelau.croperino.Croperino
 import com.mikelau.croperino.CroperinoConfig
 import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 class AddPropertyActivity : AppCompatActivity() {
+    lateinit var storage: FirebaseStorage
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_property)
@@ -40,6 +52,71 @@ class AddPropertyActivity : AppCompatActivity() {
             addPictureClicked()
         }
         setUpScroll()
+        storage = FirebaseStorage.getInstance()
+        addButton.setOnClickListener {
+            uploadImage()
+        }
+    }
+
+    private fun uploadImage() {
+        val storageRef = storage.reference
+        var x = UUID.randomUUID()
+        val mountainsRef = storageRef.child("" + (x) + ".jpg")
+        val mountainImagesRef = storageRef.child("images/" + x + ".jpg")
+        mountainsRef.name == mountainImagesRef.name // true
+        mountainsRef.path == mountainImagesRef.path // false
+        val bitmap = (picture.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = mountainsRef.putBytes(data)
+        uploadTask = storageRef.child("images/" + x + ".jpg").putBytes(data)
+
+        uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    throw it
+                }
+            }
+            return@Continuation mountainImagesRef.downloadUrl
+        }).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUri = task.result
+                uploadProperty(downloadUri)
+            } else {
+                Toasty.success(
+                    this@AddPropertyActivity,
+                    R.string.failed_upload,
+                    Toast.LENGTH_SHORT,
+                    true
+                ).show()
+            }
+        }
+    }
+
+    private fun uploadProperty(downloadUrl: Uri?) {
+        val db = FirebaseFirestore.getInstance()
+        var property = edu.newhaven.krikorherlopian.android.vproperty.model.Property(
+            houseName.text.toString(),
+            addressName.text.toString(),
+            zipCodeInput.text.toString(),
+            longitudeInput.text.toString(),
+            latitudeInput.text.toString(),
+            descriptionLayout.text.toString(),
+            downloadUrl.toString()
+        )
+        System.out.println(downloadUrl.toString())
+
+        db.collection("properties")
+            .add(property)
+            .addOnSuccessListener { documentReference ->
+                Log.d("", "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w("", "Error adding document", e)
+            }
+
     }
 
     private fun setUpScroll() {
