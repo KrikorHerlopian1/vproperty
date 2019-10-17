@@ -127,6 +127,7 @@ class AddPropertyActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT,
                     true
                 ).show()
+                finish()
             }
             .addOnFailureListener { e ->
                 Toasty.success(

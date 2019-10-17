@@ -1,11 +1,13 @@
 package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
+
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -14,11 +16,15 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
+import kotlinx.android.synthetic.main.map_info.view.*
 
 class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
@@ -48,7 +54,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                         location.latitude.toDouble(),
                         location.longitude.toDouble()
                     )
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 2f))
                 }
             }
     }
@@ -75,16 +81,118 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             doc.document.data.get("email").toString()
                         )
                         propertyList.add(property)
-                        System.out.println("" + doc.document.exists() + "------------------" + propertyList.size)
                         val sydney =
                             LatLng(property.latitude.toDouble(), property.longitude.toDouble())
-                        mMap.addMarker(MarkerOptions().position(sydney).title("" + property.houseName))
+                        mMap.addMarker(MarkerOptions().position(sydney).title("" + (propertyList.size - 1)))
+                        mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+                            override fun getInfoWindow(arg0: Marker): View? {
+                                return null
+                            }
+
+                            override fun getInfoContents(marker: Marker?): View {
+                                val v = layoutInflater.inflate(
+                                    R.layout.map_info, null
+                                )
+                                val displayMetrics = resources.displayMetrics
+                                v.layoutParams = LinearLayout.LayoutParams(
+                                    displayMetrics.widthPixels - 100,
+                                    resources.getDimension(R.dimen.image_map_size).toInt()
+                                )
+                                val i = Integer.parseInt(marker!!.title)
+                                if (i != -1) {
+                                    val property = propertyList.get(i)
+                                    val info = v.info
+                                    info.text = "\u200e" + property.addressName
+                                    System.out.println(
+                                        "" + v.context + "got here" + propertyList.get(
+                                            i
+                                        ).photoUrl
+                                    )
+                                    Picasso.get()
+                                        .load(propertyList.get(i).photoUrl)
+                                        .placeholder(R.drawable.placeholderdetail)
+                                        .into(v.image, object : Callback {
+                                            override fun onError(e: java.lang.Exception?) {
+                                            }
+
+                                            override fun onSuccess() {
+                                                try {
+                                                    if (marker != null && marker.isInfoWindowShown) {
+                                                        marker.hideInfoWindow()
+                                                        Picasso.get()
+                                                            .load(propertyList.get(i).photoUrl)
+                                                            .placeholder(R.drawable.placeholderdetail)
+                                                            .into(v.image)
+                                                        marker.showInfoWindow()
+                                                    }
+                                                } catch (e: Exception) {
+                                                }
+
+                                            }
+
+                                            fun onError() {
+
+                                            }
+                                        })
+                                    v.requestLayout()
+                                    /* Glide.with(v.context).load(propertyList.get(i).photoUrl)
+                                         .placeholder(R.drawable.placeholderdetail)
+                                         .listener(object : RequestListener<Drawable> {
+                                             override fun onLoadFailed(e: GlideException?, model: Any?, target: com.bumptech.glide.request.target.Target<Drawable>?, isFirstResource: Boolean): Boolean {
+                                                 return true
+                                             }
+
+                                             override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+
+                                                 Glide.with(v.context).load(propertyList.get(i).photoUrl)
+                                                         .placeholder(R.drawable.placeholderdetail).into(v.image)
+                                                 return true
+                                             }
+
+                                         }).submit()
+                                         .listener(object : RequestListener<Drawable> {
+                                             override fun onLoadFailed(
+                                                 p0: GlideException?,
+                                                 p1: Any?,
+                                                 p2: com.bumptech.glide.request.target.Target<Drawable>?,
+                                                 p3: Boolean
+                                             ): Boolean {
+                                                 Log.d("", "OnResourceReadyfailed")
+                                                 return false
+                                                 }
+
+                                             override fun onResourceReady(
+                                                 p0: Drawable?,
+                                                 p1: Any?,
+                                                 p2: com.bumptech.glide.request.target.Target<Drawable>?,
+                                                 p3: DataSource?,
+                                                 p4: Boolean
+                                             ): Boolean {
+                                                 Log.d("", "OnResourceReady")
+                                                 if (marker != null && marker.isInfoWindowShown) {
+                                                     marker.hideInfoWindow()
+                                                     Glide.with(v.context).load(propertyList.get(i).photoUrl)
+                                                         .placeholder(R.drawable.placeholderdetail).into(v.image)
+                                                     marker.showInfoWindow()
+                                                 }
+                                                 return false
+                                             }
+                                         })
+                                         .into(v.image)*/
+                                    v.requestLayout()
+                                    System.out.println("got here after")
+                                } else {
+                                }
+                                return v
+                            }
+                        })
 
                     }
                 }
             }
         }
     }
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
     }
