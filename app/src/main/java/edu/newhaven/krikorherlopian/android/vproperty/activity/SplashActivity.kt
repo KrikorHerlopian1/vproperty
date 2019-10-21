@@ -1,11 +1,13 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import edu.newhaven.krikorherlopian.android.vproperty.R
+import com.google.firebase.auth.FirebaseAuth
+import edu.newhaven.krikorherlopian.android.vproperty.*
 import kotlinx.android.synthetic.main.activity_splash.*
 
 
@@ -16,6 +18,8 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
     var count = 1
+    private lateinit var auth: FirebaseAuth
+    var sharedPref: SharedPreferences? = null
     var fromNotification: Boolean? = false
     var sec = 750L
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +28,30 @@ class SplashActivity : AppCompatActivity() {
         var bundle: Bundle? = intent.extras
         fromNotification = bundle?.getBoolean("fromNotification")
         System.out.println("fromNotification" + fromNotification)
+        auth = FirebaseAuth.getInstance()
+        loggedInUser = auth.currentUser
+        if (loggedInUser != null) {
+            sharedPref = getSharedPreferences(
+                PREFS_FILENAME,
+                PRIVATE_MODE
+            )
+            var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
+            var intent: Intent? = null
+            if (drawer.equals("default")) {
+                intent = Intent(this@SplashActivity, HomeMenuActivity::class.java)
+
+            } else {
+                intent = Intent(this@SplashActivity, CustomHomeMenuActivity::class.java)
+            }
+            intent.putExtra("email", loggedInUser?.email?.toString())
+            intent.putExtra("displayName", loggedInUser?.displayName?.toString())
+            intent.putExtra("phoneNumber", loggedInUser?.phoneNumber?.toString())
+            intent.putExtra("photoUrl", loggedInUser?.photoUrl?.toString())
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            count = 15
+            finish()
+        }
         Glide.with(this).load(R.drawable.splash0).into(imageView)
         animateImages()
     }
