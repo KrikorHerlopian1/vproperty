@@ -115,7 +115,6 @@ class AddPropertyActivity : AppCompatActivity() {
             loggedInUser?.email?.toString()
         )
         System.out.println(downloadUrl.toString())
-
         db.collection("properties")
             .add(property)
             .addOnSuccessListener { documentReference ->
