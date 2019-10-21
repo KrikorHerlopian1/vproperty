@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
-import edu.newhaven.krikorherlopian.android.vproperty.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
 import edu.newhaven.krikorherlopian.android.vproperty.viewholder.MyViewHolder
 

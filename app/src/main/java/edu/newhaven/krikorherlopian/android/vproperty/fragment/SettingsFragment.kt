@@ -15,13 +15,15 @@ import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.activity.CustomHomeMenuActivity
 import edu.newhaven.krikorherlopian.android.vproperty.activity.HomeMenuActivity
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.TitleSubtitleAdapter
+import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
 import kotlinx.android.synthetic.main.settings.view.*
 
 /*
     Settings Fragment.Options to change in app.
  */
-class SettingsFragment : Fragment(), ListClick {
+class SettingsFragment : Fragment(),
+    ListClick {
     var drawerSettingsItem: SettingsItem? = null
     var list: MutableList<SettingsItem> = mutableListOf<SettingsItem>()
     var sharedPref: SharedPreferences? = null
