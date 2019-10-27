@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         auth.signOut()
         fingerPrintSetup()
-        setUpFonts()
+        //setUpFonts()
         sign_in_button.setOnClickListener {
             googleSignInClicked()
         }
