@@ -28,8 +28,13 @@ class SplashActivity : AppCompatActivity() {
         var bundle: Bundle? = intent.extras
         fromNotification = bundle?.getBoolean("fromNotification")
         auth = FirebaseAuth.getInstance()
+        sharedPref = getSharedPreferences(
+            PREFS_FILENAME,
+            PRIVATE_MODE
+        )
+        var auto = sharedPref?.getBoolean(PREF_AUTO, true)
         loggedInUser = auth.currentUser
-        if (loggedInUser != null) {
+        if (loggedInUser != null && auto!!) {
             sharedPref = getSharedPreferences(
                 PREFS_FILENAME,
                 PRIVATE_MODE

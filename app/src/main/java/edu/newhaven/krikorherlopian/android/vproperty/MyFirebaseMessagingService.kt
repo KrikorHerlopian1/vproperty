@@ -17,6 +17,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.activity.SplashActivity
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
+    var sharedPref: SharedPreferences? = null
     /**
      * Called when message is received.
      *
@@ -35,28 +36,38 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // [END_EXCLUDE]
 
 
-        System.out.println("vproperty3333333")
-        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.d(TAG, "From: ${remoteMessage.from}")
+        sharedPref = getSharedPreferences(
+            PREFS_FILENAME,
+            PRIVATE_MODE
+        )
+        var not = sharedPref?.getBoolean(PREF_NOT, true)
 
-        // Check if message contains a data payload.
-        remoteMessage.data.isNotEmpty().let {
-            Log.d(TAG, "Message data payload: " + remoteMessage.data)
+        System.out.println("I got it " + not)
+        if (not!!) {
+            System.out.println("vproperty3333333")
+            // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+            Log.d(TAG, "From: ${remoteMessage.from}")
 
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use WorkManager.
-                scheduleJob()
-            } else {
-                // Handle message within 10 seconds
-                handleNow()
+            // Check if message contains a data payload.
+            remoteMessage.data.isNotEmpty().let {
+                Log.d(TAG, "Message data payload: " + remoteMessage.data)
+
+                if (/* Check if data needs to be processed by long running job */ true) {
+                    // For long-running tasks (10 seconds or more) use WorkManager.
+                    scheduleJob()
+                } else {
+                    // Handle message within 10 seconds
+                    handleNow()
+                }
+            }
+
+            // Check if message contains a notification payload.
+            remoteMessage.notification?.let {
+                Log.d(TAG, "Message Notification Body: ${it.body}")
+                sendNotification(it.title.toString(), it.body.toString())
             }
         }
 
-        // Check if message contains a notification payload.
-        remoteMessage.notification?.let {
-            Log.d(TAG, "Message Notification Body: ${it.body}")
-            sendNotification(it.title.toString(), it.body.toString())
-        }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
@@ -135,6 +146,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(android.R.drawable.ic_notification_overlay)
             .setContentTitle(title)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(messageBody))
             .setContentText(messageBody)
             .setAutoCancel(true)
             .setSound(defaultSoundUri)

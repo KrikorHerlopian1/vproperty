@@ -11,9 +11,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.messaging.FirebaseMessaging
 import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.activity.CustomHomeMenuActivity
 import edu.newhaven.krikorherlopian.android.vproperty.activity.HomeMenuActivity
+import edu.newhaven.krikorherlopian.android.vproperty.activity.LoginActivity
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.TitleSubtitleAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
@@ -25,6 +27,9 @@ import kotlinx.android.synthetic.main.settings.view.*
 class SettingsFragment : Fragment(),
     ListClick {
     var drawerSettingsItem: SettingsItem? = null
+    var autoLoginItem: SettingsItem? = null
+    var signOutItem: SettingsItem? = null
+    var notifications: SettingsItem? = null
     var list: MutableList<SettingsItem> = mutableListOf<SettingsItem>()
     var sharedPref: SharedPreferences? = null
     var root: View? = null
@@ -38,27 +43,42 @@ class SettingsFragment : Fragment(),
             PREFS_FILENAME,
             PRIVATE_MODE
         )
-        sharedPref = root?.context?.getSharedPreferences(
-            PREFS_FILENAME,
-            PRIVATE_MODE
-        )
-
         // define the first setting item, the style of the navigation drawer.
         // in normal cases its default, user can change it from this page into custom(arc).
         var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
+        var auto = sharedPref?.getBoolean(PREF_AUTO, true).toString()
+        var not = sharedPref?.getBoolean(PREF_NOT, true).toString()
         drawerSettingsItem = SettingsItem(
             root!!.resources.getString(R.string.navigation_drawer),
             "",
             R.drawable.ic_menu_black_24dp
         )
+        autoLoginItem = SettingsItem(
+            root!!.resources.getString(R.string.auto_login),
+            "" + auto,
+            R.drawable.ic_login, 1
+        )
+        signOutItem = SettingsItem(
+            root!!.resources.getString(R.string.sign_out),
+            "",
+            R.drawable.ic_sign_out, 2
+        )
+        notifications = SettingsItem(
+            root!!.resources.getString(R.string.push_notifications),
+            "" + not,
+            R.drawable.ic_notifications, 1
+        )
+
+
         when (drawer) {
             "default" -> drawerSettingsItem?.subtitle =
                 root!!.resources.getString(R.string.default_drawer)
             "custom" -> drawerSettingsItem?.subtitle = root!!.resources.getString(R.string.custom)
         }
         list.add(drawerSettingsItem!!)
-
-
+        list.add(notifications!!)
+        list.add(autoLoginItem!!)
+        list.add(signOutItem!!)
         val adapter = TitleSubtitleAdapter(
             list, this
         )
@@ -71,6 +91,39 @@ class SettingsFragment : Fragment(),
     override fun rowClicked(position: Int, position2: Int) {
         if (position == 0) {
             showDrawerOptions()
+        } else if (position == 2) {
+            val editor = sharedPref?.edit()
+            editor?.putBoolean(PREF_AUTO, list.get(position).subtitle.toBoolean())
+            editor?.apply()
+        } else if (position == 3) {
+            val intent = Intent(context, LoginActivity::class.java)
+            //this flag to close all activities and start the application back with loginscreen on top.
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            activity?.finish()
+        } else if (position == 1) {
+            val editor = sharedPref?.edit()
+            editor?.putBoolean(PREF_NOT, list.get(position).subtitle.toBoolean())
+            editor?.apply()
+
+
+            if (list.get(position).subtitle.toBoolean()) {
+                FirebaseMessaging.getInstance().subscribeToTopic("vproperty")
+                    .addOnCompleteListener { task ->
+                        var msg = getString(R.string.msg_subscribed)
+                        if (!task.isSuccessful) {
+                            msg = getString(R.string.msg_subscribe_failed)
+                        }
+                    }
+            } else {
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("vproperty")
+                    .addOnCompleteListener { task ->
+                        var msg = getString(R.string.msg_subscribed)
+                        if (!task.isSuccessful) {
+                            msg = getString(R.string.msg_subscribe_failed)
+                        }
+                    }
+            }
         }
     }
 

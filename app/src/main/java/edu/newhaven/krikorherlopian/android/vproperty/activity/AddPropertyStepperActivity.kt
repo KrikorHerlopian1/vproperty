@@ -144,15 +144,29 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         )
         val requestNotificaton = RequestNotificaton()
         requestNotificaton.sendNotificationModel = sendNotificationModel
-        var x1 = resources.getString(R.string.new_property_added)
-        var x2 = property.houseName
+        var title = resources.getString(R.string.new_property_added)
+        var subTitle =
+            resources.getString(R.string.property_name) + " = " + property.houseName + "\n" + resources.getString(
+                R.string.address
+            ) + " = " + property.address.addressName + "\n"
+        var price = String.format("%,.2f", property.homeFacts.price?.toFloat())
+        if (property.homeFacts.isRent) {
+            title = title + " " + resources.getString(R.string.forrent)
+            subTitle =
+                subTitle + "" + resources.getString(R.string.price_per_month) + " = " + price + " $$"
+        } else {
+            title = title + " " + resources.getString(R.string.forsale)
+            subTitle = subTitle + "" + resources.getString(R.string.price) + " = " + price + " $$"
+        }
+
+        System.out.println(subTitle)
 
         var postJsonData = "{\n" +
                 " \"to\" : \"/topics/vproperty\",\n" +
                 " \"collapse_key\" : \"type_a\",\n" +
                 " \"notification\" : {\n" +
-                "     \"body\" : \"" + x2 + "\",\n" +
-                "     \"title\": \"" + x1 + "\"\n" +
+                "     \"body\" : \"" + subTitle + "\",\n" +
+                "     \"title\": \"" + title + "\"\n" +
                 " },\n" +
                 " \"data\" : {\n" +
                 "     \"body\" : \"Body of Your Notification in Data\",\n" +

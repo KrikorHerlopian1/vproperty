@@ -129,6 +129,8 @@
     <string name="number_of_bathrooms">No of Bathrooms</string>
     <string name="total_rooms">Total Rooms</string>
     <string name="number_of_parking_spaces">Parking Spaces</string>
+    <string name="forrent">for rent</string>
+    <string name="forsale">for sale</string>
     <string name="for_rent">Rent</string>
     <string name="for_sale">Sale</string>
     <string name="year_built">Year built</string>
@@ -222,7 +224,6 @@
     <string name="garden">Garden</string>
     <string name="greenhouse">GreenHouse</string>
     <string name="hottubspa">Hot tub/spa</string>
-
     <string name="lawn">Lawn</string>
     <string name="pond">Pond</string>
     <string name="pool">Pool</string>
@@ -238,4 +239,8 @@
     <string name="off_street">Off-Street</string>
     <string name="on_street">On-Street</string>
     <string name="new_property_added">New Property Added</string>
+    <string name="located_in">Located in</string>
+    <string name="auto_login">Auto Login</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="push_notifications">Push Notifications</string>
 </resources>
