@@ -11,6 +11,7 @@
     <color name="divider">#BDBDBD</color>
     <color name="endColor">#855988</color>
     <color name="startColor">#070b34</color>
+    <color name="transparent_image_bg">#40673AB7</color>
     <color name="centerColor">#483475</color>
     <color name="lvHeaderDividerColor">#E0E0E0</color>
 </resources>

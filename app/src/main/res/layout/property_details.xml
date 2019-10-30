@@ -29,12 +29,66 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical">
 
-            <ImageView
-                android:scaleType="centerCrop"
-                android:id="@+id/image"
-                android:transitionName="MyTransition"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/imagesize"></ImageView>
+                android:layout_height="@dimen/imagesize">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/imagesize"
+                    android:scaleType="centerCrop"
+                    android:transitionName="MyTransition"></ImageView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:background="@color/transparent_image_bg"
+                    android:orientation="vertical">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/normalTextSize" />
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                        android:id="@+id/price"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/largeTextSize" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textColor="@color/colorAccent" />
+
+
+            <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                map:cameraZoom="13"
+                map:liteMode="true"
+                map:mapType="normal" />
+
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

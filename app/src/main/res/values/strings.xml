@@ -244,4 +244,6 @@
     <string name="sign_out">Sign Out</string>
     <string name="push_notifications">Push Notifications</string>
     <string name="phone">Phone</string>
+    <string name="rent_per_month">Rent per month</string>
+    <string name="sale_price">Sale Price</string>
 </resources>

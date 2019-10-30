@@ -7,13 +7,19 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.property_details.*
 
 
-class PropertyDetailsActivity : AppCompatActivity() {
+class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var prop: Property
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +30,19 @@ class PropertyDetailsActivity : AppCompatActivity() {
             .load(prop.photoUrl)
             .placeholder(R.drawable.placeholderdetail)
             .into(image)
+        address.text = prop.address.addressName
+        var priceFormat = String.format(
+            "%,.2f",
+            prop.homeFacts.price?.toFloat()
+        )
 
+        if (prop.homeFacts.isRent)
+            price.text = priceFormat + " $$"
+        else
+            price.text = priceFormat + " $$"
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
     private fun setupToolBar() {
@@ -78,5 +96,16 @@ class PropertyDetailsActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    override fun onMapReady(p0: GoogleMap?) {
+        val sydney = LatLng(
+            prop.address.latitude.toDouble(),
+            prop.address.longitude.toDouble()
+        )
+        System.out.println(prop.address.latitude)
+        System.out.println(prop.address.longitude)
+        p0?.addMarker(MarkerOptions().position(sydney).title(""))
+        p0?.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10f))
     }
 }
