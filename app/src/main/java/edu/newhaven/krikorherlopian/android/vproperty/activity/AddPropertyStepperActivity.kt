@@ -23,12 +23,10 @@ import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.MyStepperAdapter
+import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ApiInterface
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
-import edu.newhaven.krikorherlopian.android.vproperty.model.BuildingDetails
-import edu.newhaven.krikorherlopian.android.vproperty.model.Property
-import edu.newhaven.krikorherlopian.android.vproperty.model.RoomDetails
-import edu.newhaven.krikorherlopian.android.vproperty.model.UtilityDetails
+import edu.newhaven.krikorherlopian.android.vproperty.model.*
 import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
@@ -39,6 +37,11 @@ import kotlinx.android.synthetic.main.fragment_step_home_address.longitudeInput
 import kotlinx.android.synthetic.main.fragment_step_home_address.zipCodeInput
 import kotlinx.android.synthetic.main.stepper.*
 import mumayank.com.airdialog.AirDialog
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -118,6 +121,69 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         )
         CroperinoFileUtil.setupDirectory(this@AddPropertyStepperActivity)
 
+    }
+
+    val BASE_URL = "https://fcm.googleapis.com/"
+    private var retrofit: Retrofit? = null
+
+    fun getClient(): Retrofit {
+        if (retrofit == null) {
+            retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+        return retrofit!!
+    }
+
+    fun sendNotificationToPatner() {
+
+        val sendNotificationModel = SendNotificationModel(
+            "" + property.houseName.toUpperCase(),
+            "" + resources.getString(R.string.new_property_added)
+        )
+        val requestNotificaton = RequestNotificaton()
+        requestNotificaton.sendNotificationModel = sendNotificationModel
+        var x1 = resources.getString(R.string.new_property_added)
+        var x2 = property.houseName
+
+        var postJsonData = "{\n" +
+                " \"to\" : \"/topics/vproperty\",\n" +
+                " \"collapse_key\" : \"type_a\",\n" +
+                " \"notification\" : {\n" +
+                "     \"body\" : \"" + x2 + "\",\n" +
+                "     \"title\": \"" + x1 + "\"\n" +
+                " },\n" +
+                " \"data\" : {\n" +
+                "     \"body\" : \"Body of Your Notification in Data\",\n" +
+                "     \"title\": \"Title of Your Notification in Title\",\n" +
+                "     \"key_1\" : \"Value for key_1\",\n" +
+                "     \"key_2\" : \"Value for key_2\"\n" +
+                " }\n" +
+                "}"
+
+        var apiService = getClient().create(ApiInterface::class.java)
+        /*val requestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("body", postJsonData).build()*/
+        var body =
+            RequestBody.create(MediaType.parse("application/json"), postJsonData)
+        val responseBodyCall = apiService.sendChatNotification(body)
+        responseBodyCall.enqueue(object : Callback<com.squareup.okhttp.ResponseBody> {
+            override fun onResponse(
+                call: retrofit2.Call<com.squareup.okhttp.ResponseBody>,
+                response: retrofit2.Response<com.squareup.okhttp.ResponseBody>
+            ) {
+                System.out.println("success" + response.code())
+            }
+
+            override fun onFailure(
+                call: retrofit2.Call<com.squareup.okhttp.ResponseBody>,
+                t: Throwable
+            ) {
+                System.out.println("failure")
+            }
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -306,6 +372,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 ).show()
                 progress_bar.visibility = View.GONE
                 state = 0
+                sendNotificationToPatner()
                 finish()
             }
             .addOnFailureListener { e ->

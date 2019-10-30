@@ -39,6 +39,9 @@ dependencies {
         exclude group: 'com.google.android.gms'
         exclude group: 'androidx.appcompat'
     }
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.shawnlin:number-picker:2.4.8'
     implementation 'com.stepstone.stepper:material-stepper:2.1.0'
     implementation 'com.google.firebase:firebase-firestore:21.1.1'
