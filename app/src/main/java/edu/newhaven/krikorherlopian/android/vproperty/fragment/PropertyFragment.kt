@@ -1,16 +1,14 @@
 package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
 
-import android.app.Activity
-import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -26,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
-import edu.newhaven.krikorherlopian.android.vproperty.activity.PropertyDetailsActivity
+import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.map_info.view.*
 
@@ -34,6 +32,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
+    var currentView: ImageView? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -70,6 +69,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             if (e != null) {
                 return@addSnapshotListener
             }
+            var count = 0
             for (doc in snapshot!!.documentChanges) {
                 when (doc.type) {
                     DocumentChange.Type.ADDED -> {
@@ -85,7 +85,15 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                     property.address.latitude.toDouble(),
                                     property.address.longitude.toDouble()
                                 )
-                            mMap.addMarker(MarkerOptions().position(sydney).title("" + (propertyList.size - 1)))
+                            mMap.addMarker(MarkerOptions().position(sydney).title("" + (count)))
+                            count = count + 1
+                            mMap.setOnInfoWindowClickListener {
+                                var property1: Property = propertyList.get(it.title.toInt())
+                                fragmentActivityCommunication?.startActivityDet(
+                                    currentView!!,
+                                    property1
+                                )
+                            }
                             mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
                                 override fun getInfoWindow(arg0: Marker): View? {
                                     return null
@@ -95,11 +103,13 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                     val v = layoutInflater.inflate(
                                         R.layout.map_info, null
                                     )
+                                    currentView = v.image
                                     val displayMetrics = resources.displayMetrics
                                     v.layoutParams = LinearLayout.LayoutParams(
                                         displayMetrics.widthPixels - 100,
                                         resources.getDimension(R.dimen.image_map_size).toInt()
                                     )
+
                                     val i = Integer.parseInt(marker!!.title)
                                     if (i != -1) {
                                         val property = propertyList.get(i)
@@ -113,20 +123,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                             v.price.text = "\u200e" + priceHome + " $$"
                                         } else
                                             v.price.text = "\u200e" + priceHome + " $$"
-
-                                        v.setOnClickListener {
-                                            val options =
-                                                ActivityOptionsCompat.makeSceneTransitionAnimation(
-                                                    Activity(), v.image, "My Transition"
-                                                )
-                                            val i = Intent(
-                                                activity,
-                                                PropertyDetailsActivity::class.java
-                                            )
-                                            i.putExtra("argPojo", property)
-                                            context?.startActivity(i, options.toBundle())
-                                        }
-
                                         Picasso.get()
                                             .load(propertyList.get(i).photoUrl)
                                             .placeholder(R.drawable.placeholderdetail)

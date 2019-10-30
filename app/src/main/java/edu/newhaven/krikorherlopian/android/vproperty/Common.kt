@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseUser
+import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
 
 /*
     Common functions I will need accross various activities or fragments in application.
@@ -21,6 +22,7 @@ val PREF_AUTO = "autologin"
 val PREF_NOT = "notifications"
 var loggedInUser: FirebaseUser? = null
 var font = "Poppins-Light.ttf"
+var fragmentActivityCommunication: FragmentActivityCommunication? = null
 fun isEmailValid(email: CharSequence): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }

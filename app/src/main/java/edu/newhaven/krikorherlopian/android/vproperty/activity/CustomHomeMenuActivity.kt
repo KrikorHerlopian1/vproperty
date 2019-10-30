@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,6 +17,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
+import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_menu.*
@@ -25,7 +30,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
         This page contains the custom menu (arc) , first page after login.
         It has multiple menu options in navigation drawer, every menu assosciated with fragment.
  */
-class CustomHomeMenuActivity : AppCompatActivity() {
+class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
 
     var photoUrl: String? = ""
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -33,6 +38,7 @@ class CustomHomeMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.custom_menu)
         setSupportActionBar(toolbar)
+        fragmentActivityCommunication = this
         var bundle: Bundle? = intent.extras
         var photoUrl = bundle!!.getString("photoUrl")
         var displayName = bundle.getString("displayName")
@@ -103,4 +109,18 @@ class CustomHomeMenuActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    override fun startActivityDet(image: ImageView, property: Property) {
+        System.out.println("start activity" + image)
+
+        val options =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this, image, "MyTransition"
+            )
+        val i = Intent(
+            this@CustomHomeMenuActivity,
+            PropertyDetailsActivity::class.java
+        )
+        i.putExtra("argPojo", property)
+        startActivity(i)
+    }
 }

@@ -243,4 +243,5 @@
     <string name="auto_login">Auto Login</string>
     <string name="sign_out">Sign Out</string>
     <string name="push_notifications">Push Notifications</string>
+    <string name="phone">Phone</string>
 </resources>
