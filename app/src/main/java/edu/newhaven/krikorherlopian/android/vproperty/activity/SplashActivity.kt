@@ -27,7 +27,6 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         var bundle: Bundle? = intent.extras
         fromNotification = bundle?.getBoolean("fromNotification")
-        System.out.println("fromNotification" + fromNotification)
         auth = FirebaseAuth.getInstance()
         loggedInUser = auth.currentUser
         if (loggedInUser != null) {

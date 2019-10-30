@@ -68,7 +68,7 @@ class SettingsFragment : Fragment(),
         return root
     }
 
-    override fun rowClicked(position: Int) {
+    override fun rowClicked(position: Int, position2: Int) {
         if (position == 0) {
             showDrawerOptions()
         }

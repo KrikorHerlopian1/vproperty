@@ -69,77 +69,80 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             for (doc in snapshot!!.documentChanges) {
                 when (doc.type) {
                     DocumentChange.Type.ADDED -> {
+
+
                         Log.d("", "${doc.document.id} => ${doc.document.data}")
-                        var property: Property = Property(
-                            doc.document.data.get("houseName").toString(),
-                            doc.document.data.get("addressName").toString(),
-                            doc.document.data.get("zipCode").toString(),
-                            doc.document.data.get("longitude").toString(),
-                            doc.document.data.get("latitude").toString(),
-                            doc.document.data.get("description").toString(),
-                            doc.document.data.get("photoUrl").toString(),
-                            doc.document.data.get("email").toString()
-                        )
+                        var property: Property = doc.document.toObject(Property::class.java)
+
                         propertyList.add(property)
-                        val sydney =
-                            LatLng(property.latitude.toDouble(), property.longitude.toDouble())
-                        mMap.addMarker(MarkerOptions().position(sydney).title("" + (propertyList.size - 1)))
-                        mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
-                            override fun getInfoWindow(arg0: Marker): View? {
-                                return null
-                            }
-
-                            override fun getInfoContents(marker: Marker?): View {
-                                val v = layoutInflater.inflate(
-                                    R.layout.map_info, null
+                        try {
+                            val sydney =
+                                LatLng(
+                                    property.address.latitude.toDouble(),
+                                    property.address.longitude.toDouble()
                                 )
-                                val displayMetrics = resources.displayMetrics
-                                v.layoutParams = LinearLayout.LayoutParams(
-                                    displayMetrics.widthPixels - 100,
-                                    resources.getDimension(R.dimen.image_map_size).toInt()
-                                )
-                                val i = Integer.parseInt(marker!!.title)
-                                if (i != -1) {
-                                    val property = propertyList.get(i)
-                                    val info = v.info
-                                    info.text = "\u200e" + property.addressName
-                                    Picasso.get()
-                                        .load(propertyList.get(i).photoUrl)
-                                        .placeholder(R.drawable.placeholderdetail)
-                                        .into(v.image, object : Callback {
-                                            override fun onError(e: java.lang.Exception?) {
-                                            }
+                            mMap.addMarker(MarkerOptions().position(sydney).title("" + (propertyList.size - 1)))
+                            mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+                                override fun getInfoWindow(arg0: Marker): View? {
+                                    return null
+                                }
 
-                                            override fun onSuccess() {
-                                                try {
-                                                    if (marker != null && marker.isInfoWindowShown) {
-                                                        marker.hideInfoWindow()
-                                                        Picasso.get()
-                                                            .load(propertyList.get(i).photoUrl)
-                                                            .placeholder(R.drawable.placeholderdetail)
-                                                            .into(v.image)
-                                                        marker.showInfoWindow()
-                                                    }
-                                                } catch (e: Exception) {
+                                override fun getInfoContents(marker: Marker?): View {
+                                    val v = layoutInflater.inflate(
+                                        R.layout.map_info, null
+                                    )
+                                    val displayMetrics = resources.displayMetrics
+                                    v.layoutParams = LinearLayout.LayoutParams(
+                                        displayMetrics.widthPixels - 100,
+                                        resources.getDimension(R.dimen.image_map_size).toInt()
+                                    )
+                                    val i = Integer.parseInt(marker!!.title)
+                                    if (i != -1) {
+                                        val property = propertyList.get(i)
+                                        val info = v.info
+                                        info.text = "\u200e" + property.address.addressName
+                                        Picasso.get()
+                                            .load(propertyList.get(i).photoUrl)
+                                            .placeholder(R.drawable.placeholderdetail)
+                                            .into(v.image, object : Callback {
+                                                override fun onError(e: java.lang.Exception?) {
                                                 }
 
-                                            }
+                                                override fun onSuccess() {
+                                                    try {
+                                                        if (marker != null && marker.isInfoWindowShown) {
+                                                            marker.hideInfoWindow()
+                                                            Picasso.get()
+                                                                .load(propertyList.get(i).photoUrl)
+                                                                .placeholder(R.drawable.placeholderdetail)
+                                                                .into(v.image)
+                                                            marker.showInfoWindow()
+                                                        }
+                                                    } catch (e: Exception) {
+                                                    }
 
-                                            fun onError() {
+                                                }
 
-                                            }
-                                        })
-                                    v.requestLayout()
-                                } else {
+                                                fun onError() {
+
+                                                }
+                                            })
+                                        v.requestLayout()
+                                    } else {
+                                    }
+                                    return v
                                 }
-                                return v
-                            }
-                        })
+                            })
+
+                        } catch (e: java.lang.Exception) {
+                        }
 
                     }
                 }
             }
         }
+
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

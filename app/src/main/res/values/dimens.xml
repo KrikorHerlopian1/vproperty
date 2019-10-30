@@ -15,4 +15,10 @@
     <dimen name="settings_list_icon_sizes">24dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="drawable_padding">5dp</dimen>
+    <dimen name="selected_text_size">35dp</dimen>
+    <dimen name="text_size">30dp</dimen>
+    <dimen name="lvHeadingPaddingLeft">8dp</dimen>
+    <dimen name="lvDividerHeight">1dp</dimen>
+    <dimen name="checkboxsize">30dp</dimen>
 </resources>
+

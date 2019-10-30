@@ -87,7 +87,7 @@ class HomeMenuActivity : AppCompatActivity() {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.add_property) {
-            val intent = Intent(this@HomeMenuActivity, AddPropertyActivity::class.java)
+            val intent = Intent(this@HomeMenuActivity, AddPropertyStepperActivity::class.java)
             startActivity(intent)
         }
         return super.onOptionsItemSelected(item)

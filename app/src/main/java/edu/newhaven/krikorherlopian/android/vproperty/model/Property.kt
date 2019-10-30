@@ -1,9 +1,15 @@
 package edu.newhaven.krikorherlopian.android.vproperty.model
 
 data class Property(
-    var houseName: String, var addressName: String,
-    var zipCode: String, var longitude: String,
-    var latitude: String, var description: String,
-    var photoUrl: String,
-    var email: String?
+    var houseName: String = "",
+    var address: Address = Address(),
+    var photoUrl: String = "",
+    var email: String? = "",
+    var homeFacts: HomeFacts = HomeFacts(),
+    var roomDetails: RoomDetails = RoomDetails(),
+    var buildingDetails: BuildingDetails = BuildingDetails(),
+    var utilityDetails: UtilityDetails = UtilityDetails(),
+    var relatedWebsite: String = "",
+    var virtualTour: String = "",
+    var contactPhone: String = ""
 )

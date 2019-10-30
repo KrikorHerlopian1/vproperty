@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary"
+            android:minHeight="56dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@android:color/white">
+
+            <LinearLayout
+                android:id="@+id/add_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="right|center_vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_location_white_24dp"></ImageView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="right|center_vertical"
+                android:padding="10dp">
+
+                <ProgressBar
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:indeterminateTint="@android:color/white"
+                    android:progressTint="@android:color/white"></ProgressBar>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <com.stepstone.stepper.StepperLayout
+            android:id="@+id/stepperLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:theme="@style/AppThemeStepper"
+            app:ms_activeStepColor="#FFFFFF"
+            app:ms_backButtonColor="#FFFFFF"
+            app:ms_backButtonText="@string/prev"
+            app:ms_bottomNavigationBackground="@color/navigation_bar_color"
+            app:ms_completeButtonBackground="@drawable/ms_button_background"
+            app:ms_completeButtonColor="#FFFFFF"
+            app:ms_completeButtonText="@string/finish"
+            app:ms_inactiveStepColor="@color/startColor"
+            app:ms_nextButtonColor="#FFFFFF"
+            app:ms_nextButtonText="@string/go"
+            app:ms_stepperType="progress_bar" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

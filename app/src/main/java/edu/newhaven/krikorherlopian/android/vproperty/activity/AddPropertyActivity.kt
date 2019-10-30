@@ -19,7 +19,6 @@ import androidx.core.widget.NestedScrollView
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import com.mikelau.croperino.Croperino
@@ -28,7 +27,6 @@ import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
-import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
@@ -103,42 +101,42 @@ class AddPropertyActivity : AppCompatActivity() {
     }
 
     private fun uploadProperty(downloadUrl: Uri?) {
-        val db = FirebaseFirestore.getInstance()
-        var property = edu.newhaven.krikorherlopian.android.vproperty.model.Property(
-            houseName.text.toString(),
-            addressName.text.toString(),
-            zipCodeInput.text.toString(),
-            longitudeInput.text.toString(),
-            latitudeInput.text.toString(),
-            descriptionLayout.text.toString(),
-            downloadUrl.toString(),
-            loggedInUser?.email?.toString()
-        )
-        System.out.println(downloadUrl.toString())
-        db.collection("properties")
-            .add(property)
-            .addOnSuccessListener { documentReference ->
-                progressbar.visibility = View.GONE
-                addButton.isEnabled = true
-                Toasty.success(
-                    this@AddPropertyActivity,
-                    R.string.success_property,
-                    Toast.LENGTH_SHORT,
-                    true
-                ).show()
-                finish()
-            }
-            .addOnFailureListener { e ->
-                Toasty.success(
-                    this@AddPropertyActivity,
-                    R.string.error_adding_property,
-                    Toast.LENGTH_SHORT,
-                    true
-                ).show()
-                progressbar.visibility = View.GONE
-                addButton.isEnabled = true
-            }
-
+        /* val db = FirebaseFirestore.getInstance()
+         var property = edu.newhaven.krikorherlopian.android.vproperty.model.Property(
+             houseName.text.toString(),
+             addressName.text.toString(),
+             zipCodeInput.text.toString(),
+             longitudeInput.text.toString(),
+             latitudeInput.text.toString(),
+             descriptionLayout.text.toString(),
+             downloadUrl.toString(),
+             loggedInUser?.email?.toString()
+         )
+         System.out.println(downloadUrl.toString())
+         db.collection("properties")
+             .add(property)
+             .addOnSuccessListener { documentReference ->
+                 progressbar.visibility = View.GONE
+                 addButton.isEnabled = true
+                 Toasty.success(
+                     this@AddPropertyActivity,
+                     R.string.success_property,
+                     Toast.LENGTH_SHORT,
+                     true
+                 ).show()
+                 finish()
+             }
+             .addOnFailureListener { e ->
+                 Toasty.success(
+                     this@AddPropertyActivity,
+                     R.string.error_adding_property,
+                     Toast.LENGTH_SHORT,
+                     true
+                 ).show()
+                 progressbar.visibility = View.GONE
+                 addButton.isEnabled = true
+             }
+         */
     }
 
     private fun setUpScroll() {

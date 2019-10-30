@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.Continuation
@@ -29,6 +28,7 @@ import com.mikelau.croperino.CroperinoFileUtil
 import edu.newhaven.krikorherlopian.android.vproperty.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_register.*
+import mumayank.com.airdialog.AirDialog
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -64,10 +64,28 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun addProfileButtonClicked() {
-        Croperino.prepareChooser(
+        /*Croperino.prepareChooser(
             this@RegisterActivity,
             "" + resources.getString(R.string.capture_photo),
-            ContextCompat.getColor(this@RegisterActivity, android.R.color.background_dark)
+            ContextCompat.getColor(this@RegisterActivity, R.color.colorPrimaryDark)
+        )*/
+        AirDialog.show(
+            activity = this,                      // mandatory
+            title = "" + resources.getString(R.string.app_name),              // mandatory
+            message = "" + resources.getString(R.string.take_image),          // mandatory
+            iconDrawableId = R.drawable.ic_camera_alt_black_24dp,
+            isCancelable = false,
+            airButton1 = AirDialog.Button("" + resources.getString(R.string.camera)) {
+                // do something
+                Croperino.prepareCamera(this@RegisterActivity)
+            },
+            airButton2 = AirDialog.Button("" + resources.getString(android.R.string.cancel)) {
+                // do something
+            },
+            airButton3 = AirDialog.Button("" + resources.getString(R.string.menu_gallery)) {
+                // do something
+                Croperino.prepareGallery(this@RegisterActivity)
+            }
         )
     }
 

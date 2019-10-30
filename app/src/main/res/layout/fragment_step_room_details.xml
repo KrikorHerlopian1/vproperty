@@ -1,0 +1,530 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    android:id="@+id/lv_list_hdr"
+                    style="@style/listViewHeaderItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center|start"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/appliances"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/item_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lvDividerHeight"
+                    android:layout_below="@id/lv_list_hdr"
+                    android:background="@color/lvHeaderDividerColor" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/dishwasher"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/dishwasher"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/dryer"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/dryer"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/freezer"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/freezer"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/garbage_disposal"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/garbage_disposal"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/microwave"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/microwave"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/range_oven"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/range_oven"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/refrigerator"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/refrigerator"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/washer"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/washer"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                            android:id="@+id/trash_compactor"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/checkboxsize"
+                            android:layout_weight="1"
+                            android:text="@string/trash_compactor"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    android:id="@+id/lv_list_hdr2"
+                    style="@style/listViewHeaderItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center|start"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/floor_covering"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lvDividerHeight"
+                    android:layout_below="@id/lv_list_hdr2"
+                    android:background="@color/lvHeaderDividerColor" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/carpet"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/carpet"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/concrete"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/concrete"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/hardwood"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/hardwood"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/laminate"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/laminate"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/slate"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/slate"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/softwood"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/softwood"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/linoleum"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/linoleum"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/tile"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/tile"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/other"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/other"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    android:id="@+id/lv_list_hdr3"
+                    style="@style/listViewHeaderItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center|start"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/rooms"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lvDividerHeight"
+                    android:layout_below="@id/lv_list_hdr3"
+                    android:background="@color/lvHeaderDividerColor" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/breakfast"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/breakfast"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/dinning"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/dinning"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/family"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/family"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/laundry"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/laundry"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/library"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/library"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/master_bath"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/master_bath"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/mud"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/mud"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/office"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/office"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/pantry"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/pantry"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/recreation"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/recreation"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/workshop"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/workshop"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/solarium"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/solarium"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/sun"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/sun"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+                        android:id="@+id/walk_in_closet"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/checkboxsize"
+                        android:layout_weight="1"
+                        android:text="@string/walk_in_closet"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

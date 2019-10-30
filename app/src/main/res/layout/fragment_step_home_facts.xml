@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/priceLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/price"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/priceInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_dollar_symbol"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/forrent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/for_rent"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></androidx.appcompat.widget.AppCompatCheckBox>
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/forsale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/for_sale"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"></androidx.appcompat.widget.AppCompatCheckBox>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_picker"
+                        android:orientation="vertical">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/number_of_bedrooms"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/normalTextSize"></edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView>
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/bed_number_picker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:np_dividerColor="@color/colorAccent"
+                            app:np_fadingEdgeEnabled="false"
+                            app:np_height="64dp"
+                            app:np_max="50"
+                            app:np_min="0"
+                            app:np_order="descending"
+                            app:np_orientation="horizontal"
+                            app:np_selectedTextColor="@color/colorAccent"
+                            app:np_selectedTextSize="@dimen/selected_text_size"
+                            app:np_textColor="@color/colorAccent"
+                            app:np_textSize="@dimen/text_size"
+                            app:np_typeface="@string/roboto_light"
+                            app:np_width="180dp"
+                            app:np_wrapSelectorWheel="true" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_picker"
+                        android:orientation="vertical">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/number_of_bathrooms"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/normalTextSize"></edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView>
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/bath_number_picker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:np_dividerColor="@color/colorAccent"
+                            app:np_fadingEdgeEnabled="false"
+                            app:np_height="64dp"
+                            app:np_max="50"
+                            app:np_min="0"
+                            app:np_order="descending"
+                            app:np_orientation="horizontal"
+                            app:np_selectedTextColor="@color/colorAccent"
+                            app:np_selectedTextSize="@dimen/selected_text_size"
+                            app:np_textColor="@color/colorAccent"
+                            app:np_textSize="@dimen/text_size"
+                            app:np_typeface="@string/roboto_light"
+                            app:np_width="180dp"
+                            app:np_wrapSelectorWheel="true" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_picker"
+                        android:orientation="vertical">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/total_rooms"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/normalTextSize"></edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView>
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/rooms_number_picker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:np_dividerColor="@color/colorAccent"
+                            app:np_fadingEdgeEnabled="false"
+                            app:np_height="64dp"
+                            app:np_max="50"
+                            app:np_min="0"
+                            app:np_order="descending"
+                            app:np_orientation="horizontal"
+                            app:np_selectedTextColor="@color/colorAccent"
+                            app:np_selectedTextSize="@dimen/selected_text_size"
+                            app:np_textColor="@color/colorAccent"
+                            app:np_textSize="@dimen/text_size"
+                            app:np_typeface="@string/roboto_light"
+                            app:np_width="180dp"
+                            app:np_wrapSelectorWheel="true" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_picker"
+                        android:orientation="vertical">
+
+                        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@string/number_of_parking_spaces"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/normalTextSize"></edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView>
+
+                        <com.shawnlin.numberpicker.NumberPicker
+                            android:id="@+id/parking_number_picker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:np_dividerColor="@color/colorAccent"
+                            app:np_fadingEdgeEnabled="false"
+                            app:np_height="64dp"
+                            app:np_max="50"
+                            app:np_min="0"
+                            app:np_order="descending"
+                            app:np_orientation="horizontal"
+                            app:np_selectedTextColor="@color/colorAccent"
+                            app:np_selectedTextSize="@dimen/selected_text_size"
+                            app:np_textColor="@color/colorAccent"
+                            app:np_textSize="@dimen/text_size"
+                            app:np_typeface="@string/roboto_light"
+                            app:np_width="180dp"
+                            app:np_wrapSelectorWheel="true" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/yearbuilt"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/year_built"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/yearbuiltinput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_2019"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/hoalayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/hoa_dues"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/hoainput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_dollar_symbol"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/modal_year"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/modal_year"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/modal_year_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_2019"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/floor_number"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/floor_number"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/floor_number_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_format_list_numbered_black_24dp"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/finished_square_feet"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/finished_square_feet"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/finished_square_feet_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_full_size"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/lot_size"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/lot_size"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/lot_size_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_full_size"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/basement_sq_ft"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/basement_sq_ft"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/basement_sq_ft_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_full_size"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/garage_ft"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/garage_ft"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/garage_ft_input"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_full_size"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
