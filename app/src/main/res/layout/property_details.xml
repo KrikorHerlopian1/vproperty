@@ -40,10 +40,20 @@
                     android:scaleType="centerCrop"
                     android:transitionName="MyTransition"></ImageView>
 
+                <ImageView
+                    android:id="@+id/imagetype"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"></ImageView>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@id/imagetype"
                     android:layout_gravity="bottom"
                     android:background="@color/transparent_image_bg"
                     android:orientation="vertical">
@@ -71,6 +81,18 @@
 
             </RelativeLayout>
 
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/homefacts"
+                android:textColor="@color/colorAccent" />
+
+            <LinearLayout
+                android:id="@+id/homeFactLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
 
             <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
                 style="?android:attr/listSeparatorTextViewStyle"

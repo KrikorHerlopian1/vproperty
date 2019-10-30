@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
+import kotlinx.android.synthetic.main.detail_item.view.*
 import kotlinx.android.synthetic.main.property_details.*
 
 
@@ -43,8 +45,73 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        setUpImage()
+        setUpSaleOrRent()
+        setUpHomeFacts()
+        //hometypevalue.text = returnType()
     }
 
+    private fun setUpSaleOrRent() {
+        if (prop.homeFacts.isSale) {
+            Glide.with(this@PropertyDetailsActivity).load(R.drawable.ic_for_sale).placeholder(
+                R.drawable.ic_for_sale
+            ).into(
+                imagetype
+            )
+        } else {
+            Glide.with(this@PropertyDetailsActivity).load(R.drawable.ic_for_rent_color).placeholder(
+                R.drawable.ic_for_rent_color
+            ).into(
+                imagetype
+            )
+        }
+    }
+
+    private fun setUpHomeFacts() {
+        setUpHomeType()
+    }
+
+    private fun setUpHomeType() {
+        val child = layoutInflater.inflate(R.layout.detail_item, null)
+        Glide.with(this@PropertyDetailsActivity).load(R.drawable.type).placeholder(
+            R.drawable.type
+        ).into(
+            child.typeimage
+        )
+
+        child.hometype.text = resources.getString(R.string.type)
+        child.hometypevalue.text = returnType()
+        homeFactLayout.addView(child)
+    }
+
+    private fun returnType(): String {
+        if (prop.homeFacts.homeType.equals("SIF"))
+            return resources.getString(R.string.single_family)
+        else if (prop.homeFacts.homeType.equals("CON"))
+            return resources.getString(R.string.condo)
+        else if (prop.homeFacts.homeType.equals("TOW"))
+            return resources.getString(R.string.town_house)
+        else if (prop.homeFacts.homeType.equals("MUF"))
+            return resources.getString(R.string.multi_family)
+        else if (prop.homeFacts.homeType.equals("APT"))
+            return resources.getString(R.string.apartment)
+        else if (prop.homeFacts.homeType.equals("MOB"))
+            return resources.getString(R.string.mobile_manufactured)
+        else if (prop.homeFacts.homeType.equals("COU"))
+            return resources.getString(R.string.coop_unit)
+        else if (prop.homeFacts.homeType.equals("VAL"))
+            return resources.getString(R.string.vacant_land)
+        else
+            return resources.getString(R.string.other)
+    }
+
+    private fun setUpImage() {
+        Glide.with(this@PropertyDetailsActivity).load(prop.photoUrl).placeholder(
+            R.drawable.placeholderdetail
+        ).into(
+            image
+        )
+    }
     private fun setupToolBar() {
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar

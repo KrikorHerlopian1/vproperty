@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="locale"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:paddingStart="10dp"
+    android:paddingEnd="?android:attr/scrollbarSize">
+
+    <ImageView
+        android:id="@+id/typeimage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="32dip"
+        android:layout_marginTop="6dip"
+        android:layout_marginEnd="6dip"
+        android:layout_marginBottom="6dip"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+            android:id="@+id/hometype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:singleLine="true"
+            android:text="@string/type"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.ItalicTextView
+            android:id="@+id/hometypevalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hometype"
+            android:layout_alignStart="@id/hometype"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorSecondary" />
+
+    </RelativeLayout>
+</LinearLayout>
