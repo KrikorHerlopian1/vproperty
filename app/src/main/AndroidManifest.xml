@@ -9,6 +9,7 @@
         android:name="android.hardware.biometrics"
         android:required="false" />
     <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature
         android:name="android.hardware.location.network"
         android:required="false" />
@@ -110,6 +111,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.AddPropertyActivity" />
         </activity>
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
     </application>
 
 </manifest>

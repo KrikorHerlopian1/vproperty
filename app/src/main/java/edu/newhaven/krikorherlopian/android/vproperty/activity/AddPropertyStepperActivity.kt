@@ -291,6 +291,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
 
     }
 
+
     private fun uploadProperty(downloadUrl: Uri?) {
         val db = FirebaseFirestore.getInstance()
         property.photoUrl = downloadUrl.toString()

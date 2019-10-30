@@ -52,6 +52,7 @@ class RegisterActivity : AppCompatActivity() {
             PREFS_FILENAME,
             PRIVATE_MODE
         )
+        setUpPermissions(this)
         auth = FirebaseAuth.getInstance()
         prepareCroperino()
         setUpFonts()
@@ -77,7 +78,7 @@ class RegisterActivity : AppCompatActivity() {
             isCancelable = false,
             airButton1 = AirDialog.Button("" + resources.getString(R.string.camera)) {
                 // do something
-                Croperino.prepareCamera(this@RegisterActivity)
+                edu.newhaven.krikorherlopian.android.vproperty.Croperino.prepareCamera(this@RegisterActivity)
             },
             airButton2 = AirDialog.Button("" + resources.getString(android.R.string.cancel)) {
                 // do something
