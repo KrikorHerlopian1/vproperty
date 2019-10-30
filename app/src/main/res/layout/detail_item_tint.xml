@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <ImageView
+        android:id="@+id/typeimage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:tint="@color/colorAccent" />
+
+    <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+        android:id="@+id/hometype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="32dip"
+        android:layout_toRightOf="@id/typeimage"
+        android:gravity="center_vertical"
+        android:paddingTop="4dp"
+        android:text="@string/type"
+        android:textColor="@color/primary_text" />
+
+    <edu.newhaven.krikorherlopian.android.vproperty.textview.ItalicTextView
+        android:id="@+id/hometypevalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:paddingTop="4dp"
+        android:textColor="@color/secondary_text" />
+</RelativeLayout>
