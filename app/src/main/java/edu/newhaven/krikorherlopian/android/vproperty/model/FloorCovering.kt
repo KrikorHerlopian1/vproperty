@@ -1,5 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.model
 
+import java.io.Serializable
+
 
 data class FloorCovering(
     var carpet: Boolean = false, var concrete: Boolean = false,
@@ -7,4 +9,4 @@ data class FloorCovering(
     var slate: Boolean = false, var softwood: Boolean = false,
     var linoleum: Boolean = false, var tile: Boolean = false,
     var other: Boolean = false
-)
+) : Serializable

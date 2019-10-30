@@ -1,5 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.model
 
+import java.io.Serializable
+
 data class Property(
     var houseName: String = "",
     var address: Address = Address(),
@@ -12,4 +14,4 @@ data class Property(
     var relatedWebsite: String = "",
     var virtualTour: String = "",
     var contactPhone: String = ""
-)
+) : Serializable

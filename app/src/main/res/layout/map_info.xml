@@ -42,6 +42,14 @@
                     android:textSize="@dimen/normalTextSize"
                     android:textStyle="bold" />
 
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/largeTextSize"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

@@ -1,6 +1,8 @@
 package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
 
+import android.app.Activity
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -23,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.activity.PropertyDetailsActivity
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.map_info.view.*
 
@@ -101,6 +105,28 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                         val property = propertyList.get(i)
                                         val info = v.info
                                         info.text = "\u200e" + property.address.addressName
+                                        var priceHome = String.format(
+                                            "%,.2f",
+                                            property.homeFacts.price?.toFloat()
+                                        )
+                                        if (property.homeFacts.isRent) {
+                                            v.price.text = "\u200e" + priceHome + " $$"
+                                        } else
+                                            v.price.text = "\u200e" + priceHome + " $$"
+
+                                        v.setOnClickListener {
+                                            val options =
+                                                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                                    Activity(), v.image, "My Transition"
+                                                )
+                                            val i = Intent(
+                                                activity,
+                                                PropertyDetailsActivity::class.java
+                                            )
+                                            i.putExtra("argPojo", property)
+                                            context?.startActivity(i, options.toBundle())
+                                        }
+
                                         Picasso.get()
                                             .load(propertyList.get(i).photoUrl)
                                             .placeholder(R.drawable.placeholderdetail)
