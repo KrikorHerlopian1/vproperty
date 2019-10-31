@@ -110,8 +110,6 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
     }
 
     override fun startActivityDet(image: ImageView, property: Property) {
-        System.out.println("start activity" + image)
-
         val options =
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, image, "MyTransition"

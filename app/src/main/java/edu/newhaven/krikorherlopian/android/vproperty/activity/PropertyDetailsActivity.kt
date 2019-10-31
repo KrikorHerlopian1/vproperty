@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.ItemValuePair
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.amenities.view.*
@@ -48,11 +49,16 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             prop.homeFacts.price?.toFloat()
         )
 
+
         if (prop.homeFacts.isRent)
             price.text = priceFormat + " $$"
         else
             price.text = priceFormat + " $$"
 
+        if (loggedInUser?.email.equals(prop.email)) {
+            fab.visibility = View.VISIBLE
+            layout_for_fab.visibility = View.VISIBLE
+        }
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         setUpSaleOrRent()

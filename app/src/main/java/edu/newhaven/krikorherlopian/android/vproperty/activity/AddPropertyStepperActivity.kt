@@ -3,6 +3,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -248,7 +249,29 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                     longitudeInput.setText("" + longitude)
                     addressName.setText(address.toString())
                     zipCodeInput.setText(postalcode.toString())
+
+                    val geocoder = Geocoder(this, Locale.getDefault())
+                    val addresses =
+                        geocoder.getFromLocation(latitude, longitude, 1)
+                    val cityName = addresses[0].getAddressLine(0)
+                    val stateName = addresses[0].getAddressLine(1)
+                    val countryName = addresses[0].getAddressLine(2)
+                    var add: String = ""
+                    if (address == null || address.trim().equals("")) {
+                        if (cityName != null) {
+                            add = cityName
+                            if (stateName != null) {
+                                add = add + " ," + stateName
+                            }
+                            addressName.setText(add)
+                        } else if (stateName != null) {
+                            add = stateName
+                            addressName.setText(add)
+                        }
+
+                    }
                 }
+
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
             Log.d("RESULT****", "CANCELLED")
@@ -387,6 +410,13 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 progress_bar.visibility = View.GONE
                 state = 0
                 sendNotificationToPatner()
+                property.id = documentReference.id
+                val i = Intent(
+                    this@AddPropertyStepperActivity,
+                    PropertyDetailsActivity::class.java
+                )
+                i.putExtra("argPojo", property)
+                startActivity(i)
                 finish()
             }
             .addOnFailureListener { e ->

@@ -77,7 +77,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
 
                         Log.d("", "${doc.document.id} => ${doc.document.data}")
                         var property: Property = doc.document.toObject(Property::class.java)
-
+                        property.id = doc.document.id
                         propertyList.add(property)
                         try {
                             val sydney =
@@ -89,6 +89,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             count = count + 1
                             mMap.setOnInfoWindowClickListener {
                                 var property1: Property = propertyList.get(it.title.toInt())
+
                                 fragmentActivityCommunication?.startActivityDet(
                                     currentView!!,
                                     property1

@@ -13,5 +13,6 @@ data class Property(
     var utilityDetails: UtilityDetails = UtilityDetails(),
     var relatedWebsite: String = "",
     var virtualTour: String = "",
-    var contactPhone: String = ""
+    var contactPhone: String = "",
+    var id: String = ""
 ) : Serializable
