@@ -36,6 +36,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
     override fun closeActivity() {
         finish()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.property_details)
