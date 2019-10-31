@@ -42,9 +42,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         )
         var not = sharedPref?.getBoolean(PREF_NOT, true)
 
-        System.out.println("I got it " + not)
+
         if (not!!) {
-            System.out.println("vproperty3333333")
             // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
             Log.d(TAG, "From: ${remoteMessage.from}")
 

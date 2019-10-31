@@ -70,7 +70,6 @@ public class Croperino {
 
     public static void prepareCamera(Activity ctx) {
         try {
-            System.out.println("-------------------------activity");
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             Uri mImageCaptureUri;
             String state = Environment.getExternalStorageState();
@@ -96,9 +95,7 @@ public class Croperino {
             ctx.startActivityForResult(intent, CroperinoConfig.REQUEST_TAKE_PHOTO);
         } catch (Exception e) {
             if (e instanceof ActivityNotFoundException) {
-                System.out.println("-------------------------" + e.getMessage());
             } else if (e instanceof IOException) {
-                System.out.println("-------------------------" + e.getMessage());
             } else {
             }
         }

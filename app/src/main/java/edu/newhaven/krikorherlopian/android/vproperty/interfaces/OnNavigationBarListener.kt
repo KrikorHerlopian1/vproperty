@@ -6,7 +6,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.RoomDetails
 import edu.newhaven.krikorherlopian.android.vproperty.model.UtilityDetails
 
 interface OnNavigationBarListener {
-    fun addHomeType(typeCode: String)
+    fun addHomeType(typeCode: String, forward: Int = 0)
     fun addAddress(
         displayName: String, address: String, zipCode: String,
         longitude: String, latitude: String, descriptionAddress: String

@@ -14,11 +14,13 @@ import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_home_facts.view.*
 
 
-class StepHomeFacts(context: Context, listener: OnNavigationBarListener) : FrameLayout(context),
+class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var property: Property) :
+    FrameLayout(context),
     Step {
     internal var ms: View? = null
     @Nullable
@@ -48,12 +50,47 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener) : Frame
             onNavigationBarListener = listener
             ms = v
             setUpFonts()
+            v.priceInput.setText(property.homeFacts.price)
+            if (property.homeFacts.isSale) {
+                forsale.isChecked = true
+                priceLayout.hint = resources.getString(R.string.price)
+            }
+            if (property.homeFacts.isRent) {
+                forrent.isChecked = true
+                priceLayout.hint = resources.getString(R.string.price_per_month)
+            }
+            if (!property.homeFacts.bedrooms.trim().equals("")) {
+                bed_number_picker.value = property.homeFacts.bedrooms.toInt()
+            }
+
+            if (!property.homeFacts.bathrooms?.trim().equals("")) {
+                bath_number_picker.value = property.homeFacts.bathrooms?.toInt()!!
+            }
+
+            if (!property.homeFacts.totalRooms?.trim().equals("")) {
+                rooms_number_picker.value = property.homeFacts.totalRooms?.toInt()!!
+            }
+
+            if (!property.homeFacts.parkingSpaces?.trim().equals("")) {
+                parking_number_picker.value = property.homeFacts.parkingSpaces?.toInt()!!
+            }
+
             forsale.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     forrent.isChecked = false
                     priceLayout.hint = resources.getString(R.string.price)
                 }
             }
+
+            yearbuiltinput.setText(property.homeFacts.yearBuilt)
+            hoainput.setText(property.homeFacts.hoadues)
+            modal_year_input.setText(property.homeFacts.structuralModalYear)
+            floor_number_input.setText(property.homeFacts.floorNumber)
+            finished_square_feet_input.setText(property.homeFacts.finishedSqFt)
+            garage_ft_input.setText(property.homeFacts.garageSqFt)
+            basement_sq_ft_input.setText(property.homeFacts.basementSqFt)
+            lot_size_input.setText(property.homeFacts.lotSizeFqFt)
+
             forrent.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     forsale.isChecked = false

@@ -18,6 +18,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.activityFunctionalities
+import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.ItemValuePair
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
@@ -29,14 +31,19 @@ import kotlinx.android.synthetic.main.detail_item_tint.view.*
 import kotlinx.android.synthetic.main.property_details.*
 
 
-class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
+class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, ActivityFunctionalities {
     lateinit var prop: Property
     var roomVisible: Boolean = false
     var buildingVisible: Boolean = false
     var utilityVisible: Boolean = false
+
+    override fun closeActivity() {
+        finish()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.property_details)
+        activityFunctionalities = this
         prop = intent.getSerializableExtra("argPojo") as Property
         setupToolBar()
         Picasso.get()
@@ -48,7 +55,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             "%,.2f",
             prop.homeFacts.price?.toFloat()
         )
-
 
         if (prop.homeFacts.isRent)
             price.text = priceFormat + " $$"
@@ -67,6 +73,13 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         setUpRoomDetails()
         setUpBuildingDetails()
         setUpUtilityDetails()
+
+        fab.setOnClickListener {
+            val intent =
+                Intent(this@PropertyDetailsActivity, AddPropertyStepperActivity::class.java)
+            intent.putExtra("argPojo", prop)
+            startActivity(intent)
+        }
     }
 
     private fun setUpUtilityDetails() {
@@ -796,7 +809,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         homeFactLayout.addView(child)
     }
 
-    private fun returnType(): String {
+    fun returnType(): String {
         if (prop.homeFacts.homeType.equals("SIF"))
             return resources.getString(R.string.single_family)
         else if (prop.homeFacts.homeType.equals("CON"))
@@ -883,8 +896,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             prop.address.latitude.toDouble(),
             prop.address.longitude.toDouble()
         )
-        System.out.println(prop.address.latitude)
-        System.out.println(prop.address.longitude)
         p0?.addMarker(MarkerOptions().position(sydney).title(""))
         p0?.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10f))
     }

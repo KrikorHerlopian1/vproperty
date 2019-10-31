@@ -12,15 +12,13 @@ import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
-import edu.newhaven.krikorherlopian.android.vproperty.model.Appliances
-import edu.newhaven.krikorherlopian.android.vproperty.model.FloorCovering
-import edu.newhaven.krikorherlopian.android.vproperty.model.Room
-import edu.newhaven.krikorherlopian.android.vproperty.model.RoomDetails
+import edu.newhaven.krikorherlopian.android.vproperty.model.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_room_details.view.*
 
 
-class StepRoomDetails(context: Context, listener: OnNavigationBarListener) : FrameLayout(context),
+class StepRoomDetails(context: Context, listener: OnNavigationBarListener, var prop: Property) :
+    FrameLayout(context),
     Step {
     internal var ms: View? = null
     @Nullable
@@ -50,6 +48,41 @@ class StepRoomDetails(context: Context, listener: OnNavigationBarListener) : Fra
         try {
             onNavigationBarListener = listener
             ms = v
+
+            ms?.dishwasher!!.isChecked = prop.roomDetails.appliances.dishWasher
+            ms?.washer!!.isChecked = prop.roomDetails.appliances.washer
+            ms?.garbage_disposal!!.isChecked = prop.roomDetails.appliances.disposal
+            ms?.dryer!!.isChecked = prop.roomDetails.appliances.dryer
+            ms?.freezer!!.isChecked = prop.roomDetails.appliances.freezer
+            ms?.refrigerator!!.isChecked = prop.roomDetails.appliances.refrigerator
+            ms?.microwave!!.isChecked = prop.roomDetails.appliances.microwave
+            ms?.range_oven!!.isChecked = prop.roomDetails.appliances.rangeoven
+            ms?.trash_compactor!!.isChecked = prop.roomDetails.appliances.trashCompactor
+
+            ms?.carpet!!.isChecked = prop.roomDetails.floorCovering.carpet
+            ms?.concrete!!.isChecked = prop.roomDetails.floorCovering.concrete
+            ms?.hardwood!!.isChecked = prop.roomDetails.floorCovering.hardwood
+            ms?.laminate!!.isChecked = prop.roomDetails.floorCovering.laminate
+            ms?.linoleum!!.isChecked = prop.roomDetails.floorCovering.linoleum
+            ms?.slate!!.isChecked = prop.roomDetails.floorCovering.slate
+            ms?.softwood!!.isChecked = prop.roomDetails.floorCovering.softwood
+            ms?.tile!!.isChecked = prop.roomDetails.floorCovering.tile
+            ms?.other!!.isChecked = prop.roomDetails.floorCovering.other
+
+            ms?.breakfast!!.isChecked = prop.roomDetails.rooms.breakfast
+            ms?.dinning!!.isChecked = prop.roomDetails.rooms.dinning
+            ms?.family!!.isChecked = prop.roomDetails.rooms.family
+            ms?.laundry!!.isChecked = prop.roomDetails.rooms.laundry
+            ms?.library!!.isChecked = prop.roomDetails.rooms.library
+            ms?.master_bath!!.isChecked = prop.roomDetails.rooms.masterBath
+            ms?.mud!!.isChecked = prop.roomDetails.rooms.mud
+            ms?.office!!.isChecked = prop.roomDetails.rooms.office
+            ms?.pantry!!.isChecked = prop.roomDetails.rooms.pantry
+            ms?.recreation!!.isChecked = prop.roomDetails.rooms.recreation
+            ms?.workshop!!.isChecked = prop.roomDetails.rooms.workshop
+            ms?.solarium!!.isChecked = prop.roomDetails.rooms.solarium
+            ms?.sun!!.isChecked = prop.roomDetails.rooms.sun
+            ms?.walk_in_closet!!.isChecked = prop.roomDetails.rooms.walkInCloset
         } catch (e: Exception) {
         }
 

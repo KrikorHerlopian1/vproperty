@@ -15,11 +15,12 @@ import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_more_info.view.*
 
 
-class StepMoreInformation(context: Context, listener: OnNavigationBarListener) :
+class StepMoreInformation(context: Context, listener: OnNavigationBarListener, var prop: Property) :
     FrameLayout(context),
     Step {
     internal var ms: View? = null
@@ -49,15 +50,28 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener) :
         try {
             onNavigationBarListener = listener
             ms = v
-            Glide.with(context).load(R.drawable.placeholderdetail)
-                .placeholder(R.drawable.placeholderdetail)
-                .into(
-                    ms?.picture!!
-                )
             setUpFonts()
             ms?.picture!!.setOnClickListener {
                 onNavigationBarListener?.addPictureClicked()
             }
+
+            if (!prop.photoUrl.trim().equals("")) {
+                Glide.with(context).load(prop.photoUrl)
+                    .placeholder(R.drawable.placeholderdetail)
+                    .into(
+                        ms?.picture!!
+                    )
+            } else {
+                Glide.with(context).load(R.drawable.placeholderdetail)
+                    .placeholder(R.drawable.placeholderdetail)
+                    .into(
+                        ms?.picture!!
+                    )
+            }
+
+            ms?.relatedWebsite?.setText(prop.relatedWebsite)
+            ms?.virtualtourinput?.setText(prop.virtualTour)
+            ms?.contactinput?.setText(prop.contactPhone)
         } catch (e: Exception) {
         }
 

@@ -8,46 +8,51 @@ import androidx.viewpager.widget.ViewPager
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.adapter.AbstractStepAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.step.*
 
 
-class MyStepperAdapter(context: Context, internal var listener: OnNavigationBarListener) :
+class MyStepperAdapter(
+    context: Context,
+    internal var listener: OnNavigationBarListener,
+    var property: Property
+) :
     AbstractStepAdapter(context) {
 
     private val pages = SparseArray<Step>()
 
     fun createStepHomeType(position: Int): StepHomeType {
-        return StepHomeType(context, listener)
+        return StepHomeType(context, listener, property)
 
     }
 
     fun createStepHomeAddress(position: Int): StepHomeAddress {
-        return StepHomeAddress(context, listener)
+        return StepHomeAddress(context, listener, property)
 
     }
 
     fun createStepHomeFacts(position: Int): StepHomeFacts {
-        return StepHomeFacts(context, listener)
+        return StepHomeFacts(context, listener, property)
 
     }
 
     fun createStepRoomDetails(position: Int): StepRoomDetails {
-        return StepRoomDetails(context, listener)
+        return StepRoomDetails(context, listener, property)
 
     }
 
     fun createStepBuildingDetails(position: Int): StepBuildingDetails {
-        return StepBuildingDetails(context, listener)
+        return StepBuildingDetails(context, listener, property)
 
     }
 
     fun createStepUtilityDetails(position: Int): StepUtilityDetails {
-        return StepUtilityDetails(context, listener)
+        return StepUtilityDetails(context, listener, property)
 
     }
 
     fun createStepMoreInformation(position: Int): StepMoreInformation {
-        return StepMoreInformation(context, listener)
+        return StepMoreInformation(context, listener, property)
 
     }
 

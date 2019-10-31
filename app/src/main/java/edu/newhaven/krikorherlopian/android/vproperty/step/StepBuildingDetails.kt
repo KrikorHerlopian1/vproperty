@@ -17,7 +17,7 @@ import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_building_details.view.*
 
 
-class StepBuildingDetails(context: Context, listener: OnNavigationBarListener) :
+class StepBuildingDetails(context: Context, listener: OnNavigationBarListener, var prop: Property) :
     FrameLayout(context),
     Step {
     internal var ms: View? = null
@@ -48,6 +48,56 @@ class StepBuildingDetails(context: Context, listener: OnNavigationBarListener) :
         try {
             onNavigationBarListener = listener
             ms = v
+
+            ms?.brick!!.isChecked = prop.buildingDetails.exterior.brick
+            ms?.cement!!.isChecked = prop.buildingDetails.exterior.cement
+            ms?.composition!!.isChecked = prop.buildingDetails.exterior.composition
+            ms?.metal!!.isChecked = prop.buildingDetails.exterior.metal
+            ms?.shingle!!.isChecked = prop.buildingDetails.exterior.shingle
+            ms?.stone!!.isChecked = prop.buildingDetails.exterior.stone
+            ms?.stucco!!.isChecked = prop.buildingDetails.exterior.stucco
+            ms?.vinyl!!.isChecked = prop.buildingDetails.exterior.vinyl
+            ms?.wood!!.isChecked = prop.buildingDetails.exterior.wood
+            ms?.wood_products!!.isChecked = prop.buildingDetails.exterior.woodProducts
+            ms?.other!!.isChecked = prop.buildingDetails.exterior.other
+
+
+            ms?.basketball_court!!.isChecked =
+                prop.buildingDetails.buildingAminities.basketballCourt
+            ms?.disabled_access!!.isChecked = prop.buildingDetails.buildingAminities.disabledAccess
+            ms?.doorman!!.isChecked = prop.buildingDetails.buildingAminities.doorman
+            ms?.elevator!!.isChecked = prop.buildingDetails.buildingAminities.elevator
+            ms?.fitness_center!!.isChecked = prop.buildingDetails.buildingAminities.fitnessCenter
+            ms?.sports_court!!.isChecked = prop.buildingDetails.buildingAminities.sportsCourt
+            ms?.storage!!.isChecked = prop.buildingDetails.buildingAminities.storage
+            ms?.tennis_court!!.isChecked = prop.buildingDetails.buildingAminities.tennisCourt
+            ms?.near_transportation!!.isChecked =
+                prop.buildingDetails.buildingAminities.nearTransportation
+
+            ms?.balcony_patio!!.isChecked = prop.buildingDetails.outdoorAminities.balconyPatio
+            ms?.lawn!!.isChecked = prop.buildingDetails.outdoorAminities.lawn
+            ms?.barbecue_area!!.isChecked = prop.buildingDetails.outdoorAminities.barbecueArea
+            ms?.pond!!.isChecked = prop.buildingDetails.outdoorAminities.pond
+            ms?.deck!!.isChecked = prop.buildingDetails.outdoorAminities.deck
+            ms?.pool!!.isChecked = prop.buildingDetails.outdoorAminities.pool
+            ms?.dock!!.isChecked = prop.buildingDetails.outdoorAminities.dock
+            ms?.porch!!.isChecked = prop.buildingDetails.outdoorAminities.porch
+            ms?.fenced_yard!!.isChecked = prop.buildingDetails.outdoorAminities.fencedYard
+            ms?.rv_parking!!.isChecked = prop.buildingDetails.outdoorAminities.rvParking
+            ms?.garden!!.isChecked = prop.buildingDetails.outdoorAminities.garden
+            ms?.sauna!!.isChecked = prop.buildingDetails.outdoorAminities.sauna
+            ms?.greenhouse!!.isChecked = prop.buildingDetails.outdoorAminities.greenHouse
+            ms?.sprinkler_system!!.isChecked = prop.buildingDetails.outdoorAminities.sprinkerlSystem
+            ms?.hottubspa!!.isChecked = prop.buildingDetails.outdoorAminities.hotTubSpa
+            ms?.waterfront!!.isChecked = prop.buildingDetails.outdoorAminities.waterfront
+
+            ms?.carport!!.isChecked = prop.buildingDetails.parking.carport
+            ms?.on_street!!.isChecked = prop.buildingDetails.parking.onStreet
+            ms?.off_street!!.isChecked = prop.buildingDetails.parking.offStreet
+            ms?.garage_attached!!.isChecked = prop.buildingDetails.parking.garageAttached
+            ms?.garage_detached!!.isChecked = prop.buildingDetails.parking.garageDetached
+            ms?.none!!.isChecked = prop.buildingDetails.parking.none
+
         } catch (e: Exception) {
         }
 

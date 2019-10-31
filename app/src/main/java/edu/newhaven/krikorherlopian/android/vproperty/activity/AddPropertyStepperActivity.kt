@@ -23,6 +23,7 @@ import com.schibstedspain.leku.*
 import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.activityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.MyStepperAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ApiInterface
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
@@ -55,12 +56,17 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         super.onCreate(savedInstanceState)
         setContentView(R.layout.stepper)
         setupToolBar()
+        try {
+            property = intent.getSerializableExtra("argPojo") as Property
+        } catch (e: Exception) {
+        }
         storage = FirebaseStorage.getInstance()
         setUpPermissions(this)
         prepareCroperino()
-        stepperLayout.setAdapter(MyStepperAdapter(this, this))
+        stepperLayout.setAdapter(MyStepperAdapter(this, this, property))
         stepperLayout.setListener(this)
         progress_bar.visibility = View.GONE
+
     }
 
     private fun setupToolBar() {
@@ -160,8 +166,6 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
             subTitle = subTitle + "" + resources.getString(R.string.price) + " = " + price + " $$"
         }
 
-        System.out.println(subTitle)
-
         var postJsonData = "{\n" +
                 " \"to\" : \"/topics/vproperty\",\n" +
                 " \"collapse_key\" : \"type_a\",\n" +
@@ -189,14 +193,12 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 call: retrofit2.Call<com.squareup.okhttp.ResponseBody>,
                 response: retrofit2.Response<com.squareup.okhttp.ResponseBody>
             ) {
-                System.out.println("success" + response.code())
             }
 
             override fun onFailure(
                 call: retrofit2.Call<com.squareup.okhttp.ResponseBody>,
                 t: Throwable
             ) {
-                System.out.println("failure")
             }
         })
     }
@@ -398,37 +400,80 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
     private fun uploadProperty(downloadUrl: Uri?) {
         val db = FirebaseFirestore.getInstance()
         property.photoUrl = downloadUrl.toString()
-        db.collection("properties")
-            .add(property)
-            .addOnSuccessListener { documentReference ->
-                Toasty.success(
-                    this@AddPropertyStepperActivity,
-                    R.string.success_property,
-                    Toast.LENGTH_SHORT,
-                    true
-                ).show()
-                progress_bar.visibility = View.GONE
-                state = 0
-                sendNotificationToPatner()
-                property.id = documentReference.id
-                val i = Intent(
-                    this@AddPropertyStepperActivity,
-                    PropertyDetailsActivity::class.java
-                )
-                i.putExtra("argPojo", property)
-                startActivity(i)
-                finish()
-            }
-            .addOnFailureListener { e ->
-                progress_bar.visibility = View.GONE
-                state = 0
-                Toasty.success(
-                    this@AddPropertyStepperActivity,
-                    R.string.error_adding_property,
-                    Toast.LENGTH_SHORT,
-                    true
-                ).show()
-            }
+        if (property.id == null || property.id.trim().equals("")) {
+            db.collection("properties")
+                .add(property)
+                .addOnSuccessListener { documentReference ->
+                    Toasty.success(
+                        this@AddPropertyStepperActivity,
+                        R.string.success_property,
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                    progress_bar.visibility = View.GONE
+                    state = 0
+                    sendNotificationToPatner()
+                    property.id = documentReference.id
+                    try {
+                        activityFunctionalities?.closeActivity()
+                    } catch (e: Exception) {
+                    }
+                    val i = Intent(
+                        this@AddPropertyStepperActivity,
+                        PropertyDetailsActivity::class.java
+                    )
+                    i.putExtra("argPojo", property)
+                    startActivity(i)
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    progress_bar.visibility = View.GONE
+                    state = 0
+                    Toasty.success(
+                        this@AddPropertyStepperActivity,
+                        R.string.error_adding_property,
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                }
+        } else {
+            db.collection("properties")
+                .document(property.id)
+                .set(property)
+                .addOnSuccessListener { documentReference ->
+                    Toasty.success(
+                        this@AddPropertyStepperActivity,
+                        R.string.success_property,
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                    progress_bar.visibility = View.GONE
+                    state = 0
+                    property.id = property.id
+                    try {
+                        activityFunctionalities?.closeActivity()
+                    } catch (e: Exception) {
+                    }
+                    val i = Intent(
+                        this@AddPropertyStepperActivity,
+                        PropertyDetailsActivity::class.java
+                    )
+                    i.putExtra("argPojo", property)
+                    startActivity(i)
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    progress_bar.visibility = View.GONE
+                    state = 0
+                    Toasty.success(
+                        this@AddPropertyStepperActivity,
+                        R.string.error_adding_property,
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                }
+        }
+
 
     }
 
@@ -462,9 +507,10 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         property.email = loggedInUser?.email.toString()
     }
 
-    override fun addHomeType(typeCode: String) {
+    override fun addHomeType(typeCode: String, forward: Int) {
         property.homeFacts.homeType = typeCode
-        stepperLayout.currentStepPosition = 1
+        if (forward != -1)
+            stepperLayout.currentStepPosition = 1
     }
 
     override fun onError(verificationError: VerificationError?) {

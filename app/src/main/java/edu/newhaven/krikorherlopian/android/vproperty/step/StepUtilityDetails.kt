@@ -14,12 +14,13 @@ import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
 import edu.newhaven.krikorherlopian.android.vproperty.model.CoolingType
 import edu.newhaven.krikorherlopian.android.vproperty.model.HeatingType
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.model.UtilityDetails
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_utility_details.view.*
 
 
-class StepUtilityDetails(context: Context, listener: OnNavigationBarListener) :
+class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, var prop: Property) :
     FrameLayout(context),
     Step {
     internal var ms: View? = null
@@ -50,6 +51,24 @@ class StepUtilityDetails(context: Context, listener: OnNavigationBarListener) :
         try {
             onNavigationBarListener = listener
             ms = v
+
+            ms?.central!!.isChecked = prop.utilityDetails.coolingType.central
+            ms?.evaporative!!.isChecked = prop.utilityDetails.coolingType.evaporative
+            ms?.geothermal_cooling!!.isChecked = prop.utilityDetails.coolingType.geoThermal
+            ms?.refrigeration!!.isChecked = prop.utilityDetails.coolingType.refrigeration
+            ms?.solar!!.isChecked = prop.utilityDetails.coolingType.solar
+            ms?.wall_cooling!!.isChecked = prop.utilityDetails.coolingType.wall
+            ms?.other_cooling!!.isChecked = prop.utilityDetails.coolingType.other
+            ms?.none!!.isChecked = prop.utilityDetails.coolingType.none
+
+            ms?.baseboard!!.isChecked = prop.utilityDetails.heatingType.baseboard
+            ms?.forced_air!!.isChecked = prop.utilityDetails.heatingType.forcedAir
+            ms?.geothermal!!.isChecked = prop.utilityDetails.heatingType.geoThermal
+            ms?.heat_pump!!.isChecked = prop.utilityDetails.heatingType.heatPump
+            ms?.other!!.isChecked = prop.utilityDetails.heatingType.other
+            ms?.radiant!!.isChecked = prop.utilityDetails.heatingType.radiant
+            ms?.stove!!.isChecked = prop.utilityDetails.heatingType.stove
+            ms?.wall!!.isChecked = prop.utilityDetails.heatingType.wall
         } catch (e: Exception) {
         }
 

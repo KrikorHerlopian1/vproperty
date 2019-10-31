@@ -78,7 +78,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                         var prop: Property = doc.document.toObject(Property::class.java)
                         var i = 0
                         for (propert in propertyList) {
-                            System.out.println("" + doc.document.id + "--------" + propert.id)
                             if (doc.document.id.equals(propert.id)) {
                                 propertyList[i] = prop
                                 propertyList[i].id = doc.document.id
@@ -123,7 +122,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                     val v = layoutInflater.inflate(
                                         R.layout.map_info, null
                                     )
-                                    System.out.println("----------------got here")
                                     markerS = marker!!
 
                                     currentView = v.image

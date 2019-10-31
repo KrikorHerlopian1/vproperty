@@ -13,10 +13,12 @@ import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_home_address.view.*
 
-class StepHomeAddress(context: Context, listener: OnNavigationBarListener) : FrameLayout(context),
+class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var property: Property) :
+    FrameLayout(context),
     Step {
     internal var ms: View? = null
     @Nullable
@@ -46,6 +48,12 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener) : Fra
         try {
             onNavigationBarListener = listener
             ms = v
+            v.houseName.setText(property.houseName.toString())
+            v.addressName.setText(property.address.addressName.toString())
+            v.zipCodeInput.setText(property.address.zipCode.toString())
+            v.longitudeInput.setText(property.address.longitude.toString())
+            v.latitudeInput.setText(property.address.latitude.toString())
+            v.descriptionLayout.setText(property.address.descriptionAddress.toString())
             setUpFonts()
         } catch (e: Exception) {
         }

@@ -17,10 +17,12 @@ import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
 import edu.newhaven.krikorherlopian.android.vproperty.model.HomeTypePair
 import edu.newhaven.krikorherlopian.android.vproperty.model.HomeTypes
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.settings.view.*
 
-class StepHomeType(context: Context, listener: OnNavigationBarListener) : FrameLayout(context),
+class StepHomeType(context: Context, listener: OnNavigationBarListener, var property: Property) :
+    FrameLayout(context),
     Step, ListClick {
     internal var ms: View? = null
     var posSelected = -1
@@ -75,10 +77,49 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener) : FrameL
 
             var propertType9: HomeTypes = HomeTypes("OTH", resources.getString(R.string.other))
             list.add(HomeTypePair(propertType9, null))
+            System.out.println("-=---------------------" + property.homeFacts.homeType)
 
+            if (property.homeFacts.homeType.equals("SIF")) {
+                typeCode = property.homeFacts.homeType
+                posSelected = 1
+                propertType1.selected = 1
+            } else if (property.homeFacts.homeType.equals("CON")) {
+                typeCode = property.homeFacts.homeType
+                posSelected = 1
+                propertType2.selected = 1
+            } else if (property.homeFacts.homeType.equals("TOW")) {
+                typeCode = property.homeFacts.homeType
+                propertType3.selected = 1
+                posSelected = 2
+            } else if (property.homeFacts.homeType.equals("MUF")) {
+                typeCode = property.homeFacts.homeType
+                propertType4.selected = 1
+                posSelected = 2
+            } else if (property.homeFacts.homeType.equals("APT")) {
+                typeCode = property.homeFacts.homeType
+                propertType5.selected = 1
+                posSelected = 3
+            } else if (property.homeFacts.homeType.equals("MOB")) {
+                typeCode = property.homeFacts.homeType
+                propertType6.selected = 1
+                posSelected = 3
+            } else if (property.homeFacts.homeType.equals("COU")) {
+                typeCode = property.homeFacts.homeType
+                propertType7.selected = 1
+                posSelected = 4
+            } else if (property.homeFacts.homeType.equals("VAL")) {
+                typeCode = property.homeFacts.homeType
+                propertType8.selected = 1
+                posSelected = 4
+            } else if (property.homeFacts.homeType.equals("OTH")) {
+                typeCode = property.homeFacts.homeType
+                propertType9.selected = 1
+                posSelected = 5
+            }
             val adapter = HomeTypeAdapter(
                 list, this
             )
+
             v?.recyclerView?.layoutManager = LinearLayoutManager(context)
             v?.recyclerView?.itemAnimator = DefaultItemAnimator()
             v?.recyclerView?.adapter = adapter
@@ -88,6 +129,7 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener) : FrameL
     }
 
     override fun rowClicked(position: Int, position2: Int) {
+        System.out.println("clicked")
         for (homeTypePair in list) {
             homeTypePair.homeType1?.selected = 0
             homeTypePair.homeType2?.selected = 0
@@ -106,10 +148,11 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener) : FrameL
 
     override fun verifyStep(): VerificationError? {
         try {
+            System.out.println("clicked2")
             if (posSelected == -1) {
                 return VerificationError(resources.getString(R.string.choose_home_type))
             } else {
-                onNavigationBarListener?.addHomeType(typeCode!!)
+                onNavigationBarListener?.addHomeType(typeCode!!, -1)
             }
         } catch (e: Exception) {
         }
