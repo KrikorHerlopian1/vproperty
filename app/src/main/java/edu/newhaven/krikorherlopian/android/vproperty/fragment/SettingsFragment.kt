@@ -79,8 +79,9 @@ class SettingsFragment : Fragment(),
         list.add(notifications!!)
         list.add(autoLoginItem!!)
         list.add(signOutItem!!)
+
         val adapter = TitleSubtitleAdapter(
-            list, this
+            list, this, root?.context!!
         )
         root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
         root?.recyclerView?.itemAnimator = DefaultItemAnimator()

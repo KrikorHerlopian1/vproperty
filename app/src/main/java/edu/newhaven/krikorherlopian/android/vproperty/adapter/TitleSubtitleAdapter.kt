@@ -1,9 +1,11 @@
 package edu.newhaven.krikorherlopian.android.vproperty.adapter
 
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import edu.newhaven.krikorherlopian.android.vproperty.R
@@ -16,11 +18,37 @@ import kotlinx.android.synthetic.main.switch_item.view.*
 /*
     This page adapter, contains an icon plus two texts below each other.
  */
-class TitleSubtitleAdapter(private val list: MutableList<SettingsItem>, var listClick: ListClick) :
+class TitleSubtitleAdapter(
+    private val list: MutableList<SettingsItem>,
+    var listClick: ListClick,
+    var context: Context
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val HEADER_VIEW = 0
     private val CONTENT_VIEW = 1
+    var lastPosition = -1
+
+
+    override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        try {
+            holder.itemView.clearAnimation()
+        } catch (e: Exception) {
+
+        }
+        holder.itemView.clearAnimation()
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val animation = AnimationUtils.loadAnimation(
+            context,
+            if (position > lastPosition)
+                R.anim.up_from_bottom
+            else
+                R.anim.down_from_top
+        )
+        holder.itemView.startAnimation(animation)
+        lastPosition = position
         when (holder.itemViewType) {
             HEADER_VIEW -> configureViewHolder1(holder, position)
             CONTENT_VIEW -> configureViewHolder2(holder, position)
