@@ -198,6 +198,7 @@
     <string name="related_website">Related Website</string>
     <string name="virtual_tour">Virtual Tour URL</string>
     <string name="phone_number">Contact Phone Number</string>
+    <string name="phone_number_display">Phone Number</string>
     <string name="take_image">Take image photo by camera or choose from gallery</string>
     <string name="building_aminities">BUILDING AMENITIES</string>
     <string name="basketball_court">Basketball Court</string>
@@ -249,4 +250,8 @@
     <string name="type">Type</string>
     <string name="buidling_exterior">Building Exterior</string>
     <string name="photo">Photo</string>
+    <string name="my_profile">My Profile</string>
+    <string name="submit">SUBMIT</string>
+    <string name="success_update_profile">Successfully updated profile</string>
+    <string name="process_failed">Process Failed</string>
 </resources>

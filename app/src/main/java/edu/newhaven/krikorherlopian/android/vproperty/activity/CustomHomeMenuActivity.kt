@@ -1,7 +1,10 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
@@ -15,14 +18,20 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.mikelau.croperino.Croperino
+import com.mikelau.croperino.CroperinoConfig
+import com.mikelau.croperino.CroperinoFileUtil
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
+import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_menu.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
+import mumayank.com.airdialog.AirDialog
 
 
 /*
@@ -44,23 +53,14 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         var email = bundle.getString("email")
         var page = bundle.getInt("page", 0)
         setUpPermissions(this)
-
+        prepareCroperino()
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
         toggle.syncState()
-        val header = navView.getHeaderView(0)
-        header.headerSubTitle.text = displayName
-        header.headerTitle.text = email
-
-        //load user profile to menu
-        Glide.with(this@CustomHomeMenuActivity).load(photoUrl)
-            .placeholder(R.drawable.profileplaceholder).apply(RequestOptions.circleCropTransform())
-            .into(
-                header.imageView
-            )
+        updateProfile()
 
         val navController = findNavController(R.id.fragment)
         appBarConfiguration = AppBarConfiguration(
@@ -75,6 +75,18 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         }
     }
 
+    private fun prepareCroperino() {
+        //prepare camera, gallery and ask for storage permissions.
+        CroperinoConfig(
+            "IMG_" + System.currentTimeMillis() + ".jpg",
+            "/VProperty/Pictures",
+            "/sdcard/VProperty/Pictures"
+        )
+        CroperinoFileUtil.verifyStoragePermissions(this@CustomHomeMenuActivity)
+        CroperinoFileUtil.setupDirectory(this@CustomHomeMenuActivity)
+
+    }
+
     override fun onBackPressed() {
         //if  menu drawer is open close it on click of button, else go back in screen.
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -84,6 +96,32 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun addProfileButtonClicked() {
+        /*Croperino.prepareChooser(
+            this@RegisterActivity,
+            "" + resources.getString(R.string.capture_photo),
+            ContextCompat.getColor(this@RegisterActivity, R.color.colorPrimaryDark)
+        )*/
+        AirDialog.show(
+            activity = this,                      // mandatory
+            title = "" + resources.getString(R.string.app_name),              // mandatory
+            message = "" + resources.getString(R.string.take_image),          // mandatory
+            iconDrawableId = R.drawable.ic_camera_alt_black_24dp,
+            isCancelable = false,
+            airButton1 = AirDialog.Button("" + resources.getString(R.string.camera)) {
+                // do something
+                edu.newhaven.krikorherlopian.android.vproperty.Croperino.prepareCamera(this@CustomHomeMenuActivity)
+            },
+            airButton2 = AirDialog.Button("" + resources.getString(android.R.string.cancel)) {
+                // do something
+            },
+            airButton3 = AirDialog.Button("" + resources.getString(R.string.menu_gallery)) {
+                // do something
+                Croperino.prepareGallery(this@CustomHomeMenuActivity)
+            }
+        )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -115,5 +153,66 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         )
         i.putExtra("argPojo", property)
         startActivity(i)
+    }
+
+    override fun updateProfile() {
+        val handler = Handler()
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                val header = navView.getHeaderView(0)
+                header.headerSubTitle.text = loggedInUser?.displayName
+                header.headerTitle.text = loggedInUser?.email
+                //load user profile to menu
+                Glide.with(this@CustomHomeMenuActivity).load(loggedInUser?.photoUrl)
+                    .placeholder(R.drawable.profileplaceholder)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(
+                        header.imageView
+                    )
+            }
+        }, 1500)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            CroperinoConfig.REQUEST_TAKE_PHOTO ->
+                if (resultCode == Activity.RESULT_OK) {
+                    /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
+                    Croperino.runCropImage(
+                        CroperinoFileUtil.getTempFile(),
+                        this@CustomHomeMenuActivity,
+                        true,
+                        1,
+                        1,
+                        R.color.gray,
+                        R.color.gray_variant
+                    )
+                }
+            CroperinoConfig.REQUEST_PICK_FILE ->
+                if (resultCode == Activity.RESULT_OK) {
+                    CroperinoFileUtil.newGalleryFile(data, this@CustomHomeMenuActivity)
+                    Croperino.runCropImage(
+                        CroperinoFileUtil.getTempFile(),
+                        this@CustomHomeMenuActivity,
+                        true,
+                        0,
+                        0,
+                        R.color.gray,
+                        R.color.gray_variant
+                    )
+                }
+            CroperinoConfig.REQUEST_CROP_PHOTO ->
+                if (resultCode == Activity.RESULT_OK) {
+                    //cropped image returned is set to the imageview on  register layout
+                    var i = Uri.fromFile(CroperinoFileUtil.getTempFile())
+                    Glide.with(this@CustomHomeMenuActivity).load(i)
+                        .placeholder(R.drawable.profileplaceholder)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(
+                            profile_image
+                        )
+                }
+        }
     }
 }

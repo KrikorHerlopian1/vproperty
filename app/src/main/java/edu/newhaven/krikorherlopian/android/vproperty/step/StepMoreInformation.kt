@@ -10,12 +10,15 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FirebaseFirestore
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
+import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
+import edu.newhaven.krikorherlopian.android.vproperty.model.User
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_more_info.view.*
 
@@ -69,6 +72,23 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
                     )
             }
 
+            if (prop.id.trim().equals("")) {
+                val db = FirebaseFirestore.getInstance()
+                try {
+                    val docRef =
+                        db.collection("users").document(loggedInUser?.email?.toString()!!).get()
+                            .addOnSuccessListener { document ->
+                                if (document != null) {
+                                    var user = document.toObject(User::class.java)
+                                    ms?.contactinput?.setText(user?.phoneNumber)
+                                } else {
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                            }
+                } catch (e: Exception) {
+                }
+            }
             ms?.relatedWebsite?.setText(prop.relatedWebsite)
             ms?.virtualtourinput?.setText(prop.virtualTour)
             ms?.contactinput?.setText(prop.contactPhone)

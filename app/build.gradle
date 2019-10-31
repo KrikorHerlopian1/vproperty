@@ -39,6 +39,7 @@ dependencies {
         exclude group: 'com.google.android.gms'
         exclude group: 'androidx.appcompat'
     }
+    implementation 'com.anupcowkur:statelin:0.1.0'
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
