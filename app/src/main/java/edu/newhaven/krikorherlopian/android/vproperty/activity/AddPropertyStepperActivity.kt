@@ -182,9 +182,6 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 "}"
 
         var apiService = getClient().create(ApiInterface::class.java)
-        /*val requestBody = MultipartBody.Builder()
-            .setType(MultipartBody.FORM)
-            .addFormDataPart("body", postJsonData).build()*/
         var body =
             RequestBody.create(MediaType.parse("application/json"), postJsonData)
         val responseBodyCall = apiService.sendChatNotification(body)
@@ -283,11 +280,6 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
 
 
     override fun addPictureClicked() {
-        /*Croperino.prepareChooser(
-            this@AddPropertyStepperActivity,
-            "" + resources.getString(R.string.capture_photo),
-            ContextCompat.getColor(this@AddPropertyStepperActivity, R.color.colorPrimaryDark)
-        )*/
         AirDialog.show(
             activity = this,                      // mandatory
             title = "" + resources.getString(R.string.app_name),              // mandatory

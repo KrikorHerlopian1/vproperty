@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -110,10 +109,6 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
     }
 
     override fun startActivityDet(image: ImageView, property: Property) {
-        val options =
-            ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this, image, "MyTransition"
-            )
         val i = Intent(
             this@CustomHomeMenuActivity,
             PropertyDetailsActivity::class.java

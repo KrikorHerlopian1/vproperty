@@ -54,11 +54,11 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             .addOnSuccessListener { location: Location? ->
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
-                    val sydney = LatLng(
+                    val latLng = LatLng(
                         location.latitude.toDouble(),
                         location.longitude.toDouble()
                     )
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
                 }
             }
     }
@@ -97,13 +97,13 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                         property.id = doc.document.id
                         propertyList.add(property)
                         try {
-                            val sydney =
+                            val latLng =
                                 LatLng(
                                     property.address.latitude.toDouble(),
                                     property.address.longitude.toDouble()
                                 )
 
-                            mMap.addMarker(MarkerOptions().position(sydney).title("" + (count)))
+                            mMap.addMarker(MarkerOptions().position(latLng).title("" + (count)))
                             count = count + 1
                             mMap.setOnInfoWindowClickListener {
                                 var property1: Property = propertyList.get(it.title.toInt())

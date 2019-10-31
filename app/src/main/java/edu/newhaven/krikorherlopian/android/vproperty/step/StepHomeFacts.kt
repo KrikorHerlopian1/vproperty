@@ -75,13 +75,6 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
                 parking_number_picker.value = property.homeFacts.parkingSpaces?.toInt()!!
             }
 
-            forsale.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) {
-                    forrent.isChecked = false
-                    priceLayout.hint = resources.getString(R.string.price)
-                }
-            }
-
             yearbuiltinput.setText(property.homeFacts.yearBuilt)
             hoainput.setText(property.homeFacts.hoadues)
             modal_year_input.setText(property.homeFacts.structuralModalYear)
@@ -90,6 +83,15 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
             garage_ft_input.setText(property.homeFacts.garageSqFt)
             basement_sq_ft_input.setText(property.homeFacts.basementSqFt)
             lot_size_input.setText(property.homeFacts.lotSizeFqFt)
+
+
+            forsale.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) {
+                    forrent.isChecked = false
+                    priceLayout.hint = resources.getString(R.string.price)
+                }
+            }
+
 
             forrent.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
