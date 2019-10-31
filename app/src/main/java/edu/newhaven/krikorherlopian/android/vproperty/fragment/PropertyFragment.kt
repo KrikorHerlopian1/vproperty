@@ -32,6 +32,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
+    lateinit var markerS: Marker
     var currentView: ImageView? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,17 +66,34 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
     private fun getData() {
         val db = FirebaseFirestore.getInstance()
         val docRef = db.collection("properties")
+        var count = 0
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 return@addSnapshotListener
             }
-            var count = 0
+
             for (doc in snapshot!!.documentChanges) {
                 when (doc.type) {
+                    DocumentChange.Type.MODIFIED -> {
+                        var prop: Property = doc.document.toObject(Property::class.java)
+                        var i = 0
+                        for (propert in propertyList) {
+                            System.out.println("" + doc.document.id + "--------" + propert.id)
+                            if (doc.document.id.equals(propert.id)) {
+                                propertyList[i] = prop
+                                propertyList[i].id = doc.document.id
+                                try {
+                                    if (markerS.isInfoWindowShown) {
+                                        markerS.showInfoWindow()
+                                    }
+                                } catch (e: java.lang.Exception) {
+                                }
+                            }
+                            i = i + 1
+                        }
+                    }
                     DocumentChange.Type.ADDED -> {
-
-
-                        Log.d("", "${doc.document.id} => ${doc.document.data}")
+                        Log.d("TAGs", "${doc.document.id} => ${doc.document.data}")
                         var property: Property = doc.document.toObject(Property::class.java)
                         property.id = doc.document.id
                         propertyList.add(property)
@@ -85,6 +103,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                     property.address.latitude.toDouble(),
                                     property.address.longitude.toDouble()
                                 )
+
                             mMap.addMarker(MarkerOptions().position(sydney).title("" + (count)))
                             count = count + 1
                             mMap.setOnInfoWindowClickListener {
@@ -104,6 +123,9 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                     val v = layoutInflater.inflate(
                                         R.layout.map_info, null
                                     )
+                                    System.out.println("----------------got here")
+                                    markerS = marker!!
+
                                     currentView = v.image
                                     val displayMetrics = resources.displayMetrics
                                     v.layoutParams = LinearLayout.LayoutParams(
@@ -111,7 +133,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                         resources.getDimension(R.dimen.image_map_size).toInt()
                                     )
 
-                                    val i = Integer.parseInt(marker!!.title)
+                                    val i = Integer.parseInt(marker.title)
                                     if (i != -1) {
                                         val property = propertyList.get(i)
                                         val info = v.info
