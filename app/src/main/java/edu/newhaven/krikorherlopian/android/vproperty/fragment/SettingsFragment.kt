@@ -29,6 +29,7 @@ class SettingsFragment : Fragment(),
     var drawerSettingsItem: SettingsItem? = null
     var autoLoginItem: SettingsItem? = null
     var signOutItem: SettingsItem? = null
+    var versionItem: SettingsItem? = null
     var notifications: SettingsItem? = null
     var list: MutableList<SettingsItem> = mutableListOf<SettingsItem>()
     var sharedPref: SharedPreferences? = null
@@ -48,6 +49,11 @@ class SettingsFragment : Fragment(),
         var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
         var auto = sharedPref?.getBoolean(PREF_AUTO, true).toString()
         var not = sharedPref?.getBoolean(PREF_NOT, true).toString()
+        val manager = root?.context?.packageManager
+        val info = manager?.getPackageInfo(
+            root?.context?.packageName, 0
+        )
+        val version = info?.versionName
         drawerSettingsItem = SettingsItem(
             root!!.resources.getString(R.string.navigation_drawer),
             "",
@@ -68,7 +74,11 @@ class SettingsFragment : Fragment(),
             "" + not,
             R.drawable.ic_notifications, 1
         )
-
+        versionItem = SettingsItem(
+            root!!.resources.getString(R.string.version),
+            "" + version,
+            R.drawable.ic_info
+        )
 
         when (drawer) {
             "default" -> drawerSettingsItem?.subtitle =
@@ -79,7 +89,7 @@ class SettingsFragment : Fragment(),
         list.add(notifications!!)
         list.add(autoLoginItem!!)
         list.add(signOutItem!!)
-
+        list.add(versionItem!!)
         val adapter = TitleSubtitleAdapter(
             list, this, root?.context!!
         )

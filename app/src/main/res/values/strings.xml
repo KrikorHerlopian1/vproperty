@@ -254,4 +254,5 @@
     <string name="submit">SUBMIT</string>
     <string name="success_update_profile">Successfully updated profile</string>
     <string name="process_failed">Process Failed</string>
+    <string name="version">Version</string>
 </resources>
