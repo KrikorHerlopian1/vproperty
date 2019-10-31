@@ -794,6 +794,35 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
             }
         }
 
+        if (prop.virtualTour != null && !prop.virtualTour.equals("")
+            && !prop.virtualTour.equals("0")
+        ) {
+            val child = layoutInflater.inflate(R.layout.detail_item_tint, null)
+            Glide.with(this@PropertyDetailsActivity).load(R.drawable.ic_web_black_24dp).placeholder(
+                R.drawable.ic_web_black_24dp
+            ).into(
+                child.typeimage
+            )
+            child.secondlayout.visibility = View.GONE
+            //  child.hometype.text = resources.getString(R.string.related_website)
+            child.hometype.text =
+                Html.fromHtml("<u>" + resources.getString(R.string.virtual_tour) + "</u>")
+            homeFactLayout.addView(child)
+            child.firstlayout.setOnClickListener {
+                try {
+                    val uris = Uri.parse(prop.virtualTour)
+                    val intents = Intent(Intent.ACTION_VIEW, uris)
+                    val b = Bundle()
+                    b.putBoolean("new_window", true)
+                    intents.putExtras(b)
+                    startActivity(intents)
+                } catch (e: Exception) {
+                }
+
+            }
+        }
+
+
     }
 
     private fun setUpHomeType() {

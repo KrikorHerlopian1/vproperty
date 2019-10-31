@@ -12,20 +12,25 @@
         android:orientation="vertical">
 
 
-        <RelativeLayout
-            android:id="@+id/addPictureLayout"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:orientation="vertical">
+            android:layout_height="@dimen/imagesize">
 
-            <ImageView
-                android:id="@+id/picture"
+            <RelativeLayout
+                android:id="@+id/addPictureLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"></ImageView>
-        </RelativeLayout>
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"></ImageView>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
 
 
         <LinearLayout

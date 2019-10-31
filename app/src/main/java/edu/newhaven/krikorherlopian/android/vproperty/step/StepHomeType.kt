@@ -77,7 +77,6 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
 
             var propertType9: HomeTypes = HomeTypes("OTH", resources.getString(R.string.other))
             list.add(HomeTypePair(propertType9, null))
-            System.out.println("-=---------------------" + property.homeFacts.homeType)
 
             if (property.homeFacts.homeType.equals("SIF")) {
                 typeCode = property.homeFacts.homeType
@@ -129,7 +128,6 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
     }
 
     override fun rowClicked(position: Int, position2: Int) {
-        System.out.println("clicked")
         for (homeTypePair in list) {
             homeTypePair.homeType1?.selected = 0
             homeTypePair.homeType2?.selected = 0
@@ -148,7 +146,6 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
 
     override fun verifyStep(): VerificationError? {
         try {
-            System.out.println("clicked2")
             if (posSelected == -1) {
                 return VerificationError(resources.getString(R.string.choose_home_type))
             } else {

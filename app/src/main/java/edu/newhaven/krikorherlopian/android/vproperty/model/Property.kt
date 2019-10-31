@@ -14,5 +14,6 @@ data class Property(
     var relatedWebsite: String = "",
     var virtualTour: String = "",
     var contactPhone: String = "",
-    var id: String = ""
+    var id: String = "",
+    var isDisabled: String = "N"
 ) : Serializable
