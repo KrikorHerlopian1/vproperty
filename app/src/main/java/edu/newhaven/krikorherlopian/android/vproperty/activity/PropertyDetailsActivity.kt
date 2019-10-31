@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -71,6 +72,20 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         setUpBuildingDetails()
         setUpUtilityDetails()
 
+        image.setOnClickListener {
+            val options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this, imagelayout, "MyTransition"
+                )
+            val i = Intent(
+                this@PropertyDetailsActivity,
+                ShowImageActivity::class.java
+            )
+            i.putExtra("title", prop.houseName)
+            i.putExtra("url", prop.photoUrl)
+            i.putExtra("text", prop.address.addressName)
+            startActivity(i, options.toBundle())
+        }
         fab.setOnClickListener {
             val intent =
                 Intent(this@PropertyDetailsActivity, AddPropertyStepperActivity::class.java)

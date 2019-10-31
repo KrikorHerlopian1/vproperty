@@ -32,6 +32,8 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/imagelayout"
+                android:transitionName="MyTransition"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/imagesize">
 
@@ -39,8 +41,7 @@
                     android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/imagesize"
-                    android:scaleType="centerCrop"
-                    android:transitionName="MyTransition"></ImageView>
+                    android:scaleType="centerCrop"></ImageView>
 
                 <ImageView
                     android:id="@+id/imagetype"

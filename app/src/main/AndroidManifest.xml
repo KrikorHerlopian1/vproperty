@@ -98,6 +98,9 @@
             android:name=".activity.PropertyDetailsActivity"
             android:screenOrientation="portrait"></activity>
         <activity
+            android:name=".activity.ShowImageActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name="com.schibstedspain.leku.LocationPickerActivity"
             android:label="@string/leku_title_activity_location_picker"
             android:parentActivityName=".activity.AddPropertyActivity"
