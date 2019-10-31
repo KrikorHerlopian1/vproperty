@@ -1,7 +1,9 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import com.squareup.picasso.Picasso
@@ -19,7 +21,13 @@ class ShowImageActivity : AppCompatActivity() {
             var text = bundle?.getString("text")
             title = bundle?.getString("title")
             setupToolBar()
+            val handler = Handler()
+            handler.postDelayed(object : Runnable {
+                override fun run() {
+                }
+            }, 750)
             textItem.text = text
+            textItem.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
             ViewCompat.setTransitionName(image, "MyTransition")
             Picasso.get()
                 .load(url)
