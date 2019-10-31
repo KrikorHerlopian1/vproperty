@@ -48,12 +48,11 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="10dp"></ImageView>
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_toLeftOf="@id/imagetype"
+                    android:paddingRight="40dp"
                     android:layout_gravity="bottom"
                     android:background="@color/transparent_image_bg"
                     android:orientation="vertical">
@@ -93,6 +92,156 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"></LinearLayout>
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/appliancesdetails"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/appliances"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/applianceslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/floorcovering"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/floor_covering"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/floorcoveringlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/roomdetails"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/roomdetails"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/roomdetailslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/exterior"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buidling_exterior"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/exteriorlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/buildingam"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/building_aminities"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/buildingamlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/outdoor"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/outdoor_aminities"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/outdoorlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/parking"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/parking"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/parkinglayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/heatingtype"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/heating_type"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/heatingtypelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/coolingtype"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cooling_type"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/coolingtypelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
 
             <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
                 style="?android:attr/listSeparatorTextViewStyle"
