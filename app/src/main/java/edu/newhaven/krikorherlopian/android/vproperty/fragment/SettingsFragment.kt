@@ -154,7 +154,8 @@ class SettingsFragment : Fragment(),
         val ok = "" + resources.getString(android.R.string.ok)
         settingsOptArr[0] = resources.getString(R.string.default_drawer)
         settingsOptArr[1] = resources.getString(R.string.custom)
-        alerBuilder.setSingleChoiceItems(
+
+        var alert = alerBuilder.setSingleChoiceItems(
             settingsOptArr,
             previousChoice,
             DialogInterface.OnClickListener { dialog, item ->
@@ -185,7 +186,9 @@ class SettingsFragment : Fragment(),
 
             } catch (e: Exception) {
             }
-        }).setCancelable(false).setTitle(sel).create().show()
+        }).setCancelable(false).setTitle(sel).create()
+        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        alert.show()
     }
 
     //open the home or custom menu when navigation drawer settings changed in the app.

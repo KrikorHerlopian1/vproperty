@@ -255,4 +255,5 @@
     <string name="success_update_profile">Successfully updated profile</string>
     <string name="process_failed">Process Failed</string>
     <string name="version">Version</string>
+    <string name="choose_a_way_photo">Choose a way to capture photo</string>
 </resources>

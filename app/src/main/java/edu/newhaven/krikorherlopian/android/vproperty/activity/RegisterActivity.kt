@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -28,7 +29,7 @@ import com.mikelau.croperino.CroperinoFileUtil
 import edu.newhaven.krikorherlopian.android.vproperty.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_register.*
-import mumayank.com.airdialog.AirDialog
+import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -65,29 +66,24 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun addProfileButtonClicked() {
-        /*Croperino.prepareChooser(
-            this@RegisterActivity,
-            "" + resources.getString(R.string.capture_photo),
-            ContextCompat.getColor(this@RegisterActivity, R.color.colorPrimaryDark)
-        )*/
-        AirDialog.show(
-            activity = this,                      // mandatory
-            title = "" + resources.getString(R.string.app_name),              // mandatory
-            message = "" + resources.getString(R.string.take_image),          // mandatory
-            iconDrawableId = R.drawable.ic_camera_alt_black_24dp,
-            isCancelable = false,
-            airButton1 = AirDialog.Button("" + resources.getString(R.string.camera)) {
-                // do something
-                edu.newhaven.krikorherlopian.android.vproperty.Croperino.prepareCamera(this@RegisterActivity)
-            },
-            airButton2 = AirDialog.Button("" + resources.getString(android.R.string.cancel)) {
-                // do something
-            },
-            airButton3 = AirDialog.Button("" + resources.getString(R.string.menu_gallery)) {
-                // do something
-                Croperino.prepareGallery(this@RegisterActivity)
-            }
-        )
+        val alerBuilder = AlertDialog.Builder(this@RegisterActivity)
+        val dialogView = layoutInflater.inflate(R.layout.custom_croperino_dialog, null)
+
+        alerBuilder.setView(dialogView)
+        val alert = alerBuilder.setCancelable(true).setTitle("").create()
+        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        alert.show()
+        dialogView.close.setOnClickListener {
+            alert.dismiss()
+        }
+        dialogView.camera.setOnClickListener {
+            Croperino.prepareCamera(this@RegisterActivity)
+            alert.dismiss()
+        }
+        dialogView.gallery.setOnClickListener {
+            Croperino.prepareGallery(this@RegisterActivity)
+            alert.dismiss()
+        }
     }
 
     private fun registerButtonClicked() {

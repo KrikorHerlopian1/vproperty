@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
@@ -31,9 +32,8 @@ import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
-import mumayank.com.airdialog.AirDialog
-
 /*
         This page contains the home menu , first page after login.
         It has multiple menu options in navigation drawer, every menu assosciated with fragment.
@@ -106,24 +106,24 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
             "" + resources.getString(R.string.capture_photo),
             ContextCompat.getColor(this@RegisterActivity, R.color.colorPrimaryDark)
         )*/
-        AirDialog.show(
-            activity = this,                      // mandatory
-            title = "" + resources.getString(R.string.app_name),              // mandatory
-            message = "" + resources.getString(R.string.take_image),          // mandatory
-            iconDrawableId = R.drawable.ic_camera_alt_black_24dp,
-            isCancelable = false,
-            airButton1 = AirDialog.Button("" + resources.getString(R.string.camera)) {
-                // do something
-                edu.newhaven.krikorherlopian.android.vproperty.Croperino.prepareCamera(this@HomeMenuActivity)
-            },
-            airButton2 = AirDialog.Button("" + resources.getString(android.R.string.cancel)) {
-                // do something
-            },
-            airButton3 = AirDialog.Button("" + resources.getString(R.string.menu_gallery)) {
-                // do something
-                Croperino.prepareGallery(this@HomeMenuActivity)
-            }
-        )
+        val alerBuilder = AlertDialog.Builder(this@HomeMenuActivity)
+        val dialogView = layoutInflater.inflate(R.layout.custom_croperino_dialog, null)
+
+        alerBuilder.setView(dialogView)
+        val alert = alerBuilder.setCancelable(true).setTitle("").create()
+        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        alert.show()
+        dialogView.close.setOnClickListener {
+            alert.dismiss()
+        }
+        dialogView.camera.setOnClickListener {
+            Croperino.prepareCamera(this@HomeMenuActivity)
+            alert.dismiss()
+        }
+        dialogView.gallery.setOnClickListener {
+            Croperino.prepareGallery(this@HomeMenuActivity)
+            alert.dismiss()
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId

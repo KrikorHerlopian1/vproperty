@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Continuation
@@ -33,12 +34,12 @@ import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
 import kotlinx.android.synthetic.main.add_property.toolbar
+import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_step_home_address.addressName
 import kotlinx.android.synthetic.main.fragment_step_home_address.latitudeInput
 import kotlinx.android.synthetic.main.fragment_step_home_address.longitudeInput
 import kotlinx.android.synthetic.main.fragment_step_home_address.zipCodeInput
 import kotlinx.android.synthetic.main.stepper.*
-import mumayank.com.airdialog.AirDialog
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import retrofit2.Callback
@@ -280,24 +281,24 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
 
 
     override fun addPictureClicked() {
-        AirDialog.show(
-            activity = this,                      // mandatory
-            title = "" + resources.getString(R.string.app_name),              // mandatory
-            message = "" + resources.getString(R.string.take_image),          // mandatory
-            iconDrawableId = R.drawable.ic_camera_alt_black_24dp,
-            isCancelable = false,
-            airButton1 = AirDialog.Button("" + resources.getString(R.string.camera)) {
-                // do something
-                Croperino.prepareCamera(this@AddPropertyStepperActivity)
-            },
-            airButton2 = AirDialog.Button("" + resources.getString(android.R.string.cancel)) {
-                // do something
-            },
-            airButton3 = AirDialog.Button("" + resources.getString(R.string.menu_gallery)) {
-                // do something
-                Croperino.prepareGallery(this@AddPropertyStepperActivity)
-            }
-        )
+        val alerBuilder = AlertDialog.Builder(this@AddPropertyStepperActivity)
+        val dialogView = layoutInflater.inflate(R.layout.custom_croperino_dialog, null)
+
+        alerBuilder.setView(dialogView)
+        val alert = alerBuilder.setCancelable(true).setTitle("").create()
+        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        alert.show()
+        dialogView.close.setOnClickListener {
+            alert.dismiss()
+        }
+        dialogView.camera.setOnClickListener {
+            Croperino.prepareCamera(this@AddPropertyStepperActivity)
+            alert.dismiss()
+        }
+        dialogView.gallery.setOnClickListener {
+            Croperino.prepareGallery(this@AddPropertyStepperActivity)
+            alert.dismiss()
+        }
     }
 
     override fun addHomeFacts(
