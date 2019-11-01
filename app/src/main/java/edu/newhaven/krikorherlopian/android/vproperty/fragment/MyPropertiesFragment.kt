@@ -43,6 +43,7 @@ class MyPropertiesFragment : Fragment(), ListClick {
         val db = FirebaseFirestore.getInstance()
         var count = 0
         list.clear()
+        root?.text?.visibility = View.VISIBLE
         adapter = RecylerViewAdapter(
             list, this, root?.context!!
         )
@@ -93,6 +94,10 @@ class MyPropertiesFragment : Fragment(), ListClick {
                     }
                 }
             }
+            if (list.size > 0)
+                root?.text?.visibility = View.GONE
+            else
+                root?.text?.visibility = View.VISIBLE
             adapter.notifyDataSetChanged()
         }
     }
