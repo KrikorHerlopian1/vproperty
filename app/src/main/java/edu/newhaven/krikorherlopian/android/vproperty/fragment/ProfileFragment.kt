@@ -103,6 +103,7 @@ class ProfileFragment : Fragment() {
         if (machine.state == stateView) {
             machine.state = stateCreate
             root?.displayName?.isEnabled = true
+            root?.emailAddressInputLayout?.visibility = View.GONE
             root?.phone_number_input?.isEnabled = true
             root?.submitbutton?.visibility = View.VISIBLE
             root?.fab?.setImageDrawable(
@@ -115,6 +116,7 @@ class ProfileFragment : Fragment() {
         } else if (machine.state == stateCreate) {
             machine.state = stateView
             root?.email?.setText(loggedInUser?.email)
+            root?.emailAddressInputLayout?.visibility = View.VISIBLE
             root?.displayName?.setText(loggedInUser?.displayName)
             root?.phone_number_input?.setText(user?.phoneNumber)
             Glide.with(context!!).load(loggedInUser?.photoUrl)

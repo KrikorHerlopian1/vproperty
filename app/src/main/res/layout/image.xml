@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
-            android:transitionName="MyTransition" />
+            android:transitionName="MySecondTransition" />
 
         <LinearLayout
             android:id="@+id/textItem2"

@@ -75,7 +75,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         image.setOnClickListener {
             val options =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this, image, "MyTransition"
+                    this, imagelayout, "MySecondTransition"
                 )
             val i = Intent(
                 this@PropertyDetailsActivity,

@@ -28,7 +28,7 @@ class ShowImageActivity : AppCompatActivity() {
             }, 750)
             textItem.text = text
             textItem.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
-            ViewCompat.setTransitionName(image, "MyTransition")
+            ViewCompat.setTransitionName(image, "MySecondTransition")
             Picasso.get()
                 .load(url)
                 .placeholder(R.drawable.placeholderdetail)

@@ -32,6 +32,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:transitionName="MySecondTransition"
                 android:id="@+id/imagelayout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/imagesize">
