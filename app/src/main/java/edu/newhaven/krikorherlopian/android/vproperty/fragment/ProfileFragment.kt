@@ -11,8 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.anupcowkur.statelin.Machine
-import com.anupcowkur.statelin.State
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.Continuation
@@ -30,9 +28,6 @@ import java.util.*
 
 class ProfileFragment : Fragment() {
     lateinit var storage: FirebaseStorage
-    val stateA = State("view")
-    val stateB = State("modify")
-    val machine = Machine(stateA)
     var root: View? = null
     var user: User? = User()
     override fun onCreateView(
@@ -41,6 +36,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.activity_profile, container, false)
+        machine.state = stateView
         var tf = Typeface.createFromAsset(context?.assets, "" + font)
         root?.emailAddressInputLayout?.typeface = tf
         root?.displayNamenputLayout?.typeface = tf
@@ -91,7 +87,7 @@ class ProfileFragment : Fragment() {
             }
         }
         root?.profile_image?.setOnClickListener {
-            if (machine.state == stateB) {
+            if (machine.state == stateCreate) {
                 fragmentActivityCommunication?.addProfileButtonClicked()
             }
         }
@@ -102,8 +98,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun fabClick() {
-        if (machine.state == stateA) {
-            machine.state = stateB
+        if (machine.state == stateView) {
+            machine.state = stateCreate
             root?.displayName?.isEnabled = true
             root?.phone_number_input?.isEnabled = true
             root?.submitbutton?.visibility = View.VISIBLE
@@ -114,8 +110,8 @@ class ProfileFragment : Fragment() {
                 )
             )
             root?.displayName?.requestFocus()
-        } else if (machine.state == stateB) {
-            machine.state = stateA
+        } else if (machine.state == stateCreate) {
+            machine.state = stateView
             root?.email?.setText(loggedInUser?.email)
             root?.displayName?.setText(loggedInUser?.displayName)
             root?.phone_number_input?.setText(user?.phoneNumber)

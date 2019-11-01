@@ -256,4 +256,5 @@
     <string name="process_failed">Process Failed</string>
     <string name="version">Version</string>
     <string name="choose_a_way_photo">Choose a way to capture photo</string>
+    <string name="my_properties">My Properties</string>
 </resources>

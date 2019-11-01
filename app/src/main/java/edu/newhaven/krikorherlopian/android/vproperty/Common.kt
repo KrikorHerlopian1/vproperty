@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
+import com.anupcowkur.statelin.Machine
+import com.anupcowkur.statelin.State
 import com.google.firebase.auth.FirebaseUser
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
@@ -25,6 +27,14 @@ var loggedInUser: FirebaseUser? = null
 var font = "Poppins-Light.ttf"
 var activityFunctionalities: ActivityFunctionalities? = null
 var fragmentActivityCommunication: FragmentActivityCommunication? = null
+val stateView = State("view")
+val stateCreate = State("create")
+val stateUpdate = State("update")
+val addModifyProperty = State("addModifyProperty")
+val internetCall = State("internetCall")
+val machine = Machine(stateView)
+
+
 fun isEmailValid(email: CharSequence): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }

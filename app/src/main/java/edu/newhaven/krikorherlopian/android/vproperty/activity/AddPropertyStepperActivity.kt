@@ -23,14 +23,12 @@ import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
 import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError
+import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
-import edu.newhaven.krikorherlopian.android.vproperty.activityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.MyStepperAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ApiInterface
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
-import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.*
-import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
 import kotlinx.android.synthetic.main.add_property.toolbar
@@ -51,12 +49,12 @@ import java.util.*
 class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperListener,
     OnNavigationBarListener {
     lateinit var storage: FirebaseStorage
-    var state: Int = 0
     var property: Property = Property()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.stepper)
         setupToolBar()
+        machine.state = addModifyProperty
         try {
             property = intent.getSerializableExtra("argPojo") as Property
         } catch (e: Exception) {
@@ -341,8 +339,8 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         contactinput: String,
         bitmap: Bitmap
     ) {
-        if (state == 0) {
-            state = 1
+        if (machine.state == addModifyProperty) {
+            machine.state = internetCall
             property.virtualTour = virtualTour
             property.relatedWebsite = relatedWebsite
             property.contactPhone = contactinput
@@ -366,7 +364,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                     task.exception?.let {
                         throw it
                     }
-                    state = 0
+                    machine.state = addModifyProperty
                     progress_bar.visibility = View.GONE
                 }
                 return@Continuation mountainImagesRef.downloadUrl
@@ -375,7 +373,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                     val downloadUri = task.result
                     uploadProperty(downloadUri)
                 } else {
-                    state = 0
+                    machine.state = addModifyProperty
                     progress_bar.visibility = View.GONE
                     Toasty.success(
                         this@AddPropertyStepperActivity,
@@ -404,7 +402,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                         true
                     ).show()
                     progress_bar.visibility = View.GONE
-                    state = 0
+                    machine.state = addModifyProperty
                     sendNotificationToPatner()
                     property.id = documentReference.id
                     try {
@@ -421,7 +419,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 }
                 .addOnFailureListener { e ->
                     progress_bar.visibility = View.GONE
-                    state = 0
+                    machine.state = addModifyProperty
                     Toasty.success(
                         this@AddPropertyStepperActivity,
                         R.string.error_adding_property,
@@ -441,7 +439,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                         true
                     ).show()
                     progress_bar.visibility = View.GONE
-                    state = 0
+                    machine.state = addModifyProperty
                     property.id = property.id
                     try {
                         activityFunctionalities?.closeActivity()
@@ -457,7 +455,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 }
                 .addOnFailureListener { e ->
                     progress_bar.visibility = View.GONE
-                    state = 0
+                    machine.state = addModifyProperty
                     Toasty.success(
                         this@AddPropertyStepperActivity,
                         R.string.error_adding_property,

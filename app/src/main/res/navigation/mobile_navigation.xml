@@ -12,6 +12,13 @@
         tools:layout="@layout/content_main" />
 
     <fragment
+        android:id="@+id/nav_properties"
+        android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.ProfileFragment"
+        android:label="@string/my_properties"
+        tools:layout="@layout/content_main" />
+
+
+    <fragment
         android:id="@+id/nav_profile"
         android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.ProfileFragment"
         android:label="@string/my_profile"
