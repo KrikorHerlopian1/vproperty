@@ -39,6 +39,7 @@ class MyPropertiesFragment : Fragment(), ListClick {
         return root
     }
 
+
     private fun getData() {
         val db = FirebaseFirestore.getInstance()
         var count = 0
@@ -83,12 +84,19 @@ class MyPropertiesFragment : Fragment(), ListClick {
                             }
                             i = i + 1
                         }
+                        adapter.notifyDataSetChanged()
                     }
                     DocumentChange.Type.ADDED -> {
                         var prop: Property = doc.document.toObject(Property::class.java)
                         if (prop.email.equals(loggedInUser?.email)) {
                             prop.id = doc.document.id
-                            list.add(prop)
+                            list.add(0, prop)
+                            var manager = root?.recyclerView?.layoutManager!! as LinearLayoutManager
+                            val firstItem = manager.findFirstVisibleItemPosition()
+                            val firstItemView = manager.findViewByPosition(firstItem)
+                            val topOffset = firstItemView?.top?.toFloat()
+                            adapter.notifyItemRangeInserted(0, 1)
+                            adapter.notifyItemRangeChanged(0, list.size)
                         }
 
                     }
@@ -98,7 +106,8 @@ class MyPropertiesFragment : Fragment(), ListClick {
                 root?.text?.visibility = View.GONE
             else
                 root?.text?.visibility = View.VISIBLE
-            adapter.notifyDataSetChanged()
+
+
         }
     }
 }
