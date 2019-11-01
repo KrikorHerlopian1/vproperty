@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.anupcowkur.statelin.Machine
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.Continuation
@@ -28,6 +29,7 @@ import java.util.*
 
 class ProfileFragment : Fragment() {
     lateinit var storage: FirebaseStorage
+    val machine = Machine(stateView)
     var root: View? = null
     var user: User? = User()
     override fun onCreateView(

@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.anupcowkur.statelin.Machine
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
@@ -48,6 +49,7 @@ import java.util.*
 
 class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperListener,
     OnNavigationBarListener {
+    val machine = Machine(addModifyProperty)
     lateinit var storage: FirebaseStorage
     var property: Property = Property()
     override fun onCreate(savedInstanceState: Bundle?) {
