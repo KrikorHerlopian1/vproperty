@@ -23,5 +23,7 @@
     <dimen name="checkboxsize">30dp</dimen>
     <dimen name="imagesize">250dp</dimen>
     <dimen name="rowheight">40dp</dimen>
+    <dimen name="curverlayoutsize">100dp</dimen>
+    <dimen name="thumbnailsize">60dp</dimen>
 </resources>
 

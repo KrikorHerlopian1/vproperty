@@ -4,7 +4,8 @@ import android.widget.ImageView
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 
 interface FragmentActivityCommunication {
-    fun startActivityDet(image: ImageView, property: Property)
+    fun startActivityDet(property: Property)
+    fun startActivityDetWithTransition(property: Property, imageView: ImageView)
     fun addProfileButtonClicked()
     fun updateProfile()
 }

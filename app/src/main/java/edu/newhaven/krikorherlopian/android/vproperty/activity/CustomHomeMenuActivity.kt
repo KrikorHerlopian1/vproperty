@@ -11,6 +11,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -141,13 +142,26 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun startActivityDet(image: ImageView, property: Property) {
+    override fun startActivityDet(property: Property) {
         val i = Intent(
             this@CustomHomeMenuActivity,
             PropertyDetailsActivity::class.java
         )
         i.putExtra("argPojo", property)
         startActivity(i)
+    }
+
+    override fun startActivityDetWithTransition(property: Property, imageView: ImageView) {
+        val options =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this@CustomHomeMenuActivity, imageView, "MyTransition"
+            )
+        val i = Intent(
+            this@CustomHomeMenuActivity,
+            PropertyDetailsActivity::class.java
+        )
+        i.putExtra("argPojo", property)
+        startActivity(i, options.toBundle())
     }
 
     override fun updateProfile() {

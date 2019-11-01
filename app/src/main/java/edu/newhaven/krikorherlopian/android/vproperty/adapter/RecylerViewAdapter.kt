@@ -8,24 +8,30 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
 import edu.newhaven.krikorherlopian.android.vproperty.viewholder.MyViewHolder
+import edu.newhaven.krikorherlopian.android.vproperty.viewholder.PropertyViewHolder
 import edu.newhaven.krikorherlopian.android.vproperty.viewholder.ViewHolderOneItem
+import kotlinx.android.synthetic.main.property_item.view.*
 import kotlinx.android.synthetic.main.switch_item.view.*
 
 /*
     This page adapter, contains an icon plus two texts below each other.
  */
-class TitleSubtitleAdapter(
-    private val list: MutableList<SettingsItem>,
+class RecylerViewAdapter(
+    private val list: MutableList<Any>,
     var listClick: ListClick,
     var context: Context
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val HEADER_VIEW = 0
     private val CONTENT_VIEW = 1
+    private val PROPERTY_VIEW = 2
     var lastPosition = -1
 
 
@@ -52,18 +58,38 @@ class TitleSubtitleAdapter(
         when (holder.itemViewType) {
             HEADER_VIEW -> configureViewHolder1(holder, position)
             CONTENT_VIEW -> configureViewHolder2(holder, position)
+            PROPERTY_VIEW -> configureViewHolder3(holder, position)
         }
+    }
 
+    private fun configureViewHolder3(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is PropertyViewHolder && list.get(position) is Property) {
+            var property = list.get(position) as Property
+            holder.bind(property)
+            Glide.with(context).load(property.photoUrl)
+                .placeholder(R.drawable.profileplaceholder)
+                .apply(RequestOptions.circleCropTransform())
+                .into(
+                    holder.itemView.thumbnail
+                )
+        }
+        holder.itemView.setOnClickListener {
+            listClick.rowClicked(
+                position,
+                0,
+                holder.itemView.thumbnail
+            )
+        }
     }
 
     private fun configureViewHolder1(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is MyViewHolder)
-            holder.bind(list.get(position))
+        if (holder is MyViewHolder && list.get(position) is SettingsItem)
+            holder.bind(list.get(position) as SettingsItem)
         holder.itemView.setOnClickListener { listClick.rowClicked(position) }
     }
 
     private fun configureViewHolder2(holder: RecyclerView.ViewHolder, position: Int) {
-        var item = list.get(position)
+        var item = list.get(position) as SettingsItem
         if (holder is ViewHolderOneItem)
             holder.bind(item)
 
@@ -91,6 +117,7 @@ class TitleSubtitleAdapter(
         when (viewType) {
             HEADER_VIEW -> return MyViewHolder(parent.inflate(R.layout.title_subtitle_item))
             CONTENT_VIEW -> return ViewHolderOneItem(parent.inflate(R.layout.switch_item))
+            PROPERTY_VIEW -> return PropertyViewHolder(parent.inflate(R.layout.property_item))
         }
         return MyViewHolder(parent.inflate(R.layout.title_subtitle_item))
     }
@@ -100,10 +127,13 @@ class TitleSubtitleAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (list.get(position).switch == 0)
-            return HEADER_VIEW
-        else
-            return CONTENT_VIEW
+        if (list.get(position) is SettingsItem) {
+            if ((list.get(position) as SettingsItem).switch == 0)
+                return HEADER_VIEW
+            else
+                return CONTENT_VIEW
+        } else if (list.get(position) is Property)
+            return PROPERTY_VIEW
         return super.getItemViewType(position)
     }
 

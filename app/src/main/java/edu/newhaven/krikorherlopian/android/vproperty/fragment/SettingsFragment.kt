@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -16,10 +17,10 @@ import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.activity.CustomHomeMenuActivity
 import edu.newhaven.krikorherlopian.android.vproperty.activity.HomeMenuActivity
 import edu.newhaven.krikorherlopian.android.vproperty.activity.LoginActivity
-import edu.newhaven.krikorherlopian.android.vproperty.adapter.TitleSubtitleAdapter
+import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
-import kotlinx.android.synthetic.main.settings.view.*
+import kotlinx.android.synthetic.main.listview_fragment.view.*
 
 /*
     Settings Fragment.Options to change in app.
@@ -31,7 +32,7 @@ class SettingsFragment : Fragment(),
     var signOutItem: SettingsItem? = null
     var versionItem: SettingsItem? = null
     var notifications: SettingsItem? = null
-    var list: MutableList<SettingsItem> = mutableListOf<SettingsItem>()
+    var list: MutableList<Any> = mutableListOf<Any>()
     var sharedPref: SharedPreferences? = null
     var root: View? = null
     override fun onCreateView(
@@ -39,7 +40,7 @@ class SettingsFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        root = inflater.inflate(R.layout.settings, container, false)
+        root = inflater.inflate(R.layout.listview_fragment, container, false)
         sharedPref = root?.context?.getSharedPreferences(
             PREFS_FILENAME,
             PRIVATE_MODE
@@ -90,7 +91,7 @@ class SettingsFragment : Fragment(),
         list.add(autoLoginItem!!)
         list.add(signOutItem!!)
         list.add(versionItem!!)
-        val adapter = TitleSubtitleAdapter(
+        val adapter = RecylerViewAdapter(
             list, this, root?.context!!
         )
         root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
@@ -99,12 +100,12 @@ class SettingsFragment : Fragment(),
         return root
     }
 
-    override fun rowClicked(position: Int, position2: Int) {
+    override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
         if (position == 0) {
             showDrawerOptions()
         } else if (position == 2) {
             val editor = sharedPref?.edit()
-            editor?.putBoolean(PREF_AUTO, list.get(position).subtitle.toBoolean())
+            editor?.putBoolean(PREF_AUTO, (list.get(position) as SettingsItem).subtitle.toBoolean())
             editor?.apply()
         } else if (position == 3) {
             val intent = Intent(context, LoginActivity::class.java)
@@ -114,11 +115,11 @@ class SettingsFragment : Fragment(),
             activity?.finish()
         } else if (position == 1) {
             val editor = sharedPref?.edit()
-            editor?.putBoolean(PREF_NOT, list.get(position).subtitle.toBoolean())
+            editor?.putBoolean(PREF_NOT, (list.get(position) as SettingsItem).subtitle.toBoolean())
             editor?.apply()
 
 
-            if (list.get(position).subtitle.toBoolean()) {
+            if ((list.get(position) as SettingsItem).subtitle.toBoolean()) {
                 FirebaseMessaging.getInstance().subscribeToTopic("vproperty")
                     .addOnCompleteListener { task ->
                         var msg = getString(R.string.msg_subscribed)

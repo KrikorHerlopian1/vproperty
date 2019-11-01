@@ -109,7 +109,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                 var property1: Property = propertyList.get(it.title.toInt())
 
                                 fragmentActivityCommunication?.startActivityDet(
-                                    currentView!!,
                                     property1
                                 )
                             }

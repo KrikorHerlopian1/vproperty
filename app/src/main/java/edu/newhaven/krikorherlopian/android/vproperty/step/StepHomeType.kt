@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
@@ -19,7 +20,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.HomeTypePair
 import edu.newhaven.krikorherlopian.android.vproperty.model.HomeTypes
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.settings.view.*
+import kotlinx.android.synthetic.main.fragment_step_home_type.view.*
 
 class StepHomeType(context: Context, listener: OnNavigationBarListener, var property: Property) :
     FrameLayout(context),
@@ -118,7 +119,6 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
             val adapter = HomeTypeAdapter(
                 list, this
             )
-
             v?.recyclerView?.layoutManager = LinearLayoutManager(context)
             v?.recyclerView?.itemAnimator = DefaultItemAnimator()
             v?.recyclerView?.adapter = adapter
@@ -127,7 +127,7 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
 
     }
 
-    override fun rowClicked(position: Int, position2: Int) {
+    override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
         for (homeTypePair in list) {
             homeTypePair.homeType1?.selected = 0
             homeTypePair.homeType2?.selected = 0
