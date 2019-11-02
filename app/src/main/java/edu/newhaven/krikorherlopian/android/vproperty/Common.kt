@@ -43,6 +43,7 @@ fun getMarkerIcon(): BitmapDescriptor {
     Color.colorToHSV(Color.parseColor(color), hsv)
     return BitmapDescriptorFactory.defaultMarker(hsv[0])
 }
+
 fun isEmailValid(email: CharSequence): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }

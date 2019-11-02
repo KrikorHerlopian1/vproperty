@@ -68,6 +68,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         emailAddressInputLayout.typeface = tf
         email.typeface = tf
     }
+
     private fun setError(emailError: CharSequence?, emailErrorEnabled: Boolean) {
         emailAddressInputLayout.error = emailError
         emailAddressInputLayout.isErrorEnabled = emailErrorEnabled

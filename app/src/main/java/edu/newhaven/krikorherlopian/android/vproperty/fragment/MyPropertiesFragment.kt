@@ -77,18 +77,36 @@ class MyPropertiesFragment : Fragment(), ListClick {
                     DocumentChange.Type.MODIFIED -> {
                         var prop: Property = doc.document.toObject(Property::class.java)
                         var i = 0
+                        var inList: Boolean = false
                         for (propert in list) {
                             if (doc.document.id.equals((propert as Property).id)) {
+                                inList = true
                                 prop.id = doc.document.id
                                 list[i] = prop
                             }
                             i = i + 1
                         }
-                        adapter.notifyDataSetChanged()
+                        if (inList == false && prop.email.equals(loggedInUser?.email) && prop.isDisabled.trim().equals(
+                                "N"
+                            )
+                        ) {
+                            prop.id = doc.document.id
+                            list.add(0, prop)
+                            var manager = root?.recyclerView?.layoutManager!! as LinearLayoutManager
+                            val firstItem = manager.findFirstVisibleItemPosition()
+                            val firstItemView = manager.findViewByPosition(firstItem)
+                            val topOffset = firstItemView?.top?.toFloat()
+                            adapter.notifyItemRangeInserted(0, 1)
+                            adapter.notifyItemRangeChanged(0, list.size)
+                        } else if (inList == true)
+                            adapter.notifyDataSetChanged()
                     }
                     DocumentChange.Type.ADDED -> {
                         var prop: Property = doc.document.toObject(Property::class.java)
-                        if (prop.email.equals(loggedInUser?.email)) {
+                        if (prop.email.equals(loggedInUser?.email) && prop.isDisabled.trim().equals(
+                                "N"
+                            )
+                        ) {
                             prop.id = doc.document.id
                             list.add(0, prop)
                             var manager = root?.recyclerView?.layoutManager!! as LinearLayoutManager
@@ -146,7 +164,6 @@ class MyPropertiesFragment : Fragment(), ListClick {
         // list.add(position, prop)
         adapter.add(position, prop)
     }
-
 
 
 }

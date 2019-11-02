@@ -35,6 +35,7 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
+
 /*
         This page contains the home menu , first page after login.
         It has multiple menu options in navigation drawer, every menu assosciated with fragment.
@@ -126,6 +127,7 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
             alert.dismiss()
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
@@ -169,7 +171,6 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
         i.putExtra("argPojo", property)
         startActivity(i, options.toBundle())
     }
-
 
 
     override fun updateProfile() {
