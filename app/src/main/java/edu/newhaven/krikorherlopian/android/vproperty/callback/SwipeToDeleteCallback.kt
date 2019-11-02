@@ -67,7 +67,7 @@ abstract class SwipeToDeleteCallback(context: Context) :
             return
         }
 
-        // Draw the red delete background
+        // Draw the  delete background
         background.color = backgroundColor
         background.setBounds(
             itemView.right + dX.toInt(),
