@@ -264,4 +264,6 @@
     <string name="terrain">Terrain</string>
     <string name="satellite">Satellite</string>
     <string name="hybdrid">Hybrid</string>
+    <string name="undo">Undo</string>
+    <string name="success_archived">Successfully archived.</string>
 </resources>

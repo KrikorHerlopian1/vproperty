@@ -168,4 +168,7 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
             true
         ).show()
     }
+
+    override fun deleteRow(position: Int) {
+    }
 }

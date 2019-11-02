@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.newhaven.krikorherlopian.android.vproperty.R
@@ -19,6 +20,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunicat
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
+import kotlinx.android.synthetic.main.listview_fragment.*
 import kotlinx.android.synthetic.main.listview_fragment.view.*
 
 class MyPropertiesFragment : Fragment(), ListClick {
@@ -58,26 +60,13 @@ class MyPropertiesFragment : Fragment(), ListClick {
         val swipeHandler = object : SwipeToDeleteCallback(context!!) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //val adapter = root?.recyclerView?.adapter AS
-                adapter.removeAt(viewHolder.adapterPosition)
+                deleteRow(viewHolder.adapterPosition)
+                //adapter.removeAt(viewHolder.adapterPosition)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(root?.recyclerView!!)
-        /*val docRef = db.collection("properties").get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    for(prop in document.toList()){
-                        var property = prop.toObject(Property::class.java)
-                        if(property.email.equals(loggedInUser?.email)) {
-                            list.add(property)
-                        }
-                    }
-                    adapter.notifyDataSetChanged()
-                } else {
-                }
-            }
-            .addOnFailureListener { exception ->
-            }*/
+
         val docRef = db.collection("properties")
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
@@ -122,5 +111,44 @@ class MyPropertiesFragment : Fragment(), ListClick {
 
         }
     }
+
+    override fun deleteRow(position: Int) {
+        val db = FirebaseFirestore.getInstance()
+        var prop = list.get(position) as Property
+        prop.isDisabled = "Y"
+        db.collection("properties")
+            .document(prop.id)
+            .set(prop)
+            .addOnSuccessListener { documentReference ->
+            }
+            .addOnFailureListener { e ->
+            }
+        adapter.removeAt(position)
+        val mySnackbar = Snackbar.make(
+            coordinatorLayout,
+            R.string.success_archived, Snackbar.LENGTH_SHORT
+        )
+        mySnackbar.setAction(R.string.undo, View.OnClickListener {
+            returnRow(prop, position)
+        })
+        mySnackbar.show()
+    }
+
+    fun returnRow(prop: Property, position: Int) {
+        val db = FirebaseFirestore.getInstance()
+        prop.isDisabled = "N"
+        db.collection("properties")
+            .document(prop.id)
+            .set(prop)
+            .addOnSuccessListener { documentReference ->
+            }
+            .addOnFailureListener { e ->
+            }
+        // list.add(position, prop)
+        adapter.add(position, prop)
+    }
+
+
+
 }
 

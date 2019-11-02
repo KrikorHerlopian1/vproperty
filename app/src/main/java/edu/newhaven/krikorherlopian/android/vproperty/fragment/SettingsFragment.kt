@@ -306,4 +306,7 @@ class SettingsFragment : Fragment(),
         activity?.finish()
 
     }
+
+    override fun deleteRow(position: Int) {
+    }
 }

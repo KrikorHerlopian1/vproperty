@@ -47,6 +47,12 @@ class RecylerViewAdapter(
         notifyItemRemoved(position)
     }
 
+    fun add(position: Int, property: Property) {
+        list.add(position, property)
+        notifyItemRangeInserted(0, 1)
+        notifyItemRangeChanged(0, list.size)
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val animation = AnimationUtils.loadAnimation(
             context,
