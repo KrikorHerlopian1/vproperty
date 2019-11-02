@@ -33,16 +33,18 @@ class RecylerViewAdapter(
     private val CONTENT_VIEW = 1
     private val PROPERTY_VIEW = 2
     var lastPosition = -1
-
-
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
         super.onViewDetachedFromWindow(holder)
         try {
             holder.itemView.clearAnimation()
         } catch (e: Exception) {
-
         }
         holder.itemView.clearAnimation()
+    }
+
+    fun removeAt(position: Int) {
+        list.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

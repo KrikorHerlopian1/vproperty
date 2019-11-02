@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
+import edu.newhaven.krikorherlopian.android.vproperty.callback.SwipeToDeleteCallback
 import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
@@ -51,6 +54,15 @@ class MyPropertiesFragment : Fragment(), ListClick {
         root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
         root?.recyclerView?.itemAnimator = DefaultItemAnimator()
         root?.recyclerView?.adapter = adapter
+
+        val swipeHandler = object : SwipeToDeleteCallback(context!!) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                //val adapter = root?.recyclerView?.adapter AS
+                adapter.removeAt(viewHolder.adapterPosition)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(root?.recyclerView!!)
         /*val docRef = db.collection("properties").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
