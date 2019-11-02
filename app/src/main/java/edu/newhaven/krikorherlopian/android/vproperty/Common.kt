@@ -24,6 +24,7 @@ val PREF_PASS = "password"
 val PREF_EMAIL = "email"
 val PREF_TOKEN = "token"
 val PREF_DRAWER = "drawer"
+val PREF_MAP = "maptype"
 val PREF_AUTO = "autologin"
 val PREF_NOT = "notifications"
 var loggedInUser: FirebaseUser? = null

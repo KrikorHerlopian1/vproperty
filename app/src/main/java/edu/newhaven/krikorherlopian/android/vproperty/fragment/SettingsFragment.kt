@@ -31,10 +31,12 @@ class SettingsFragment : Fragment(),
     var autoLoginItem: SettingsItem? = null
     var signOutItem: SettingsItem? = null
     var versionItem: SettingsItem? = null
+    var mapTypeItem: SettingsItem? = null
     var notifications: SettingsItem? = null
     var list: MutableList<Any> = mutableListOf<Any>()
     var sharedPref: SharedPreferences? = null
     var root: View? = null
+    var adapter: RecylerViewAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,9 +49,12 @@ class SettingsFragment : Fragment(),
         )
         // define the first setting item, the style of the navigation drawer.
         // in normal cases its default, user can change it from this page into custom(arc).
-        var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
+
+        var mapType = sharedPref?.getString(PREF_MAP, "normal").toString()
         var auto = sharedPref?.getBoolean(PREF_AUTO, true).toString()
         var not = sharedPref?.getBoolean(PREF_NOT, true).toString()
+        var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
+
         val manager = root?.context?.packageManager
         val info = manager?.getPackageInfo(
             root?.context?.packageName, 0
@@ -80,18 +85,36 @@ class SettingsFragment : Fragment(),
             "" + version,
             R.drawable.ic_info
         )
+        mapTypeItem = SettingsItem(
+            root!!.resources.getString(R.string.map_types),
+            "",
+            R.drawable.ic_placeholder_location
+        )
+
+        when (mapType) {
+            "normal" -> mapTypeItem?.subtitle =
+                root!!.resources.getString(R.string.normal)
+            "hybrid" -> mapTypeItem?.subtitle = root!!.resources.getString(R.string.hybdrid)
+            "terrain" -> mapTypeItem?.subtitle = root!!.resources.getString(R.string.terrain)
+            "satellite" -> mapTypeItem?.subtitle = root!!.resources.getString(R.string.satellite)
+        }
 
         when (drawer) {
-            "default" -> drawerSettingsItem?.subtitle =
-                root!!.resources.getString(R.string.default_drawer)
-            "custom" -> drawerSettingsItem?.subtitle = root!!.resources.getString(R.string.custom)
+            "default" -> {
+                drawerSettingsItem?.subtitle =
+                    root!!.resources.getString(R.string.default_drawer)
+            }
+            "custom" -> {
+                drawerSettingsItem?.subtitle = root!!.resources.getString(R.string.custom)
+            }
         }
         list.add(drawerSettingsItem!!)
+        list.add(mapTypeItem!!)
         list.add(notifications!!)
         list.add(autoLoginItem!!)
         list.add(signOutItem!!)
         list.add(versionItem!!)
-        val adapter = RecylerViewAdapter(
+        adapter = RecylerViewAdapter(
             list, this, root?.context!!
         )
         root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
@@ -103,17 +126,19 @@ class SettingsFragment : Fragment(),
     override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
         if (position == 0) {
             showDrawerOptions()
-        } else if (position == 2) {
+        } else if (position == 1) {
+            showMapTypeOptions()
+        } else if (position == 3) {
             val editor = sharedPref?.edit()
             editor?.putBoolean(PREF_AUTO, (list.get(position) as SettingsItem).subtitle.toBoolean())
             editor?.apply()
-        } else if (position == 3) {
+        } else if (position == 4) {
             val intent = Intent(context, LoginActivity::class.java)
             //this flag to close all activities and start the application back with loginscreen on top.
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             activity?.finish()
-        } else if (position == 1) {
+        } else if (position == 2) {
             val editor = sharedPref?.edit()
             editor?.putBoolean(PREF_NOT, (list.get(position) as SettingsItem).subtitle.toBoolean())
             editor?.apply()
@@ -139,6 +164,70 @@ class SettingsFragment : Fragment(),
         }
     }
 
+    private fun showMapTypeOptions() {
+        val sel = "" + resources.getString(R.string.navigation_drawer)
+        val alerBuilder = AlertDialog.Builder(root!!.context)
+        val settingsOptArr = arrayOfNulls<String>(4)
+
+        var selectedChoice = 0
+        var previousChoice = 0
+        var mapType = sharedPref?.getString(PREF_MAP, "normal").toString()
+        when (mapType) {
+            "normal" -> previousChoice = 0
+            "hybrid" -> previousChoice = 1
+            "terrain" -> previousChoice = 2
+            "satellite" -> previousChoice = 3
+        }
+
+        selectedChoice = previousChoice
+        val ok = "" + resources.getString(android.R.string.ok)
+        settingsOptArr[0] = resources.getString(R.string.normal)
+        settingsOptArr[1] = resources.getString(R.string.hybdrid)
+        settingsOptArr[2] = resources.getString(R.string.terrain)
+        settingsOptArr[3] = resources.getString(R.string.satellite)
+
+        var alert = alerBuilder.setSingleChoiceItems(
+            settingsOptArr,
+            previousChoice,
+            DialogInterface.OnClickListener { dialog, item ->
+                when (item) {
+                    0 -> selectedChoice = 0
+                    1 -> selectedChoice = 1
+                    2 -> selectedChoice = 2
+                    3 -> selectedChoice = 3
+                }
+            }
+        ).setPositiveButton(ok, DialogInterface.OnClickListener { dialogInterface, ii ->
+            try {
+                //user selected an option save it to shared preferences for next login situations and open the new style menu.
+                var param = ""
+                if (selectedChoice != previousChoice) {
+                    if (selectedChoice == 0) {
+                        param = "normal"
+                        mapTypeItem?.subtitle =
+                            root!!.resources.getString(R.string.normal)
+                    } else if (selectedChoice == 1) {
+                        param = "hybrid"
+                        mapTypeItem?.subtitle = root!!.resources.getString(R.string.hybdrid)
+                    } else if (selectedChoice == 2) {
+                        param = "terrain"
+                        mapTypeItem?.subtitle = root!!.resources.getString(R.string.terrain)
+                    } else if (selectedChoice == 3) {
+                        param = "satellite"
+                        mapTypeItem?.subtitle = root!!.resources.getString(R.string.satellite)
+                    }
+                    adapter?.notifyDataSetChanged()
+                    val editor = sharedPref?.edit()
+                    editor?.putString(PREF_MAP, param)
+                    editor?.apply()
+                }
+            } catch (e: Exception) {
+            }
+        }).setCancelable(true).setTitle(sel).create()
+        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        alert.show()
+    }
+
     // Show popupbox for user to select between default drawer or custom drawer.
     private fun showDrawerOptions() {
         val sel = "" + resources.getString(R.string.navigation_drawer)
@@ -147,10 +236,15 @@ class SettingsFragment : Fragment(),
 
         var selectedChoice = 0
         var previousChoice = 0
-        if (drawerSettingsItem?.subtitle?.toUpperCase() == "CUSTOM")
-            previousChoice = 1
-        else
-            previousChoice = 0
+        var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
+        when (drawer) {
+            "default" -> {
+                previousChoice = 0
+            }
+            "custom" -> {
+                previousChoice = 1
+            }
+        }
         selectedChoice = previousChoice
         val ok = "" + resources.getString(android.R.string.ok)
         settingsOptArr[0] = resources.getString(R.string.default_drawer)
@@ -187,7 +281,7 @@ class SettingsFragment : Fragment(),
 
             } catch (e: Exception) {
             }
-        }).setCancelable(false).setTitle(sel).create()
+        }).setCancelable(true).setTitle(sel).create()
         alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
         alert.show()
     }

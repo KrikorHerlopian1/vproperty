@@ -1,6 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
 
+import android.content.SharedPreferences
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -23,9 +24,7 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import edu.newhaven.krikorherlopian.android.vproperty.R
-import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
-import edu.newhaven.krikorherlopian.android.vproperty.getMarkerIcon
+import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.map_info.view.*
 
@@ -35,12 +34,19 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     lateinit var markerS: Marker
     var currentView: ImageView? = null
+    var sharedPref: SharedPreferences? = null
+    lateinit var mapType: String
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.maps, container, false)
+        sharedPref = root?.context?.getSharedPreferences(
+            PREFS_FILENAME,
+            PRIVATE_MODE
+        )
+        mapType = sharedPref?.getString(PREF_MAP, "normal").toString()
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -194,5 +200,12 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        when (mapType) {
+            "normal" -> mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+            "hybrid" -> mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+            "terrain" -> mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+            "satellite" -> mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        }
+
     }
 }
