@@ -152,10 +152,12 @@ class ProfileFragment : Fragment() {
 
         var uploadTask = mountainsRef.putBytes(data)
         uploadTask = storageRef.child("images/" + x + ".jpg").putBytes(data)
-
+        root?.submitbutton?.isEnabled = false
         root?.progressbar?.visibility = View.VISIBLE
         uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
             if (!task.isSuccessful) {
+                root?.progressbar?.visibility = View.GONE
+                root?.submitbutton?.isEnabled = true
                 task.exception?.let {
                     Toasty.success(
                         root?.context!!,
@@ -169,6 +171,7 @@ class ProfileFragment : Fragment() {
             return@Continuation mountainImagesRef.downloadUrl
         }).addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                root?.submitbutton?.isEnabled = true
                 root?.progressbar?.visibility = View.GONE
                 val downloadUri = task.result
                 val request = UserProfileChangeRequest.Builder()
@@ -190,6 +193,8 @@ class ProfileFragment : Fragment() {
                     }
                     .addOnFailureListener { e -> }
             } else {
+                root?.progressbar?.visibility = View.GONE
+                root?.submitbutton?.isEnabled = true
                 Toasty.success(
                     root?.context!!,
                     R.string.process_failed,

@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.activityFunctionalities
+import edu.newhaven.krikorherlopian.android.vproperty.getMarkerIcon
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.ItemValuePair
@@ -460,7 +461,9 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
             prop.address.latitude.toDouble(),
             prop.address.longitude.toDouble()
         )
-        p0?.addMarker(MarkerOptions().position(latLng).title(""))
+        p0?.addMarker(
+            MarkerOptions().position(latLng).title("").icon(getMarkerIcon())
+        )
         p0?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
     }
 }

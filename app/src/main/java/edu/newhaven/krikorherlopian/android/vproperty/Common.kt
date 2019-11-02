@@ -4,12 +4,16 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import com.anupcowkur.statelin.State
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.firebase.auth.FirebaseUser
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
+
 
 /*
     Common functions I will need accross various activities or fragments in application.
@@ -31,8 +35,13 @@ val stateCreate = State("create")
 val stateUpdate = State("update")
 val addModifyProperty = State("addModifyProperty")
 val internetCall = State("internetCall")
+val color: String = "#673AB7"
 
-
+fun getMarkerIcon(): BitmapDescriptor {
+    val hsv = FloatArray(3)
+    Color.colorToHSV(Color.parseColor(color), hsv)
+    return BitmapDescriptorFactory.defaultMarker(hsv[0])
+}
 fun isEmailValid(email: CharSequence): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }

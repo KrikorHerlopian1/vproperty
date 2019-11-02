@@ -25,6 +25,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
+import edu.newhaven.krikorherlopian.android.vproperty.getMarkerIcon
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.map_info.view.*
 
@@ -103,7 +104,11 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                     property.address.longitude.toDouble()
                                 )
 
-                            mMap.addMarker(MarkerOptions().position(latLng).title("" + (count)))
+                            mMap.addMarker(
+                                MarkerOptions().icon(getMarkerIcon()).position(latLng).title(
+                                    "" + (count)
+                                )
+                            )
                             count = count + 1
                             mMap.setOnInfoWindowClickListener {
                                 var property1: Property = propertyList.get(it.title.toInt())
