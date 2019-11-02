@@ -2,14 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     android:orientation="vertical">
 
 
+    <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_more_available"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/largeTextSize"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
+
     <LinearLayout
-        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,13 +29,13 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:transitionName="MyTransition"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/image_map_size"
                 android:layout_weight="4"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="false"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:transitionName="MyTransition" />
 
             <LinearLayout
                 android:layout_width="0dp"

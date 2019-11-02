@@ -33,6 +33,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
     lateinit var markerS: Marker
+    var count = 0
     var currentView: ImageView? = null
     var sharedPref: SharedPreferences? = null
     lateinit var mapType: String
@@ -73,7 +74,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
     private fun getData() {
         val db = FirebaseFirestore.getInstance()
         val docRef = db.collection("properties")
-        var count = 0
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 return@addSnapshotListener
@@ -84,8 +84,10 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                     DocumentChange.Type.MODIFIED -> {
                         var prop: Property = doc.document.toObject(Property::class.java)
                         var i = 0
+                        var inList: Boolean = false
                         for (propert in propertyList) {
                             if (doc.document.id.equals(propert.id)) {
+                                inList = true
                                 propertyList[i] = prop
                                 propertyList[i].id = doc.document.id
                                 try {
@@ -97,104 +99,135 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             }
                             i = i + 1
                         }
+                        if (inList == false && prop.isDisabled.trim().equals(
+                                "N"
+                            )
+                        ) {
+                            prop.id = doc.document.id
+                            addPropertyToMap(prop, doc)
+                        }
                     }
                     DocumentChange.Type.ADDED -> {
                         Log.d("TAGs", "${doc.document.id} => ${doc.document.data}")
                         var property: Property = doc.document.toObject(Property::class.java)
-                        property.id = doc.document.id
-                        propertyList.add(property)
-                        try {
-                            val latLng =
-                                LatLng(
-                                    property.address.latitude.toDouble(),
-                                    property.address.longitude.toDouble()
-                                )
-
-                            mMap.addMarker(
-                                MarkerOptions().icon(getMarkerIcon()).position(latLng).title(
-                                    "" + (count)
-                                )
+                        if (property.isDisabled.trim().equals(
+                                "N"
                             )
-                            count = count + 1
-                            mMap.setOnInfoWindowClickListener {
-                                var property1: Property = propertyList.get(it.title.toInt())
-
-                                fragmentActivityCommunication?.startActivityDet(
-                                    property1
-                                )
-                            }
-                            mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
-                                override fun getInfoWindow(arg0: Marker): View? {
-                                    return null
-                                }
-
-                                override fun getInfoContents(marker: Marker?): View {
-                                    val v = layoutInflater.inflate(
-                                        R.layout.map_info, null
-                                    )
-                                    markerS = marker!!
-
-                                    currentView = v.image
-                                    val displayMetrics = resources.displayMetrics
-                                    v.layoutParams = LinearLayout.LayoutParams(
-                                        displayMetrics.widthPixels - 100,
-                                        resources.getDimension(R.dimen.image_map_size).toInt()
-                                    )
-
-                                    val i = Integer.parseInt(marker.title)
-                                    if (i != -1) {
-                                        val property = propertyList.get(i)
-                                        val info = v.info
-                                        info.text = "\u200e" + property.address.addressName
-                                        var priceHome = String.format(
-                                            "%,.2f",
-                                            property.homeFacts.price?.toFloat()
-                                        )
-                                        if (property.homeFacts.isRent) {
-                                            v.price.text = "\u200e" + priceHome + " $$"
-                                        } else
-                                            v.price.text = "\u200e" + priceHome + " $$"
-                                        Picasso.get()
-                                            .load(propertyList.get(i).photoUrl)
-                                            .placeholder(R.drawable.placeholderdetail)
-                                            .into(v.image, object : Callback {
-                                                override fun onError(e: java.lang.Exception?) {
-                                                }
-
-                                                override fun onSuccess() {
-                                                    try {
-                                                        if (marker != null && marker.isInfoWindowShown) {
-                                                            marker.hideInfoWindow()
-                                                            Picasso.get()
-                                                                .load(propertyList.get(i).photoUrl)
-                                                                .placeholder(R.drawable.placeholderdetail)
-                                                                .into(v.image)
-                                                            marker.showInfoWindow()
-                                                        }
-                                                    } catch (e: Exception) {
-                                                    }
-
-                                                }
-
-                                                fun onError() {
-
-                                                }
-                                            })
-                                        v.requestLayout()
-                                    } else {
-                                    }
-                                    return v
-                                }
-                            })
-
-                        } catch (e: java.lang.Exception) {
+                        ) {
+                            addPropertyToMap(property, doc)
                         }
-
                     }
                 }
             }
         }
 
+
+    }
+
+    private fun addPropertyToMap(propertyAdd: Property, doc: DocumentChange) {
+        propertyAdd.id = doc.document.id
+        propertyList.add(propertyAdd)
+        try {
+            val latLng =
+                LatLng(
+                    propertyAdd.address.latitude.toDouble(),
+                    propertyAdd.address.longitude.toDouble()
+                )
+
+            mMap.addMarker(
+                MarkerOptions().icon(getMarkerIcon()).position(latLng).title(
+                    "" + (count)
+                )
+            )
+            count = count + 1
+            mMap.setOnInfoWindowClickListener {
+                var property1: Property = propertyList.get(it.title.toInt())
+                if (property1.isDisabled.trim().equals("N")) {
+                    fragmentActivityCommunication?.startActivityDet(
+                        property1
+                    )
+                }
+            }
+            mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+                override fun getInfoWindow(arg0: Marker): View? {
+                    return null
+                }
+
+                override fun getInfoContents(marker: Marker?): View {
+                    var v: View? = null
+                    var property: Property = propertyList.get(marker?.title?.toInt()!!)
+                    if (property.isDisabled.trim().equals("Y")) {
+                        v = layoutInflater.inflate(
+                            R.layout.no_more_available, null
+                        )
+                        val displayMetrics = resources.displayMetrics
+                        v.layoutParams = LinearLayout.LayoutParams(
+                            displayMetrics.widthPixels - 100,
+                            resources.getDimension(R.dimen.image_map_size).toInt()
+                        )
+                    } else {
+                        v = layoutInflater.inflate(
+                            R.layout.map_info, null
+                        )
+                        markerS = marker
+
+                        currentView = v.image
+                        val displayMetrics = resources.displayMetrics
+                        v.layoutParams = LinearLayout.LayoutParams(
+                            displayMetrics.widthPixels - 100,
+                            resources.getDimension(R.dimen.image_map_size).toInt()
+                        )
+
+                        val i = Integer.parseInt(marker.title)
+                        if (i != -1) {
+                            val property = propertyList.get(i)
+                            val info = v.info
+                            info.text = "\u200e" + property.address.addressName
+                            var priceHome = String.format(
+                                "%,.2f",
+                                property.homeFacts.price?.toFloat()
+                            )
+                            if (property.homeFacts.isRent) {
+                                v.price.text = "\u200e" + priceHome + " $$"
+                            } else
+                                v.price.text = "\u200e" + priceHome + " $$"
+                            Picasso.get()
+                                .load(propertyList.get(i).photoUrl)
+                                .placeholder(R.drawable.placeholderdetail)
+                                .into(v.image, object : Callback {
+                                    override fun onError(e: java.lang.Exception?) {
+                                    }
+
+                                    override fun onSuccess() {
+                                        try {
+                                            if (marker != null && marker.isInfoWindowShown) {
+                                                marker.hideInfoWindow()
+                                                Picasso.get()
+                                                    .load(propertyList.get(i).photoUrl)
+                                                    .placeholder(R.drawable.placeholderdetail)
+                                                    .into(v.image)
+                                                marker.showInfoWindow()
+                                            }
+                                        } catch (e: Exception) {
+                                        }
+
+                                    }
+
+                                    fun onError() {
+
+                                    }
+                                })
+                            v.requestLayout()
+                        } else {
+                        }
+                        return v
+                    }
+                    return v!!
+                }
+            })
+
+        } catch (e: java.lang.Exception) {
+        }
 
     }
 
