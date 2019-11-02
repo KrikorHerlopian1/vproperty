@@ -259,10 +259,15 @@ class LoginActivity : AppCompatActivity() {
                     .show()
             }
         } else if (requestCode == RC_REGISTER) {
-            setError(null, null, false, false)
-            email.setText(data!!.getStringExtra("email"))
-            password.setText(data.getStringExtra("pass"))
-            fingerPrintSetup()
+            if (data != null && !data.getStringExtra("email")?.trim().equals("") && data.getStringExtra(
+                    "email"
+                ) != null
+            ) {
+                setError(null, null, false, false)
+                email.setText(data.getStringExtra("email"))
+                password.setText(data.getStringExtra("pass"))
+                fingerPrintSetup()
+            }
             // login(email.text.toString(), password.text.toString(), true)
         }
     }
