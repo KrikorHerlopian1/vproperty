@@ -72,7 +72,6 @@ class MyPropertiesFragment : Fragment(), ListClick {
             if (e != null) {
                 return@addSnapshotListener
             }
-
             for (doc in snapshot!!.documentChanges) {
                 when (doc.type) {
                     DocumentChange.Type.MODIFIED -> {
