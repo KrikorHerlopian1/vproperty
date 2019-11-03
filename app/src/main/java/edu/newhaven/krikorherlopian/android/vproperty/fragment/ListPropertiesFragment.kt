@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
@@ -71,7 +72,10 @@ class ListPropertiesFragment : Fragment(), ListClick {
         adapter = RecylerViewAdapter(
             list, this, root?.context!!
         )
-        root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
+        root?.recyclerView?.apply {
+            layoutManager = GridLayoutManager(context, 2)
+        }
+        // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
         root?.recyclerView?.itemAnimator = DefaultItemAnimator()
         root?.recyclerView?.adapter = adapter
 
