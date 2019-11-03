@@ -269,7 +269,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             "terrain" -> mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
             "satellite" -> mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
         }
-
     }
 
     override fun onStart() {
@@ -333,7 +332,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             return false
         }
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
