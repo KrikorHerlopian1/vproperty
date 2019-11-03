@@ -1,14 +1,8 @@
 <resources>
     <string name="app_name">VProperty</string>
-    <string name="login">LOGIN</string>
-    <string name="email">Email Address</string>
-    <string name="loading">Loading...</string>
-    <string name="password">Password</string>
-    <string name="confirmPassword">Confirm Password</string>
     <string name="enter_email">Please enter email</string>
     <string name="enter_password">Please enter password</string>
     <string name="enter_confirm_password">Please confirm your password</string>
-    <string name="passwords_dont_match">Passwords Don\'t match</string>
     <string name="enter_valid_email">Please enter valid email address</string>
     <string name="dont_you_have_account_register_now">Don\'t you have account? Register now</string>
     <string name="google_login">Sign in with google</string>
@@ -19,9 +13,7 @@
     <string name="biometric_unrecognized">Biometric is valid but not recognized.</string>
     <string name="biometric_recognized">Biometric is valid and recognized.</string>
     <string name="biometric_failed">Unrecoverable error has been encountered.</string>
-    <string name="fingerprint">Fingerprint</string>
     <string name="fingerprint_login">Login with the sensor</string>
-    <string name="cancel">Cancel</string>
     <string name="register">REGISTER</string>
     <string name="register_new_account">Register new account</string>
     <string name="connection_failed">Connection lost</string>
@@ -33,14 +25,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
     <string name="menu_home">Home</string>
     <string name="map">Map</string>
     <string name="menu_gallery">Gallery</string>
     <string name="camera">Camera</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="drawer_style">Drawer Style</string>
     <string name="default_drawer">Default</string>
@@ -55,8 +45,6 @@
     <string name="add_property">Add House</string>
     <string name="add_picture">Add a picture</string>
     <string name="add">ADD</string>
-    <string name="android_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn-EQ4</string>
-    <string name="map_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn-EQ4</string>
     <string name="title_activity_maps">Map</string>
     <string name="action_geolocate">Pick Place</string>
     <string name="default_info_title">Default Location</string>
@@ -69,7 +57,6 @@
     <string name="leku_toolbar_action_voice_title">Voice</string>
     <string name="leku_search_hint">Search</string>
     <string name="leku_app_name" translatable="false">Leku Demo</string>
-    <string name="google_maps_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn</string>
     <string name="launch_map_picker" translatable="false">LAUNCH MAP LOCATION PICKER ACTIVITY</string>
     <string name="launch_map_picker_with_pois" translatable="false">LAUNCH MAP WITH POIS</string>
     <string name="launch_map_picker_with_style" translatable="false">LAUNCH MAP WITH STYLE</string>
@@ -84,8 +71,6 @@
     <string name="description_address">Description Address</string>
     <string name="description">Description</string>
     <string name="default_notification_channel_id">vproperty</string>
-    <string name="vproperty_channel">vproperty</string>
-    <string name="fcm_message">vproperty</string>
     <string name="msg_subscribed">Subscribed to vproperty topic</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="default_notification_channel_name" translatable="true">vproperty</string>
@@ -98,7 +83,6 @@
     <string name="roomdetails">Room Details</string>
     <string name="buildingdetails">Building Details</string>
     <string name="utilitydetails">Utility Details</string>
-    <string name="additional_information">Additional information</string>
     <string name="single_family">Single Family</string>
     <string name="condo">Condo</string>
     <string name="town_house">Town House</string>
@@ -107,7 +91,6 @@
     <string name="mobile_manufactured">Mobile/Manufactured</string>
     <string name="coop_unit">Coop Unit</string>
     <string name="vacant_land">Vacant Land</string>
-    <string name="other">Other</string>
     <string name="choose_home_type">Please choose a home type</string>
     <string name="choose_house_name">Enter a house name please</string>
     <string name="enter_home_address">Enter Home Address</string>
@@ -129,10 +112,6 @@
     <string name="number_of_bathrooms">No of Bathrooms</string>
     <string name="total_rooms">Total Rooms</string>
     <string name="number_of_parking_spaces">Parking Spaces</string>
-    <string name="forrent">for rent</string>
-    <string name="forsale">for sale</string>
-    <string name="for_rent">Rent</string>
-    <string name="for_sale">Sale</string>
     <string name="year_built">Year built</string>
     <string name="modal_year">Structural Modal Year</string>
     <string name="floor_number">Floor Number</string>
@@ -198,7 +177,6 @@
     <string name="related_website">Related Website</string>
     <string name="virtual_tour">Virtual Tour URL</string>
     <string name="phone_number">Contact Phone Number</string>
-    <string name="phone_number_display">Phone Number</string>
     <string name="take_image">Take image photo by camera or choose from gallery</string>
     <string name="building_aminities">BUILDING AMENITIES</string>
     <string name="basketball_court">Basketball Court</string>
@@ -242,34 +220,55 @@
     <string name="new_property_added">New Property Added</string>
     <string name="located_in">Located in</string>
     <string name="auto_login">Auto Login</string>
-    <string name="sign_out">Sign Out</string>
-    <string name="push_notifications">Push Notifications</string>
     <string name="phone">Phone</string>
     <string name="rent_per_month">Rent per month</string>
     <string name="sale_price">Sale Price</string>
-    <string name="type">Type</string>
     <string name="buidling_exterior">Building Exterior</string>
     <string name="photo">Photo</string>
     <string name="my_profile">My Profile</string>
-    <string name="submit">SUBMIT</string>
     <string name="success_update_profile">Successfully updated profile</string>
     <string name="process_failed">Process Failed</string>
-    <string name="version">Version</string>
     <string name="choose_a_way_photo">Choose a way to capture photo</string>
-    <string name="my_properties">My Properties</string>
     <string name="number_of_properties_you_own">item in your Properties</string>
-    <string name="no_data_found">NO DATA FOUND</string>
     <string name="map_types">Map Type</string>
     <string name="normal">Normal</string>
     <string name="terrain">Terrain</string>
     <string name="satellite">Satellite</string>
     <string name="hybdrid">Hybrid</string>
-    <string name="undo">Undo</string>
     <string name="success_archived">Successfully archived.</string>
     <string name="no_more_available">No More Available</string>
     <string name="by_list">By List</string>
     <string name="all">All</string>
-    <string name="language">Language</string>
+    <string name="forrent">for rent</string>
+    <string name="forsale">for sale</string>
+    <string name="for_rent">Rent</string>
+    <string name="for_sale">Compra</string>
+    <string name="other">Otros</string>
+    <string name="no_data_found">SIN RESULTADOS</string>
+    <string name="undo">Deshacer</string>
+    <string name="sign_out">Cierra sesión</string>
+    <string name="additional_information">Información Adicional</string>
+    <string name="push_notifications">Notificación de inserción</string>
+    <string name="cancel">Cancelar</string>
+    <string name="fingerprint">Huella digital</string>
+    <string name="passwords_dont_match">Las contraseñas no coinciden</string>
+    <string name="my_properties">Mis Propiedades</string>
+    <string name="phone_number_display">Número de Teléfono</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="type">Tipo</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="version">Versión</string>
+    <string name="confirmPassword">Confirmar contraseña</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="menu_share">Compartir</string>
+    <string name="submit">ENVIAR</string>
+    <string name="language">Idioma</string>
     <string name="spanish">Espanol</string>
     <string name="english">English</string>
+    <string name="android_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn-EQ4</string>
+    <string name="map_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn-EQ4</string>
+    <string name="google_maps_key">AIzaSyCM0zqYl3iFx4yjhmdfUCuUOkYGPxn</string>
+    <string name="vproperty_channel">vproperty</string>
+    <string name="fcm_message">vproperty</string>
 </resources>
