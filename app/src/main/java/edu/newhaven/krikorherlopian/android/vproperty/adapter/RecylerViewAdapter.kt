@@ -92,8 +92,7 @@ class RecylerViewAdapter(
             )
         }
     }
-
-
+    
     private fun configureViewHolder3(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PropertyViewHolder && list.get(position) is Property) {
             var property = list.get(position) as Property
