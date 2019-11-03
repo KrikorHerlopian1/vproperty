@@ -70,7 +70,7 @@ class ListPropertiesFragment : Fragment(), ListClick {
         list.clear()
         root?.text?.visibility = View.VISIBLE
         adapter = RecylerViewAdapter(
-            list, this, root?.context!!
+            list, this, root?.context!!, true
         )
         root?.recyclerView?.apply {
             layoutManager = GridLayoutManager(context, 2)

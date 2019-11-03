@@ -25,6 +25,11 @@
     <dimen name="rowheight">40dp</dimen>
     <dimen name="curverlayoutsize">100dp</dimen>
     <dimen name="thumbnailsize">60dp</dimen>
+    <dimen name="thumbnailsize_column">150dp</dimen>
     <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="title_size">12dp</dimen>
+    <dimen name="title_padding">10dp</dimen>
+    <dimen name="padding_bottom">5dp</dimen>
 </resources>
 

@@ -16,4 +16,6 @@
     <color name="lvHeaderDividerColor">#E0E0E0</color>
     <color name="greyish">#ababab</color>
     <color name="light_grey">#D3D3D3</color>
+    <color name="thumbnail_bg">#F1E5F3</color>
+    <color name="title">#4c4c4c</color>
 </resources>

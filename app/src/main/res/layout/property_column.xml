@@ -1,0 +1,151 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="10dp"
+        card_view:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/thumbnail_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/thumbnailsize_column"
+                android:background="@color/thumbnail_bg"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thumbnailsize_column"
+                    android:layout_centerHorizontal="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="false"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/thumbnail_layout"
+                android:paddingTop="10dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:paddingLeft="@dimen/title_padding"
+                    android:paddingTop="@dimen/padding_bottom"
+                    android:paddingRight="@dimen/title_padding"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/title_size" />
+
+                <LinearLayout
+                    android:id="@+id/price_layout"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/title"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/colorAccent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp">
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/price"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/title_padding"
+                        android:paddingRight="@dimen/title_padding"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title_size"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                    android:id="@+id/subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/price_layout"
+                    android:paddingLeft="@dimen/title_padding"
+                    android:paddingTop="@dimen/padding_bottom"
+                    android:paddingRight="@dimen/title_padding"
+                    android:paddingBottom="@dimen/padding_bottom"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/title_size"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                android:id="@+id/fake_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thumbnail_layout"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:paddingLeft="@dimen/title_padding"
+                android:paddingTop="@dimen/padding_bottom"
+                android:paddingRight="@dimen/title_padding"
+                android:textColor="@color/title"
+                android:textSize="@dimen/title_size"
+                android:visibility="invisible" />
+
+
+            <LinearLayout
+                android:id="@+id/fake_title_l"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_below="@id/fake_title"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:visibility="invisible">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                    android:id="@+id/fake_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/title_padding"
+                    android:paddingRight="@dimen/title_padding"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title_size"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:id="@+id/fake_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fake_title_l"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:paddingLeft="@dimen/title_padding"
+                android:paddingRight="@dimen/title_padding"
+                android:paddingBottom="@dimen/padding_bottom"
+                android:textSize="@dimen/title_size"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

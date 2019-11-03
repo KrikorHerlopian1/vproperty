@@ -16,6 +16,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
 import edu.newhaven.krikorherlopian.android.vproperty.viewholder.MyViewHolder
 import edu.newhaven.krikorherlopian.android.vproperty.viewholder.PropertyViewHolder
+import edu.newhaven.krikorherlopian.android.vproperty.viewholder.TwoPropertyViewHolder
 import edu.newhaven.krikorherlopian.android.vproperty.viewholder.ViewHolderOneItem
 import kotlinx.android.synthetic.main.property_item.view.*
 import kotlinx.android.synthetic.main.switch_item.view.*
@@ -26,12 +27,14 @@ import kotlinx.android.synthetic.main.switch_item.view.*
 class RecylerViewAdapter(
     private val list: MutableList<Any>,
     var listClick: ListClick,
-    var context: Context
+    var context: Context,
+    var twoColumn: Boolean = false
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val HEADER_VIEW = 0
     private val CONTENT_VIEW = 1
     private val PROPERTY_VIEW = 2
+    private val PROPERTY_VIEW_TWO_COLUMN = 3
     var lastPosition = -1
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
         super.onViewDetachedFromWindow(holder)
@@ -67,8 +70,29 @@ class RecylerViewAdapter(
             HEADER_VIEW -> configureViewHolder1(holder, position)
             CONTENT_VIEW -> configureViewHolder2(holder, position)
             PROPERTY_VIEW -> configureViewHolder3(holder, position)
+            PROPERTY_VIEW_TWO_COLUMN -> configureViewHolder4(holder, position)
         }
     }
+
+    private fun configureViewHolder4(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is TwoPropertyViewHolder && list.get(position) is Property) {
+            var property = list.get(position) as Property
+            holder.bind(property)
+            Glide.with(context).load(property.photoUrl)
+                .placeholder(R.drawable.profileplaceholder)
+                .into(
+                    holder.itemView.thumbnail
+                )
+        }
+        holder.itemView.setOnClickListener {
+            listClick.rowClicked(
+                position,
+                0,
+                holder.itemView.thumbnail
+            )
+        }
+    }
+
 
     private fun configureViewHolder3(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PropertyViewHolder && list.get(position) is Property) {
@@ -126,6 +150,7 @@ class RecylerViewAdapter(
             HEADER_VIEW -> return MyViewHolder(parent.inflate(R.layout.title_subtitle_item))
             CONTENT_VIEW -> return ViewHolderOneItem(parent.inflate(R.layout.switch_item))
             PROPERTY_VIEW -> return PropertyViewHolder(parent.inflate(R.layout.property_item))
+            PROPERTY_VIEW_TWO_COLUMN -> return TwoPropertyViewHolder(parent.inflate(R.layout.property_column))
         }
         return MyViewHolder(parent.inflate(R.layout.title_subtitle_item))
     }
@@ -135,7 +160,9 @@ class RecylerViewAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (list.get(position) is SettingsItem) {
+        if (twoColumn)
+            return PROPERTY_VIEW_TWO_COLUMN
+        else if (list.get(position) is SettingsItem) {
             if ((list.get(position) as SettingsItem).switch == 0)
                 return HEADER_VIEW
             else
