@@ -28,7 +28,6 @@ import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunicat
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
-import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
@@ -53,7 +52,7 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         var displayName = bundle.getString("displayName")
         var email = bundle.getString("email")
         var page = bundle.getInt("page", 0)
-        setUpPermissions(this)
+        //setUpPermissions(this)
         prepareCroperino()
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,

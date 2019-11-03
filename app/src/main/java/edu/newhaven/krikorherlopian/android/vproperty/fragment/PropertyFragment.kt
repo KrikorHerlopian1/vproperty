@@ -2,17 +2,20 @@ package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
 
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,11 +28,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import edu.newhaven.krikorherlopian.android.vproperty.*
+import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.map_info.view.*
 
 class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
+    private var mLocationRequest: LocationRequest? = null
+    private val UPDATE_INTERVAL = (10 * 1000).toLong()  /* 10 secs */
+    private val FASTEST_INTERVAL: Long = 20000 /* 2 sec */
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
     lateinit var markerS: Marker
@@ -47,6 +54,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             PREFS_FILENAME,
             PRIVATE_MODE
         )
+        setUpPermissions()
         mapType = sharedPref?.getString(PREF_MAP, "normal").toString()
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -55,6 +63,18 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
         getData()
         getLocation()
         return root
+    }
+
+    fun setUpPermissions() {
+        val permissions = arrayOf(
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+            android.Manifest.permission.CAMERA,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.ACCESS_NETWORK_STATE
+        )
+        requestPermissions(permissions, 0)
     }
 
     private fun getLocation() {
@@ -228,11 +248,21 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
 
         } catch (e: java.lang.Exception) {
         }
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(
+                    context!!,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                mMap.isMyLocationEnabled = true
+            }
+        } else {
+            mMap.isMyLocationEnabled = true
+        }
         when (mapType) {
             "normal" -> mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
             "hybrid" -> mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
@@ -241,4 +271,97 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
         }
 
     }
+
+    override fun onStart() {
+        super.onStart()
+        startLocationUpdates()
+    }
+
+    protected fun startLocationUpdates() {
+        // initialize location request object
+        mLocationRequest = LocationRequest.create()
+        mLocationRequest!!.run {
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            interval = UPDATE_INTERVAL
+            setFastestInterval(FASTEST_INTERVAL)
+        }
+
+        val builder = LocationSettingsRequest.Builder()
+        builder.addLocationRequest(mLocationRequest!!)
+        val locationSettingsRequest = builder.build()
+
+        val settingsClient = LocationServices.getSettingsClient(activity!!)
+        settingsClient!!.checkLocationSettings(locationSettingsRequest)
+
+        registerLocationListner()
+    }
+
+    private fun registerLocationListner() {
+        // initialize location callback object
+        val locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                onLocationChanged(locationResult!!.lastLocation)
+            }
+        }
+        if (Build.VERSION.SDK_INT >= 23 && checkPermission()) {
+            LocationServices.getFusedLocationProviderClient(activity!!)
+                .requestLocationUpdates(mLocationRequest, locationCallback, Looper.myLooper())
+        }
+    }
+
+    //
+    private fun onLocationChanged(location: Location) {
+        mMap.moveCamera(
+            CameraUpdateFactory.newLatLng(
+                LatLng(
+                    location.latitude,
+                    location.longitude
+                )
+            )
+        )
+    }
+
+    private fun checkPermission(): Boolean {
+        if (ContextCompat.checkSelfPermission(
+                activity!!,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return true
+        } else {
+            setUpPermissions()
+            return false
+        }
+    }
+
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        try {
+            if (requestCode == 0) {
+                if (permissions[0] == android.Manifest.permission.ACCESS_FINE_LOCATION) {
+                    getLocation()
+                    registerLocationListner()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (ContextCompat.checkSelfPermission(
+                                context!!,
+                                android.Manifest.permission.ACCESS_FINE_LOCATION
+                            ) == PackageManager.PERMISSION_GRANTED
+                        ) {
+                            mMap.isMyLocationEnabled = true
+                        }
+                    } else {
+                        mMap.isMyLocationEnabled = true
+                    }
+                }
+            }
+        } catch (e: java.lang.Exception) {
+        }
+
+    }
+
 }

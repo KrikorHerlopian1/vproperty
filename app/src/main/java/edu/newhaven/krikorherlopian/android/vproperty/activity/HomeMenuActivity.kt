@@ -29,7 +29,6 @@ import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunicat
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
-import edu.newhaven.krikorherlopian.android.vproperty.setUpPermissions
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -48,7 +47,7 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
         setContentView(R.layout.activity_menu)
         setSupportActionBar(toolbar)
         fragmentActivityCommunication = this
-        setUpPermissions(this)
+        //  setUpPermissions(this)
         prepareCroperino()
         var bundle: Bundle? = intent.extras
         var photoUrl = bundle!!.getString("photoUrl")
