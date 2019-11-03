@@ -47,8 +47,8 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
         setContentView(R.layout.activity_menu)
         setSupportActionBar(toolbar)
         fragmentActivityCommunication = this
-        //  setUpPermissions(this)
-        prepareCroperino()
+        //setUpPermissions(this)
+        //prepareCroperino()
         var bundle: Bundle? = intent.extras
         var photoUrl = bundle!!.getString("photoUrl")
         var displayName = bundle.getString("displayName")

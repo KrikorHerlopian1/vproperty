@@ -53,7 +53,7 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         var email = bundle.getString("email")
         var page = bundle.getInt("page", 0)
         //setUpPermissions(this)
-        prepareCroperino()
+        //prepareCroperino()
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open,
