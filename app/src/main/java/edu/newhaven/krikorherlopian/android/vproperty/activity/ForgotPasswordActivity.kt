@@ -1,6 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import edu.newhaven.krikorherlopian.android.vproperty.LocaleHelper
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.isEmailValid
@@ -33,6 +35,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
     private fun forgotPasswordButtonClicked() {
         if (email.text.isNullOrBlank()) {
             setError(null, true)

@@ -27,6 +27,7 @@ val PREF_DRAWER = "drawer"
 val PREF_MAP = "maptype"
 val PREF_AUTO = "autologin"
 val PREF_NOT = "notifications"
+val PREF_LOCALE = "lang"
 var loggedInUser: FirebaseUser? = null
 var font = "Poppins-Light.ttf"
 var activityFunctionalities: ActivityFunctionalities? = null

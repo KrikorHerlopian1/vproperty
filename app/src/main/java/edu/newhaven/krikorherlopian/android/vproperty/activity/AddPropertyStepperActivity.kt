@@ -1,6 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.location.Geocoder
@@ -70,6 +71,9 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
 
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
     private fun setupToolBar() {
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar

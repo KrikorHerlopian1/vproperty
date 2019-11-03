@@ -1,6 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -23,6 +24,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.mikelau.croperino.Croperino
 import com.mikelau.croperino.CroperinoConfig
 import com.mikelau.croperino.CroperinoFileUtil
+import edu.newhaven.krikorherlopian.android.vproperty.LocaleHelper
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
@@ -75,6 +77,9 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         }
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
     private fun prepareCroperino() {
         //prepare camera, gallery and ask for storage permissions.
         CroperinoConfig(

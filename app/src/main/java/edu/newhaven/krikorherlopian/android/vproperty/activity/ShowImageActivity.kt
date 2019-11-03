@@ -1,5 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import com.squareup.picasso.Picasso
+import edu.newhaven.krikorherlopian.android.vproperty.LocaleHelper
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import kotlinx.android.synthetic.main.image.*
 
@@ -35,6 +37,10 @@ class ShowImageActivity : AppCompatActivity() {
                 .into(image)
         } catch (e: Exception) {
         }
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
     }
 
     private fun setupToolBar() {

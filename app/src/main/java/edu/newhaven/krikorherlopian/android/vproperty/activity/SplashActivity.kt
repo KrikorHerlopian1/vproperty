@@ -1,5 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -60,6 +61,9 @@ class SplashActivity : AppCompatActivity() {
         animateImages()
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
     fun animateImages() {
         val handler = Handler()
         handler.postDelayed(object : Runnable {

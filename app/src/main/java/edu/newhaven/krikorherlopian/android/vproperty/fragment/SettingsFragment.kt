@@ -33,6 +33,7 @@ class SettingsFragment : Fragment(),
     var versionItem: SettingsItem? = null
     var mapTypeItem: SettingsItem? = null
     var notifications: SettingsItem? = null
+    var localeItem: SettingsItem? = null
     var list: MutableList<Any> = mutableListOf<Any>()
     var sharedPref: SharedPreferences? = null
     var root: View? = null
@@ -54,6 +55,7 @@ class SettingsFragment : Fragment(),
         var auto = sharedPref?.getBoolean(PREF_AUTO, true).toString()
         var not = sharedPref?.getBoolean(PREF_NOT, true).toString()
         var drawer = sharedPref?.getString(PREF_DRAWER, "default").toString()
+        var locale = sharedPref?.getString(PREF_LOCALE, "").toString()
 
         val manager = root?.context?.packageManager
         val info = manager?.getPackageInfo(
@@ -65,11 +67,17 @@ class SettingsFragment : Fragment(),
             "",
             R.drawable.ic_menu_black_24dp
         )
+        localeItem = SettingsItem(
+            root!!.resources.getString(R.string.language),
+            "",
+            R.drawable.ic_language_black_24dp
+        )
         autoLoginItem = SettingsItem(
             root!!.resources.getString(R.string.auto_login),
             "" + auto,
             R.drawable.ic_login, 1
         )
+
         signOutItem = SettingsItem(
             root!!.resources.getString(R.string.sign_out),
             "",
@@ -91,6 +99,7 @@ class SettingsFragment : Fragment(),
             R.drawable.ic_placeholder_location
         )
 
+
         when (mapType) {
             "normal" -> mapTypeItem?.subtitle =
                 root!!.resources.getString(R.string.normal)
@@ -98,6 +107,13 @@ class SettingsFragment : Fragment(),
             "terrain" -> mapTypeItem?.subtitle = root!!.resources.getString(R.string.terrain)
             "satellite" -> mapTypeItem?.subtitle = root!!.resources.getString(R.string.satellite)
         }
+
+        if (locale.contains("es")) {
+            localeItem?.subtitle = root!!.resources.getString(R.string.spanish)
+        } else {
+            localeItem?.subtitle = root!!.resources.getString(R.string.english)
+        }
+
 
         when (drawer) {
             "default" -> {
@@ -108,6 +124,7 @@ class SettingsFragment : Fragment(),
                 drawerSettingsItem?.subtitle = root!!.resources.getString(R.string.custom)
             }
         }
+        list.add(localeItem!!)
         list.add(drawerSettingsItem!!)
         list.add(mapTypeItem!!)
         list.add(notifications!!)
@@ -125,20 +142,22 @@ class SettingsFragment : Fragment(),
 
     override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
         if (position == 0) {
-            showDrawerOptions()
+            showLangOptions()
         } else if (position == 1) {
+            showDrawerOptions()
+        } else if (position == 2) {
             showMapTypeOptions()
-        } else if (position == 3) {
+        } else if (position == 4) {
             val editor = sharedPref?.edit()
             editor?.putBoolean(PREF_AUTO, (list.get(position) as SettingsItem).subtitle.toBoolean())
             editor?.apply()
-        } else if (position == 4) {
+        } else if (position == 5) {
             val intent = Intent(context, LoginActivity::class.java)
             //this flag to close all activities and start the application back with loginscreen on top.
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             activity?.finish()
-        } else if (position == 2) {
+        } else if (position == 3) {
             val editor = sharedPref?.edit()
             editor?.putBoolean(PREF_NOT, (list.get(position) as SettingsItem).subtitle.toBoolean())
             editor?.apply()
@@ -285,6 +304,62 @@ class SettingsFragment : Fragment(),
         alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
         alert.show()
     }
+
+    private fun showLangOptions() {
+        val sel = "" + resources.getString(R.string.language)
+        val alerBuilder = AlertDialog.Builder(root!!.context)
+        val settingsOptArr = arrayOfNulls<String>(2)
+
+        var selectedChoice = 0
+        var previousChoice = 0
+        var locale = sharedPref?.getString(PREF_LOCALE, "").toString()
+        if (locale.contains("es")) {
+            previousChoice = 1
+        } else {
+            previousChoice = 0
+        }
+
+        selectedChoice = previousChoice
+        val ok = "" + resources.getString(android.R.string.ok)
+        settingsOptArr[0] = resources.getString(R.string.english)
+        settingsOptArr[1] = resources.getString(R.string.spanish)
+
+        var alert = alerBuilder.setSingleChoiceItems(
+            settingsOptArr,
+            previousChoice,
+            DialogInterface.OnClickListener { dialog, item ->
+                when (item) {
+                    0 -> selectedChoice = 0
+                    1 -> selectedChoice = 1
+                }
+            }
+        ).setPositiveButton(ok, DialogInterface.OnClickListener { dialogInterface, ii ->
+            try {
+                //user selected an option save it to shared preferences for next login situations and open the new style menu.
+                var param = ""
+                if (selectedChoice != previousChoice) {
+                    if (selectedChoice == 0) {
+                        param = "en"
+                        localeItem?.subtitle =
+                            root!!.resources.getString(R.string.english)
+                    } else {
+                        param = "es"
+                        localeItem?.subtitle = root!!.resources.getString(R.string.spanish)
+                    }
+                    val editor = sharedPref?.edit()
+                    editor?.putString(PREF_LOCALE, param)
+                    editor?.apply()
+                    startHomeMenuActivity(param)
+                }
+
+
+            } catch (e: Exception) {
+            }
+        }).setCancelable(true).setTitle(sel).create()
+        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        alert.show()
+    }
+
 
     //open the home or custom menu when navigation drawer settings changed in the app.
     //FLAG_ACTIVITY_CLEAR_TOP to close all activities in stack, and start new activity on top of stack.

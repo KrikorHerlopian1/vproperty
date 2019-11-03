@@ -1,5 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -18,11 +19,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
-import edu.newhaven.krikorherlopian.android.vproperty.R
-import edu.newhaven.krikorherlopian.android.vproperty.activityFunctionalities
-import edu.newhaven.krikorherlopian.android.vproperty.getMarkerIcon
+import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
-import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.ItemValuePair
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.amenities.view.*
@@ -95,6 +93,9 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         }
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
     private fun setUpUtilityDetails() {
         setUpHeatingType()
         setUpCoolingType()

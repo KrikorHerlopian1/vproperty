@@ -1,6 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
@@ -63,6 +64,10 @@ class RegisterActivity : AppCompatActivity() {
         profile_image.setOnClickListener {
             addProfileButtonClicked()
         }
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
     }
 
     private fun addProfileButtonClicked() {

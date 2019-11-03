@@ -1,5 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
@@ -160,6 +161,9 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
 
     private fun setError(
         emailError: CharSequence?,
