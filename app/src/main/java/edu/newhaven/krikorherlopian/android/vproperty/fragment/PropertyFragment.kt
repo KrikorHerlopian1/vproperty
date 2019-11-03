@@ -35,8 +35,8 @@ import kotlinx.android.synthetic.main.map_info.view.*
 class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
     private var mLocationRequest: LocationRequest? = null
+    private val SPEED_INTERVAL: Long = 20000 /* 20 sec */
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  /* 10 secs */
-    private val FASTEST_INTERVAL: Long = 20000 /* 2 sec */
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
     lateinit var markerS: Marker
@@ -282,7 +282,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
         mLocationRequest!!.run {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             interval = UPDATE_INTERVAL
-            setFastestInterval(FASTEST_INTERVAL)
+            setFastestInterval(SPEED_INTERVAL)
         }
 
         val builder = LocationSettingsRequest.Builder()
@@ -310,14 +310,17 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
 
     //
     private fun onLocationChanged(location: Location) {
-        mMap.moveCamera(
-            CameraUpdateFactory.newLatLng(
-                LatLng(
-                    location.latitude,
-                    location.longitude
+        try {
+            mMap.moveCamera(
+                CameraUpdateFactory.newLatLng(
+                    LatLng(
+                        location.latitude,
+                        location.longitude
+                    )
                 )
             )
-        )
+        } catch (e: java.lang.Exception) {
+        }
     }
 
     private fun checkPermission(): Boolean {
