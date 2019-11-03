@@ -7,45 +7,63 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
-import edu.newhaven.krikorherlopian.android.vproperty.callback.SwipeToDeleteCallback
 import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
-import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
-import kotlinx.android.synthetic.main.listview_fragment.*
 import kotlinx.android.synthetic.main.listview_fragment.view.*
 
-class MyPropertiesFragment : Fragment(), ListClick {
+class ListPropertiesFragment : Fragment(), ListClick {
     var root: View? = null
     lateinit var adapter: RecylerViewAdapter
     var list: MutableList<Any> = mutableListOf<Any>()
-    override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
-        fragmentActivityCommunication?.startActivityDetWithTransition(
-            (list.get(position) as Property),
-            imageLayout!!
-        )
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.listview_fragment, container, false)
-        getData()
+        var param = arguments?.getString(ARG_PARAM)
+        var section = arguments?.getInt(ARG_SECTION_NUMBER)
+        if (section == 1) {
+            getData(section, param!!)
+        } else if (section == 2) {
+            getData(section, param!!)
+        } else if (section == 3) {
+            getData(section, param!!)
+        } else {
+            getData(section!!, param!!)
+        }
         return root
     }
 
+    companion object {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private const val ARG_SECTION_NUMBER = "section_number"
+        private const val ARG_PARAM = "param"
+        /**   private const val ARG_SECTION_NUMBER = "section_number"
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        @JvmStatic
+        fun newInstance(sectionNumber: Int, param: String): ListPropertiesFragment {
+            return ListPropertiesFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_SECTION_NUMBER, sectionNumber)
+                    putString(ARG_PARAM, param)
+                }
+            }
+        }
+    }
 
-    private fun getData() {
+    private fun getData(param: Int = 0, param2: String = "") {
         val db = FirebaseFirestore.getInstance()
         var count = 0
         list.clear()
@@ -57,17 +75,16 @@ class MyPropertiesFragment : Fragment(), ListClick {
         root?.recyclerView?.itemAnimator = DefaultItemAnimator()
         root?.recyclerView?.adapter = adapter
 
-        val swipeHandler = object : SwipeToDeleteCallback(context!!) {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                //val adapter = root?.recyclerView?.adapter AS
-                deleteRow(viewHolder.adapterPosition)
-                //adapter.removeAt(viewHolder.adapterPosition)
-            }
-        }
-        val itemTouchHelper = ItemTouchHelper(swipeHandler)
-        itemTouchHelper.attachToRecyclerView(root?.recyclerView!!)
+        var docRef = db.collection("properties").whereEqualTo("homeFacts.homeType", param2)
 
-        val docRef = db.collection("properties")
+        when (param) {
+            1 -> docRef = db.collection("properties")
+            2 -> docRef = db.collection("properties").whereEqualTo("homeFacts.sale", true)
+            3 -> docRef = db.collection("properties").whereEqualTo("homeFacts.rent", true)
+            else -> docRef = db.collection("properties").whereEqualTo("homeFacts.homeType", param2)
+        }
+
+
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 return@addSnapshotListener
@@ -86,8 +103,7 @@ class MyPropertiesFragment : Fragment(), ListClick {
                             }
                             i = i + 1
                         }
-
-                        if (inList == false && prop.email.equals(loggedInUser?.email) && prop.isDisabled.trim().equals(
+                        if (inList == false && prop.isDisabled.trim().equals(
                                 "N"
                             )
                         ) {
@@ -109,11 +125,10 @@ class MyPropertiesFragment : Fragment(), ListClick {
                             adapter.notifyItemRangeChanged(0, list.size)
                         } else
                             adapter.notifyDataSetChanged()
-
                     }
                     DocumentChange.Type.ADDED -> {
                         var prop: Property = doc.document.toObject(Property::class.java)
-                        if (prop.email.equals(loggedInUser?.email) && prop.isDisabled.trim().equals(
+                        if (prop.isDisabled.trim().equals(
                                 "N"
                             )
                         ) {
@@ -139,42 +154,14 @@ class MyPropertiesFragment : Fragment(), ListClick {
         }
     }
 
-    override fun deleteRow(position: Int) {
-        val db = FirebaseFirestore.getInstance()
-        var prop = list.get(position) as Property
-        prop.isDisabled = "Y"
-        db.collection("properties")
-            .document(prop.id)
-            .set(prop)
-            .addOnSuccessListener { documentReference ->
-            }
-            .addOnFailureListener { e ->
-            }
-        adapter.removeAt(position)
-        val mySnackbar = Snackbar.make(
-            coordinatorLayout,
-            R.string.success_archived, Snackbar.LENGTH_SHORT
+    override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
+        fragmentActivityCommunication?.startActivityDetWithTransition(
+            (list.get(position) as Property),
+            imageLayout!!
         )
-        mySnackbar.setAction(R.string.undo, View.OnClickListener {
-            returnRow(prop, position)
-        })
-        mySnackbar.show()
     }
 
-    fun returnRow(prop: Property, position: Int) {
-        val db = FirebaseFirestore.getInstance()
-        prop.isDisabled = "N"
-        db.collection("properties")
-            .document(prop.id)
-            .set(prop)
-            .addOnSuccessListener { documentReference ->
-            }
-            .addOnFailureListener { e ->
-            }
-        // list.add(position, prop)
-        adapter.add(position, prop)
+    override fun deleteRow(position: Int) {
     }
-
 
 }
-

@@ -12,6 +12,12 @@
         tools:layout="@layout/content_main" />
 
     <fragment
+        android:id="@+id/nav_list"
+        android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.ViewPagerPropertiesFragment"
+        android:label="@string/by_list"
+        tools:layout="@layout/content_main" />
+
+    <fragment
         android:id="@+id/nav_properties"
         android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.MyPropertiesFragment"
         android:label="@string/my_properties"

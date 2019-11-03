@@ -267,4 +267,6 @@
     <string name="undo">Undo</string>
     <string name="success_archived">Successfully archived.</string>
     <string name="no_more_available">No More Available</string>
+    <string name="by_list">By List</string>
+    <string name="all">All</string>
 </resources>
