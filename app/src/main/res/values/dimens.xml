@@ -30,6 +30,7 @@
     <dimen name="card_margin">5dp</dimen>
     <dimen name="title_size">12dp</dimen>
     <dimen name="title_padding">10dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
     <dimen name="padding_bottom">5dp</dimen>
 </resources>
 

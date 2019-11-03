@@ -17,7 +17,6 @@ import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunicat
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.listview_fragment.view.*
-
 class ListPropertiesFragment : Fragment(), ListClick {
     var root: View? = null
     lateinit var adapter: RecylerViewAdapter
@@ -28,6 +27,8 @@ class ListPropertiesFragment : Fragment(), ListClick {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.listview_fragment, container, false)
+
+
         var param = arguments?.getString(ARG_PARAM)
         var section = arguments?.getInt(ARG_SECTION_NUMBER)
         if (section == 1) {
@@ -73,8 +74,18 @@ class ListPropertiesFragment : Fragment(), ListClick {
             list, this, root?.context!!, true
         )
         root?.recyclerView?.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            val layoutManager1 = GridLayoutManager(context, 2)
+            layoutManager1.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    if (position == (list.size - 1) && position % 2 == 0)
+                        return 2
+                    else
+                        return 1
+                }
+            }
+            layoutManager = layoutManager1
         }
+
         // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
         root?.recyclerView?.itemAnimator = DefaultItemAnimator()
         root?.recyclerView?.adapter = adapter

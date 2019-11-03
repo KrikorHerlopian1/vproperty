@@ -4,24 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="match_parent">
 
-    <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/no_data_found"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/largeTextSize"
-        android:visibility="gone" />
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/no_data_found"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/largeTextSize"
+            android:visibility="gone" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp" />
+    </RelativeLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

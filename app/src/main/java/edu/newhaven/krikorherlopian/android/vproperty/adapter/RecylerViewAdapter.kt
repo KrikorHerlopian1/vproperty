@@ -83,14 +83,16 @@ class RecylerViewAdapter(
                 .into(
                     holder.itemView.thumbnail
                 )
+            holder.itemView.setOnClickListener {
+                listClick.rowClicked(
+                    position,
+                    0,
+                    holder.itemView.thumbnail
+                )
+            }
         }
-        holder.itemView.setOnClickListener {
-            listClick.rowClicked(
-                position,
-                0,
-                holder.itemView.thumbnail
-            )
-        }
+
+
     }
     
     private fun configureViewHolder3(holder: RecyclerView.ViewHolder, position: Int) {

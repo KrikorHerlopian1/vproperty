@@ -118,6 +118,10 @@
                 android:value=".activity.AddPropertyActivity" />
         </activity>
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2925286479807723~9938531599" />
+
     </application>
 
 </manifest>
