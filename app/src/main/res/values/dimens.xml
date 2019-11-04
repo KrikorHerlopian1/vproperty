@@ -32,5 +32,7 @@
     <dimen name="title_padding">10dp</dimen>
     <dimen name="dp_56">56dp</dimen>
     <dimen name="padding_bottom">5dp</dimen>
+    <dimen name="home_type_size">40dp</dimen>
+    <dimen name="home_type_size_layout">50dp</dimen>
 </resources>
 
