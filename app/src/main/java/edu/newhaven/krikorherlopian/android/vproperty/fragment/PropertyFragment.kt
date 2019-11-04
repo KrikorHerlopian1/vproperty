@@ -86,7 +86,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                         location.latitude.toDouble(),
                         location.longitude.toDouble()
                     )
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
                 }
             }
     }

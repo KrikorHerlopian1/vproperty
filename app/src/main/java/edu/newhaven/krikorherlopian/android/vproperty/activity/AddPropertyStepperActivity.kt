@@ -245,35 +245,39 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                             )
                     }
                 RC_LCOATION -> {
-                    val latitude = data.getDoubleExtra(LATITUDE, 0.0)
-                    val longitude = data.getDoubleExtra(LONGITUDE, 0.0)
-                    val address = data.getStringExtra(LOCATION_ADDRESS)
-                    val postalcode = data.getStringExtra(ZIPCODE)
-                    latitudeInput.setText("" + latitude)
-                    longitudeInput.setText("" + longitude)
-                    addressName.setText(address.toString())
-                    zipCodeInput.setText(postalcode.toString())
+                    try {
+                        val latitude = data.getDoubleExtra(LATITUDE, 0.0)
+                        val longitude = data.getDoubleExtra(LONGITUDE, 0.0)
+                        val address = data.getStringExtra(LOCATION_ADDRESS)
+                        val postalcode = data.getStringExtra(ZIPCODE)
+                        latitudeInput.setText("" + latitude)
+                        longitudeInput.setText("" + longitude)
+                        addressName.setText(address.toString())
+                        zipCodeInput.setText(postalcode.toString())
 
-                    val geocoder = Geocoder(this, Locale.getDefault())
-                    val addresses =
-                        geocoder.getFromLocation(latitude, longitude, 1)
-                    val cityName = addresses[0].getAddressLine(0)
-                    val stateName = addresses[0].getAddressLine(1)
-                    val countryName = addresses[0].getAddressLine(2)
-                    var add: String = ""
-                    if (address == null || address.trim().equals("")) {
-                        if (cityName != null) {
-                            add = cityName
-                            if (stateName != null) {
-                                add = add + " ," + stateName
+                        val geocoder = Geocoder(this, Locale.getDefault())
+                        val addresses =
+                            geocoder.getFromLocation(latitude, longitude, 1)
+                        val cityName = addresses[0].getAddressLine(0)
+                        val stateName = addresses[0].getAddressLine(1)
+                        val countryName = addresses[0].getAddressLine(2)
+                        var add: String = ""
+                        if (address == null || address.trim().equals("")) {
+                            if (cityName != null) {
+                                add = cityName
+                                if (stateName != null) {
+                                    add = add + " ," + stateName
+                                }
+                                addressName.setText(add)
+                            } else if (stateName != null) {
+                                add = stateName
+                                addressName.setText(add)
                             }
-                            addressName.setText(add)
-                        } else if (stateName != null) {
-                            add = stateName
-                            addressName.setText(add)
-                        }
 
+                        }
+                    } catch (e: Exception) {
                     }
+
                 }
 
             }

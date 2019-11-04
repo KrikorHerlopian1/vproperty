@@ -56,7 +56,7 @@
     <string name="enter_price">Por favor ingrese el precio</string>
     <string name="number_of_bedrooms">No de dormitorios</string>
     <string name="total_rooms">Habitaciones totales</string>
-    <string name="number_of_parking_spaces">Plazas de aparcamiento</string>
+    <string name="number_of_parking_spaces">Plazas De Aparcamiento</string>
     <string name="year_built">Año de construcción</string>
     <string name="modal_year">Año modal estructural</string>
     <string name="finished_square_feet">Terminado Sq FT</string>
@@ -113,12 +113,12 @@
     <string name="phone_number">Teléfono de contacto</string>
     <string name="take_image">Tome una foto con la cámara o elija de la galería</string>
     <string name="building_aminities">EDIFICIOS</string>
-    <string name="basketball_court">Cancha de basketball</string>
+    <string name="basketball_court">Baloncesto</string>
     <string name="disabled_access">Acceso desactivado</string>
     <string name="doorman">Portero</string>
     <string name="fitness_center">Gimnasio</string>
     <string name="near_transportation">Transporte cercano</string>
-    <string name="sports_court">Cancha</string>
+    <string name="sports_court">Cancha deportivas</string>
     <string name="storage">Almacenamiento</string>
     <string name="tennis_court">Pista de tenis</string>
     <string name="cooling_type">TIPO DE ENFRIAMIENTO</string>

@@ -79,7 +79,7 @@ class RecylerViewAdapter(
             var property = list.get(position) as Property
             holder.bind(property)
             Glide.with(context).load(property.photoUrl)
-                .placeholder(R.drawable.profileplaceholder)
+                .placeholder(R.drawable.placeholderdetail)
                 .into(
                     holder.itemView.thumbnail
                 )

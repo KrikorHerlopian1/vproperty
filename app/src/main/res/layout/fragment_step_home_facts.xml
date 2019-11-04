@@ -24,9 +24,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="20dp"
+                android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingRight="20dp"
+                android:paddingRight="10dp"
                 android:paddingBottom="5dp">
 
 
