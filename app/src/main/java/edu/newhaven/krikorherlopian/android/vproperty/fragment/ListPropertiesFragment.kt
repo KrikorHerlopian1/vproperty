@@ -107,6 +107,7 @@ class ListPropertiesFragment : Fragment(), ListClick {
             for (doc in snapshot!!.documentChanges) {
                 when (doc.type) {
                     DocumentChange.Type.MODIFIED -> {
+
                         var prop: Property = doc.document.toObject(Property::class.java)
                         var i = 0
                         var inList: Boolean = false
@@ -157,6 +158,23 @@ class ListPropertiesFragment : Fragment(), ListClick {
                             adapter.notifyItemRangeChanged(0, list.size)
                         }
 
+                    }
+                    DocumentChange.Type.REMOVED -> {
+                        var prop: Property = doc.document.toObject(Property::class.java)
+                        if (((param == 2 && prop.homeFacts.isSale == true) ||
+                                    (param == 3 && prop.homeFacts.isRent == true) || (param > 3 && prop.homeFacts.homeType.equals(
+                                param2
+                            ))
+                                    )
+                        ) {
+                            var manager = root?.recyclerView?.layoutManager!! as LinearLayoutManager
+                            list.remove(prop)
+                            val firstItem = manager.findFirstVisibleItemPosition()
+                            val firstItemView = manager.findViewByPosition(firstItem)
+                            val topOffset = firstItemView?.top?.toFloat()
+                            adapter.notifyItemRangeRemoved(0, 1)
+                            adapter.notifyItemRangeChanged(0, list.size)
+                        }
                     }
                 }
             }

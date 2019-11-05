@@ -83,30 +83,39 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
             if (property.homeFacts.homeType.equals("SIF")) {
                 typeCode = property.homeFacts.homeType
                 typeSingleFamily.selected = 1
+                posSelected = 0
             } else if (property.homeFacts.homeType.equals("CON")) {
                 typeCode = property.homeFacts.homeType
                 typeCondo.selected = 1
+                posSelected = 1
             } else if (property.homeFacts.homeType.equals("TOW")) {
                 typeCode = property.homeFacts.homeType
                 typeTownHouse.selected = 1
+                posSelected = 2
             } else if (property.homeFacts.homeType.equals("MUF")) {
                 typeCode = property.homeFacts.homeType
                 typeMultiFamily.selected = 1
+                posSelected = 3
             } else if (property.homeFacts.homeType.equals("APT")) {
                 typeCode = property.homeFacts.homeType
                 typeApartment.selected = 1
+                posSelected = 4
             } else if (property.homeFacts.homeType.equals("MOB")) {
                 typeCode = property.homeFacts.homeType
                 typeMobileManufactured.selected = 1
+                posSelected = 5
             } else if (property.homeFacts.homeType.equals("COU")) {
                 typeCode = property.homeFacts.homeType
                 typeCoop.selected = 1
+                posSelected = 6
             } else if (property.homeFacts.homeType.equals("VAL")) {
                 typeCode = property.homeFacts.homeType
                 typeVacantLand.selected = 1
+                posSelected = 7
             } else if (property.homeFacts.homeType.equals("OTH")) {
                 typeCode = property.homeFacts.homeType
                 typeOther.selected = 1
+                posSelected = 8
             }
             val adapter = RecylerViewAdapter(
                 list, this, context
