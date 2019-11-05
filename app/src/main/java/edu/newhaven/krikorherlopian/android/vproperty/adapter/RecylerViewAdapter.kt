@@ -67,15 +67,15 @@ class RecylerViewAdapter(
         holder.itemView.startAnimation(animation)
         lastPosition = position
         when (holder.itemViewType) {
-            HEADER_VIEW -> configureViewHolder1(holder, position)
-            CONTENT_VIEW -> configureViewHolder2(holder, position)
-            PROPERTY_VIEW -> configureViewHolder3(holder, position)
-            PROPERTY_VIEW_TWO_COLUMN -> configureViewHolder4(holder, position)
-            HOME_TYPE -> configureViewHolder5(holder, position)
+            HEADER_VIEW -> configureViewHolderSettings(holder, position)
+            CONTENT_VIEW -> configureViewHolderSettingsSwitch(holder, position)
+            PROPERTY_VIEW -> configureViewHolderMyProperty(holder, position)
+            PROPERTY_VIEW_TWO_COLUMN -> configureViewHolderListProperty(holder, position)
+            HOME_TYPE -> configureViewHolderHomeType(holder, position)
         }
     }
 
-    private fun configureViewHolder5(holder: RecyclerView.ViewHolder, position: Int) {
+    private fun configureViewHolderHomeType(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HomeTypeViewHolder && list.get(position) is HomeTypes) {
             var homeType = list.get(position) as HomeTypes
             if (homeType.selected == 1) {
@@ -90,7 +90,7 @@ class RecylerViewAdapter(
     }
 
 
-    private fun configureViewHolder4(holder: RecyclerView.ViewHolder, position: Int) {
+    private fun configureViewHolderListProperty(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is TwoPropertyViewHolder && list.get(position) is Property) {
             var property = list.get(position) as Property
             holder.bind(property)
@@ -108,8 +108,8 @@ class RecylerViewAdapter(
             }
         }
     }
-    
-    private fun configureViewHolder3(holder: RecyclerView.ViewHolder, position: Int) {
+
+    private fun configureViewHolderMyProperty(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PropertyViewHolder && list.get(position) is Property) {
             var property = list.get(position) as Property
             holder.bind(property)
@@ -129,13 +129,13 @@ class RecylerViewAdapter(
         }
     }
 
-    private fun configureViewHolder1(holder: RecyclerView.ViewHolder, position: Int) {
+    private fun configureViewHolderSettings(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is MyViewHolder && list.get(position) is SettingsItem)
             holder.bind(list.get(position) as SettingsItem)
         holder.itemView.setOnClickListener { listClick.rowClicked(position) }
     }
 
-    private fun configureViewHolder2(holder: RecyclerView.ViewHolder, position: Int) {
+    private fun configureViewHolderSettingsSwitch(holder: RecyclerView.ViewHolder, position: Int) {
         var item = list.get(position) as SettingsItem
         if (holder is ViewHolderOneItem)
             holder.bind(item)

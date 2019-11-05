@@ -55,57 +55,58 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
         try {
             onNavigationBarListener = listener
             ms = v
-            var propertType1: HomeTypes =
+            var typeSingleFamily: HomeTypes =
                 HomeTypes("SIF", resources.getString(R.string.single_family))
-            var propertType2: HomeTypes = HomeTypes("CON", resources.getString(R.string.condo))
-            var propertType3: HomeTypes = HomeTypes("TOW", resources.getString(R.string.town_house))
-            var propertType4: HomeTypes =
+            var typeCondo: HomeTypes = HomeTypes("CON", resources.getString(R.string.condo))
+            var typeTownHouse: HomeTypes =
+                HomeTypes("TOW", resources.getString(R.string.town_house))
+            var typeMultiFamily: HomeTypes =
                 HomeTypes("MUF", resources.getString(R.string.multi_family))
-            var propertType5: HomeTypes = HomeTypes("APT", resources.getString(R.string.apartment))
-            var propertType6: HomeTypes =
+            var typeApartment: HomeTypes = HomeTypes("APT", resources.getString(R.string.apartment))
+            var typeMobileManufactured: HomeTypes =
                 HomeTypes("MOB", resources.getString(R.string.mobile_manufactured))
-            var propertType7: HomeTypes = HomeTypes("COU", resources.getString(R.string.coop_unit))
-            var propertType8: HomeTypes =
+            var typeCoop: HomeTypes = HomeTypes("COU", resources.getString(R.string.coop_unit))
+            var typeVacantLand: HomeTypes =
                 HomeTypes("VAL", resources.getString(R.string.vacant_land))
-            var propertType9: HomeTypes = HomeTypes("OTH", resources.getString(R.string.other))
+            var typeOther: HomeTypes = HomeTypes("OTH", resources.getString(R.string.other))
 
-            list.add(propertType1)
-            list.add(propertType2)
-            list.add(propertType3)
-            list.add(propertType4)
-            list.add(propertType5)
-            list.add(propertType6)
-            list.add(propertType7)
-            list.add(propertType8)
-            list.add(propertType9)
+            list.add(typeSingleFamily)
+            list.add(typeCondo)
+            list.add(typeTownHouse)
+            list.add(typeMultiFamily)
+            list.add(typeApartment)
+            list.add(typeMobileManufactured)
+            list.add(typeCoop)
+            list.add(typeVacantLand)
+            list.add(typeOther)
 
             if (property.homeFacts.homeType.equals("SIF")) {
                 typeCode = property.homeFacts.homeType
-                propertType1.selected = 1
+                typeSingleFamily.selected = 1
             } else if (property.homeFacts.homeType.equals("CON")) {
                 typeCode = property.homeFacts.homeType
-                propertType2.selected = 1
+                typeCondo.selected = 1
             } else if (property.homeFacts.homeType.equals("TOW")) {
                 typeCode = property.homeFacts.homeType
-                propertType3.selected = 1
+                typeTownHouse.selected = 1
             } else if (property.homeFacts.homeType.equals("MUF")) {
                 typeCode = property.homeFacts.homeType
-                propertType4.selected = 1
+                typeMultiFamily.selected = 1
             } else if (property.homeFacts.homeType.equals("APT")) {
                 typeCode = property.homeFacts.homeType
-                propertType5.selected = 1
+                typeApartment.selected = 1
             } else if (property.homeFacts.homeType.equals("MOB")) {
                 typeCode = property.homeFacts.homeType
-                propertType6.selected = 1
+                typeMobileManufactured.selected = 1
             } else if (property.homeFacts.homeType.equals("COU")) {
                 typeCode = property.homeFacts.homeType
-                propertType7.selected = 1
+                typeCoop.selected = 1
             } else if (property.homeFacts.homeType.equals("VAL")) {
                 typeCode = property.homeFacts.homeType
-                propertType8.selected = 1
+                typeVacantLand.selected = 1
             } else if (property.homeFacts.homeType.equals("OTH")) {
                 typeCode = property.homeFacts.homeType
-                propertType9.selected = 1
+                typeOther.selected = 1
             }
             val adapter = RecylerViewAdapter(
                 list, this, context
