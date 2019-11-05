@@ -9,14 +9,13 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
-import edu.newhaven.krikorherlopian.android.vproperty.adapter.HomeTypeAdapter
+import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
-import edu.newhaven.krikorherlopian.android.vproperty.model.HomeTypePair
 import edu.newhaven.krikorherlopian.android.vproperty.model.HomeTypes
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import es.dmoral.toasty.Toasty
@@ -29,7 +28,7 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
     var posSelected = -1
     var typeCode: String? = ""
 
-    var list: MutableList<HomeTypePair> = mutableListOf<HomeTypePair>()
+    var list: MutableList<Any> = mutableListOf<Any>()
     @Nullable
     private var onNavigationBarListener: OnNavigationBarListener? = null
 
@@ -59,67 +58,63 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
             var propertType1: HomeTypes =
                 HomeTypes("SIF", resources.getString(R.string.single_family))
             var propertType2: HomeTypes = HomeTypes("CON", resources.getString(R.string.condo))
-            list.add(HomeTypePair(propertType1, propertType2))
-
             var propertType3: HomeTypes = HomeTypes("TOW", resources.getString(R.string.town_house))
             var propertType4: HomeTypes =
                 HomeTypes("MUF", resources.getString(R.string.multi_family))
-            list.add(HomeTypePair(propertType3, propertType4))
-
             var propertType5: HomeTypes = HomeTypes("APT", resources.getString(R.string.apartment))
             var propertType6: HomeTypes =
                 HomeTypes("MOB", resources.getString(R.string.mobile_manufactured))
-            list.add(HomeTypePair(propertType5, propertType6))
-
             var propertType7: HomeTypes = HomeTypes("COU", resources.getString(R.string.coop_unit))
             var propertType8: HomeTypes =
                 HomeTypes("VAL", resources.getString(R.string.vacant_land))
-            list.add(HomeTypePair(propertType7, propertType8))
-
             var propertType9: HomeTypes = HomeTypes("OTH", resources.getString(R.string.other))
-            list.add(HomeTypePair(propertType9, null))
+
+            list.add(propertType1)
+            list.add(propertType2)
+            list.add(propertType3)
+            list.add(propertType4)
+            list.add(propertType5)
+            list.add(propertType6)
+            list.add(propertType7)
+            list.add(propertType8)
+            list.add(propertType9)
 
             if (property.homeFacts.homeType.equals("SIF")) {
                 typeCode = property.homeFacts.homeType
-                posSelected = 1
                 propertType1.selected = 1
             } else if (property.homeFacts.homeType.equals("CON")) {
                 typeCode = property.homeFacts.homeType
-                posSelected = 1
                 propertType2.selected = 1
             } else if (property.homeFacts.homeType.equals("TOW")) {
                 typeCode = property.homeFacts.homeType
                 propertType3.selected = 1
-                posSelected = 2
             } else if (property.homeFacts.homeType.equals("MUF")) {
                 typeCode = property.homeFacts.homeType
                 propertType4.selected = 1
-                posSelected = 2
             } else if (property.homeFacts.homeType.equals("APT")) {
                 typeCode = property.homeFacts.homeType
                 propertType5.selected = 1
-                posSelected = 3
             } else if (property.homeFacts.homeType.equals("MOB")) {
                 typeCode = property.homeFacts.homeType
                 propertType6.selected = 1
-                posSelected = 3
             } else if (property.homeFacts.homeType.equals("COU")) {
                 typeCode = property.homeFacts.homeType
                 propertType7.selected = 1
-                posSelected = 4
             } else if (property.homeFacts.homeType.equals("VAL")) {
                 typeCode = property.homeFacts.homeType
                 propertType8.selected = 1
-                posSelected = 4
             } else if (property.homeFacts.homeType.equals("OTH")) {
                 typeCode = property.homeFacts.homeType
                 propertType9.selected = 1
-                posSelected = 5
             }
-            val adapter = HomeTypeAdapter(
-                list, this
+            val adapter = RecylerViewAdapter(
+                list, this, context
             )
-            v?.recyclerView?.layoutManager = LinearLayoutManager(context)
+            //  v?.recyclerView?.layoutManager = LinearLayoutManager(context)
+            v?.recyclerView?.apply {
+                val layoutManager1 = GridLayoutManager(context, 2)
+                layoutManager = layoutManager1
+            }
             v?.recyclerView?.itemAnimator = DefaultItemAnimator()
             v?.recyclerView?.adapter = adapter
         } catch (e: Exception) {
@@ -128,16 +123,15 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
     }
 
     override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
-        for (homeTypePair in list) {
-            homeTypePair.homeType1?.selected = 0
-            homeTypePair.homeType2?.selected = 0
-        }
-        if (position2 == 1) {
-            typeCode = list.get(position).homeType1?.typeCode
-            list.get(position).homeType1?.selected = 1
-        } else {
-            typeCode = list.get(position).homeType2?.typeCode
-            list.get(position).homeType2?.selected = 1
+        var i = 0
+        for (homeType in list) {
+            var homeTypes = homeType as HomeTypes
+            homeTypes.selected = 0
+            if (i == position) {
+                homeTypes.selected = 1
+                typeCode = homeTypes.typeCode
+            }
+            i = i + 1
         }
         posSelected = position
         ms?.recyclerView?.adapter?.notifyDataSetChanged()

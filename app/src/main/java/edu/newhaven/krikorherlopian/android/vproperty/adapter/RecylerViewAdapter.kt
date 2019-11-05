@@ -12,12 +12,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
+import edu.newhaven.krikorherlopian.android.vproperty.model.HomeTypes
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
-import edu.newhaven.krikorherlopian.android.vproperty.viewholder.MyViewHolder
-import edu.newhaven.krikorherlopian.android.vproperty.viewholder.PropertyViewHolder
-import edu.newhaven.krikorherlopian.android.vproperty.viewholder.TwoPropertyViewHolder
-import edu.newhaven.krikorherlopian.android.vproperty.viewholder.ViewHolderOneItem
+import edu.newhaven.krikorherlopian.android.vproperty.viewholder.*
+import kotlinx.android.synthetic.main.hometype.view.*
 import kotlinx.android.synthetic.main.property_item.view.*
 import kotlinx.android.synthetic.main.switch_item.view.*
 
@@ -35,6 +34,7 @@ class RecylerViewAdapter(
     private val CONTENT_VIEW = 1
     private val PROPERTY_VIEW = 2
     private val PROPERTY_VIEW_TWO_COLUMN = 3
+    private val HOME_TYPE = 4
     var lastPosition = -1
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
         super.onViewDetachedFromWindow(holder)
@@ -71,8 +71,24 @@ class RecylerViewAdapter(
             CONTENT_VIEW -> configureViewHolder2(holder, position)
             PROPERTY_VIEW -> configureViewHolder3(holder, position)
             PROPERTY_VIEW_TWO_COLUMN -> configureViewHolder4(holder, position)
+            HOME_TYPE -> configureViewHolder5(holder, position)
         }
     }
+
+    private fun configureViewHolder5(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is HomeTypeViewHolder && list.get(position) is HomeTypes) {
+            var homeType = list.get(position) as HomeTypes
+            if (homeType.selected == 1) {
+                holder.itemView.home_type_layout.setBackgroundResource(R.drawable.bordertype)
+            } else
+                holder.itemView.home_type_layout.setBackgroundResource(R.drawable.bordertypeselected)
+            holder.bind(homeType)
+            holder.itemView.setOnClickListener {
+                listClick.rowClicked(position, 0)
+            }
+        }
+    }
+
 
     private fun configureViewHolder4(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is TwoPropertyViewHolder && list.get(position) is Property) {
@@ -91,8 +107,6 @@ class RecylerViewAdapter(
                 )
             }
         }
-
-
     }
     
     private fun configureViewHolder3(holder: RecyclerView.ViewHolder, position: Int) {
@@ -152,6 +166,7 @@ class RecylerViewAdapter(
             CONTENT_VIEW -> return ViewHolderOneItem(parent.inflate(R.layout.switch_item))
             PROPERTY_VIEW -> return PropertyViewHolder(parent.inflate(R.layout.property_item))
             PROPERTY_VIEW_TWO_COLUMN -> return TwoPropertyViewHolder(parent.inflate(R.layout.property_column))
+            HOME_TYPE -> return HomeTypeViewHolder(parent.inflate(R.layout.hometype))
         }
         return MyViewHolder(parent.inflate(R.layout.title_subtitle_item))
     }
@@ -168,8 +183,11 @@ class RecylerViewAdapter(
                 return HEADER_VIEW
             else
                 return CONTENT_VIEW
-        } else if (list.get(position) is Property)
+        } else if (list.get(position) is Property) {
             return PROPERTY_VIEW
+        } else if (list.get(position) is HomeTypes)
+            return HOME_TYPE
+
         return super.getItemViewType(position)
     }
 

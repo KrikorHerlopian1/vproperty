@@ -28,7 +28,7 @@ private val TAB_VALUES = arrayOf(
     "homeFacts.rent",
     "APT",
     "SIF",
-    "MIF",
+    "MUF",
     "CON",
     "TOW",
     "MOB",
