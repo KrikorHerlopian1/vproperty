@@ -2,12 +2,16 @@ package edu.newhaven.krikorherlopian.android.vproperty.step
 
 import android.content.Context
 import android.graphics.Typeface
+import android.location.Geocoder
+import android.location.Location
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
 import edu.newhaven.krikorherlopian.android.vproperty.R
@@ -16,10 +20,12 @@ import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBar
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_home_address.view.*
+import java.util.*
 
 class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var property: Property) :
     FrameLayout(context),
     Step {
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     internal var ms: View? = null
     @Nullable
     private var onNavigationBarListener: OnNavigationBarListener? = null
@@ -55,9 +61,42 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
             v.latitudeInput.setText(property.address.latitude.toString())
             v.descriptionLayout.setText(property.address.descriptionAddress.toString())
             setUpFonts()
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+            if (property.address.latitude.equals("") && property.address.longitude.equals(""))
+                getLocation()
         } catch (e: Exception) {
         }
+    }
 
+    private fun getLocation() {
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    val address = ""
+                    val geocoder = Geocoder(context, Locale.getDefault())
+                    val addresses =
+                        geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                    val cityName = addresses[0].getAddressLine(0)
+                    val stateName = addresses[0].getAddressLine(1)
+                    val countryName = addresses[0].getAddressLine(2)
+                    var add: String = ""
+                    ms?.longitudeInput?.setText(location.longitude.toDouble().toString())
+                    ms?.latitudeInput?.setText(location.latitude.toDouble().toString())
+                    if (address == null || address.trim().equals("")) {
+                        if (cityName != null) {
+                            add = cityName
+                            if (stateName != null) {
+                                add = add + " ," + stateName
+                            }
+                            addressName.setText(add)
+                        } else if (stateName != null) {
+                            add = stateName
+                            addressName.setText(add)
+                        }
+                    }
+                }
+            }
     }
 
     private fun setUpFonts() {
