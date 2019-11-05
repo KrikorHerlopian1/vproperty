@@ -86,7 +86,6 @@ class MyPropertiesFragment : Fragment(), ListClick {
                             }
                             i = i + 1
                         }
-
                         if (inList == false && prop.email.equals(loggedInUser?.email) && prop.isDisabled.trim().equals(
                                 "N"
                             )
