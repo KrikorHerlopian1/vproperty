@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
+        android:textColor="@color/secondary_text"
         android:padding="20dp"
         android:text="@string/choose_a_way_photo"></edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView>
 

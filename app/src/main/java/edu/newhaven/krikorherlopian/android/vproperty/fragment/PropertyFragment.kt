@@ -35,7 +35,7 @@ import kotlinx.android.synthetic.main.map_info.view.*
 class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
     private var mLocationRequest: LocationRequest? = null
-    private val SPEED_INTERVAL: Long = 20000 /* 20 sec */
+    private val SPEED_INTERVAL: Long = 2000 /* 2 sec */
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  /* 10 secs */
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap

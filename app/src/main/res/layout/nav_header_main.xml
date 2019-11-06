@@ -11,23 +11,23 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/profile_image"
-        android:layout_height="@dimen/profile_image"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/nav_header_vertical_spacing" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/profile_image"
+            android:layout_height="@dimen/profile_image"
+            android:contentDescription="@string/nav_header_desc"
+            android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
-    <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
-        android:id="@+id/headerTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+            android:id="@+id/headerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
-        android:id="@+id/headerSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+            android:id="@+id/headerSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 </LinearLayout>
