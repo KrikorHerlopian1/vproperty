@@ -66,7 +66,6 @@ class ViewPagerPropertiesFragment : Fragment() {
                             }
                         }
                     } catch (e: Exception) {
-                        System.out.println("exception " + e.message)
                     }
                 }
             }, 1000)
