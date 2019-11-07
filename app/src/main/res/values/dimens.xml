@@ -12,7 +12,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="profile_image">50dp</dimen>
     <dimen name="logo_size">150dp</dimen>
-    <dimen name="image_map_size">150dp</dimen>
+    <dimen name="image_map_size">200dp</dimen>
     <dimen name="settings_list_icon_sizes">24dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="drawable_padding">5dp</dimen>
@@ -35,6 +35,7 @@
     <dimen name="home_type_size">40dp</dimen>
     <dimen name="home_type_size_layout">50dp</dimen>
     <dimen name="arc_height">20dp</dimen>
+    <dimen name="image_type">48dp</dimen>
     <dimen name="my_profile_image">200dp</dimen>
 </resources>
 

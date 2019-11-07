@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -35,12 +36,13 @@ import kotlinx.android.synthetic.main.map_info.view.*
 class PropertyFragment : Fragment(), OnMapReadyCallback {
     var propertyList = ArrayList<Property>()
     private var mLocationRequest: LocationRequest? = null
-    private val SPEED_INTERVAL: Long = 2000 /* 2 sec */
+    private val SPEED_INTERVAL: Long = 20000 /* 20 sec */
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  /* 10 secs */
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
     lateinit var markerS: Marker
     var count = 0
+    var prevLocation: Location? = null
     var currentView: ImageView? = null
     var sharedPref: SharedPreferences? = null
     lateinit var mapType: String
@@ -182,7 +184,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                         )
                         val displayMetrics = resources.displayMetrics
                         v.layoutParams = LinearLayout.LayoutParams(
-                            displayMetrics.widthPixels - 100,
+                            displayMetrics.widthPixels,
                             resources.getDimension(R.dimen.image_map_size).toInt()
                         )
                     } else {
@@ -194,7 +196,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                         currentView = v.image
                         val displayMetrics = resources.displayMetrics
                         v.layoutParams = LinearLayout.LayoutParams(
-                            displayMetrics.widthPixels - 100,
+                            displayMetrics.widthPixels,
                             resources.getDimension(R.dimen.image_map_size).toInt()
                         )
 
@@ -203,6 +205,21 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             val property = propertyList.get(i)
                             val info = v.info
                             info.text = "\u200e" + property.address.addressName
+                            if (property.homeFacts.isSale) {
+                                Glide.with(v.context).load(R.drawable.ic_for_sale).placeholder(
+                                    R.drawable.ic_for_sale
+                                ).into(
+                                    v.imagetype
+                                )
+                            } else {
+                                Glide.with(v.context).load(R.drawable.ic_for_rent_color)
+                                    .placeholder(
+                                        R.drawable.ic_for_rent_color
+                                    ).into(
+                                    v.imagetype
+                                )
+                            }
+
                             var priceHome = String.format(
                                 "%,.2f",
                                 property.homeFacts.price?.toFloat()
@@ -311,14 +328,50 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
     //
     private fun onLocationChanged(location: Location) {
         try {
-            mMap.moveCamera(
-                CameraUpdateFactory.newLatLng(
-                    LatLng(
-                        location.latitude,
-                        location.longitude
+            if (prevLocation != null) {
+                var R = 3958.756 // miles
+                var φ1 = Math.toRadians(location.latitude)
+                var φ2 = Math.toRadians(prevLocation?.latitude!!)
+                var Δφ = Math.toRadians(prevLocation?.latitude!! - location.latitude)
+                var Δλ = Math.toRadians(prevLocation?.longitude!! - location.longitude)
+
+                var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                        Math.cos(φ1) * Math.cos(φ2) *
+                        Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+                var d = R * c
+                if (d > 4) {
+                    prevLocation = location
+                    mMap.moveCamera(
+                        CameraUpdateFactory.newLatLng(
+                            LatLng(
+                                location.latitude,
+                                location.longitude
+                            )
+                        )
+                    )
+                }
+            } else {
+                mMap.moveCamera(
+                    CameraUpdateFactory.newLatLng(
+                        LatLng(
+                            location.latitude,
+                            location.longitude
+                        )
                     )
                 )
-            )
+                prevLocation = location
+            }
+
+
+            /* mMap.moveCamera(
+                 CameraUpdateFactory.newLatLng(
+                     LatLng(
+                         location.latitude,
+                         location.longitude
+                     )
+                 )
+             )*/
         } catch (e: java.lang.Exception) {
         }
     }
