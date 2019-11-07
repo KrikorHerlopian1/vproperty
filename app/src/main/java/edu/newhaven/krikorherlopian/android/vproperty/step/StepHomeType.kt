@@ -117,16 +117,18 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
                 typeOther.selected = 1
                 posSelected = 8
             }
+
             val adapter = RecylerViewAdapter(
                 list, this, context
             )
-            //  v?.recyclerView?.layoutManager = LinearLayoutManager(context)
             v?.recyclerView?.apply {
-                val layoutManager1 = GridLayoutManager(context, 2)
-                layoutManager = layoutManager1
+                layoutManager = GridLayoutManager(context, 2)
             }
+            //  v?.recyclerView?.layoutManager = LinearLayoutManager(context)
             v?.recyclerView?.itemAnimator = DefaultItemAnimator()
             v?.recyclerView?.adapter = adapter
+
+
         } catch (e: Exception) {
         }
 

@@ -14,119 +14,143 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/profileplaceholder"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="0dp" />
+            <com.github.florent37.shapeofview.shapes.ArcView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/my_profile_image"
+                android:elevation="4dp"
+                app:shape_arc_cropDirection="outside"
+                app:shape_arc_height="@dimen/arc_height"
+                app:shape_arc_position="bottom">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/displayNamenputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/side_nav_bar"
+                    android:padding="10dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="@dimen/my_profile_image"
+                        android:layout_height="@dimen/my_profile_image"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/profileplaceholder"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="0dp" />
+                </RelativeLayout>
+
+            </com.github.florent37.shapeofview.shapes.ArcView>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/display_name"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxStrokeColor="@color/colorAccent">
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/displayName"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/displayNamenputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_person_24dp"
-                    android:drawablePadding="@dimen/drawable_padding"
-                    android:drawableTint="@color/colorAccent"
-                    android:enabled="false"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/normalTextSize" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="12dp"
+                    android:hint="@string/display_name"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxStrokeColor="@color/colorAccent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/displayName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_person_24dp"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
+                        android:enabled="false"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/normalTextSize" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailAddressInputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/email"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxStrokeColor="@color/colorAccent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailAddressInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_email_24dp"
-                    android:drawablePadding="@dimen/drawable_padding"
-                    android:drawableTint="@color/colorAccent"
-                    android:enabled="false"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/normalTextSize" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="12dp"
+                    android:hint="@string/email"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxStrokeColor="@color/colorAccent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/phone_number"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/phone_number_display"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxStrokeColor="@color/colorAccent">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_email_24dp"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
+                        android:enabled="false"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/normalTextSize" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phone_number_input"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phone_number"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_call_black_24dp"
-                    android:drawablePadding="@dimen/drawable_padding"
-                    android:drawableTint="@color/colorAccent"
-                    android:enabled="false"
-                    android:inputType="phone"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/normalTextSize" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="12dp"
+                    android:hint="@string/phone_number_display"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxStrokeColor="@color/colorAccent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone_number_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_call_black_24dp"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:drawableTint="@color/colorAccent"
+                        android:enabled="false"
+                        android:inputType="phone"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/normalTextSize" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/submitbutton"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/buttonHeight"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/border"
-                android:visibility="gone">
-
-                <ProgressBar
-                    android:id="@+id/progressbar"
-                    android:layout_width="@dimen/progress_bar_size"
-                    android:layout_height="@dimen/progress_bar_size"
-                    android:layout_centerVertical="true"
-                    android:indeterminateTint="@android:color/white"
-                    android:padding="5dp"
-                    android:visibility="gone" />
-
-                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                <RelativeLayout
+                    android:id="@+id/submitbutton"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/buttonHeight"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:text="@string/submit"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/normalTextSize"
-                    android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
-            </RelativeLayout>
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:id="@+id/progressbar"
+                        android:layout_width="@dimen/progress_bar_size"
+                        android:layout_height="@dimen/progress_bar_size"
+                        android:layout_centerVertical="true"
+                        android:indeterminateTint="@android:color/white"
+                        android:padding="5dp"
+                        android:visibility="gone" />
+
+                    <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/buttonHeight"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="@string/submit"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/normalTextSize"
+                        android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

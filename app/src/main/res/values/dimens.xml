@@ -35,5 +35,6 @@
     <dimen name="home_type_size">40dp</dimen>
     <dimen name="home_type_size_layout">50dp</dimen>
     <dimen name="arc_height">20dp</dimen>
+    <dimen name="my_profile_image">200dp</dimen>
 </resources>
 

@@ -80,8 +80,9 @@ class RecylerViewAdapter(
             var homeType = list.get(position) as HomeTypes
             if (homeType.selected == 1) {
                 holder.itemView.home_type_layout.setBackgroundResource(R.drawable.bordertype)
-            } else
+            } else {
                 holder.itemView.home_type_layout.setBackgroundResource(R.drawable.bordertypeselected)
+            }
             holder.bind(homeType)
             holder.itemView.setOnClickListener {
                 listClick.rowClicked(position, 0)

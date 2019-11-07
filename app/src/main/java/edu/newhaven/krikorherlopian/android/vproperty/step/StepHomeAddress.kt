@@ -73,28 +73,32 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
             .addOnSuccessListener { location: Location? ->
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
-                    val address = ""
-                    val geocoder = Geocoder(context, Locale.getDefault())
-                    val addresses =
-                        geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                    val cityName = addresses[0].getAddressLine(0)
-                    val stateName = addresses[0].getAddressLine(1)
-                    val countryName = addresses[0].getAddressLine(2)
-                    var add: String = ""
-                    ms?.longitudeInput?.setText(location.longitude.toDouble().toString())
-                    ms?.latitudeInput?.setText(location.latitude.toDouble().toString())
-                    if (address == null || address.trim().equals("")) {
-                        if (cityName != null) {
-                            add = cityName
-                            if (stateName != null) {
-                                add = add + " ," + stateName
+                    try {
+                        val address = ""
+                        val geocoder = Geocoder(context, Locale.getDefault())
+                        val addresses =
+                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                        val cityName = addresses[0].getAddressLine(0)
+                        val stateName = addresses[0].getAddressLine(1)
+                        val countryName = addresses[0].getAddressLine(2)
+                        var add: String = ""
+                        ms?.longitudeInput?.setText(location.longitude.toDouble().toString())
+                        ms?.latitudeInput?.setText(location.latitude.toDouble().toString())
+                        if (address == null || address.trim().equals("")) {
+                            if (cityName != null) {
+                                add = cityName
+                                if (stateName != null) {
+                                    add = add + " ," + stateName
+                                }
+                                addressName.setText(add)
+                            } else if (stateName != null) {
+                                add = stateName
+                                addressName.setText(add)
                             }
-                            addressName.setText(add)
-                        } else if (stateName != null) {
-                            add = stateName
-                            addressName.setText(add)
                         }
+                    } catch (e: Exception) {
                     }
+
                 }
             }
     }

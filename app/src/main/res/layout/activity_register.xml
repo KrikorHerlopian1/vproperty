@@ -34,8 +34,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="@dimen/my_profile_image"
+                android:layout_height="@dimen/my_profile_image"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/profileplaceholder"
                 app:civ_border_color="#FF000000"
