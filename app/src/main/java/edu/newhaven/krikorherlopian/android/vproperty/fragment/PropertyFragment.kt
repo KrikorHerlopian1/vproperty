@@ -199,7 +199,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             displayMetrics.widthPixels,
                             resources.getDimension(R.dimen.image_map_size).toInt()
                         )
-
                         val i = Integer.parseInt(marker.title)
                         if (i != -1) {
                             val property = propertyList.get(i)
