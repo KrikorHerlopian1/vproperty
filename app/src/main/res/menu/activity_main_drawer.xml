@@ -17,6 +17,10 @@
             android:icon="@drawable/ic_home"
             android:title="@string/my_properties" />
         <item
+            android:id="@+id/nav_filter"
+            android:icon="@drawable/ic_filter_filled_tool_symbol"
+            android:title="@string/filter" />
+        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_user"
             android:title="@string/my_profile" />

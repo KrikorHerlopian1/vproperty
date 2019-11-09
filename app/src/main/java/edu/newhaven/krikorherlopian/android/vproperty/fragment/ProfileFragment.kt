@@ -30,8 +30,8 @@ import java.util.*
 class ProfileFragment : Fragment() {
     lateinit var storage: FirebaseStorage
     val machine = Machine(stateView)
-    var root: View? = null
     var user: User? = User()
+    var root: View? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

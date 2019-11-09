@@ -14,7 +14,10 @@ import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
 import edu.newhaven.krikorherlopian.android.vproperty.model.*
 import es.dmoral.toasty.Toasty
+import kotlinx.android.synthetic.main.appliances.view.*
+import kotlinx.android.synthetic.main.floor_covering.view.*
 import kotlinx.android.synthetic.main.fragment_step_room_details.view.*
+import kotlinx.android.synthetic.main.room_details.view.*
 
 
 class StepRoomDetails(context: Context, listener: OnNavigationBarListener, var prop: Property) :
@@ -49,40 +52,43 @@ class StepRoomDetails(context: Context, listener: OnNavigationBarListener, var p
             onNavigationBarListener = listener
             ms = v
 
-            ms?.dishwasher!!.isChecked = prop.roomDetails.appliances.dishWasher
-            ms?.washer!!.isChecked = prop.roomDetails.appliances.washer
-            ms?.garbage_disposal!!.isChecked = prop.roomDetails.appliances.disposal
-            ms?.dryer!!.isChecked = prop.roomDetails.appliances.dryer
-            ms?.freezer!!.isChecked = prop.roomDetails.appliances.freezer
-            ms?.refrigerator!!.isChecked = prop.roomDetails.appliances.refrigerator
-            ms?.microwave!!.isChecked = prop.roomDetails.appliances.microwave
-            ms?.range_oven!!.isChecked = prop.roomDetails.appliances.rangeoven
-            ms?.trash_compactor!!.isChecked = prop.roomDetails.appliances.trashCompactor
+            ms?.appliancesdetails?.dishwasher!!.isChecked = prop.roomDetails.appliances.dishWasher
+            ms?.appliancesdetails?.washer!!.isChecked = prop.roomDetails.appliances.washer
+            ms?.appliancesdetails?.garbage_disposal!!.isChecked =
+                prop.roomDetails.appliances.disposal
+            ms?.appliancesdetails?.dryer!!.isChecked = prop.roomDetails.appliances.dryer
+            ms?.appliancesdetails?.freezer!!.isChecked = prop.roomDetails.appliances.freezer
+            ms?.appliancesdetails?.refrigerator!!.isChecked =
+                prop.roomDetails.appliances.refrigerator
+            ms?.appliancesdetails?.microwave!!.isChecked = prop.roomDetails.appliances.microwave
+            ms?.appliancesdetails?.range_oven!!.isChecked = prop.roomDetails.appliances.rangeoven
+            ms?.appliancesdetails?.trash_compactor!!.isChecked =
+                prop.roomDetails.appliances.trashCompactor
 
-            ms?.carpet!!.isChecked = prop.roomDetails.floorCovering.carpet
-            ms?.concrete!!.isChecked = prop.roomDetails.floorCovering.concrete
-            ms?.hardwood!!.isChecked = prop.roomDetails.floorCovering.hardwood
-            ms?.laminate!!.isChecked = prop.roomDetails.floorCovering.laminate
-            ms?.linoleum!!.isChecked = prop.roomDetails.floorCovering.linoleum
-            ms?.slate!!.isChecked = prop.roomDetails.floorCovering.slate
-            ms?.softwood!!.isChecked = prop.roomDetails.floorCovering.softwood
-            ms?.tile!!.isChecked = prop.roomDetails.floorCovering.tile
-            ms?.other!!.isChecked = prop.roomDetails.floorCovering.other
+            ms?.floorcoveringlayout?.carpet!!.isChecked = prop.roomDetails.floorCovering.carpet
+            ms?.floorcoveringlayout?.concrete!!.isChecked = prop.roomDetails.floorCovering.concrete
+            ms?.floorcoveringlayout?.hardwood!!.isChecked = prop.roomDetails.floorCovering.hardwood
+            ms?.floorcoveringlayout?.laminate!!.isChecked = prop.roomDetails.floorCovering.laminate
+            ms?.floorcoveringlayout?.linoleum!!.isChecked = prop.roomDetails.floorCovering.linoleum
+            ms?.floorcoveringlayout?.slate!!.isChecked = prop.roomDetails.floorCovering.slate
+            ms?.floorcoveringlayout?.softwood!!.isChecked = prop.roomDetails.floorCovering.softwood
+            ms?.floorcoveringlayout?.tile!!.isChecked = prop.roomDetails.floorCovering.tile
+            ms?.floorcoveringlayout?.other!!.isChecked = prop.roomDetails.floorCovering.other
 
-            ms?.breakfast!!.isChecked = prop.roomDetails.rooms.breakfast
-            ms?.dinning!!.isChecked = prop.roomDetails.rooms.dinning
-            ms?.family!!.isChecked = prop.roomDetails.rooms.family
-            ms?.laundry!!.isChecked = prop.roomDetails.rooms.laundry
-            ms?.library!!.isChecked = prop.roomDetails.rooms.library
-            ms?.master_bath!!.isChecked = prop.roomDetails.rooms.masterBath
-            ms?.mud!!.isChecked = prop.roomDetails.rooms.mud
-            ms?.office!!.isChecked = prop.roomDetails.rooms.office
-            ms?.pantry!!.isChecked = prop.roomDetails.rooms.pantry
-            ms?.recreation!!.isChecked = prop.roomDetails.rooms.recreation
-            ms?.workshop!!.isChecked = prop.roomDetails.rooms.workshop
-            ms?.solarium!!.isChecked = prop.roomDetails.rooms.solarium
-            ms?.sun!!.isChecked = prop.roomDetails.rooms.sun
-            ms?.walk_in_closet!!.isChecked = prop.roomDetails.rooms.walkInCloset
+            ms?.roomdetailslayout?.breakfast!!.isChecked = prop.roomDetails.rooms.breakfast
+            ms?.roomdetailslayout?.dinning!!.isChecked = prop.roomDetails.rooms.dinning
+            ms?.roomdetailslayout?.family!!.isChecked = prop.roomDetails.rooms.family
+            ms?.roomdetailslayout?.laundry!!.isChecked = prop.roomDetails.rooms.laundry
+            ms?.roomdetailslayout?.library!!.isChecked = prop.roomDetails.rooms.library
+            ms?.roomdetailslayout?.master_bath!!.isChecked = prop.roomDetails.rooms.masterBath
+            ms?.roomdetailslayout?.mud!!.isChecked = prop.roomDetails.rooms.mud
+            ms?.roomdetailslayout?.office!!.isChecked = prop.roomDetails.rooms.office
+            ms?.roomdetailslayout?.pantry!!.isChecked = prop.roomDetails.rooms.pantry
+            ms?.roomdetailslayout?.recreation!!.isChecked = prop.roomDetails.rooms.recreation
+            ms?.roomdetailslayout?.workshop!!.isChecked = prop.roomDetails.rooms.workshop
+            ms?.roomdetailslayout?.solarium!!.isChecked = prop.roomDetails.rooms.solarium
+            ms?.roomdetailslayout?.sun!!.isChecked = prop.roomDetails.rooms.sun
+            ms?.roomdetailslayout?.walk_in_closet!!.isChecked = prop.roomDetails.rooms.walkInCloset
         } catch (e: Exception) {
         }
 
