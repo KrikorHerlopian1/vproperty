@@ -14,6 +14,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.listview_fragment.view.*
+import java.util.*
 
 class SearchListPropertyFragment : Fragment(), ListClick {
     var root: View? = null
@@ -364,6 +365,26 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                     }
                 }
                 root?.text?.visibility = View.VISIBLE
+
+                if (param == 3) {
+                    val customComparator = object : Comparator<Property> {
+                        override fun compare(a: Property, b: Property): Int {
+                            System.out.println("---------c" + (a.homeFacts.price!! - b.homeFacts.price!!))
+                            if (a == null && b == null) {
+                                return 0
+                            } else if (a == null) {
+                                return -1
+                            } else if (b == null) {
+                                return 1
+                            } else if ((a.homeFacts.price!! - b.homeFacts.price!!) > 0.0)
+                                return 1
+                            else
+                                return -1
+                        }
+                    }
+                    Collections.sort(list as MutableList<Property>, customComparator)
+                }
+
                 adapter = RecylerViewAdapter(
                     list, this, root?.context!!, true
                 )
