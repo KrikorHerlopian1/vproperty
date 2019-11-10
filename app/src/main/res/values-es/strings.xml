@@ -278,6 +278,13 @@
     <string name="search">Buscar</string>
     <string name="by_price">Por precio</string>
     <string name="by_distance">A distancia</string>
+    <string name="play_game">Gencyber Tarjeta juego</string>
+    <string name="ques">¿Qué significa esta imagen?</string>
+    <string name="you_lost">Tristemente, perdiste!</string>
+    <string name="you_won">¡felicitaciones has ganado!</string>
+    <string name="choose_option">Escoge una respuesta</string>
+    <string name="wrong_answer">Respuesta incorrecta</string>
+    <string name="correct_answer">Respuesta correcta</string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>
@@ -289,5 +296,17 @@
         <item>@string/coop_unit</item>
         <item>@string/vacant_land</item>
         <item>@string/other</item>
+    </string-array>
+    <string-array name="questions">
+        <item>Abstracción</item>
+        <item>Estratificación</item>
+        <item>Separación de dominio</item>
+        <item>Ocultación de información</item>
+        <item>Privilegios mínimos</item>
+        <item>Minimización</item>
+        <item>Modularización</item>
+        <item>Aislamiento del proceso</item>
+        <item>Encapsulación de recursos</item>
+        <item>Simplicidad de diseño</item>
     </string-array>
 </resources>

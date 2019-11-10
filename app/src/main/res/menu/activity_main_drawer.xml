@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
@@ -13,13 +12,13 @@
             android:icon="@drawable/ic_view_list_black_24dp"
             android:title="@string/by_list" />
         <item
-            android:id="@+id/nav_properties"
-            android:icon="@drawable/ic_home"
-            android:title="@string/my_properties" />
-        <item
             android:id="@+id/nav_filter"
             android:icon="@drawable/ic_filter_filled_tool_symbol"
             android:title="@string/filter" />
+        <item
+            android:id="@+id/nav_properties"
+            android:icon="@drawable/ic_home"
+            android:title="@string/my_properties" />
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_user"
@@ -28,6 +27,9 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/action_settings" />
+        <item
+            android:id="@+id/nav_game"
+            android:icon="@drawable/ic_games_black_24dp"
+            android:title="@string/play_game" />
     </group>
-
 </menu>

@@ -37,5 +37,6 @@
     <dimen name="arc_height">20dp</dimen>
     <dimen name="image_type">48dp</dimen>
     <dimen name="my_profile_image">200dp</dimen>
+    <dimen name="menu_height">36dp</dimen>
 </resources>
 

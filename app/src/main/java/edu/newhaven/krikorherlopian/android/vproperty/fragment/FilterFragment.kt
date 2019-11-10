@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.appliances.view.*
 import kotlinx.android.synthetic.main.building_amenities.view.*
 import kotlinx.android.synthetic.main.cooling_type.view.*
 import kotlinx.android.synthetic.main.exterior.view.*
+import kotlinx.android.synthetic.main.filter.view.*
 import kotlinx.android.synthetic.main.floor_covering.view.*
 import kotlinx.android.synthetic.main.floor_covering.view.other
 import kotlinx.android.synthetic.main.heating_type.view.*
@@ -42,25 +44,34 @@ class FilterFragment : Fragment(), ListClick {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        root = inflater.inflate(R.layout.activity_filter, container, false)
+        root = inflater.inflate(R.layout.filter, container, false)
         // home type. price range. sale or rent.
-        setUpExpandableLayouts()
-        setUpHomeTypes()
-        root?.searchlayout?.setOnClickListener {
-            startSearch()
-        }
-        root?.forsale?.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                root?.forrent?.isChecked = false
-            }
-        }
+        val handler = Handler()
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                var child = layoutInflater.inflate(R.layout.activity_filter, null)
+                root?.curveLoader?.visibility = View.GONE
+                root!!.rootV!!.addView(child)
+                setUpExpandableLayouts()
+                setUpHomeTypes()
+                root?.searchlayout?.setOnClickListener {
+                    startSearch()
+                }
+                root?.forsale?.setOnCheckedChangeListener { buttonView, isChecked ->
+                    if (isChecked) {
+                        root?.forrent?.isChecked = false
+                    }
+                }
 
 
-        root?.forrent?.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                root?.forsale?.isChecked = false
+                root?.forrent?.setOnCheckedChangeListener { buttonView, isChecked ->
+                    if (isChecked) {
+                        root?.forsale?.isChecked = false
+                    }
+                }
             }
-        }
+        }, 1000)
+
         return root
     }
 
@@ -198,12 +209,12 @@ class FilterFragment : Fragment(), ListClick {
     fun setUpExpandableLayouts() {
 
         root?.arrowdown_hometype?.setOnClickListener {
-            if (root?.homelayout?.visibility == View.VISIBLE) {
-                collapse(root?.homelayout!!)
+            if (root?.recyclerView?.visibility == View.VISIBLE) {
+                collapse(root?.recyclerView!!)
                 root?.arrowdown_hometype?.setImageResource(R.drawable.arrowdown)
             } else {
                 root?.arrowdown_hometype?.setImageResource(R.drawable.right)
-                expand(root?.homelayout!!)
+                expand(root?.recyclerView!!)
             }
         }
         root?.arrowdown_homefacts?.setOnClickListener {

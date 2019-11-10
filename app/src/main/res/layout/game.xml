@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/resultlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/largeTextSize"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/navigation_bar_color">
+
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+            android:id="@+id/attempts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="3"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/normalTextSize"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:indeterminate="false"
+            android:max="10"
+            android:progress="1"
+            android:theme="@style/ProgressBarStyle"></ProgressBar>
+
+        <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+            android:id="@+id/button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="@string/go"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/normalTextSize"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomlayout"></FrameLayout>
+
+
+</RelativeLayout>

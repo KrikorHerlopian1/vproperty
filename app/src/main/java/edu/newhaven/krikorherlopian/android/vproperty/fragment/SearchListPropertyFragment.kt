@@ -25,8 +25,8 @@ import java.util.*
 class SearchListPropertyFragment : Fragment(), ListClick {
     var root: View? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    lateinit var prop: Property
     lateinit var adapter: RecylerViewAdapter
+    lateinit var prop: Property
     var min: String = ""
     var max: String = ""
     var list: MutableList<Any> = mutableListOf<Any>()
