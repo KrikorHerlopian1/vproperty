@@ -273,8 +273,8 @@
     <string name="default_notification_channel_id">vproperty</string>
     <string name="filter">Filtrar</string>
     <string name="price_range">Rango de precios</string>
-    <string name="min">Mínimo</string>
-    <string name="max">Máximo</string>
+    <string name="min">Mínimo precio</string>
+    <string name="max">Máximo precio</string>
     <string name="search">Buscar</string>
     <string name="by_price">Por precio</string>
     <string name="by_distance">A distancia</string>

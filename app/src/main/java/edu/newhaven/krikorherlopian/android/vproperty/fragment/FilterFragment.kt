@@ -49,6 +49,18 @@ class FilterFragment : Fragment(), ListClick {
         root?.searchlayout?.setOnClickListener {
             startSearch()
         }
+        root?.forsale?.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                root?.forrent?.isChecked = false
+            }
+        }
+
+
+        root?.forrent?.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                root?.forsale?.isChecked = false
+            }
+        }
         return root
     }
 
@@ -134,6 +146,8 @@ class FilterFragment : Fragment(), ListClick {
         property.roomDetails = roomDetails
         property.utilityDetails = utilityDetails
         property.buildingDetails = buildingDetails
+        property.homeFacts.isRent = root?.forrent?.isChecked!!
+        property.homeFacts.isSale = root?.forsale?.isChecked!!
         val i = Intent(
             context,
             SearchActivity::class.java
@@ -182,6 +196,7 @@ class FilterFragment : Fragment(), ListClick {
     }
 
     fun setUpExpandableLayouts() {
+
         root?.arrowdown_hometype?.setOnClickListener {
             if (root?.homelayout?.visibility == View.VISIBLE) {
                 collapse(root?.homelayout!!)

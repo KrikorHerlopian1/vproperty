@@ -273,8 +273,8 @@
     <string name="english">English</string>
     <string name="filter">Filter</string>
     <string name="price_range">Price Range</string>
-    <string name="min">Min</string>
-    <string name="max">Max</string>
+    <string name="min">Min Pirce</string>
+    <string name="max">Max Price</string>
     <string name="search">Search</string>
     <string name="by_price">By Price</string>
     <string name="by_distance">By Distance</string>

@@ -1,5 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.model
 
+import com.google.firebase.firestore.Exclude
 import java.io.Serializable
 
 data class Property(
@@ -15,5 +16,6 @@ data class Property(
     var virtualTour: String = "",
     var contactPhone: String = "",
     var id: String = "",
-    var isDisabled: String = "N"
+    var isDisabled: String = "N",
+    @Exclude @set:Exclude @get:Exclude var distance: Double = 0.0
 ) : Serializable

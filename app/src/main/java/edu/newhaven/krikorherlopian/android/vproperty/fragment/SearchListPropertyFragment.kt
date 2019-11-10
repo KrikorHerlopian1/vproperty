@@ -1,15 +1,21 @@
 package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
+import android.content.Intent
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.activity.PropertyDetailsActivity
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
@@ -18,6 +24,7 @@ import java.util.*
 
 class SearchListPropertyFragment : Fragment(), ListClick {
     var root: View? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var prop: Property
     lateinit var adapter: RecylerViewAdapter
     var min: String = ""
@@ -81,6 +88,13 @@ class SearchListPropertyFragment : Fragment(), ListClick {
     private fun getData(param: Int = 0, prop: Property = Property()) {
         val db = FirebaseFirestore.getInstance()
         var docRef = db.collection("properties").whereEqualTo("disabled", "N")
+        if (prop.homeFacts.isRent) {
+            docRef = db.collection("properties").whereEqualTo("disabled", "N")
+                .whereEqualTo("homeFacts.rent", true)
+        } else if (prop.homeFacts.isSale) {
+            docRef = db.collection("properties").whereEqualTo("disabled", "N")
+                .whereEqualTo("homeFacts.sale", true)
+        }
         list.clear()
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
@@ -369,45 +383,126 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                 if (param == 3) {
                     val customComparator = object : Comparator<Property> {
                         override fun compare(a: Property, b: Property): Int {
-                            System.out.println("---------c" + (a.homeFacts.price!! - b.homeFacts.price!!))
-                            if (a == null && b == null) {
-                                return 0
-                            } else if (a == null) {
-                                return -1
-                            } else if (b == null) {
-                                return 1
-                            } else if ((a.homeFacts.price!! - b.homeFacts.price!!) > 0.0)
+                            if ((a.homeFacts.price!! - b.homeFacts.price!!) > 0.0)
                                 return 1
                             else
                                 return -1
                         }
                     }
                     Collections.sort(list as MutableList<Property>, customComparator)
-                }
-
-                adapter = RecylerViewAdapter(
-                    list, this, root?.context!!, true
-                )
-                root?.recyclerView?.apply {
-                    val layoutManager1 = GridLayoutManager(context, 2)
-                    layoutManager1.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                        override fun getSpanSize(position: Int): Int {
-                            if (position == (list.size - 1) && position % 2 == 0)
-                                return 2
-                            else
-                                return 1
-                        }
+                    adapter = RecylerViewAdapter(
+                        list, this, root?.context!!, true
+                    )
+                    root?.recyclerView?.apply {
+                        val layoutManager1 = GridLayoutManager(context, 2)
+                        layoutManager1.spanSizeLookup =
+                            object : GridLayoutManager.SpanSizeLookup() {
+                                override fun getSpanSize(position: Int): Int {
+                                    if (position == (list.size - 1) && position % 2 == 0)
+                                        return 2
+                                    else
+                                        return 1
+                                }
+                            }
+                        layoutManager = layoutManager1
                     }
-                    layoutManager = layoutManager1
+                    // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
+                    root?.recyclerView?.itemAnimator = DefaultItemAnimator()
+                    root?.recyclerView?.adapter = adapter
+                    if (list.size > 0)
+                        root?.text?.visibility = View.GONE
+                    else
+                        root?.text?.visibility = View.VISIBLE
+
+                } else if (param == 2) {
+                    fusedLocationClient =
+                        LocationServices.getFusedLocationProviderClient(root?.context!!)
+                    fusedLocationClient.lastLocation
+                        .addOnSuccessListener { location: Location? ->
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+
+
+                                for (pro in list) {
+                                    var R = 3958.756 // miles
+                                    var φ1 = Math.toRadians(location.latitude.toDouble())
+                                    var φ2 =
+                                        Math.toRadians((pro as Property).address.latitude.toDouble())
+                                    var Δφ =
+                                        Math.toRadians(pro.address.latitude.toDouble() - location.latitude.toDouble())
+                                    var Δλ =
+                                        Math.toRadians(pro.address.longitude.toDouble() - location.longitude.toDouble())
+
+                                    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                                            Math.cos(φ1) * Math.cos(φ2) *
+                                            Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
+                                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+                                    var d = R * c
+                                    pro.distance = d
+                                }
+                                val customComparator = object : Comparator<Property> {
+                                    override fun compare(a: Property, b: Property): Int {
+                                        if ((a.distance - b.distance) > 0.0)
+                                            return 1
+                                        else
+                                            return -1
+                                    }
+                                }
+                                Collections.sort(list as MutableList<Property>, customComparator)
+                                adapter = RecylerViewAdapter(
+                                    list, this, root?.context!!, true
+                                )
+                                root?.recyclerView?.apply {
+                                    val layoutManager1 = GridLayoutManager(context, 2)
+                                    layoutManager1.spanSizeLookup =
+                                        object : GridLayoutManager.SpanSizeLookup() {
+                                            override fun getSpanSize(position: Int): Int {
+                                                if (position == (list.size - 1) && position % 2 == 0)
+                                                    return 2
+                                                else
+                                                    return 1
+                                            }
+                                        }
+                                    layoutManager = layoutManager1
+                                }
+                                // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
+                                root?.recyclerView?.itemAnimator = DefaultItemAnimator()
+                                root?.recyclerView?.adapter = adapter
+                                if (list.size > 0)
+                                    root?.text?.visibility = View.GONE
+                                else
+                                    root?.text?.visibility = View.VISIBLE
+                            }
+                        }
+
+                } else {
+                    adapter = RecylerViewAdapter(
+                        list, this, root?.context!!, true
+                    )
+                    root?.recyclerView?.apply {
+                        val layoutManager1 = GridLayoutManager(context, 2)
+                        layoutManager1.spanSizeLookup =
+                            object : GridLayoutManager.SpanSizeLookup() {
+                                override fun getSpanSize(position: Int): Int {
+                                    if (position == (list.size - 1) && position % 2 == 0)
+                                        return 2
+                                    else
+                                        return 1
+                                }
+                            }
+                        layoutManager = layoutManager1
+                    }
+                    // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
+                    root?.recyclerView?.itemAnimator = DefaultItemAnimator()
+                    root?.recyclerView?.adapter = adapter
+                    if (list.size > 0)
+                        root?.text?.visibility = View.GONE
+                    else
+                        root?.text?.visibility = View.VISIBLE
                 }
 
-                // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
-                root?.recyclerView?.itemAnimator = DefaultItemAnimator()
-                root?.recyclerView?.adapter = adapter
-                if (list.size > 0)
-                    root?.text?.visibility = View.GONE
-                else
-                    root?.text?.visibility = View.VISIBLE
+
+
 
             } else {
             }
@@ -418,6 +513,16 @@ class SearchListPropertyFragment : Fragment(), ListClick {
     }
 
     override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
+        val options =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                activity!!, imageLayout!!, "MyTransition"
+            )
+        val i = Intent(
+            activity,
+            PropertyDetailsActivity::class.java
+        )
+        i.putExtra("argPojo", list.get(position) as Property)
+        startActivity(i, options.toBundle())
     }
 
     override fun deleteRow(position: Int) {
