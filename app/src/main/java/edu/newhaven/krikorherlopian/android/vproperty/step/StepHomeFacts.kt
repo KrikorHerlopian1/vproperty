@@ -50,7 +50,7 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
             onNavigationBarListener = listener
             ms = v
             setUpFonts()
-            v.priceInput.setText(property.homeFacts.price)
+            v.priceInput.setText("" + property.homeFacts.price)
             if (property.homeFacts.isSale) {
                 forsale.isChecked = true
                 priceLayout.hint = resources.getString(R.string.price)

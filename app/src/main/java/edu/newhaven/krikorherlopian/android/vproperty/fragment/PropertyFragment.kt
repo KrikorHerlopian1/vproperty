@@ -131,13 +131,17 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                     }
                     DocumentChange.Type.ADDED -> {
                         Log.d("TAGs", "${doc.document.id} => ${doc.document.data}")
-                        var property: Property = doc.document.toObject(Property::class.java)
-                        if (property.isDisabled.trim().equals(
-                                "N"
-                            )
-                        ) {
-                            addPropertyToMap(property, doc)
+                        try {
+                            var property: Property = doc.document.toObject(Property::class.java)
+                            if (property.isDisabled.trim().equals(
+                                    "N"
+                                )
+                            ) {
+                                addPropertyToMap(property, doc)
+                            }
+                        } catch (e: java.lang.Exception) {
                         }
+
                     }
                 }
             }

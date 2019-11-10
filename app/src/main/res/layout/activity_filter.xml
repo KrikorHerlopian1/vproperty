@@ -1,0 +1,571 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/searchlayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/navigation_bar_color"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp">
+
+            <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/largeTextSize" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/searchlayout"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/hometype"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrowdown_hometype"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/homelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"></androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/price_range"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrowdown_homefacts"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/homeFactLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/min"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/min"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/mininput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_dollar_symbol"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"></View>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/max"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="@string/max"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxStrokeColor="@color/colorAccent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/maxinput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_dollar_symbol"
+                                android:drawablePadding="@dimen/drawable_padding"
+                                android:drawableTint="@color/colorAccent"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/normalTextSize" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/appliances"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrowdown_appliances"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/applianceslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/appliancesdetails"
+                    layout="@layout/appliances"></include>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/floor_covering"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrowdown_floor"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/floorcoveringlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/floor_covering_layout"
+                    layout="@layout/floor_covering"></include>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/rooms"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrowdown_room"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/roomdetailslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/room_details_l"
+                    layout="@layout/room_details"></include>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/building_aminities"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrowdown_building"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/buildingam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/buildingamlayout"
+                    layout="@layout/building_amenities"></include>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/exterior"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrowdown_exterior"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/exteriorlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/exterior"
+                    layout="@layout/exterior"></include>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/outdoor_aminities"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrow_outdoor"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/outdoorlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/outdooramenities"
+                    layout="@layout/outdoor_amenities"></include>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/parking"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrow_parking"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/parkinglayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/parking"
+                    layout="@layout/parking"></include>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/cooling_type"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrow_cooling"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/coolinglayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/cooling"
+                    layout="@layout/cooling_type"></include>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp">
+
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/heating_type"
+                    android:textColor="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/arrow_heating"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="12dp"
+                    android:src="@drawable/arrowdown"
+                    android:tint="@color/brownish_grey" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/heatingtypelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordercheckbox"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include
+                    android:id="@+id/heating"
+                    layout="@layout/heating_type"></include>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

@@ -27,7 +27,8 @@ class RecylerViewAdapter(
     private val list: MutableList<Any>,
     var listClick: ListClick,
     var context: Context,
-    var twoColumn: Boolean = false
+    var twoColumn: Boolean = false,
+    var animation: Boolean = true
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val HEADER_VIEW = 0
@@ -38,11 +39,14 @@ class RecylerViewAdapter(
     var lastPosition = -1
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
         super.onViewDetachedFromWindow(holder)
-        try {
+        if (animation) {
+            try {
+                holder.itemView.clearAnimation()
+            } catch (e: Exception) {
+            }
             holder.itemView.clearAnimation()
-        } catch (e: Exception) {
         }
-        holder.itemView.clearAnimation()
+
     }
 
     fun removeAt(position: Int) {
@@ -57,15 +61,17 @@ class RecylerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val animation = AnimationUtils.loadAnimation(
-            context,
-            if (position > lastPosition)
-                R.anim.up_from_bottom
-            else
-                R.anim.down_from_top
-        )
-        holder.itemView.startAnimation(animation)
-        lastPosition = position
+        if (animation) {
+            val animation = AnimationUtils.loadAnimation(
+                context,
+                if (position > lastPosition)
+                    R.anim.up_from_bottom
+                else
+                    R.anim.down_from_top
+            )
+            holder.itemView.startAnimation(animation)
+            lastPosition = position
+        }
         when (holder.itemViewType) {
             HEADER_VIEW -> configureViewHolderSettings(holder, position)
             CONTENT_VIEW -> configureViewHolderSettingsSwitch(holder, position)

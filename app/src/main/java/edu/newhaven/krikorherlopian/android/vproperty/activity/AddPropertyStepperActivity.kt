@@ -326,7 +326,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         basementSqFt: String,
         garageSqFt: String
     ) {
-        property.homeFacts.price = price
+        property.homeFacts.price = price.toFloat()
         property.homeFacts.isRent = isRent
         property.homeFacts.isSale = isSale
         property.homeFacts.bedrooms = bedrooms

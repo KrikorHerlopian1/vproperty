@@ -6,7 +6,7 @@ import java.io.Serializable
 
 data class HomeFacts(
     var homeType: String = "",
-    var price: String? = "", var isRent: Boolean = false,
+    var price: Float? = 0f, var isRent: Boolean = false,
     var isSale: Boolean = false, var bedrooms: String = "",
     var bathrooms: String? = "", var totalRooms: String? = "",
     var parkingSpaces: String? = "", var yearBuilt: String? = "",

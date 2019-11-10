@@ -17,7 +17,9 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.HeatingType
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import edu.newhaven.krikorherlopian.android.vproperty.model.UtilityDetails
 import es.dmoral.toasty.Toasty
+import kotlinx.android.synthetic.main.cooling_type.view.*
 import kotlinx.android.synthetic.main.fragment_step_utility_details.view.*
+import kotlinx.android.synthetic.main.heating_type.view.*
 
 
 class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, var prop: Property) :
@@ -52,23 +54,29 @@ class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, va
             onNavigationBarListener = listener
             ms = v
 
-            ms?.central!!.isChecked = prop.utilityDetails.coolingType.central
-            ms?.evaporative!!.isChecked = prop.utilityDetails.coolingType.evaporative
-            ms?.geothermal_cooling!!.isChecked = prop.utilityDetails.coolingType.geoThermal
-            ms?.refrigeration!!.isChecked = prop.utilityDetails.coolingType.refrigeration
-            ms?.solar!!.isChecked = prop.utilityDetails.coolingType.solar
-            ms?.wall_cooling!!.isChecked = prop.utilityDetails.coolingType.wall
-            ms?.other_cooling!!.isChecked = prop.utilityDetails.coolingType.other
-            ms?.none!!.isChecked = prop.utilityDetails.coolingType.none
+            ms?.coolingtypelayout?.central!!.isChecked = prop.utilityDetails.coolingType.central
+            ms?.coolingtypelayout?.evaporative!!.isChecked =
+                prop.utilityDetails.coolingType.evaporative
+            ms?.coolingtypelayout?.geothermal_cooling!!.isChecked =
+                prop.utilityDetails.coolingType.geoThermal
+            ms?.coolingtypelayout?.refrigeration!!.isChecked =
+                prop.utilityDetails.coolingType.refrigeration
+            ms?.coolingtypelayout?.solar!!.isChecked = prop.utilityDetails.coolingType.solar
+            ms?.coolingtypelayout?.wall_cooling!!.isChecked = prop.utilityDetails.coolingType.wall
+            ms?.coolingtypelayout?.other_cooling!!.isChecked = prop.utilityDetails.coolingType.other
+            ms?.coolingtypelayout?.none!!.isChecked = prop.utilityDetails.coolingType.none
 
-            ms?.baseboard!!.isChecked = prop.utilityDetails.heatingType.baseboard
-            ms?.forced_air!!.isChecked = prop.utilityDetails.heatingType.forcedAir
-            ms?.geothermal!!.isChecked = prop.utilityDetails.heatingType.geoThermal
-            ms?.heat_pump!!.isChecked = prop.utilityDetails.heatingType.heatPump
-            ms?.other!!.isChecked = prop.utilityDetails.heatingType.other
-            ms?.radiant!!.isChecked = prop.utilityDetails.heatingType.radiant
-            ms?.stove!!.isChecked = prop.utilityDetails.heatingType.stove
-            ms?.wall!!.isChecked = prop.utilityDetails.heatingType.wall
+
+            ms?.heatingtypelayout?.baseboard!!.isChecked = prop.utilityDetails.heatingType.baseboard
+            ms?.heatingtypelayout?.forced_air!!.isChecked =
+                prop.utilityDetails.heatingType.forcedAir
+            ms?.heatingtypelayout?.geothermal!!.isChecked =
+                prop.utilityDetails.heatingType.geoThermal
+            ms?.heatingtypelayout?.heat_pump!!.isChecked = prop.utilityDetails.heatingType.heatPump
+            ms?.heatingtypelayout?.other!!.isChecked = prop.utilityDetails.heatingType.other
+            ms?.heatingtypelayout?.radiant!!.isChecked = prop.utilityDetails.heatingType.radiant
+            ms?.heatingtypelayout?.stove!!.isChecked = prop.utilityDetails.heatingType.stove
+            ms?.heatingtypelayout?.wall!!.isChecked = prop.utilityDetails.heatingType.wall
         } catch (e: Exception) {
         }
 

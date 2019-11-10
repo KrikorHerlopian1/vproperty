@@ -13,10 +13,10 @@ class TwoPropertyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
 
     fun bind(item: Property) {
         itemView.subtitle.text = item.address.addressName
-        itemView.price.text = item.homeFacts.price + " $$"
+        itemView.price.text = "" + item.homeFacts.price + " $$"
         itemView.title.text = item.houseName
         itemView.fake_title.text = item.houseName
-        itemView.fake_price.text = item.homeFacts.price + " $$"
+        itemView.fake_price.text = "" + item.homeFacts.price + " $$"
         itemView.fake_address.text = item.address.addressName
 
     }

@@ -272,4 +272,22 @@
     <string name="spanish">Espanol</string>
     <string name="english">English</string>
     <string name="filter">Filter</string>
+    <string name="price_range">Price Range</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="search">Search</string>
+    <string name="by_price">By Price</string>
+    <string name="by_distance">By Distance</string>
+    <string-array name="hometype">
+        <item>@string/all</item>
+        <item>@string/single_family</item>
+        <item>@string/condo</item>
+        <item>@string/town_house</item>
+        <item>@string/multi_family</item>
+        <item>@string/apartment</item>
+        <item>@string/mobile_manufactured</item>
+        <item>@string/coop_unit</item>
+        <item>@string/vacant_land</item>
+        <item>@string/other</item>
+    </string-array>
 </resources>

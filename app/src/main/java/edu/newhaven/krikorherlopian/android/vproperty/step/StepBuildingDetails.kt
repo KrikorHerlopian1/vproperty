@@ -14,7 +14,10 @@ import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.OnNavigationBarListener
 import edu.newhaven.krikorherlopian.android.vproperty.model.*
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.fragment_step_building_details.view.*
+import kotlinx.android.synthetic.main.building_amenities.view.*
+import kotlinx.android.synthetic.main.exterior.view.*
+import kotlinx.android.synthetic.main.outdoor_amenities.view.*
+import kotlinx.android.synthetic.main.parking.view.*
 
 
 class StepBuildingDetails(context: Context, listener: OnNavigationBarListener, var prop: Property) :
@@ -60,7 +63,6 @@ class StepBuildingDetails(context: Context, listener: OnNavigationBarListener, v
             ms?.wood!!.isChecked = prop.buildingDetails.exterior.wood
             ms?.wood_products!!.isChecked = prop.buildingDetails.exterior.woodProducts
             ms?.other!!.isChecked = prop.buildingDetails.exterior.other
-
 
             ms?.basketball_court!!.isChecked =
                 prop.buildingDetails.buildingAminities.basketballCourt

@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseUser
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
 
-
 /*
     Common functions I will need accross various activities or fragments in application.
  */
@@ -38,7 +37,6 @@ val stateUpdate = State("update")
 val addModifyProperty = State("addModifyProperty")
 val internetCall = State("internetCall")
 val color: String = "#673AB7"
-
 fun getMarkerIcon(): BitmapDescriptor {
     val hsv = FloatArray(3)
     Color.colorToHSV(Color.parseColor(color), hsv)

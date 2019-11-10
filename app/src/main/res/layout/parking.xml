@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+            android:id="@+id/carport"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/checkboxsize"
+            android:layout_weight="1"
+            android:text="@string/carport"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+            android:id="@+id/off_street"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/checkboxsize"
+            android:layout_weight="1"
+            android:text="@string/off_street"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+            android:id="@+id/garage_attached"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/checkboxsize"
+            android:layout_weight="1"
+            android:text="@string/garage_attached"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+            android:id="@+id/on_street"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/checkboxsize"
+            android:layout_weight="1"
+            android:text="@string/on_street"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+            android:id="@+id/garage_detached"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/checkboxsize"
+            android:layout_weight="1"
+            android:text="@string/garage_detached"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+
+        <edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox
+            android:id="@+id/none"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/checkboxsize"
+            android:layout_weight="1"
+            android:text="@string/none"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"></edu.newhaven.krikorherlopian.android.vproperty.checkbox.MyCustomCheckBox>
+    </LinearLayout>
+</LinearLayout>
