@@ -85,7 +85,7 @@ class GameFragment : Fragment() {
                     true
                 ).show()
             } else {
-                Toasty.success(
+                Toasty.error(
                     context!!,
                     R.string.wrong_answer,
                     Toast.LENGTH_SHORT,
