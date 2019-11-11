@@ -279,7 +279,7 @@
     <string name="by_price">By Price</string>
     <string name="by_distance">By Distance</string>
     <string name="play_game">Gencyber Card Game</string>
-    <string name="ques">What does this image stand for?</string>
+    <string name="ques">What does this image represent?</string>
     <string name="you_lost">Sadly, You lost!</string>
     <string name="you_won">Congratulations You won!</string>
     <string name="choose_option">Choose an answer</string>
