@@ -506,8 +506,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
                 this,
                 applicationContext.packageName + ".provider",
                 file
-            )//Uri.fromFile(file)
-
+            )
             //share
             val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
             sharingIntent.type = "image/*"
