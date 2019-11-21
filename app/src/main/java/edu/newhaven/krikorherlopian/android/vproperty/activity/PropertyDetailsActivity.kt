@@ -107,6 +107,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(base))
     }
+
     private fun setUpUtilityDetails() {
         setUpHeatingType()
         setUpCoolingType()
