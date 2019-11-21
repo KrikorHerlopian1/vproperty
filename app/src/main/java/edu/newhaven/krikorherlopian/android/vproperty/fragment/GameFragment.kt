@@ -120,7 +120,6 @@ class GameFragment : Fragment() {
         ).show()
         if (state == 10) {
             //you won
-            System.out.println("play you won song")
             val mPlayer = MediaPlayer.create(context!!, R.raw.winning)
             mPlayer.start()
             root?.bottomlayout?.visibility = View.GONE

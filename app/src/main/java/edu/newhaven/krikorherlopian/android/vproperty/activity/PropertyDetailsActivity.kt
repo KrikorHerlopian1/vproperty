@@ -2,8 +2,10 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +13,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -29,10 +32,14 @@ import kotlinx.android.synthetic.main.detail_item.view.hometypevalue
 import kotlinx.android.synthetic.main.detail_item.view.typeimage
 import kotlinx.android.synthetic.main.detail_item_tint.view.*
 import kotlinx.android.synthetic.main.property_details.*
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 
 class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, ActivityFunctionalities {
     lateinit var prop: Property
+    var imagePath = ""
     override fun closeActivity() {
         finish()
     }
@@ -437,9 +444,40 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
             if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
             }
+        } else if (id == R.id.share) {
+            val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
+            sharingIntent.type = "image/*"
+            var bm = takeScreenshot()
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, saveImageExternal(bm))
+            startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
         }
         return super.onOptionsItemSelected(item)
     }
+
+    fun takeScreenshot(): Bitmap {
+        imagelayout!!.isDrawingCacheEnabled = true
+        return imagelayout!!.drawingCache!!
+    }
+
+    private fun saveImageExternal(image: Bitmap): Uri? {
+        //TODO - Should be processed in another thread
+        var uri: Uri? = null
+        try {
+            val file = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "to-share.jpeg")
+
+            val stream = FileOutputStream(file)
+            image.compress(Bitmap.CompressFormat.JPEG, 90, stream)
+            stream.close()
+            uri = FileProvider.getUriForFile(
+                this,
+                applicationContext.packageName + ".provider",
+                file
+            )//Uri.fromFile(file)
+        } catch (e: IOException) {
+        }
+        return uri
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

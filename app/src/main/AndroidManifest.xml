@@ -118,6 +118,7 @@
                 android:value=".activity.AddPropertyStepperActivity" />
         </activity>
 
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2925286479807723~9938531599" />
