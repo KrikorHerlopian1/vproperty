@@ -478,12 +478,12 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
                             if (copyResult == PixelCopy.SUCCESS) {
                                 saveImageExternal(bitmap)
                             }
-                            // possible to handle other result codes ...
+
                         },
                         Handler()
                     )
                 } catch (e: IllegalArgumentException) {
-                    // PixelCopy may throw IllegalArgumentException, make sure to handle it
+                    // PixelCopy may throw IllegalArgumentException
                     e.printStackTrace()
                 }
             }

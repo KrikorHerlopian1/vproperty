@@ -90,8 +90,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="522" column="4" selection-start-line="522" selection-start-column="4" selection-end-line="522" selection-end-column="4" />
+            <state relative-caret-position="530">
+              <caret line="485" column="67" selection-start-line="485" selection-start-column="67" selection-end-line="485" selection-end-column="67" />
+              <folding>
+                <element signature="e#19446#19483#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -445,20 +448,6 @@
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
     </task>
-    <task id="LOCAL-00083" summary="property list">
-      <created>1572743082870</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1572743082871</updated>
-    </task>
-    <task id="LOCAL-00084" summary="two property design">
-      <created>1572745305412</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1572745305413</updated>
-    </task>
     <task id="LOCAL-00085" summary="code reformat">
       <created>1572747818099</created>
       <option name="number" value="00085" />
@@ -788,7 +777,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574348734438</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="manifest details">
+      <created>1574373724929</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1574373724929</updated>
+    </task>
+    <task id="LOCAL-00133" summary="fixed function">
+      <created>1574373786373</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1574373786373</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TodoView">
@@ -871,7 +874,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="code reformat" />
     <MESSAGE value="property list" />
     <MESSAGE value="gradle version" />
     <MESSAGE value="update map location when moving" />
@@ -896,7 +898,8 @@
     <MESSAGE value="share property details." />
     <MESSAGE value="Add contact in share" />
     <MESSAGE value="manifest details" />
-    <option name="LAST_COMMIT_MESSAGE" value="manifest details" />
+    <MESSAGE value="fixed function" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed function" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1272,8 +1275,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="522" column="4" selection-start-line="522" selection-start-column="4" selection-end-line="522" selection-end-column="4" />
+        <state relative-caret-position="530">
+          <caret line="485" column="67" selection-start-line="485" selection-start-column="67" selection-end-line="485" selection-end-column="67" />
+          <folding>
+            <element signature="e#19446#19483#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
