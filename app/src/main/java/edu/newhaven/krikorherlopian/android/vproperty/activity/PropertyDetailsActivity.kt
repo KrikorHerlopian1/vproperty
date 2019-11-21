@@ -448,6 +448,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
             val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
             sharingIntent.type = "image/*"
             var bm = takeScreenshot()
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, "Contact " + prop.email)
             sharingIntent.putExtra(Intent.EXTRA_STREAM, saveImageExternal(bm))
             startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
         }
