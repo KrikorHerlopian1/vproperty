@@ -10,11 +10,13 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="jhere" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="675e4df6-2a73-4081-b2fb-c9608055fb6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="512" column="20" selection-start-line="512" selection-start-column="20" selection-end-line="512" selection-end-column="20" />
+            <state relative-caret-position="125">
+              <caret line="456" column="61" selection-start-line="456" selection-start-column="61" selection-end-line="456" selection-end-column="61" />
               <folding>
                 <element signature="e#65#1628#0" expanded="true" />
               </folding>
@@ -426,13 +428,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
-    </task>
-    <task id="LOCAL-00076" summary="swipe to delete list">
-      <created>1572704425941</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1572704425942</updated>
     </task>
     <task id="LOCAL-00077" summary="undo delete">
       <created>1572706153502</created>
@@ -770,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574347758806</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="Add contact in share">
+      <created>1574348301642</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1574348301642</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TodoView">
@@ -796,7 +798,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.328341" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" weight="0.328341" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" visible="true" weight="0.328341" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32911393" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" />
@@ -1286,8 +1288,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="512" column="20" selection-start-line="512" selection-start-column="20" selection-end-line="512" selection-end-column="20" />
+        <state relative-caret-position="125">
+          <caret line="456" column="61" selection-start-line="456" selection-start-column="61" selection-end-line="456" selection-end-column="61" />
           <folding>
             <element signature="e#65#1628#0" expanded="true" />
           </folding>

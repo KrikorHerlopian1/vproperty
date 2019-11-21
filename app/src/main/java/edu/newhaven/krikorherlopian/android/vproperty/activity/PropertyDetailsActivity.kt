@@ -455,7 +455,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
 
     fun takeScreenshot() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            System.out.println("jhere")
             window?.let { window ->
                 val bitmap = Bitmap.createBitmap(
                     imagelayout.width,
