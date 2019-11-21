@@ -50,8 +50,6 @@ import java.util.*
 
 class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperListener,
     OnNavigationBarListener {
-    val BASE_URL = "https://fcm.googleapis.com/"
-    private var retrofit: Retrofit? = null
     val machine = Machine(addModifyProperty)
     lateinit var storage: FirebaseStorage
     var property: Property = Property()
@@ -136,6 +134,9 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         CroperinoFileUtil.setupDirectory(this@AddPropertyStepperActivity)
 
     }
+
+    val BASE_URL = "https://fcm.googleapis.com/"
+    private var retrofit: Retrofit? = null
 
     fun getClient(): Retrofit {
         if (retrofit == null) {
