@@ -490,7 +490,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         } else {
             imagelayout!!.isDrawingCacheEnabled = true
             saveImageExternal(imagelayout!!.drawingCache!!)
-            // return imagelayout!!.drawingCache!!
         }
 
     }
