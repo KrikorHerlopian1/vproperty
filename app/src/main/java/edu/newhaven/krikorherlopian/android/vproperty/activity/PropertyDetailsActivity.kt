@@ -426,7 +426,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.phone) {
             val mobNum = prop.contactPhone
