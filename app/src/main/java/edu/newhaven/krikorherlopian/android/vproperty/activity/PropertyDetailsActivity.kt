@@ -508,17 +508,21 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
                 file
             )
             //share
-            val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
-            sharingIntent.type = "image/*"
-            sharingIntent.putExtra(
-                Intent.EXTRA_TEXT,
-                resources.getString(R.string.contact) + " " + prop.email
-            )
-            sharingIntent.putExtra(Intent.EXTRA_STREAM, uri)
-            startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
+            share(uri)
         } catch (e: IOException) {
         }
         return uri
+    }
+
+    private fun share(uri: Uri) {
+        val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
+        sharingIntent.type = "image/*"
+        sharingIntent.putExtra(
+            Intent.EXTRA_TEXT,
+            resources.getString(R.string.contact) + " " + prop.email
+        )
+        sharingIntent.putExtra(Intent.EXTRA_STREAM, uri)
+        startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
