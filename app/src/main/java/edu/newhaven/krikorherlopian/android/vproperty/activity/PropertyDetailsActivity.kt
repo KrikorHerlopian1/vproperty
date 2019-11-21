@@ -499,7 +499,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         var uri: Uri? = null
         try {
             val file = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "to-share.jpeg")
-
             val stream = FileOutputStream(file)
             image.compress(Bitmap.CompressFormat.JPEG, 90, stream)
             stream.close()
