@@ -3,12 +3,16 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
+import android.view.PixelCopy
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -444,19 +448,51 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
                 startActivity(intent)
             }
         } else if (id == R.id.share) {
-            val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
-            sharingIntent.type = "image/*"
-            var bm = takeScreenshot()
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, "Contact " + prop.email)
-            sharingIntent.putExtra(Intent.EXTRA_STREAM, saveImageExternal(bm))
-            startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
+            takeScreenshot()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    fun takeScreenshot(): Bitmap {
-        imagelayout!!.isDrawingCacheEnabled = true
-        return imagelayout!!.drawingCache!!
+    fun takeScreenshot() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            System.out.println("jhere")
+            window?.let { window ->
+                val bitmap = Bitmap.createBitmap(
+                    imagelayout.width,
+                    imagelayout.height,
+                    Bitmap.Config.ARGB_8888
+                )
+                val locationOfViewInWindow = IntArray(2)
+                imagelayout!!.getLocationInWindow(locationOfViewInWindow)
+                try {
+                    PixelCopy.request(
+                        window,
+                        Rect(
+                            locationOfViewInWindow[0],
+                            locationOfViewInWindow[1],
+                            locationOfViewInWindow[0] + imagelayout.width,
+                            locationOfViewInWindow[1] + imagelayout.height
+                        ),
+                        bitmap,
+                        { copyResult ->
+                            if (copyResult == PixelCopy.SUCCESS) {
+                                saveImageExternal(bitmap)
+                            }
+                            // possible to handle other result codes ...
+                        },
+                        Handler()
+                    )
+                } catch (e: IllegalArgumentException) {
+                    // PixelCopy may throw IllegalArgumentException, make sure to handle it
+                    e.printStackTrace()
+                }
+            }
+        } else {
+            imagelayout!!.isDrawingCacheEnabled = true
+            saveImageExternal(imagelayout!!.drawingCache!!)
+            // return imagelayout!!.drawingCache!!
+        }
+
     }
 
     private fun saveImageExternal(image: Bitmap): Uri? {
@@ -473,6 +509,13 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
                 applicationContext.packageName + ".provider",
                 file
             )//Uri.fromFile(file)
+
+            //share
+            val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
+            sharingIntent.type = "image/*"
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, "Contact " + prop.email)
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, uri)
+            startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
         } catch (e: IOException) {
         }
         return uri
