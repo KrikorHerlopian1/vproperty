@@ -513,7 +513,10 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
             //share
             val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
             sharingIntent.type = "image/*"
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, "Contact " + prop.email)
+            sharingIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                resources.getString(R.string.contact) + " " + prop.email
+            )
             sharingIntent.putExtra(Intent.EXTRA_STREAM, uri)
             startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
         } catch (e: IOException) {

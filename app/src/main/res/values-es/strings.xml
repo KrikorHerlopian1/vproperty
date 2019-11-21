@@ -285,6 +285,7 @@
     <string name="choose_option">Escoge una respuesta</string>
     <string name="wrong_answer">Respuesta incorrecta</string>
     <string name="correct_answer">Respuesta correcta</string>
+    <string name="contact">Contacto</string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>
