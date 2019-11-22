@@ -495,7 +495,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
     }
 
     private fun saveImageExternal(image: Bitmap): Uri? {
-        //TODO - Should be processed in another thread
         var uri: Uri? = null
         try {
             val file = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "to-share.jpeg")

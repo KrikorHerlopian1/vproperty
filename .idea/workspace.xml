@@ -90,11 +90,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="485" column="67" selection-start-line="485" selection-start-column="67" selection-end-line="485" selection-end-column="67" />
-              <folding>
-                <element signature="e#19446#19483#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="59">
+              <caret line="496" column="56" selection-start-line="496" selection-start-column="56" selection-end-line="496" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -120,23 +117,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/phone.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="6585">
+              <caret line="485" column="42" selection-start-line="485" selection-start-column="42" selection-end-line="485" selection-end-column="42" />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/contact.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -217,7 +203,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/HomeFacts.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/step/StepHomeFacts.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/viewholder/TwoPropertyViewHolder.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/PropertyFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/adapter/RecylerViewAdapter.kt" />
@@ -254,13 +239,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="24" />
-    <option name="y" value="28" />
+    <option name="y" value="26" />
     <option name="width" value="1631" />
     <option name="height" value="960" />
   </component>
@@ -270,6 +256,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -288,21 +276,12 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Course" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,27 +426,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
-    </task>
-    <task id="LOCAL-00085" summary="code reformat">
-      <created>1572747818099</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1572747818100</updated>
-    </task>
-    <task id="LOCAL-00086" summary="gradle version">
-      <created>1572750937615</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1572750937616</updated>
-    </task>
-    <task id="LOCAL-00087" summary="property list">
-      <created>1572750990775</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1572750990775</updated>
     </task>
     <task id="LOCAL-00088" summary="gradle version">
       <created>1572751033522</created>
@@ -791,7 +749,28 @@
       <option name="project" value="LOCAL" />
       <updated>1574373786373</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="fixed function">
+      <created>1574373849928</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1574373849928</updated>
+    </task>
+    <task id="LOCAL-00135" summary="fixed url">
+      <created>1574374029855</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1574374029855</updated>
+    </task>
+    <task id="LOCAL-00136" summary="fixed url">
+      <created>1574374050240</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1574374050240</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TodoView">
@@ -804,7 +783,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="28" width="1631" height="960" extended-state="0" />
+    <frame x="24" y="26" width="1631" height="960" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -874,7 +853,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="property list" />
     <MESSAGE value="gradle version" />
     <MESSAGE value="update map location when moving" />
     <MESSAGE value="delete disabled property" />
@@ -899,7 +877,8 @@
     <MESSAGE value="Add contact in share" />
     <MESSAGE value="manifest details" />
     <MESSAGE value="fixed function" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed function" />
+    <MESSAGE value="fixed url" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed url" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -929,40 +908,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/filter.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="12" selection-end-column="68" />
-          <folding>
-            <element signature="e#428#451#0" expanded="true" />
-            <element signature="e#527#550#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/FilterFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="69" column="50" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="93" lean-forward="true" selection-start-line="15" selection-end-line="20" selection-end-column="93" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/Common.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="36" selection-start-line="36" selection-end-line="37" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/ProfileFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1273,13 +1218,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/contact.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/phone.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/ic_launcher-web.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/OFL.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/google-services.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="485" column="67" selection-start-line="485" selection-start-column="67" selection-end-line="485" selection-end-column="67" />
-          <folding>
-            <element signature="e#19446#19483#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="59">
+          <caret line="496" column="56" selection-start-line="496" selection-start-column="56" selection-end-line="496" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -1299,21 +1270,12 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/phone.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="6585">
+          <caret line="485" column="42" selection-start-line="485" selection-start-column="42" selection-end-line="485" selection-end-column="42" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/contact.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>
