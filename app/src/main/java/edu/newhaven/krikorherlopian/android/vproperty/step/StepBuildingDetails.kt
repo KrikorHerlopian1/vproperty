@@ -31,7 +31,6 @@ class StepBuildingDetails(context: Context, listener: OnNavigationBarListener, v
         init(context, listener)
     }
 
-
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         val c = context

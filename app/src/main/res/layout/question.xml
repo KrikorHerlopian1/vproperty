@@ -26,8 +26,7 @@
             android:textSize="@dimen/normalTextSize"></edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView>
 
     </RelativeLayout>
-
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
