@@ -31,10 +31,6 @@ class QuestionFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
         private const val arg_option1 = "arg_option1"
         private const val arg_option2 = "arg_option2"
         private const val arg_image = "arg_image"

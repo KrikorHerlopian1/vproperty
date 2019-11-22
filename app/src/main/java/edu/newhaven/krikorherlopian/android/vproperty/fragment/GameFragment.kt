@@ -170,7 +170,7 @@ class GameFragment : Fragment() {
     }
 
     fun setOptions(i: Int, questions: Array<String>): Array<String> {
-        //shuffle options
+        //shuffle options.
         var options = arrayOf(questions[i], "1", "2", "3")
         val ques = questions.clone()
         ques[i] = ques[9]

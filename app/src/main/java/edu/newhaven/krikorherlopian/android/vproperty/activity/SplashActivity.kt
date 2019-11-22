@@ -64,6 +64,7 @@ class SplashActivity : AppCompatActivity() {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(base))
     }
+
     fun animateImages() {
         val handler = Handler()
         handler.postDelayed(object : Runnable {
@@ -139,12 +140,8 @@ class SplashActivity : AppCompatActivity() {
     }
 
     fun goToLogin() {
-
-
         val intent = Intent(this@SplashActivity, LoginActivity::class.java)
         startActivity(intent)
         finish()
-
-
     }
 }
