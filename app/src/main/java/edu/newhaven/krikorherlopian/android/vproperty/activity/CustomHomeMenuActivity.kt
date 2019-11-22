@@ -80,6 +80,7 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(base))
     }
+
     private fun prepareCroperino() {
         //prepare camera, gallery and ask for storage permissions.
         CroperinoConfig(

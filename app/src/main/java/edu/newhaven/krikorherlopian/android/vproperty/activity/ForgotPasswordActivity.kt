@@ -38,6 +38,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(base))
     }
+
     private fun forgotPasswordButtonClicked() {
         if (email.text.isNullOrBlank()) {
             setError(null, true)

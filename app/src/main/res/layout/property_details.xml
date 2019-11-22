@@ -8,10 +8,10 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:layout_alignParentTop="true"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
         android:minHeight="56dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -21,9 +21,9 @@
         app:titleTextColor="@android:color/white"></androidx.appcompat.widget.Toolbar>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,34 +32,34 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:transitionName="MySecondTransition"
                 android:id="@+id/imagelayout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/imagesize">
+                android:layout_height="@dimen/imagesize"
+                android:transitionName="MySecondTransition">
 
                 <ImageView
-                    android:transitionName="MyTransition"
                     android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/imagesize"
-                    android:scaleType="centerCrop"></ImageView>
+                    android:scaleType="centerCrop"
+                    android:transitionName="MyTransition"></ImageView>
 
                 <ImageView
                     android:id="@+id/imagetype"
                     android:layout_width="@dimen/image_type"
                     android:layout_height="@dimen/image_type"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_margin="10dp"></ImageView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:paddingRight="40dp"
                     android:layout_gravity="bottom"
                     android:background="@color/transparent_image_bg"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingRight="40dp">
 
                     <edu.newhaven.krikorherlopian.android.vproperty.textview.BoldTextView
                         android:id="@+id/address"
@@ -268,14 +268,14 @@
 
             <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/map"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                map:cameraZoom="13"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                map:cameraZoom="13"
                 map:liteMode="true"
                 map:mapType="normal" />
 

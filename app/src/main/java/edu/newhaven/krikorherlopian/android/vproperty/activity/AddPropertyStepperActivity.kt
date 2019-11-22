@@ -74,6 +74,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(base))
     }
+
     private fun setupToolBar() {
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar

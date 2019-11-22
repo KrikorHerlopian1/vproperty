@@ -7,7 +7,6 @@ import android.content.res.Configuration
 import android.os.Build
 import java.util.*
 
-
 class App : Application() {
     fun setSystemLocaleLegacy(config: Configuration, locale: Locale) {
         config.locale = locale
