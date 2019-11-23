@@ -16,7 +16,6 @@ class CommonKtTest {
         val arizona = Address(longitude = "-111.0937", latitude = "34.0489")
         val florida = Address(longitude = "-81.5158", latitude = "27.6648")
 
-
         val propertyListActual: MutableList<Any> = mutableListOf(
             Property("NY House", newYork),
             Property("NH House", newHaven),
