@@ -19,6 +19,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.activity.PropertyDetailsAc
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
+import edu.newhaven.krikorherlopian.android.vproperty.sortByDistance
 import kotlinx.android.synthetic.main.listview_fragment.view.*
 import java.util.*
 
@@ -421,34 +422,11 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                         .addOnSuccessListener { location: Location? ->
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-
-
-                                for (pro in list) {
-                                    var R = 3958.756 // miles
-                                    var φ1 = Math.toRadians(location.latitude.toDouble())
-                                    var φ2 =
-                                        Math.toRadians((pro as Property).address.latitude.toDouble())
-                                    var Δφ =
-                                        Math.toRadians(pro.address.latitude.toDouble() - location.latitude.toDouble())
-                                    var Δλ =
-                                        Math.toRadians(pro.address.longitude.toDouble() - location.longitude.toDouble())
-
-                                    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-                                            Math.cos(φ1) * Math.cos(φ2) *
-                                            Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
-                                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-                                    var d = R * c
-                                    pro.distance = d
-                                }
-                                val customComparator = object : Comparator<Property> {
-                                    override fun compare(a: Property, b: Property): Int {
-                                        if ((a.distance - b.distance) > 0.0)
-                                            return 1
-                                        else
-                                            return -1
-                                    }
-                                }
-                                Collections.sort(list as MutableList<Property>, customComparator)
+                                list = sortByDistance(
+                                    list,
+                                    "" + location.longitude,
+                                    "" + location.latitude
+                                )
                                 adapter = RecylerViewAdapter(
                                     list, this, root?.context!!, true
                                 )
@@ -511,6 +489,7 @@ class SearchListPropertyFragment : Fragment(), ListClick {
             }
 
     }
+
 
     override fun rowClicked(position: Int, position2: Int, imageLayout: ImageView?) {
         val options =

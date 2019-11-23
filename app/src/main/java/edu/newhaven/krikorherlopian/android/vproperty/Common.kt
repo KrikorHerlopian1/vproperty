@@ -13,6 +13,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.firebase.auth.FirebaseUser
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property
+import java.util.*
 
 /*
     Common functions I will need accross various activities or fragments in application.
@@ -71,4 +73,34 @@ fun setUpPermissions(activity: Activity) {
         android.Manifest.permission.ACCESS_NETWORK_STATE
     )
     ActivityCompat.requestPermissions(activity, permissions, 0)
+}
+
+fun sortByDistance(list: MutableList<Any>, longitude: String, latitude: String): MutableList<Any> {
+    for (pro in list) {
+        var R = 3958.756 // miles
+        var φ1 = Math.toRadians(latitude.toDouble())
+        var φ2 =
+            Math.toRadians((pro as Property).address.latitude.toDouble())
+        var Δφ =
+            Math.toRadians(pro.address.latitude.toDouble() - latitude.toDouble())
+        var Δλ =
+            Math.toRadians(pro.address.longitude.toDouble() - longitude.toDouble())
+
+        var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                Math.cos(φ1) * Math.cos(φ2) *
+                Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+        var d = R * c
+        pro.distance = d
+    }
+    val customComparator = object : Comparator<Property> {
+        override fun compare(a: Property, b: Property): Int {
+            if ((a.distance - b.distance) > 0.0)
+                return 1
+            else
+                return -1
+        }
+    }
+    Collections.sort(list as MutableList<Property>, customComparator)
+    return list
 }
