@@ -90,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/Common.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1185">
+            <state relative-caret-position="296">
               <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
             </state>
           </provider>
@@ -99,8 +99,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+            <state relative-caret-position="487">
+              <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -575,13 +575,6 @@
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
     </task>
-    <task id="LOCAL-00102" summary="bug fix">
-      <created>1572962668944</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1572962668945</updated>
-    </task>
     <task id="LOCAL-00103" summary="bug fix">
       <created>1572962953261</created>
       <option name="number" value="00103" />
@@ -918,28 +911,17 @@
       <option name="project" value="LOCAL" />
       <updated>1574547843723</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="Add more tests">
+      <created>1574548915731</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1574548915731</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 13m 30s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 14m 09s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 16m 06s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 19m 39s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 20m 07s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 21m 31s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="CommonKtTest - 2019.11.23 at 17h 21m 58s.xml">
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
@@ -950,6 +932,24 @@
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
     <history-entry file="CommonKtTest - 2019.11.23 at 17h 40m 20s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 41m 27s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 43m 09s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 44m 39s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 44m 58s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 46m 02s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 46m 20s.xml">
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
   </component>
@@ -1419,15 +1419,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/Common.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
+        <state relative-caret-position="296">
           <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        <state relative-caret-position="487">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
         </state>
       </provider>
     </entry>
