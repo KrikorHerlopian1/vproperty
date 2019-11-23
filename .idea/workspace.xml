@@ -15,7 +15,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="675e4df6-2a73-4081-b2fb-c9608055fb6b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
-              <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+              <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -608,20 +607,6 @@
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
     </task>
-    <task id="LOCAL-00097" summary="locale fix">
-      <created>1572818575931</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1572818575931</updated>
-    </task>
-    <task id="LOCAL-00098" summary="spanish">
-      <created>1572839433152</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1572839433153</updated>
-    </task>
     <task id="LOCAL-00099" summary="padding fix">
       <created>1572872988384</created>
       <option name="number" value="00099" />
@@ -951,16 +936,24 @@
       <option name="project" value="LOCAL" />
       <updated>1574547189409</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="add more tests">
+      <created>1574547201462</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1574547201462</updated>
+    </task>
+    <task id="LOCAL-00147" summary="add more tests">
+      <created>1574547261950</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1574547261950</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CommonKtTest - 2019.11.23 at 15h 57m 59s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="CommonKtTest - 2019.11.23 at 15h 59m 51s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="CommonKtTest - 2019.11.23 at 16h 00m 01s.xml">
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
@@ -983,6 +976,12 @@
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
     <history-entry file="CommonKtTest - 2019.11.23 at 17h 12m 59s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 13m 30s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 14m 09s.xml">
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
   </component>
@@ -1460,7 +1459,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
         </state>
       </provider>
     </entry>
