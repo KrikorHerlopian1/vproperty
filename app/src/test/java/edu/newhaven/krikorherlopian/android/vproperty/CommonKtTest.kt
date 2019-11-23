@@ -28,7 +28,6 @@ class CommonKtTest {
 
     @Test
     fun sortByDistance_test_success() {
-
         val propertyListActual: MutableList<Any> = mutableListOf(
             tokyo,
             newYork,
