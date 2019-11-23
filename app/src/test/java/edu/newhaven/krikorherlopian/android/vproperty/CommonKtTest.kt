@@ -27,8 +27,8 @@ class CommonKtTest {
             Property("house 2", newHaven, distance = 14.088658705148184),
             Property("house 1", newYork, distance = 78.83144221662072),
             Property("house 4", boston, distance = 110.89273864552389),
-            Property("house 3", losAngeles, distance = 2526.2674284586433),
-            Property("house 5", arizona, distance = 2142.277482099129)
+            Property("house 5", arizona, distance = 2142.277482099129),
+            Property("house 3", losAngeles, distance = 2526.2674284586433)
         )
         //my current location 300 boston post road new haven connecticut
         //41.287160 latitude, -72.657680 longitude
