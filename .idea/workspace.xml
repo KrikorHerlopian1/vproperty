@@ -90,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/Common.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
+            <state relative-caret-position="1365">
+              <caret line="105" column="1" lean-forward="true" selection-start-line="77" selection-end-line="105" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -99,8 +99,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+            <state relative-caret-position="305">
+              <caret line="26" column="93" selection-start-line="26" selection-start-column="93" selection-end-line="26" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -227,9 +227,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="24" />
-    <option name="y" value="26" />
+    <option name="y" value="23" />
     <option name="width" value="1631" />
-    <option name="height" value="960" />
+    <option name="height" value="957" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -237,58 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="vproperty" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="gradle" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -352,30 +300,57 @@
               <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
             <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="vproperty" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="vproperty" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VProperty" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="gradle" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -574,20 +549,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
-    </task>
-    <task id="LOCAL-00103" summary="bug fix">
-      <created>1572962953261</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1572962953262</updated>
-    </task>
-    <task id="LOCAL-00104" summary="bug fix">
-      <created>1572964705010</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1572964705010</updated>
     </task>
     <task id="LOCAL-00105" summary="bug fix">
       <created>1572964938414</created>
@@ -918,16 +879,24 @@
       <option name="project" value="LOCAL" />
       <updated>1574548915731</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="tests">
+      <created>1574549405243</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1574549405243</updated>
+    </task>
+    <task id="LOCAL-00153" summary="testing">
+      <created>1574549642577</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1574549642577</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 21m 58s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="CommonKtTest - 2019.11.23 at 17h 39m 33s.xml">
-      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="CommonKtTest - 2019.11.23 at 17h 39m 49s.xml">
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
@@ -952,6 +921,12 @@
     <history-entry file="CommonKtTest - 2019.11.23 at 17h 46m 20s.xml">
       <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
     </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 48m 49s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="CommonKtTest - 2019.11.23 at 17h 49m 43s.xml">
+      <configuration name="CommonKtTest" configurationId="AndroidJUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -963,11 +938,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="26" width="1631" height="960" extended-state="0" />
+    <frame x="24" y="23" width="1631" height="957" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -975,7 +950,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.328341" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.328341" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" weight="0.328341" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32911393" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
@@ -1033,7 +1008,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="locale fix" />
     <MESSAGE value="spanish" />
     <MESSAGE value="padding fix" />
     <MESSAGE value="design fix" />
@@ -1055,10 +1029,11 @@
     <MESSAGE value="manifest permissions" />
     <MESSAGE value="update library" />
     <MESSAGE value="reformat code" />
-    <MESSAGE value="testing" />
     <MESSAGE value="add more tests" />
     <MESSAGE value="Add more tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more tests" />
+    <MESSAGE value="tests" />
+    <MESSAGE value="testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1195,10 +1170,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml">
+      <provider editor-type-id="nav-designer" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-62" />
       </provider>
-      <provider editor-type-id="nav-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/FilterFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1303,12 +1278,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="101" column="44" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="44" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/SearchActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1419,15 +1394,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/Common.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
+        <state relative-caret-position="1365">
+          <caret line="105" column="1" lean-forward="true" selection-start-line="77" selection-end-line="105" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+        <state relative-caret-position="305">
+          <caret line="26" column="93" selection-start-line="26" selection-start-column="93" selection-end-line="26" selection-end-column="93" />
         </state>
       </provider>
     </entry>

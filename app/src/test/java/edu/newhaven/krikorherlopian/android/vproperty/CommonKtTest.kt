@@ -25,7 +25,6 @@ class CommonKtTest {
         Property("AZ House", address = Address(longitude = "-111.0937", latitude = "34.0489"))
     val florida =
         Property("FL House", address = Address(longitude = "-81.5158", latitude = "27.6648"))
-
     @Test
     fun sortByDistance_test_success() {
         val propertyListActual: MutableList<Any> = mutableListOf(
