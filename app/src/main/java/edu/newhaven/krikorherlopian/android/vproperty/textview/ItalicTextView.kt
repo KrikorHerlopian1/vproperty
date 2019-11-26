@@ -11,9 +11,7 @@ class ItalicTextView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : AppCompatTextView(context, attrs, defStyle) {
-
     init {
-
         if (mTypeface == null) {
             mTypeface = Typeface.createFromAsset(context.assets, "Poppins-LightItalic.ttf")
         }
@@ -21,10 +19,6 @@ class ItalicTextView @JvmOverloads constructor(
     }
 
     companion object {
-
-        /*
-     * Caches typefaces based on their file path and name, so that they don't have to be created every time when they are referenced.
-     */
         private var mTypeface: Typeface? = null
     }
 
