@@ -48,8 +48,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.ByteArrayOutputStream
 import java.util.*
 
+//this is both to add property , and also edit property.
 class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperListener,
     OnNavigationBarListener {
+    val BASE_URL = "https://fcm.googleapis.com/"
+    private var retrofit: Retrofit? = null
     val machine = Machine(addModifyProperty)
     lateinit var storage: FirebaseStorage
     var property: Property = Property()
@@ -59,6 +62,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         setupToolBar()
         machine.state = addModifyProperty
         try {
+            //in case property to be edited, we would get all our property properties needed here.
             property = intent.getSerializableExtra("argPojo") as Property
         } catch (e: Exception) {
         }
@@ -88,6 +92,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         })
     }
 
+    //call the map library for user to select the property location.
     fun showLocationPicker() {
         val locationPickerIntent = LocationPickerActivity.Builder()
             .withGeolocApiKey(resources.getString(R.string.map_key))
@@ -103,6 +108,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
     override fun onCompleted(completeButton: View?) {
     }
 
+    //on every step of add/edit property wizard update the page title.
     override fun onStepSelected(newStepPosition: Int) {
         add_location.visibility = View.GONE
         if (newStepPosition == 0)
@@ -136,8 +142,6 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
 
     }
 
-    val BASE_URL = "https://fcm.googleapis.com/"
-    private var retrofit: Retrofit? = null
 
     fun getClient(): Retrofit {
         if (retrofit == null) {
@@ -149,6 +153,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         return retrofit!!
     }
 
+    //on add property only, we send notification to all users that a new property is added.
     fun sendNotificationToPatner() {
 
         val sendNotificationModel = SendNotificationModel(
@@ -289,6 +294,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
     }
 
 
+    //open custom dialog for user to choose between selecting photo from gallery or take a photo from camera.
     override fun addPictureClicked() {
         val alerBuilder = AlertDialog.Builder(this@AddPropertyStepperActivity)
         val dialogView = layoutInflater.inflate(R.layout.custom_croperino_dialog, null)
@@ -344,6 +350,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         property.homeFacts.garageSqFt = garageSqFt
     }
 
+    //last step  to add/edit property.
     override fun finishStep(
         relatedWebsite: String,
         virtualTour: String,
@@ -398,7 +405,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
 
     }
 
-
+    //upload image of property, before saving information into database with respective url.
     private fun uploadProperty(downloadUrl: Uri?) {
         val db = FirebaseFirestore.getInstance()
         property.photoUrl = downloadUrl.toString()
