@@ -12,7 +12,6 @@ class LightTextView @JvmOverloads constructor(
 ) : AppCompatTextView(context, attrs, defStyle) {
 
     init {
-
         if (mTypeface == null) {
             mTypeface = Typeface.createFromAsset(context.assets, "Poppins-Light.ttf")
         }
@@ -20,10 +19,6 @@ class LightTextView @JvmOverloads constructor(
     }
 
     companion object {
-
-        /*
-     * Caches typefaces based on their file path and name, so that they don't have to be created every time when they are referenced.
-     */
         private var mTypeface: Typeface? = null
     }
 
