@@ -153,6 +153,7 @@ class GameFragment : Fragment() {
 
     }
 
+    //this shuffles the 10 questions.
     fun shuffle(options: Array<String>, questions: Array<String>) {
         var count = 0
         for (ima in options) {
@@ -169,6 +170,7 @@ class GameFragment : Fragment() {
         }
     }
 
+    //this shuffles the 4 options for each question.
     fun setOptions(i: Int, questions: Array<String>): Array<String> {
         //shuffle options.
         var options = arrayOf(questions[i], "1", "2", "3")

@@ -50,10 +50,7 @@ class ListPropertiesFragment : Fragment(), ListClick {
          */
         private const val ARG_SECTION_NUMBER = "section_number"
         private const val ARG_PARAM = "param"
-        /**   private const val ARG_SECTION_NUMBER = "section_number"
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
+
         @JvmStatic
         fun newInstance(sectionNumber: Int, param: String): ListPropertiesFragment {
             return ListPropertiesFragment().apply {

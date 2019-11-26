@@ -33,7 +33,6 @@ class MyPropertiesFragment : Fragment(), ListClick {
             imageLayout!!
         )
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,7 +42,6 @@ class MyPropertiesFragment : Fragment(), ListClick {
         getData()
         return root
     }
-
 
     private fun getData() {
         val db = FirebaseFirestore.getInstance()

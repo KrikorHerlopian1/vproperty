@@ -31,16 +31,13 @@ class QuestionFragment : Fragment() {
     }
 
     companion object {
+        //the 4 options as arguments, the correct option , image to display.
         private const val arg_option1 = "arg_option1"
         private const val arg_option2 = "arg_option2"
         private const val arg_image = "arg_image"
         private const val arg_option3 = "arg_option3"
         private const val arg_option4 = "arg_option4"
         private const val arg_correct = "arg_correct"
-        /**   private const val ARG_SECTION_NUMBER = "section_number"
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         @JvmStatic
         fun newInstance(
             image: Int,

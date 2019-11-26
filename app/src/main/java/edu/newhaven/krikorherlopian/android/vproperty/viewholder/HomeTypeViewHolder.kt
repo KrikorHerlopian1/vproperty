@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.hometype.view.*
 class HomeTypeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
     override val containerView: View?
         get() = itemView
-
     fun bind(item: HomeTypes) {
         itemView.homeTypeOne.text = item.type
     }
