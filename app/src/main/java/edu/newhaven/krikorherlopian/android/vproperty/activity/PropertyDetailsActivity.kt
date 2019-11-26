@@ -524,6 +524,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         startActivities(arrayOf(Intent.createChooser(sharingIntent, "Share with")))
     }
 
+    //if phone or email present show the ones present into menu.
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         if (prop.email != null && !prop.email!!.trim().equals("")) {
@@ -536,7 +537,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
                 menuInflater.inflate(R.menu.phone, menu)
             }
         }
-
         return true
     }
 
