@@ -45,12 +45,13 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
     }
 
     private fun init(context: Context, listener: OnNavigationBarListener) {
-        val v = LayoutInflater.from(context).inflate(R.layout.fragment_step_home_facts, this, true)
+        val layoutView =
+            LayoutInflater.from(context).inflate(R.layout.fragment_step_home_facts, this, true)
         try {
             onNavigationBarListener = listener
-            ms = v
+            ms = layoutView
             setUpFonts()
-            v.priceInput.setText("" + property.homeFacts.price)
+            layoutView.priceInput.setText("" + property.homeFacts.price)
             if (property.homeFacts.isSale) {
                 forsale.isChecked = true
                 priceLayout.hint = resources.getString(R.string.price)

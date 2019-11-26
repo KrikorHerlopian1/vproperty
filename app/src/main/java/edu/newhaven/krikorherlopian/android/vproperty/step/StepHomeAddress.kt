@@ -26,7 +26,7 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
     FrameLayout(context),
     Step {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    internal var ms: View? = null
+    internal var view: View? = null
     @Nullable
     private var onNavigationBarListener: OnNavigationBarListener? = null
 
@@ -49,17 +49,17 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
     }
 
     private fun init(context: Context, listener: OnNavigationBarListener) {
-        val v =
+        val layoutView =
             LayoutInflater.from(context).inflate(R.layout.fragment_step_home_address, this, true)
         try {
             onNavigationBarListener = listener
-            ms = v
-            v.houseName.setText(property.houseName.toString())
-            v.addressName.setText(property.address.addressName.toString())
-            v.zipCodeInput.setText(property.address.zipCode.toString())
-            v.longitudeInput.setText(property.address.longitude.toString())
-            v.latitudeInput.setText(property.address.latitude.toString())
-            v.descriptionLayout.setText(property.address.descriptionAddress.toString())
+            view = layoutView
+            layoutView.houseName.setText(property.houseName.toString())
+            layoutView.addressName.setText(property.address.addressName.toString())
+            layoutView.zipCodeInput.setText(property.address.zipCode.toString())
+            layoutView.longitudeInput.setText(property.address.longitude.toString())
+            layoutView.latitudeInput.setText(property.address.latitude.toString())
+            layoutView.descriptionLayout.setText(property.address.descriptionAddress.toString())
             setUpFonts()
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
             if (property.address.latitude.equals("") && property.address.longitude.equals(""))
@@ -82,8 +82,8 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
                         val stateName = addresses[0].getAddressLine(1)
                         val countryName = addresses[0].getAddressLine(2)
                         var add: String = ""
-                        ms?.longitudeInput?.setText(location.longitude.toDouble().toString())
-                        ms?.latitudeInput?.setText(location.latitude.toDouble().toString())
+                        view?.longitudeInput?.setText(location.longitude.toDouble().toString())
+                        view?.latitudeInput?.setText(location.latitude.toDouble().toString())
                         if (address == null || address.trim().equals("")) {
                             if (cityName != null) {
                                 add = cityName
@@ -105,56 +105,56 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
 
     private fun setUpFonts() {
         var tf = Typeface.createFromAsset(context.assets, "" + font)
-        ms?.houseNameInputLayout?.typeface = tf
-        ms?.houseName?.typeface = tf
-        ms?.addressName?.typeface = tf
-        ms?.zipCodeInput?.typeface = tf
-        ms?.longitudeInput?.typeface = tf
-        ms?.latitudeInput?.typeface = tf
-        ms?.descriptionLayout?.typeface = tf
-        ms?.addressInputLayout?.typeface = tf
-        ms?.longitudeLayout?.typeface = tf
-        ms?.latitudeLayout?.typeface = tf
-        ms?.zipCodeLayout?.typeface = tf
-        ms?.descriptionInputLayout?.typeface = tf
-        ms?.descriptionInputLayout?.typeface = tf
+        view?.houseNameInputLayout?.typeface = tf
+        view?.houseName?.typeface = tf
+        view?.addressName?.typeface = tf
+        view?.zipCodeInput?.typeface = tf
+        view?.longitudeInput?.typeface = tf
+        view?.latitudeInput?.typeface = tf
+        view?.descriptionLayout?.typeface = tf
+        view?.addressInputLayout?.typeface = tf
+        view?.longitudeLayout?.typeface = tf
+        view?.latitudeLayout?.typeface = tf
+        view?.zipCodeLayout?.typeface = tf
+        view?.descriptionInputLayout?.typeface = tf
+        view?.descriptionInputLayout?.typeface = tf
     }
 
     override fun verifyStep(): VerificationError? {
         try {
             var state = 0
-            resetForms()
-            if (ms?.houseName?.text.isNullOrBlank()) {
+            resetForview()
+            if (view?.houseName?.text.isNullOrBlank()) {
                 state = 1
-                ms?.houseNameInputLayout?.error = resources.getString(R.string.choose_house_name)
+                view?.houseNameInputLayout?.error = resources.getString(R.string.choose_house_name)
             }
-            if (ms?.addressName?.text.isNullOrBlank()) {
+            if (view?.addressName?.text.isNullOrBlank()) {
                 state = 1
-                ms?.addressInputLayout?.error = resources.getString(R.string.enter_home_address)
+                view?.addressInputLayout?.error = resources.getString(R.string.enter_home_address)
             }
-            if (ms?.zipCodeInput?.text.isNullOrBlank()) {
+            if (view?.zipCodeInput?.text.isNullOrBlank()) {
                 state = 1
-                ms?.zipCodeLayout?.error = resources.getString(R.string.enter_zip_code)
+                view?.zipCodeLayout?.error = resources.getString(R.string.enter_zip_code)
             }
-            if (ms?.longitudeInput?.text.isNullOrBlank()) {
+            if (view?.longitudeInput?.text.isNullOrBlank()) {
                 state = 1
-                ms?.longitudeLayout?.error = resources.getString(R.string.enter_longitude)
+                view?.longitudeLayout?.error = resources.getString(R.string.enter_longitude)
             }
-            if (ms?.latitudeInput?.text.isNullOrBlank()) {
+            if (view?.latitudeInput?.text.isNullOrBlank()) {
                 state = 1
-                ms?.latitudeLayout?.error = resources.getString(R.string.enter_latitude)
+                view?.latitudeLayout?.error = resources.getString(R.string.enter_latitude)
             }
             if (state == 1) {
                 return VerificationError(resources.getString(R.string.enter_required_fields))
             } else
                 onNavigationBarListener?.addAddress(
-                    ms?.houseName?.text?.trim().toString(),
-                    ms?.addressName?.text?.trim().toString(),
-                    ms?.zipCodeInput?.text?.trim().toString(),
-                    ms?.longitudeInput?.text?.trim().toString()
+                    view?.houseName?.text?.trim().toString(),
+                    view?.addressName?.text?.trim().toString(),
+                    view?.zipCodeInput?.text?.trim().toString(),
+                    view?.longitudeInput?.text?.trim().toString()
                     ,
-                    ms?.latitudeInput?.text?.trim().toString(),
-                    ms?.descriptionLayout?.text?.trim().toString()
+                    view?.latitudeInput?.text?.trim().toString(),
+                    view?.descriptionLayout?.text?.trim().toString()
                 )
 
         } catch (e: Exception) {
@@ -163,17 +163,17 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
         return null
     }
 
-    private fun resetForms() {
-        ms?.houseNameInputLayout?.error = null
-        ms?.houseNameInputLayout?.isErrorEnabled = false
-        ms?.addressInputLayout?.error = null
-        ms?.addressInputLayout?.isErrorEnabled = false
-        ms?.zipCodeLayout?.error = null
-        ms?.zipCodeLayout?.isErrorEnabled = false
-        ms?.longitudeLayout?.error = null
-        ms?.longitudeLayout?.isErrorEnabled = false
-        ms?.latitudeLayout?.error = null
-        ms?.latitudeLayout?.isErrorEnabled = false
+    private fun resetForview() {
+        view?.houseNameInputLayout?.error = null
+        view?.houseNameInputLayout?.isErrorEnabled = false
+        view?.addressInputLayout?.error = null
+        view?.addressInputLayout?.isErrorEnabled = false
+        view?.zipCodeLayout?.error = null
+        view?.zipCodeLayout?.isErrorEnabled = false
+        view?.longitudeLayout?.error = null
+        view?.longitudeLayout?.isErrorEnabled = false
+        view?.latitudeLayout?.error = null
+        view?.latitudeLayout?.isErrorEnabled = false
     }
 
     override fun onSelected() {
