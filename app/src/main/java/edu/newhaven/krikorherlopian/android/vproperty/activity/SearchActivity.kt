@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.search_layout.*
 class SearchActivity : AppCompatActivity() {
     var title: String? = ""
     lateinit var prop: Property
+    //state implemented to show either properties on map or lists.
     val mapState = State("map")
     val listState = State("state")
     val machine = Machine(mapState)

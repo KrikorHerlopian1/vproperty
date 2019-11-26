@@ -286,6 +286,7 @@
     <string name="wrong_answer">Respuesta incorrecta</string>
     <string name="correct_answer">Respuesta correcta</string>
     <string name="contact">Contacto</string>
+
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>
@@ -298,6 +299,7 @@
         <item>@string/vacant_land</item>
         <item>@string/other</item>
     </string-array>
+
     <string-array name="questions">
         <item>Abstracción</item>
         <item>Estratificación</item>
