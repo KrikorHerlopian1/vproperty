@@ -212,7 +212,7 @@ public class ChatbotFragment extends Fragment {
                 inputMessage.setMessage(inputmessage);
                 inputMessage.setId("100");
                 this.initialRequest = false;
-                Toast.makeText(root.getContext(), "Tap on the message for Voice", Toast.LENGTH_LONG).show();
+                Toast.makeText(root.getContext(), "Tap on the message for Voice", Toast.LENGTH_SHORT).show();
 
             }
 

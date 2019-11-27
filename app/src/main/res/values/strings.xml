@@ -287,6 +287,7 @@
     <string name="correct_answer">Correct answer</string>
     <string name="contact">Contact</string>
     <string name="virtual_agent">Virtual Agent</string>
+    <string name="enter_your_query">Enter your query</string>
 
 
     <string-array name="hometype">

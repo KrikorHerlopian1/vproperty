@@ -16,7 +16,7 @@
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -27,48 +27,47 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_record"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:layout_centerInParent="true"
+            android:elevation="0dp"
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_mic_black_24dp"
+            android:scaleType="fitCenter"
+            android:tint="@color/colorPrimary" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="48dp"
+            android:id="@+id/btn_send"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
             android:layout_marginBottom="10dp"
             android:background="@null"
             android:elevation="0dp"
-            android:paddingLeft="10dp"
+            android:layout_centerInParent="true"
+            android:paddingRight="10dp"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_mic" />
+            android:src="@drawable/ic_send_black_24dp"
+            android:tint="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/message"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="10dp"
-            android:layout_weight="3"
-            android:hint="Enter your query"
+            android:layout_toLeftOf="@id/btn_send"
+            android:layout_toRightOf="@id/btn_record"
             android:background="@null"
+            android:hint="@string/enter_your_query"
             android:lines="1"
             android:paddingLeft="10dp" />
 
-        <!--<Button android:id="@+id/btn_send"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:text="ASK"
-            android:textSize="16dp"
-            android:textColor="@color/colorPrimary" />-->
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_send"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:elevation="0dp"
-            android:paddingLeft="10dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_send" />
 
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
