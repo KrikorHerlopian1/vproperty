@@ -288,7 +288,11 @@
     <string name="contact">Contact</string>
     <string name="virtual_agent">Virtual Agent</string>
     <string name="enter_your_query">Enter your query</string>
-
+    <string name="permission_audio_denied">Permission to record audio denied</string>
+    <string name="tap_voice">Tap on the message for Voice</string>
+    <string name="no_internet">No Internet Connection available</string>
+    <string name="listening">Listening....Click to Stop</string>
+    <string name="stopped_listening">Stopped Listening....Click to Start</string>
 
     <string-array name="hometype">
         <item>@string/all</item>

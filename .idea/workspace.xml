@@ -14,9 +14,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="675e4df6-2a73-4081-b2fb-c9608055fb6b" name="Default Changelist" comment="chatbot training">
+    <list default="true" id="675e4df6-2a73-4081-b2fb-c9608055fb6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +29,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="FA6940306403" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6_API_26" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -90,38 +92,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="285" column="54" selection-start-line="285" selection-start-column="54" selection-end-line="285" selection-end-column="54" />
+            <state relative-caret-position="725">
+              <caret line="449" column="9" selection-start-line="449" selection-start-column="9" selection-end-line="449" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#8301#8359#0" expanded="true" />
+                <element signature="e#9480#9524#0" expanded="true" />
+                <element signature="e#14996#15040#0" expanded="true" />
+                <element signature="e#15266#15318#0" expanded="true" />
+                <element signature="e#16178#16224#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/SearchListPropertyFragment.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6195">
-              <caret line="434" column="57" selection-start-line="434" selection-start-column="57" selection-end-line="434" selection-end-column="57" />
+            <state relative-caret-position="192">
+              <caret line="281" column="19" selection-start-line="281" selection-start-column="19" selection-end-line="281" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-es/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4125">
-              <caret line="327" column="24" selection-start-line="327" selection-start-column="24" selection-end-line="327" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/SearchMapFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="104" selection-start-line="104" selection-end-line="104" />
+            <state relative-caret-position="489">
+              <caret line="294" column="35" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -141,7 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>prop.email</find>
       <find>build</find>
       <find>contact</find>
       <find>Contact</find>
@@ -171,6 +168,7 @@
       <find>longitude</find>
       <find>geocoder</find>
       <find>te class SayTask extends AsyncTask&lt;String, Void, Strin</find>
+      <find>toast</find>
     </findStrings>
     <replaceStrings>
       <replace>context.resources</replace>
@@ -215,7 +213,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/step/StepRoomDetails.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/RecyclerTouchListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatboFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/chat_item_watson.xml" />
@@ -228,8 +225,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/chatbot_frag.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/chat_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" />
         <option value="$PROJECT_DIR$/gradle.properties" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/provider_paths.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/Croperino.java" />
@@ -243,6 +238,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_chat_room.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/SearchMapFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/SearchListPropertyFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java" />
       </list>
     </option>
@@ -330,13 +328,6 @@
               <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -533,27 +524,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
-    </task>
-    <task id="LOCAL-00127" summary="Add contact in share">
-      <created>1574348341384</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1574348341384</updated>
-    </task>
-    <task id="LOCAL-00128" summary="Add contact in share">
-      <created>1574348457430</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1574348457430</updated>
-    </task>
-    <task id="LOCAL-00129" summary="Add contact in share">
-      <created>1574348497298</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1574348497298</updated>
     </task>
     <task id="LOCAL-00130" summary="manifest details">
       <created>1574348701480</created>
@@ -877,7 +847,28 @@
       <option name="project" value="LOCAL" />
       <updated>1574888124328</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="chatbot training">
+      <created>1574889464315</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1574889464315</updated>
+    </task>
+    <task id="LOCAL-00177" summary="chatbot training">
+      <created>1574890001806</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1574890001806</updated>
+    </task>
+    <task id="LOCAL-00178" summary="chatbot training">
+      <created>1574890103240</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1574890103240</updated>
+    </task>
+    <option name="localTasksCounter" value="179" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -926,7 +917,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -934,7 +925,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.3283237" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.3283237" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" weight="0.3283237" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32911393" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
@@ -1053,18 +1044,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/chat_item_self.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="21" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/RecyclerTouchListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -1162,20 +1141,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_send.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-es/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="289" column="55" selection-start-line="289" selection-start-column="55" selection-end-line="289" selection-end-column="55" />
-        </state>
-      </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.rom4ek/arcnavigationview/1.0.3/433f142b31584b692249ab7d1cd6dc3b2cdf2859/arcnavigationview-1.0.3-sources.jar!/com/rom4ek/arcnavigationview/ArcNavigationView.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1378,16 +1343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="285" column="54" selection-start-line="285" selection-start-column="54" selection-end-line="285" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/SearchListPropertyFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6195">
@@ -1406,6 +1361,49 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1110">
           <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-es/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="294" column="35" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="281" column="19" selection-start-line="281" selection-start-column="19" selection-end-line="281" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.watson/text-to-speech/8.0.0/2e3b12ecd443970e5c5c44acfaf96fc7f2a92e31/text-to-speech-8.0.0-sources.jar!/com/ibm/watson/text_to_speech/v1/model/SynthesizeOptions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="449" column="9" selection-start-line="449" selection-start-column="9" selection-end-line="449" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8301#8359#0" expanded="true" />
+            <element signature="e#9480#9524#0" expanded="true" />
+            <element signature="e#14996#15040#0" expanded="true" />
+            <element signature="e#15266#15318#0" expanded="true" />
+            <element signature="e#16178#16224#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

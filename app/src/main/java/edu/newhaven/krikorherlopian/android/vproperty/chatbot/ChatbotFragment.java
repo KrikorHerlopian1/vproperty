@@ -198,7 +198,7 @@ public class ChatbotFragment extends Fragment {
 
             case MicrophoneHelper.REQUEST_PERMISSION: {
                 if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(root.getContext(), "Permission to record audio denied", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(root.getContext(), "" + getResources().getString(R.string.permission_audio_denied), Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -230,8 +230,7 @@ public class ChatbotFragment extends Fragment {
                 inputMessage.setMessage(inputmessage);
                 inputMessage.setId("100");
                 this.initialRequest = false;
-                Toast.makeText(root.getContext(), "Tap on the message for Voice", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(root.getContext(), "" + getResources().getString(R.string.tap_voice), Toast.LENGTH_SHORT).show();
             }
 
             this.inputMessage.setText("");
@@ -331,13 +330,13 @@ public class ChatbotFragment extends Fragment {
                     }
                 }).start();
                 listening = true;
-                Toast.makeText(root.getContext(), "Listening....Click to Stop", Toast.LENGTH_LONG).show();
+                Toast.makeText(root.getContext(), "" + getResources().getString(R.string.listening), Toast.LENGTH_LONG).show();
 
             } else {
                 try {
                     microphoneHelper.closeInputStream();
                     listening = false;
-                    Toast.makeText(root.getContext(), "Stopped Listening....Click to Start", Toast.LENGTH_LONG).show();
+                    Toast.makeText(root.getContext(), "" + getResources().getString(R.string.stopped_listening), Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -366,7 +365,7 @@ public class ChatbotFragment extends Fragment {
             if (isConnected) {
                 return true;
             } else {
-                Toast.makeText(root.getContext(), " No Internet Connection available ", Toast.LENGTH_LONG).show();
+                Toast.makeText(root.getContext(), "" + getResources().getString(R.string.no_internet), Toast.LENGTH_LONG).show();
                 return false;
             }
         } catch (Exception e) {
@@ -420,7 +419,7 @@ public class ChatbotFragment extends Fragment {
             try {
                 streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
                     .text(params[0])
-                    .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
+                        .voice(SynthesizeOptions.Voice.EN_US_LISAV3VOICE)
                     .accept(HttpMediaType.AUDIO_WAV)
                         .build()).execute().getResult());
             } catch (Exception e) {
@@ -449,7 +448,6 @@ public class ChatbotFragment extends Fragment {
         public void onDisconnected() {
             enableMicButton();
         }
-
     }
 
 }
