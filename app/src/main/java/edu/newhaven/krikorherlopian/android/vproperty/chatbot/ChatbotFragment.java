@@ -91,74 +91,79 @@ public class ChatbotFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = getLayoutInflater().inflate(R.layout.chat_main, container, false);
-        mContext = root.getContext();
-        inputMessage = root.findViewById(R.id.message);
-        btnSend = root.findViewById(R.id.btn_send);
-        btnRecord = root.findViewById(R.id.btn_record);
-        String customFont = "Poppins-Light.ttf";
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), customFont);
-        inputMessage.setTypeface(typeface);
-        recyclerView = root.findViewById(R.id.recycler_view);
+        try {
+            mContext = root.getContext();
+            inputMessage = root.findViewById(R.id.message);
+            btnSend = root.findViewById(R.id.btn_send);
+            btnRecord = root.findViewById(R.id.btn_record);
+            String customFont = "Poppins-Light.ttf";
+            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), customFont);
+            inputMessage.setTypeface(typeface);
+            recyclerView = root.findViewById(R.id.recycler_view);
 
-        messageArrayList = new ArrayList<>();
-        mAdapter = new ChatAdapter(messageArrayList);
-        microphoneHelper = new MicrophoneHelper(getActivity());
+            messageArrayList = new ArrayList<>();
+            mAdapter = new ChatAdapter(messageArrayList);
+            microphoneHelper = new MicrophoneHelper(getActivity());
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-        this.inputMessage.setText("");
-        this.initialRequest = true;
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            layoutManager.setStackFromEnd(true);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(mAdapter);
+            this.inputMessage.setText("");
+            this.initialRequest = true;
 
 
-        int permission = ContextCompat.checkSelfPermission(root.getContext(),
-                Manifest.permission.RECORD_AUDIO);
+            int permission = ContextCompat.checkSelfPermission(root.getContext(),
+                    Manifest.permission.RECORD_AUDIO);
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            Log.i(TAG, "Permission to record denied");
-            makeRequest();
-        } else {
-            Log.i(TAG, "Permission to record was already granted");
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                Log.i(TAG, "Permission to record denied");
+                makeRequest();
+            } else {
+                Log.i(TAG, "Permission to record was already granted");
+            }
+
+
+            recyclerView.addOnItemTouchListener(new RecyclerTouchListener(root.getContext(), recyclerView, new ClickListener() {
+                @Override
+                public void onClick(View view, final int position) {
+                    Message audioMessage = (Message) messageArrayList.get(position);
+                    if (audioMessage != null && !audioMessage.getMessage().isEmpty()) {
+                        new SayTask().execute(audioMessage.getMessage());
+                    }
+                }
+
+                @Override
+                public void onLongClick(View view, int position) {
+                    recordMessage();
+
+                }
+            }));
+
+            btnSend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (checkInternetConnection()) {
+                        sendMessage();
+                    }
+                }
+            });
+
+            btnRecord.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    recordMessage();
+                }
+            });
+
+            createServices();
+            sendMessage();
+
+        } catch (Exception e) {
         }
-
-
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(root.getContext(), recyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, final int position) {
-                Message audioMessage = (Message) messageArrayList.get(position);
-                if (audioMessage != null && !audioMessage.getMessage().isEmpty()) {
-                    new SayTask().execute(audioMessage.getMessage());
-                }
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-                recordMessage();
-
-            }
-        }));
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkInternetConnection()) {
-                    sendMessage();
-                }
-            }
-        });
-
-        btnRecord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recordMessage();
-            }
-        });
-
-        createServices();
-        sendMessage();
         return root;
+
     }
 
     // Speech-to-Text Record Audio permission
@@ -193,9 +198,13 @@ public class ChatbotFragment extends Fragment {
     }
 
     protected void makeRequest() {
-        ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.RECORD_AUDIO},
-                MicrophoneHelper.REQUEST_PERMISSION);
+        try {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.RECORD_AUDIO},
+                    MicrophoneHelper.REQUEST_PERMISSION);
+        } catch (Exception e) {
+        }
+
     }
 
     // Sending a message to Watson Assistant Service
@@ -319,21 +328,25 @@ public class ChatbotFragment extends Fragment {
      */
     private boolean checkInternetConnection() {
         // get Connectivity Manager object to check connection
-        ConnectivityManager cm =
-                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        try {
+            ConnectivityManager cm =
+                    (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            boolean isConnected = activeNetwork != null &&
+                    activeNetwork.isConnectedOrConnecting();
 
-        // Check for network connections
-        if (isConnected) {
-            return true;
-        } else {
-            Toast.makeText(root.getContext(), " No Internet Connection available ", Toast.LENGTH_LONG).show();
-            return false;
+            // Check for network connections
+            if (isConnected) {
+                return true;
+            } else {
+                Toast.makeText(root.getContext(), " No Internet Connection available ", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        } catch (Exception e) {
         }
 
+        return false;
     }
 
     //Private Methods - Speech to Text

@@ -27,9 +27,11 @@ import java.io.IOException;
  */
 public class Croperino {
 
+    static public Uri mImageCaptureUri;
+    static public File mFileTemp;
     public static void runCropImage(File file, Activity ctx, boolean isScalable, int aspectX, int aspectY, int color, int bgColor) {
         Intent intent = new Intent(ctx, CropImage.class);
-        intent.putExtra(CropImage.IMAGE_PATH, file.getPath());
+        intent.putExtra(CropImage.IMAGE_PATH, mFileTemp.getPath());
         intent.putExtra(CropImage.SCALE, isScalable);
         intent.putExtra(CropImage.ASPECT_X, aspectX);
         intent.putExtra(CropImage.ASPECT_Y, aspectY);
@@ -71,9 +73,15 @@ public class Croperino {
     public static void prepareCamera(Activity ctx) {
         try {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            Uri mImageCaptureUri;
+
             String state = Environment.getExternalStorageState();
             if (Environment.MEDIA_MOUNTED.equals(state)) {
+                File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Camera");
+                if (!storageDir.exists()) {
+                    storageDir.mkdir();
+                }
+
+                mFileTemp = File.createTempFile(CroperinoConfig.getsImageName(), ".jpg", storageDir);
                 if (Uri.fromFile(CroperinoFileUtil.newCameraFile()) != null) {
                     if (Build.VERSION.SDK_INT >= 23) {
                         mImageCaptureUri = FileProvider.getUriForFile(ctx,
@@ -84,17 +92,19 @@ public class Croperino {
                     }
                 } else {
                     mImageCaptureUri = FileProvider.getUriForFile(ctx,
-                            ctx.getApplicationContext().getPackageName() + ".provider",
-                            CroperinoFileUtil.newCameraFile());
+                            "edu.newhaven.krikorherlopian.android.vproperty.fileprovider",
+                            mFileTemp);
                 }
             } else {
                 mImageCaptureUri = InternalStorageContentProvider.CONTENT_URI;
             }
+
             intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
             intent.putExtra("return-data", true);
             ctx.startActivityForResult(intent, CroperinoConfig.REQUEST_TAKE_PHOTO);
         } catch (Exception e) {
             if (e instanceof ActivityNotFoundException) {
+
             } else if (e instanceof IOException) {
             } else {
             }

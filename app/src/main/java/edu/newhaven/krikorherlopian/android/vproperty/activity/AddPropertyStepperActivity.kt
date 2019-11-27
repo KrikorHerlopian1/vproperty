@@ -7,11 +7,14 @@ import android.graphics.Bitmap
 import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import com.anupcowkur.statelin.Machine
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Continuation
@@ -46,6 +49,9 @@ import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 
 //this is both to add property , and also edit property.
@@ -211,18 +217,71 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         })
     }
 
+    var currentPhotoPath: String? = ""
+    var photoFile: File? = null
+
+    @Throws(IOException::class)
+    private fun createImageFile(): File {
+        // Create an image file name
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File = getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
+        return File.createTempFile(
+            "JPEG_${timeStamp}_", /* prefix */
+            ".jpg", /* suffix */
+            storageDir /* directory */
+        ).apply {
+            // Save a file: path for use with ACTION_VIEW intents
+            currentPhotoPath = absolutePath
+        }
+    }
+
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            // Ensure that there's a camera activity to handle the intent
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                // Create the File where the photo should go
+                photoFile = try {
+                    createImageFile()
+                } catch (ex: IOException) {
+                    null
+                }
+                // Continue only if the File was successfully created
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
+                        this,
+                        "edu.newhaven.krikorherlopian.android.vproperty.fileprovider",
+                        it
+                    )
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                    startActivityForResult(takePictureIntent, CroperinoConfig.REQUEST_TAKE_PHOTO)
+                }
+            }
+        }
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && data != null) {
             when (requestCode) {
                 CroperinoConfig.REQUEST_TAKE_PHOTO ->
                     if (resultCode == Activity.RESULT_OK) {
                         /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
+                        /* Croperino.runCropImage(
+                             CroperinoFileUtil.getTempFile(),
+                             this@AddPropertyStepperActivity,
+                             true,
+                             1,
+                             1,
+                             R.color.gray,
+                             R.color.gray_variant
+                         )*/
+                        CroperinoFileUtil.newGalleryFile(data, this@AddPropertyStepperActivity)
                         Croperino.runCropImage(
-                            CroperinoFileUtil.getTempFile(),
+                            photoFile,
                             this@AddPropertyStepperActivity,
                             true,
-                            1,
-                            1,
+                            0,
+                            0,
                             R.color.gray,
                             R.color.gray_variant
                         )
@@ -230,6 +289,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 CroperinoConfig.REQUEST_PICK_FILE ->
                     if (resultCode == Activity.RESULT_OK) {
                         CroperinoFileUtil.newGalleryFile(data, this@AddPropertyStepperActivity)
+                        photoFile = null
                         Croperino.runCropImage(
                             CroperinoFileUtil.getTempFile(),
                             this@AddPropertyStepperActivity,
@@ -243,7 +303,11 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                 CroperinoConfig.REQUEST_CROP_PHOTO ->
                     if (resultCode == Activity.RESULT_OK) {
                         //cropped image returned is set to the imageview on  register layout
-                        var i = Uri.fromFile(CroperinoFileUtil.getTempFile())
+                        var i: Uri?
+                        if (photoFile != null)
+                            i = Uri.fromFile(photoFile!!)
+                        else
+                            i = Uri.fromFile(CroperinoFileUtil.getTempFile())
                         Glide.with(this@AddPropertyStepperActivity).load(i)
                             .placeholder(R.drawable.placeholderdetail)
                             .into(
@@ -307,7 +371,8 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
             alert.dismiss()
         }
         dialogView.camera.setOnClickListener {
-            Croperino.prepareCamera(this@AddPropertyStepperActivity)
+            dispatchTakePictureIntent()
+            //Croperino.prepareCamera(this@AddPropertyStepperActivity)
             alert.dismiss()
         }
         dialogView.gallery.setOnClickListener {

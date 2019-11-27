@@ -5,7 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
+import android.provider.MediaStore
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -14,6 +16,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -36,6 +39,10 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 /*
         This page contains the home menu , first page after login.
@@ -121,7 +128,8 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
             alert.dismiss()
         }
         dialogView.camera.setOnClickListener {
-            Croperino.prepareCamera(this@HomeMenuActivity)
+            //  edu.newhaven.krikorherlopian.android.vproperty.Croperino.prepareCamera(this@HomeMenuActivity)
+            dispatchTakePictureIntent()
             alert.dismiss()
         }
         dialogView.gallery.setOnClickListener {
@@ -198,18 +206,70 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
 
     }
 
+    var currentPhotoPath: String? = ""
+    var photoFile: File? = null
+
+    @Throws(IOException::class)
+    private fun createImageFile(): File {
+        // Create an image file name
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File = getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
+        return File.createTempFile(
+            "JPEG_${timeStamp}_", /* prefix */
+            ".jpg", /* suffix */
+            storageDir /* directory */
+        ).apply {
+            // Save a file: path for use with ACTION_VIEW intents
+            currentPhotoPath = absolutePath
+        }
+    }
+
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            // Ensure that there's a camera activity to handle the intent
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                // Create the File where the photo should go
+                photoFile = try {
+                    createImageFile()
+                } catch (ex: IOException) {
+                    null
+                }
+                // Continue only if the File was successfully created
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
+                        this,
+                        "edu.newhaven.krikorherlopian.android.vproperty.fileprovider",
+                        it
+                    )
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                    startActivityForResult(takePictureIntent, CroperinoConfig.REQUEST_TAKE_PHOTO)
+                }
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             CroperinoConfig.REQUEST_TAKE_PHOTO ->
                 if (resultCode == Activity.RESULT_OK) {
                     /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
+                    /*      Croperino.runCropImage(
+                         edu.newhaven.krikorherlopian.android.vproperty.Croperino.mImageCaptureUri.toFile(),
+                         this@HomeMenuActivity,
+                         true,
+                         1,
+                         1,
+                         R.color.gray,
+                         R.color.gray_variant
+                     )*/
+                    CroperinoFileUtil.newGalleryFile(data, this@HomeMenuActivity)
                     Croperino.runCropImage(
-                        CroperinoFileUtil.getTempFile(),
+                        photoFile,
                         this@HomeMenuActivity,
                         true,
-                        1,
-                        1,
+                        0,
+                        0,
                         R.color.gray,
                         R.color.gray_variant
                     )
@@ -217,6 +277,7 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
             CroperinoConfig.REQUEST_PICK_FILE ->
                 if (resultCode == Activity.RESULT_OK) {
                     CroperinoFileUtil.newGalleryFile(data, this@HomeMenuActivity)
+                    photoFile = null
                     Croperino.runCropImage(
                         CroperinoFileUtil.getTempFile(),
                         this@HomeMenuActivity,
@@ -230,7 +291,12 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
             CroperinoConfig.REQUEST_CROP_PHOTO ->
                 if (resultCode == Activity.RESULT_OK) {
                     //cropped image returned is set to the imageview on  register layout
-                    var i = Uri.fromFile(CroperinoFileUtil.getTempFile())
+
+                    var i: Uri?
+                    if (photoFile != null)
+                        i = Uri.fromFile(photoFile!!)
+                    else
+                        i = Uri.fromFile(CroperinoFileUtil.getTempFile())
                     Glide.with(this@HomeMenuActivity).load(i)
                         .placeholder(R.drawable.profileplaceholder)
                         .apply(RequestOptions.circleCropTransform())

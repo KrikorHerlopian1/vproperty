@@ -120,6 +120,10 @@
                 android:value=".activity.AddPropertyStepperActivity" />
         </activity>
 
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
         <provider xmlns:tools="http://schemas.android.com/tools"
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
