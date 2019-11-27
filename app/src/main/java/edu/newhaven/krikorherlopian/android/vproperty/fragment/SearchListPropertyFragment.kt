@@ -422,11 +422,20 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                         .addOnSuccessListener { location: Location? ->
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-                                list = sortByDistance(
-                                    list,
-                                    "" + location.longitude,
-                                    "" + location.latitude
-                                )
+                                if (prop.address.longitude.equals("")) {
+                                    list = sortByDistance(
+                                        list,
+                                        "" + location.longitude,
+                                        "" + location.latitude
+                                    )
+                                } else {
+                                    list = sortByDistance(
+                                        list,
+                                        "" + prop.address.longitude,
+                                        "" + prop.address.latitude
+                                    )
+                                }
+
                                 adapter = RecylerViewAdapter(
                                     list, this, root?.context!!, true
                                 )

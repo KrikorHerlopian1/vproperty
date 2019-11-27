@@ -89,11 +89,20 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
             .addOnSuccessListener { location: Location? ->
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
-                    val latLng = LatLng(
-                        location.latitude.toDouble(),
-                        location.longitude.toDouble()
-                    )
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+                    if (prop.address.longitude.equals("")) {
+                        val latLng = LatLng(
+                            location.latitude.toDouble(),
+                            location.longitude.toDouble()
+                        )
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+                    } else {
+                        val latLng = LatLng(
+                            prop.address.latitude.toDouble(),
+                            prop.address.longitude.toDouble()
+                        )
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+                    }
+
                 }
             }
     }

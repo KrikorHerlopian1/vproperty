@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.chatbot;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
@@ -47,6 +48,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import edu.newhaven.krikorherlopian.android.vproperty.R;
+import edu.newhaven.krikorherlopian.android.vproperty.activity.SearchActivity;
+import edu.newhaven.krikorherlopian.android.vproperty.model.HomeFacts;
+import edu.newhaven.krikorherlopian.android.vproperty.model.Property;
 
 public class ChatbotFragment extends Fragment {
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -253,9 +257,19 @@ public class ChatbotFragment extends Fragment {
                                 "text".equals(response.getOutput().getGeneric().get(0).responseType())) {
                             outMessage.setMessage(response.getOutput().getGeneric().get(0).text());
                             outMessage.setId("2");
-
-                            System.out.println(outMessage.getMessage() + "outmessage");
                             if (outMessage.getMessage().trim().startsWith("viewproperty")) {
+                                String[] split = outMessage.getMessage().trim().split(("-"));
+                                Property property = new Property();
+                                HomeFacts homeFacts = new HomeFacts();
+                                homeFacts.setHomeType(split[1].trim());
+                                property.setHomeFacts(homeFacts);
+
+                                Intent intent = new Intent(root.getContext(), SearchActivity.class);
+                                intent.putExtra("min", "0");
+                                intent.putExtra("max", split[2].trim());
+                                intent.putExtra("argPojo", property);
+                                startActivity(intent);
+                                messageArrayList.add(outMessage);
                                 /*streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
                                         .text("Here are search results for you")
                                         .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
