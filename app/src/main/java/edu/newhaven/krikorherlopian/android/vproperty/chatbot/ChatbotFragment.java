@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -26,6 +28,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ibm.cloud.sdk.core.http.HttpMediaType;
 import com.ibm.cloud.sdk.core.http.ServiceCall;
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.watson.assistant.v2.Assistant;
@@ -43,9 +46,11 @@ import com.ibm.watson.speech_to_text.v1.model.RecognizeOptions;
 import com.ibm.watson.speech_to_text.v1.model.SpeechRecognitionResults;
 import com.ibm.watson.speech_to_text.v1.websocket.BaseRecognizeCallback;
 import com.ibm.watson.text_to_speech.v1.TextToSpeech;
+import com.ibm.watson.text_to_speech.v1.model.SynthesizeOptions;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.newhaven.krikorherlopian.android.vproperty.R;
 import edu.newhaven.krikorherlopian.android.vproperty.activity.SearchActivity;
@@ -264,22 +269,35 @@ public class ChatbotFragment extends Fragment {
                                 homeFacts.setHomeType(split[1].trim());
                                 property.setHomeFacts(homeFacts);
 
+                                try {
+                                    Geocoder geocoder = new Geocoder(getContext());
+                                    List<Address> address = geocoder.getFromLocationName(split[3].trim(), 5);
+                                    Address location = address.get(0);
+                                    location.getLatitude();
+                                    location.getLongitude();
+                                    property.getAddress().setLatitude(location.getLatitude() + "");
+                                    property.getAddress().setLongitude(location.getLongitude() + "");
+                                } catch (Exception e) {
+                                }
+
                                 Intent intent = new Intent(root.getContext(), SearchActivity.class);
                                 intent.putExtra("min", "0");
                                 intent.putExtra("max", split[2].trim());
                                 intent.putExtra("argPojo", property);
                                 startActivity(intent);
-                                messageArrayList.add(outMessage);
-                                /*streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
+
+                                streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
                                         .text("Here are search results for you")
                                         .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
                                         .accept(HttpMediaType.AUDIO_WAV)
-                                        .build()).execute().getResult());*/
-                            } else
+                                        .build()).execute().getResult());
+                            } else {
+                                new SayTask().execute(outMessage.getMessage());
                                 messageArrayList.add(outMessage);
+                            }
 
                             // speak the message
-                            new SayTask().execute(outMessage.getMessage());
+
 
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
@@ -406,11 +424,11 @@ public class ChatbotFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             try {
-                    /*streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
+                streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
                     .text(params[0])
                     .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
                     .accept(HttpMediaType.AUDIO_WAV)
-                    .build()).execute().getResult());*/
+                        .build()).execute().getResult());
             } catch (Exception e) {
             }
             return "Did synthesize";
