@@ -22,5 +22,7 @@
     <color name="greyPrimary">#DE000000</color>
     <color name="greySecondary">#8B000000</color>
     <color name="greyDisabled">#61000000</color>
+    <color name="bg_bubble_self">#855988</color>
+    <color name="bg_bubble_watbot">#ecf0f1</color>
 </resources>
 
