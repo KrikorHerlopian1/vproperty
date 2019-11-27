@@ -310,7 +310,6 @@ public class ChatbotFragment extends Fragment {
                     }
                 }
             });
-
             thread.start();
         } catch (Exception e) {
         }

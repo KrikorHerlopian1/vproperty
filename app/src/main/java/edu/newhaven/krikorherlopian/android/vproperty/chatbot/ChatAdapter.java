@@ -18,8 +18,6 @@ import edu.newhaven.krikorherlopian.android.vproperty.R;
 
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-
     private int SELF = 100;
     private ArrayList<Message> messageArrayList;
 
@@ -77,13 +75,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public ViewHolder(View view) {
             super(view);
             message = itemView.findViewById(R.id.message);
-
             String customFont = "Poppins-Light.ttf";
             Typeface typeface = Typeface.createFromAsset(itemView.getContext().getAssets(), customFont);
             message.setTypeface(typeface);
 
         }
     }
-
 
 }
