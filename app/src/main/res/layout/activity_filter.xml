@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+
     <RelativeLayout
         android:id="@+id/searchlayout"
         android:layout_width="match_parent"
@@ -24,6 +25,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/largeTextSize" />
     </RelativeLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -565,5 +567,6 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
 
 </RelativeLayout>

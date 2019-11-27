@@ -10,4 +10,5 @@
         android:layout_height="@dimen/toolbar_height"
         android:layout_centerInParent="true"
         android:indeterminateTint="@color/colorPrimary"></ProgressBar>
+
 </RelativeLayout>

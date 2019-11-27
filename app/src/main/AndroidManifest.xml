@@ -27,7 +27,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:name=".App"
@@ -104,6 +103,9 @@
             android:name=".activity.SearchActivity"
             android:screenOrientation="portrait"></activity>
         <activity
+            android:name=".chatbot.ChatbotActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name="com.schibstedspain.leku.LocationPickerActivity"
             android:label="@string/leku_title_activity_location_picker"
             android:parentActivityName=".activity.AddPropertyStepperActivity"
@@ -121,6 +123,17 @@
                 android:value=".activity.AddPropertyStepperActivity" />
         </activity>
 
+        <provider xmlns:tools="http://schemas.android.com/tools"
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"
+                tools:replace="android:resource" />
+        </provider>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

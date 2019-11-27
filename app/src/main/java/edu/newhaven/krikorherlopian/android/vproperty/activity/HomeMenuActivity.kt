@@ -75,6 +75,7 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
         if (page == 1) {
             navView.menu.performIdentifierAction(R.id.nav_settings, 0)
         }

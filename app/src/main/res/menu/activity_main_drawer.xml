@@ -31,5 +31,9 @@
             android:id="@+id/nav_game"
             android:icon="@drawable/ic_games_black_24dp"
             android:title="@string/play_game" />
+        <item
+            android:id="@+id/nav_chatbot"
+            android:icon="@drawable/ic_chat_black_24dp"
+            android:title="@string/virtual_agent" />
     </group>
 </menu>

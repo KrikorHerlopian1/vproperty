@@ -286,6 +286,8 @@
     <string name="wrong_answer">Wrong answer</string>
     <string name="correct_answer">Correct answer</string>
     <string name="contact">Contact</string>
+    <string name="virtual_agent">Virtual Agent</string>
+
 
     <string-array name="hometype">
         <item>@string/all</item>
