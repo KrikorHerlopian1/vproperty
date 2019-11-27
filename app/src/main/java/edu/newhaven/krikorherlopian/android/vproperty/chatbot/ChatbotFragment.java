@@ -294,9 +294,6 @@ public class ChatbotFragment extends Fragment {
                                 messageArrayList.add(outMessage);
                             }
 
-                            // speak the message
-
-
                             getActivity().runOnUiThread(new Runnable() {
                                 public void run() {
                                     mAdapter.notifyDataSetChanged();
