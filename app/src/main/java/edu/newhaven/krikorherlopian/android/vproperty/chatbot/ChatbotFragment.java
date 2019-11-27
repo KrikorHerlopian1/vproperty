@@ -279,13 +279,11 @@ public class ChatbotFragment extends Fragment {
                                     property.getAddress().setLongitude(location.getLongitude() + "");
                                 } catch (Exception e) {
                                 }
-
                                 Intent intent = new Intent(root.getContext(), SearchActivity.class);
                                 intent.putExtra("min", "0");
                                 intent.putExtra("max", split[2].trim());
                                 intent.putExtra("argPojo", property);
                                 startActivity(intent);
-
                                 streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
                                         .text("Here are search results for you")
                                         .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
