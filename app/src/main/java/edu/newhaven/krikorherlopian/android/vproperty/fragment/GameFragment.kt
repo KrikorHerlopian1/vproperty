@@ -2,11 +2,17 @@ package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.reward.RewardItem
+import com.google.android.gms.ads.reward.RewardedVideoAd
+import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.game.*
@@ -14,18 +20,68 @@ import kotlinx.android.synthetic.main.game.view.*
 import kotlinx.android.synthetic.main.question.view.*
 
 
-class GameFragment : Fragment() {
+class GameFragment : Fragment(), RewardedVideoAdListener {
     var state = 0
     var correctAnswer = 0
     var attemptsCounter = 3
+    private var mRewardedVideoAd: RewardedVideoAd? = null
     var root: View? = null
+    private fun loadRewardedVideoAd() {
+        mRewardedVideoAd!!.loadAd(
+            "ca-app-pub-2925286479807723/6267378309",
+            AdRequest.Builder().addTestDevice("A70D704E7B6A63E4EC37DC500C5F87F2").build()
+        )
+    }
+
+    override fun onRewardedVideoStarted() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRewarded(p0: RewardItem?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRewardedVideoAdLoaded() {
+    }
+
+    override fun onRewardedVideoAdFailedToLoad(p0: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRewardedVideoAdLeftApplication() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRewardedVideoAdOpened() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRewardedVideoCompleted() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRewardedVideoAdClosed() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.game, container, false)
+        MobileAds.initialize(root!!.context, "ca-app-pub-2925286479807723~9938531599")
+        // Use an activity context to get the rewarded video instance.
 
+
+        val handler = Handler()
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(context)
+                mRewardedVideoAd!!.rewardedVideoAdListener = this@GameFragment
+
+                loadRewardedVideoAd()
+            }
+        }, 1000)
         val questions = resources.getStringArray(R.array.questions)
         val IMAGES_ARRAY = arrayOf(
             R.drawable.abstraction,
@@ -118,6 +174,12 @@ class GameFragment : Fragment() {
             Toast.LENGTH_SHORT,
             true
         ).show()
+
+        if (state == 3) {
+            if (mRewardedVideoAd!!.isLoaded) {
+                mRewardedVideoAd?.show()
+            }
+        }
         if (state == 10) {
             //you won
             val mPlayer = MediaPlayer.create(context!!, R.raw.winning)
