@@ -29,6 +29,7 @@
             android:layout_marginStart="8dip"
             android:gravity="center_vertical"
             android:paddingTop="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/secondary_text" />
 
     </LinearLayout>
@@ -58,6 +59,7 @@
             android:layout_marginStart="8dip"
             android:gravity="center_vertical"
             android:paddingTop="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/secondary_text" />
 
     </LinearLayout>

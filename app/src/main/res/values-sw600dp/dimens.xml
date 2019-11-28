@@ -21,7 +21,7 @@
     <dimen name="lvHeadingPaddingLeft">8dp</dimen>
     <dimen name="lvDividerHeight">1dp</dimen>
     <dimen name="checkboxsize">30dp</dimen>
-    <dimen name="imagesize">250dp</dimen>
+    <dimen name="imagesize">350dp</dimen>
     <dimen name="rowheight">40dp</dimen>
     <dimen name="curverlayoutsize">100dp</dimen>
     <dimen name="thumbnailsize">80dp</dimen>
