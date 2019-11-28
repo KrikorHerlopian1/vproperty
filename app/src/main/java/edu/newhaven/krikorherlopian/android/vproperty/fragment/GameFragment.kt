@@ -174,7 +174,6 @@ class GameFragment : Fragment(), RewardedVideoAdListener {
             Toast.LENGTH_SHORT,
             true
         ).show()
-
         if (state == 3) {
             if (mRewardedVideoAd!!.isLoaded) {
                 mRewardedVideoAd?.show()
