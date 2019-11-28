@@ -339,7 +339,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
                     startActivity(intents)
                 } catch (e: Exception) {
                 }
-
             }
         }
 
