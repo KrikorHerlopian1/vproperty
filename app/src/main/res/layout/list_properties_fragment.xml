@@ -41,6 +41,7 @@
                     android:elevation="10dp"
                     app:tabIndicatorColor="@android:color/white"
                     app:tabMode="scrollable"
+                    app:tabGravity="fill"
                     app:tabSelectedTextColor="@android:color/white"
                     app:tabTextColor="@color/light_grey" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>

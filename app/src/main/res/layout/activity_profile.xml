@@ -56,6 +56,7 @@
                     android:layout_marginBottom="12dp"
                     android:hint="@string/display_name"
                     app:boxCornerRadiusBottomStart="16dp"
+                    android:textSize="@dimen/normalTextSize"
                     app:boxCornerRadiusTopStart="16dp"
                     app:boxStrokeColor="@color/colorAccent">
 
@@ -80,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:hint="@string/email"
+                    android:textSize="@dimen/normalTextSize"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"
                     app:boxStrokeColor="@color/colorAccent">
@@ -103,6 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:textSize="@dimen/normalTextSize"
                     android:hint="@string/phone_number_display"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"

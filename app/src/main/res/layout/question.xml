@@ -40,24 +40,28 @@
 
             <RadioButton
                 android:id="@+id/option1"
+                android:textSize="@dimen/normalTextSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false" />
 
             <RadioButton
                 android:id="@+id/option2"
+                android:textSize="@dimen/normalTextSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false" />
 
             <RadioButton
                 android:id="@+id/option3"
+                android:textSize="@dimen/normalTextSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false" />
 
             <RadioButton
                 android:id="@+id/option4"
+                android:textSize="@dimen/normalTextSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false" />

@@ -37,6 +37,7 @@
                     android:hint="@string/display_name"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"
+                    android:textSize="@dimen/normalTextSize"
                     app:boxStrokeColor="@color/colorAccent">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -59,6 +60,7 @@
                     android:layout_marginBottom="12dp"
                     android:hint="@string/address"
                     app:boxCornerRadiusBottomStart="16dp"
+                    android:textSize="@dimen/normalTextSize"
                     app:boxCornerRadiusTopStart="16dp"
                     app:boxStrokeColor="@color/colorAccent">
 
@@ -80,6 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:textSize="@dimen/normalTextSize"
                     android:hint="@string/zipcode"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"
@@ -105,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:hint="@string/longitude"
+                    android:textSize="@dimen/normalTextSize"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"
                     app:boxStrokeColor="@color/colorAccent">
@@ -126,6 +130,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/normalTextSize"
                     android:layout_marginBottom="12dp"
                     android:hint="@string/latitude"
                     app:boxCornerRadiusBottomStart="16dp"
@@ -151,6 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:textSize="@dimen/normalTextSize"
                     android:hint="@string/description_address"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"

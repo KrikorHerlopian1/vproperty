@@ -54,7 +54,7 @@
                 <LinearLayout
                     android:id="@+id/price_layout"
                     android:layout_width="100dp"
-                    android:layout_height="20dp"
+                    android:layout_height="@dimen/price_size"
                     android:layout_below="@id/title"
                     android:layout_marginTop="3dp"
                     android:background="@color/colorAccent"

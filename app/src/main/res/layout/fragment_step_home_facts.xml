@@ -49,6 +49,7 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/price"
                             app:boxCornerRadiusBottomStart="16dp"
+                            android:textSize="@dimen/normalTextSize"
                             app:boxCornerRadiusTopStart="16dp"
                             app:boxStrokeColor="@color/colorAccent">
 
@@ -79,6 +80,7 @@
                         <androidx.appcompat.widget.AppCompatCheckBox
                             android:id="@+id/forrent"
                             android:layout_width="wrap_content"
+                            android:textSize="@dimen/normalTextSize"
                             android:layout_height="wrap_content"
                             android:text="@string/for_rent"
                             android:textColor="@color/colorAccent"
@@ -87,6 +89,7 @@
                         <androidx.appcompat.widget.AppCompatCheckBox
                             android:id="@+id/forsale"
                             android:layout_width="wrap_content"
+                            android:textSize="@dimen/normalTextSize"
                             android:layout_height="wrap_content"
                             android:text="@string/for_sale"
                             android:textColor="@color/colorAccent"
@@ -279,6 +282,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/year_built"
+                            android:textSize="@dimen/normalTextSize"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
                             app:boxStrokeColor="@color/colorAccent">
@@ -308,6 +312,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/hoalayout"
+                            android:textSize="@dimen/normalTextSize"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -345,6 +350,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/modal_year"
+                            android:textSize="@dimen/normalTextSize"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -379,6 +385,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/floor_number"
+                            android:textSize="@dimen/normalTextSize"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -418,6 +425,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/finished_square_feet"
+                            android:textSize="@dimen/normalTextSize"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -452,6 +460,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/lot_size"
+                            android:textSize="@dimen/normalTextSize"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -491,6 +500,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/basement_sq_ft"
+                            android:textSize="@dimen/normalTextSize"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -525,6 +535,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/garage_ft"
+                            android:textSize="@dimen/normalTextSize"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

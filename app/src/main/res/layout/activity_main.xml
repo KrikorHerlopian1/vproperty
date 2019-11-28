@@ -29,6 +29,7 @@
             android:id="@+id/emailAddressInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/normalTextSize"
             android:hint="@string/email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -54,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textSize="@dimen/normalTextSize"
             android:hint="@string/password"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorAccent">
@@ -109,6 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="@dimen/normalTextSize"
                 android:text="@string/forgot_password_ques"
                 android:textColor="@color/colorPrimary"></edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView>
         </RelativeLayout>
