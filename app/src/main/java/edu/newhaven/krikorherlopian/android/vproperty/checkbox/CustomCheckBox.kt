@@ -3,6 +3,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.checkbox
 import android.content.Context
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.util.TypedValue
 import androidx.appcompat.widget.AppCompatCheckBox
 import edu.newhaven.krikorherlopian.android.vproperty.R
 
@@ -27,6 +28,6 @@ class MyCustomCheckBox : AppCompatCheckBox {
             "Poppins-Light.ttf"
         )
         typeface = tf
-        textSize = resources.getDimension(R.dimen.normalTextSize)
+        setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.normalTextSize))
     }
 }

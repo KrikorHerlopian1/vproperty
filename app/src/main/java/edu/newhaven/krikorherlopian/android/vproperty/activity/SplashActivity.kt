@@ -68,62 +68,65 @@ class SplashActivity : AppCompatActivity() {
         val handler = Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
-                when (count) {
-                    1 -> Glide.with(this@SplashActivity).load(R.drawable.splash1).placeholder(
-                        R.drawable.splash0
-                    ).into(
-                        imageView
-                    )
-                    2 -> Glide.with(this@SplashActivity).load(R.drawable.splash2).placeholder(
-                        R.drawable.splash1
-                    ).into(
-                        imageView
-                    )
-                    3 -> Glide.with(this@SplashActivity).load(R.drawable.splash3).placeholder(
-                        R.drawable.splash2
-                    ).into(
-                        imageView
-                    )
-                    4 -> Glide.with(this@SplashActivity).load(R.drawable.splash4).placeholder(
-                        R.drawable.splash3
-                    ).into(
-                        imageView
-                    )
-                    5 -> Glide.with(this@SplashActivity).load(R.drawable.splash5).placeholder(
-                        R.drawable.splash4
-                    ).into(
-                        imageView
-                    )
-                    6 -> Glide.with(this@SplashActivity).load(R.drawable.splash6).placeholder(
-                        R.drawable.splash5
-                    ).into(
-                        imageView
-                    )
-                    7 -> Glide.with(this@SplashActivity).load(R.drawable.splash7).placeholder(
-                        R.drawable.splash6
-                    ).into(
-                        imageView
-                    )
-                    8 -> Glide.with(this@SplashActivity).load(R.drawable.splash8).placeholder(
-                        R.drawable.splash7
-                    ).into(
-                        imageView
-                    )
-                    9 -> Glide.with(this@SplashActivity).load(R.drawable.splash9).placeholder(
-                        R.drawable.splash8
-                    ).into(
-                        imageView
-                    )
-                    10 -> Glide.with(this@SplashActivity).load(R.drawable.splash10).placeholder(
-                        R.drawable.splash9
-                    ).into(
-                        imageView
-                    )
-                    11 -> lastImage()
-                    12 -> goToLogin()
+                try {
+                    when (count) {
+                        1 -> Glide.with(this@SplashActivity).load(R.drawable.splash1).placeholder(
+                            R.drawable.splash0
+                        ).into(
+                            imageView
+                        )
+                        2 -> Glide.with(this@SplashActivity).load(R.drawable.splash2).placeholder(
+                            R.drawable.splash1
+                        ).into(
+                            imageView
+                        )
+                        3 -> Glide.with(this@SplashActivity).load(R.drawable.splash3).placeholder(
+                            R.drawable.splash2
+                        ).into(
+                            imageView
+                        )
+                        4 -> Glide.with(this@SplashActivity).load(R.drawable.splash4).placeholder(
+                            R.drawable.splash3
+                        ).into(
+                            imageView
+                        )
+                        5 -> Glide.with(this@SplashActivity).load(R.drawable.splash5).placeholder(
+                            R.drawable.splash4
+                        ).into(
+                            imageView
+                        )
+                        6 -> Glide.with(this@SplashActivity).load(R.drawable.splash6).placeholder(
+                            R.drawable.splash5
+                        ).into(
+                            imageView
+                        )
+                        7 -> Glide.with(this@SplashActivity).load(R.drawable.splash7).placeholder(
+                            R.drawable.splash6
+                        ).into(
+                            imageView
+                        )
+                        8 -> Glide.with(this@SplashActivity).load(R.drawable.splash8).placeholder(
+                            R.drawable.splash7
+                        ).into(
+                            imageView
+                        )
+                        9 -> Glide.with(this@SplashActivity).load(R.drawable.splash9).placeholder(
+                            R.drawable.splash8
+                        ).into(
+                            imageView
+                        )
+                        10 -> Glide.with(this@SplashActivity).load(R.drawable.splash10).placeholder(
+                            R.drawable.splash9
+                        ).into(
+                            imageView
+                        )
+                        11 -> lastImage()
+                        12 -> goToLogin()
+                    }
+                    count++
+                    animateImages()
+                } catch (e: Exception) {
                 }
-                count++
-                animateImages()
             }
         }, sec)
     }
