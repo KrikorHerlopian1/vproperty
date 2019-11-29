@@ -374,6 +374,7 @@ public class ChatbotFragment extends Fragment {
         return false;
     }
 
+
     //Private Methods - Speech to Text
     private RecognizeOptions getRecognizeOptions(InputStream audio) {
         return new RecognizeOptions.Builder()
