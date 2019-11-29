@@ -16,11 +16,9 @@ class MyCustomCheckBox : AppCompatCheckBox {
     ) {
         init()
     }
-
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
     }
-
     constructor(context: Context) : super(context)
     private fun init() {
         val tf = Typeface.createFromAsset(
