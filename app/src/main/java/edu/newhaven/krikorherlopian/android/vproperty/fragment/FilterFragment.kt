@@ -317,7 +317,6 @@ class FilterFragment : Fragment(), ListClick {
     fun collapse(v: View) {
         try {
             val initialHeight = v.measuredHeight
-
             val a = object : Animation() {
                 override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
                     if (interpolatedTime == 1f) {
