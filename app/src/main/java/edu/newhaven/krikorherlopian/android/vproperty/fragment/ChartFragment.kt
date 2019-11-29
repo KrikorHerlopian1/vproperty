@@ -66,12 +66,12 @@ class ChartFragment : Fragment() {
             root!!.mChart.clear()
             root!!.mChart.visibility = View.VISIBLE
             root!!.piechart.visibility = View.GONE
-            val yVals2 = ArrayList<BarEntry>()
-            yVals2.add(BarEntry(0f, sif.toFloat(), "SIF"))
-            yVals2.add(BarEntry(1f, con.toFloat(), "CON"))
-            yVals2.add(BarEntry(2f, muf.toFloat(), "MUF"))
-            yVals2.add(BarEntry(3f, apt.toFloat(), "APT"))
-            var set1: BarDataSet? = null
+            val yVals = ArrayList<BarEntry>()
+            yVals.add(BarEntry(0f, sif.toFloat(), "SIF"))
+            yVals.add(BarEntry(1f, con.toFloat(), "CON"))
+            yVals.add(BarEntry(2f, muf.toFloat(), "MUF"))
+            yVals.add(BarEntry(3f, apt.toFloat(), "APT"))
+            var set: BarDataSet? = null
             mChart.setPinchZoom(false)
             mChart.isFocusable = false
             mChart.isDoubleTapToZoomEnabled = false
@@ -94,7 +94,6 @@ class ChartFragment : Fragment() {
             xLabel.add(resources.getString(R.string.apartment))
             mChart.xAxis.valueFormatter = IndexAxisValueFormatter(xLabel)
 
-            var total = sif + apt + con + muf
             mChart.axisRight.isEnabled = true
 
             mChart.axisRight.spaceMax = 1.0f
@@ -108,16 +107,16 @@ class ChartFragment : Fragment() {
             mChart.xAxis.setDrawLimitLinesBehindData(false)
             mChart.xAxis.textSize = 10.0f
             mChart.xAxis.textColor = resources.getColor(R.color.colorPrimaryDark)
-            set1 = BarDataSet(yVals2, "")
+            set = BarDataSet(yVals, "")
 
-            set1.setDrawIcons(false)
+            set.setDrawIcons(false)
 
             val colors = ArrayList<Int>()
-            val COLORS = intArrayOf(rgb("#a377a6"))
+            val COLORS_0 = intArrayOf(rgb("#a377a6"))
             val COLORS_1 = intArrayOf(rgb("#855988"))
             val COLORS_2 = intArrayOf(rgb("#483475"))
             val COLORS_3 = intArrayOf(rgb("070b34"))
-            for (c in COLORS)
+            for (c in COLORS_0)
                 colors.add(c)
             for (c in COLORS_1)
                 colors.add(c)
@@ -126,10 +125,10 @@ class ChartFragment : Fragment() {
             for (c in COLORS_3)
                 colors.add(c)
 
-            set1.colors = colors
+            set.colors = colors
 
             val dataSets = ArrayList<IBarDataSet>()
-            dataSets.add(set1)
+            dataSets.add(set)
 
 
             val data = BarData(dataSets)
