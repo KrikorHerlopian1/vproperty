@@ -35,5 +35,9 @@
             android:id="@+id/nav_chatbot"
             android:icon="@drawable/ic_chat_black_24dp"
             android:title="@string/virtual_agent" />
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_analytics"
+            android:title="@string/statistics" />
     </group>
 </menu>

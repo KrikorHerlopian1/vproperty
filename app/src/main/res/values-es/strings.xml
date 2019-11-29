@@ -178,6 +178,7 @@
     <string name="leku_unknown_location">ubicación desconocida</string>
     <string name="leku_voice_search_promp">Búsqueda por voz…</string>
     <string name="forrent">En renta</string>
+    <string name="salerent">Venta/Renta</string>
     <string name="forsale">En venta</string>
     <string name="for_rent">Alquilar</string>
     <string name="for_sale">Compra</string>
@@ -293,7 +294,8 @@
     <string name="no_internet">No hay conexión a internet disponible</string>
     <string name="listening">Escuchando ... Haga clic para detener</string>
     <string name="stopped_listening">Dejó de escuchar .... Haga clic para comenzar</string>
-
+    <string name="statistics">Estadística</string>
+    <string name="properties">Propiedades</string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>

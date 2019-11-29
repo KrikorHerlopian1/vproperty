@@ -129,6 +129,7 @@
     <string name="total_rooms">Total Rooms</string>
     <string name="number_of_parking_spaces">Parking Spaces</string>
     <string name="forrent">for rent</string>
+    <string name="salerent">Sale/Rent</string>
     <string name="forsale">for sale</string>
     <string name="for_rent">Rent</string>
     <string name="for_sale">Sale</string>
@@ -293,7 +294,8 @@
     <string name="no_internet">No Internet Connection available</string>
     <string name="listening">Listening....Click to Stop</string>
     <string name="stopped_listening">Stopped Listening....Click to Start</string>
-
+    <string name="statistics">Statistics</string>
+    <string name="properties">Properties</string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>

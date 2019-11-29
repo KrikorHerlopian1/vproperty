@@ -55,5 +55,10 @@
         android:label="@string/virtual_agent"
         tools:layout="@layout/content_main" />
 
+    <fragment
+        android:id="@+id/nav_statistics"
+        android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.StatisticsFragment"
+        android:label="@string/statistics"
+        tools:layout="@layout/content_main" />
 
 </navigation>
