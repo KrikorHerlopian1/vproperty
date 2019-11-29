@@ -333,8 +333,6 @@ class FilterFragment : Fragment(), ListClick {
                     return true
                 }
             }
-
-            // 1dp/ms
             a.duration =
                 (initialHeight / v.context.resources.displayMetrics.density).toInt().toLong()
             v.startAnimation(a)
@@ -348,7 +346,6 @@ class FilterFragment : Fragment(), ListClick {
         try {
             v.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             val targetHeight = v.measuredHeight
-            // Older versions of android (pre API 21) cancel animations for views with a height of 0.
             v.layoutParams.height = 1
             v.visibility = View.VISIBLE
             val a = object : Animation() {
@@ -358,15 +355,12 @@ class FilterFragment : Fragment(), ListClick {
                     else
                         (targetHeight * interpolatedTime).toInt()
                     v.requestLayout()
-                    // var mn = targetHeight + root?.nestedScrollView?.height!!
-                    // root?.nestedScrollView?.post(Runnable {  root?.nestedScrollView?.scrollTo(0, mn) })
                 }
 
                 override fun willChangeBounds(): Boolean {
                     return true
                 }
             }
-            // 1dp/ms
             a.duration =
                 (targetHeight / v.context.resources.displayMetrics.density).toInt().toLong()
             v.startAnimation(a)
