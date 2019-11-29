@@ -201,7 +201,6 @@ class FilterFragment : Fragment(), ListClick {
         root?.recyclerView?.apply {
             layoutManager = GridLayoutManager(context, 2)
         }
-        //  v?.recyclerView?.layoutManager = LinearLayoutManager(context)
         root?.recyclerView?.itemAnimator = DefaultItemAnimator()
         root?.recyclerView?.adapter = adapter
     }
