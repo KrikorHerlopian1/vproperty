@@ -163,8 +163,6 @@ class RecylerViewAdapter(
                 listClick.rowClicked(position)
             }
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
