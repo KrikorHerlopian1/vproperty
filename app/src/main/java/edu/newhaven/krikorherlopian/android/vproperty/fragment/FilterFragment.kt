@@ -71,7 +71,6 @@ class FilterFragment : Fragment(), ListClick {
                 }
             }
         }, 1000)
-
         return root
     }
 
