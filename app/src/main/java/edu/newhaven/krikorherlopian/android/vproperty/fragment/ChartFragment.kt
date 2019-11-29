@@ -81,7 +81,7 @@ class ChartFragment : Fragment() {
             mChart.setDrawBarShadow(false)
             mChart.setDrawGridBackground(false)
             mChart.description.isEnabled = false
-            mChart.setMaxVisibleValueCount(60)
+
             mChart.setTouchEnabled(false)
             mChart.xAxis.granularity = java.lang.Float.parseFloat("1")
 
@@ -94,7 +94,10 @@ class ChartFragment : Fragment() {
             xLabel.add(resources.getString(R.string.apartment))
             mChart.xAxis.valueFormatter = IndexAxisValueFormatter(xLabel)
 
-            mChart.axisRight.isEnabled = false
+            var total = sif + apt + con + muf
+            mChart.axisRight.isEnabled = true
+
+            mChart.axisRight.spaceMax = 1.0f
             mChart.legend.isEnabled = false
 
             mChart.xAxis.isEnabled = true
