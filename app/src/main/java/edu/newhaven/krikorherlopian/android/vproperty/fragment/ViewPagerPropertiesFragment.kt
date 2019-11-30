@@ -11,6 +11,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.PropertiesTabViewPagerAdapter
+import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import kotlinx.android.synthetic.main.list_properties_fragment.view.*
 
 class ViewPagerPropertiesFragment : Fragment() {
@@ -24,6 +25,7 @@ class ViewPagerPropertiesFragment : Fragment() {
         val propertiesTabViewPagerAdapter =
             PropertiesTabViewPagerAdapter(activity!!, childFragmentManager)
         root?.view_pager?.adapter = propertiesTabViewPagerAdapter
+        fragmentActivityCommunication!!.hideShowMenuItems(true)
         root?.tabs?.setupWithViewPager(root?.view_pager!!)
         try {
             val handler = Handler()

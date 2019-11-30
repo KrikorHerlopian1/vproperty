@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.activity.SearchActivity
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
+import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.*
 import kotlinx.android.synthetic.main.activity_filter.*
@@ -45,6 +46,7 @@ class FilterFragment : Fragment(), ListClick {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.filter, container, false)
+        fragmentActivityCommunication!!.hideShowMenuItems(true)
         // home type. price range. sale or rent.
         val handler = Handler()
         handler.postDelayed(object : Runnable {

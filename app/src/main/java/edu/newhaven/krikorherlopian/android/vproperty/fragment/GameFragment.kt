@@ -14,6 +14,7 @@ import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.game.*
 import kotlinx.android.synthetic.main.game.view.*
@@ -69,6 +70,7 @@ class GameFragment : Fragment(), RewardedVideoAdListener {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.game, container, false)
+        fragmentActivityCommunication!!.hideShowMenuItems(false)
         MobileAds.initialize(root!!.context, "ca-app-pub-2925286479807723~9938531599")
         // Use an activity context to get the rewarded video instance.
 

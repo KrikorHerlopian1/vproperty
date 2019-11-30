@@ -144,11 +144,6 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragment)
@@ -294,4 +289,20 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
                 }
         }
     }
+
+    var globalMenu: Menu? = null
+    var showMenu: Boolean = true
+    override fun hideShowMenuItems(show: Boolean) {
+        showMenu = show
+        onPrepareOptionsMenu(globalMenu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        globalMenu = menu
+        menu?.clear()
+        if (showMenu)
+            menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
 }

@@ -39,6 +39,7 @@ class MyPropertiesFragment : Fragment(), ListClick {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.listview_fragment, container, false)
+        fragmentActivityCommunication!!.hideShowMenuItems(true)
         getData()
         return root
     }

@@ -52,6 +52,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.maps, container, false)
+        fragmentActivityCommunication!!.hideShowMenuItems(true)
         sharedPref = root?.context?.getSharedPreferences(
             PREFS_FILENAME,
             PRIVATE_MODE

@@ -38,6 +38,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.activity_profile, container, false)
+        fragmentActivityCommunication!!.hideShowMenuItems(false)
         machine.state = stateView
         var tf = Typeface.createFromAsset(context?.assets, "" + font)
         root?.emailAddressInputLayout?.typeface = tf

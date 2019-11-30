@@ -52,6 +52,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.newhaven.krikorherlopian.android.vproperty.CommonKt;
 import edu.newhaven.krikorherlopian.android.vproperty.R;
 import edu.newhaven.krikorherlopian.android.vproperty.activity.SearchActivity;
 import edu.newhaven.krikorherlopian.android.vproperty.model.HomeFacts;
@@ -102,6 +103,7 @@ public class ChatbotFragment extends Fragment {
         root = getLayoutInflater().inflate(R.layout.chat_main, container, false);
         try {
             mContext = root.getContext();
+            CommonKt.getFragmentActivityCommunication().hideShowMenuItems(false);
             inputMessage = root.findViewById(R.id.message);
             btnSend = root.findViewById(R.id.btn_send);
             btnRecord = root.findViewById(R.id.btn_record);

@@ -8,4 +8,5 @@ interface FragmentActivityCommunication {
     fun startActivityDetWithTransition(property: Property, imageView: ImageView)
     fun addProfileButtonClicked()
     fun updateProfile()
+    fun hideShowMenuItems(show: Boolean)
 }

@@ -50,7 +50,7 @@ class SettingsFragment : Fragment(),
         )
         // define the first setting item, the style of the navigation drawer.
         // in normal cases its default, user can change it from this page into custom(arc).
-
+        fragmentActivityCommunication!!.hideShowMenuItems(false)
         var mapType = sharedPref?.getString(PREF_MAP, "normal").toString()
         var auto = sharedPref?.getBoolean(PREF_AUTO, true).toString()
         var not = sharedPref?.getBoolean(PREF_NOT, true).toString()
