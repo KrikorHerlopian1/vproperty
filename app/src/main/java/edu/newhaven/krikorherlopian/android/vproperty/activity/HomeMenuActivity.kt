@@ -305,8 +305,10 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
     var globalMenu: Menu? = null
     var showMenu: Boolean = true
     override fun hideShowMenuItems(show: Boolean) {
-        showMenu = show
-        onPrepareOptionsMenu(globalMenu)
+        if (globalMenu != null) {
+            showMenu = show
+            onPrepareOptionsMenu(globalMenu)
+        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
