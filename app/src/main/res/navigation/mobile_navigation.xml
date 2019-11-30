@@ -36,7 +36,6 @@
         android:label="@string/my_profile"
         tools:layout="@layout/content_main" />
 
-
     <fragment
         android:id="@+id/nav_settings"
         android:name="edu.newhaven.krikorherlopian.android.vproperty.fragment.SettingsFragment"
