@@ -290,6 +290,7 @@ class CustomHomeMenuActivity : AppCompatActivity(), FragmentActivityCommunicatio
         }
     }
 
+
     var globalMenu: Menu? = null
     var showMenu: Boolean = true
     override fun hideShowMenuItems(show: Boolean) {

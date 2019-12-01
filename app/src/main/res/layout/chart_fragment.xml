@@ -17,6 +17,7 @@
         app:egInnerValueUnit="%"
         app:egLegendTextSize="20sp"
         app:egShowDecimal="true"
+        android:visibility="gone"
         app:egUsePieRotation="true"
         app:egValueTextSize="22sp" />
 
