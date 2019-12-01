@@ -139,6 +139,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/min"
+                        app:hintTextAppearance="@style/CustomTextAppearance"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -167,6 +168,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/max"
+                        app:hintTextAppearance="@style/CustomTextAppearance"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

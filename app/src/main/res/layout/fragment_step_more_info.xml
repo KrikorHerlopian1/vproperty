@@ -48,6 +48,7 @@
                 android:layout_marginBottom="12dp"
                 android:hint="@string/related_website"
                 android:textSize="@dimen/normalTextSize"
+                app:hintTextAppearance="@style/CustomTextAppearance"
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxStrokeColor="@color/colorAccent">
@@ -72,6 +73,7 @@
                 android:layout_marginBottom="12dp"
                 android:textSize="@dimen/normalTextSize"
                 android:hint="@string/virtual_tour"
+                app:hintTextAppearance="@style/CustomTextAppearance"
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxStrokeColor="@color/colorAccent">
@@ -95,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:textSize="@dimen/normalTextSize"
+                app:hintTextAppearance="@style/CustomTextAppearance"
                 android:hint="@string/phone_number"
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopStart="16dp"

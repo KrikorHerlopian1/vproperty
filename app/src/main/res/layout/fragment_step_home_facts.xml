@@ -48,6 +48,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/price"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             app:boxCornerRadiusBottomStart="16dp"
                             android:textSize="@dimen/normalTextSize"
                             app:boxCornerRadiusTopStart="16dp"
@@ -283,6 +284,7 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/year_built"
                             android:textSize="@dimen/normalTextSize"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
                             app:boxStrokeColor="@color/colorAccent">
@@ -318,6 +320,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/hoa_dues"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
                             app:boxStrokeColor="@color/colorAccent">
@@ -355,6 +358,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             android:hint="@string/modal_year"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
@@ -390,6 +394,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             android:hint="@string/floor_number"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
@@ -431,6 +436,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/finished_square_feet"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
                             app:boxStrokeColor="@color/colorAccent">
@@ -465,6 +471,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             android:hint="@string/lot_size"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
@@ -506,6 +513,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/basement_sq_ft"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
                             app:boxStrokeColor="@color/colorAccent">
@@ -541,6 +549,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/garage_ft"
+                            app:hintTextAppearance="@style/CustomTextAppearance"
                             app:boxCornerRadiusBottomStart="16dp"
                             app:boxCornerRadiusTopStart="16dp"
                             app:boxStrokeColor="@color/colorAccent">

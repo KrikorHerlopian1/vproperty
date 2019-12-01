@@ -50,6 +50,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/displayNamenputLayout"
+                    app:hintTextAppearance="@style/CustomTextAppearance"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,6 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:hint="@string/email"
+                    app:hintTextAppearance="@style/CustomTextAppearance"
                     android:textSize="@dimen/normalTextSize"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"
@@ -106,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:textSize="@dimen/normalTextSize"
+                    app:hintTextAppearance="@style/CustomTextAppearance"
                     android:hint="@string/phone_number_display"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopStart="16dp"

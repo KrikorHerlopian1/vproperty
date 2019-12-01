@@ -59,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         configureGoogleSign()
         getTokenAndRegisterForNotifications()
+        setUpFonts()
         sharedPref = getSharedPreferences(
             PREFS_FILENAME,
             PRIVATE_MODE
