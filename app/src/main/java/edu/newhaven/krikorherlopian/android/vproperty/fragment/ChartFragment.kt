@@ -24,6 +24,7 @@ class ChartFragment : Fragment() {
     var root: View? = null
     var section = 0
     var setUp = false
+    var visible = true
     var list: MutableList<Any> = mutableListOf<Any>()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +33,25 @@ class ChartFragment : Fragment() {
     ): View? {
         root = inflater.inflate(R.layout.chart_fragment, container, false)
         section = arguments?.getInt(ARG_SECTION_NUMBER)!!
+        return root
+    }
+
+    override fun onResume() {
+        if (!visible)
+            update()
+        super.onResume()
+    }
+
+    override fun setMenuVisibility(menuVisible: Boolean) {
+        super.setMenuVisibility(menuVisible)
+        if (menuVisible && visible) {
+            update()
+            visible = false
+        }
+
+    }
+
+    fun update() {
         val db = FirebaseFirestore.getInstance()
         var docRef = db.collection("properties").whereEqualTo("disabled", "N")
         docRef.get().addOnSuccessListener { document ->
@@ -40,8 +60,8 @@ class ChartFragment : Fragment() {
                 setUpChart(propertyList, section)
             }
         }
-        return root
     }
+
 
     private fun setUpChart(propertyList: MutableList<Property>, section: Int) {
         if (section == 1) {

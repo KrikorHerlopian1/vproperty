@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.fragment.ChartFragment
 
+
 private val TAB_TITLES = arrayOf(
     R.string.hometype,
     R.string.salerent
