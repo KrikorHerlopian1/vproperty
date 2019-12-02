@@ -152,7 +152,7 @@ class ChartFragment : Fragment() {
 
 
             val data = BarData(dataSets)
-            data.setValueTextSize(12f)
+            data.setValueTextSize(14f)
             data.setValueTextColor(R.color.colorAccent)
             data.barWidth = 0.9f
             mChart.visibility = View.VISIBLE
