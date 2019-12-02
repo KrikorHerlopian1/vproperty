@@ -369,7 +369,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                                     if (amount != null && !amount.trim().equals("")) {
                                         Toasty.success(
                                             this@AddPropertyStepperActivity,
-                                            R.string.estimate + " " + amount,
+                                            "" + resources.getString(R.string.estimate) + " " + amount + " USD",
                                             Toast.LENGTH_SHORT,
                                             true
                                         ).show()
