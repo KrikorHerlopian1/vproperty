@@ -367,50 +367,53 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                                 response: retrofit2.Response<okhttp3.ResponseBody>
                             ) {
                                 if (response.isSuccessful) {
-                                    var responseData = response.body()!!.string()
-                                    var doc = loadXMLFromString(responseData)
-                                    var nodeList =
-                                        doc.documentElement.getElementsByTagName("rentzestimate")
-                                    System.out.println("-----99---" + nodeList.length)
-                                    var minPrice = 0f
-                                    var maxPrice = 0f
-                                    for (i in 1..(nodeList.length - 1)) {
-                                        var nNode = nodeList.item(i)
-                                        var eElement = nNode as Element
-                                        if (i == 1) {
-                                            maxPrice = eElement.getElementsByTagName("amount")
-                                                .item(0)
-                                                .textContent.toFloat()
-                                            minPrice = eElement.getElementsByTagName("amount")
-                                                .item(0)
-                                                .textContent.toFloat()
-                                        }
-                                        if (maxPrice <= eElement.getElementsByTagName("amount")
-                                                .item(0)
-                                                .textContent.toFloat()
-                                        ) {
-                                            maxPrice = eElement.getElementsByTagName("amount")
-                                                .item(0)
-                                                .textContent.toFloat()
-                                        }
-                                        if (minPrice >= eElement.getElementsByTagName("amount")
-                                                .item(0)
-                                                .textContent.toFloat()
-                                        ) {
-                                            minPrice = eElement.getElementsByTagName("amount")
-                                                .item(0)
-                                                .textContent.toFloat()
-                                        }
+                                    try {
+                                        var responseData = response.body()!!.string()
+                                        var doc = loadXMLFromString(responseData)
+                                        var nodeList =
+                                            doc.documentElement.getElementsByTagName("rentzestimate")
+                                        var minPrice = 0f
+                                        var maxPrice = 0f
+                                        for (i in 1..(nodeList.length - 1)) {
+                                            var nNode = nodeList.item(i)
+                                            var eElement = nNode as Element
+                                            if (i == 1) {
+                                                maxPrice = eElement.getElementsByTagName("amount")
+                                                    .item(0)
+                                                    .textContent.toFloat()
+                                                minPrice = eElement.getElementsByTagName("amount")
+                                                    .item(0)
+                                                    .textContent.toFloat()
+                                            }
+                                            if (maxPrice <= eElement.getElementsByTagName("amount")
+                                                    .item(0)
+                                                    .textContent.toFloat()
+                                            ) {
+                                                maxPrice = eElement.getElementsByTagName("amount")
+                                                    .item(0)
+                                                    .textContent.toFloat()
+                                            }
+                                            if (minPrice >= eElement.getElementsByTagName("amount")
+                                                    .item(0)
+                                                    .textContent.toFloat()
+                                            ) {
+                                                minPrice = eElement.getElementsByTagName("amount")
+                                                    .item(0)
+                                                    .textContent.toFloat()
+                                            }
 
+                                        }
+                                        if (minPrice > 0f) {
+                                            Toasty.success(
+                                                this@AddPropertyStepperActivity,
+                                                "" + resources.getString(R.string.estimate) + " " + minPrice + " & " + maxPrice + " USD",
+                                                Toast.LENGTH_LONG,
+                                                true
+                                            ).show()
+                                        }
+                                    } catch (e: java.lang.Exception) {
                                     }
-                                    if (minPrice > 0f) {
-                                        Toasty.success(
-                                            this@AddPropertyStepperActivity,
-                                            "" + resources.getString(R.string.estimate) + " " + minPrice + " & " + maxPrice + " USD",
-                                            Toast.LENGTH_LONG,
-                                            true
-                                        ).show()
-                                    }
+
                                 }
                             }
 
