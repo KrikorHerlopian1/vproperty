@@ -343,8 +343,47 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                                 add = stateName
                                 addressName.setText(add)
                             }
-
                         }
+
+
+                        var apiService = getClient2().create(ApiInterface::class.java)
+                        var initialAddress = cityName.substringAfter(',')
+                        var statePlace = initialAddress.substringBefore(',')
+                        var zipeCode = initialAddress.substringAfter(',').substringBefore(',')
+                        val responseBodyCall = apiService.zestimate(
+                            "X1-ZWz1hi41bwnksr_5p30l",
+                            "" + address.substringBefore(','),
+                            "" + statePlace + "," + zipeCode,
+                            "true"
+                        )
+                        responseBodyCall.enqueue(object : Callback<okhttp3.ResponseBody> {
+                            override fun onResponse(
+                                call: retrofit2.Call<okhttp3.ResponseBody>,
+                                response: retrofit2.Response<okhttp3.ResponseBody>
+                            ) {
+                                if (response.isSuccessful) {
+                                    var responseData = response.body()!!.string()
+                                    var amount =
+                                        responseData.substringAfter("<rentzestimate><amount currency=\"USD\">")
+                                            .substringBefore("</amount>")
+                                    if (amount != null && !amount.trim().equals("")) {
+                                        Toasty.success(
+                                            this@AddPropertyStepperActivity,
+                                            R.string.estimate + " " + amount,
+                                            Toast.LENGTH_SHORT,
+                                            true
+                                        ).show()
+                                    }
+                                }
+                            }
+
+                            override fun onFailure(
+                                call: retrofit2.Call<okhttp3.ResponseBody>,
+                                t: Throwable
+                            ) {
+                            }
+                        })
+
                     } catch (e: Exception) {
                     }
 
@@ -357,6 +396,15 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    private var retrofit2: Retrofit? = null
+    fun getClient2(): Retrofit {
+        if (retrofit2 == null) {
+            retrofit2 = Retrofit.Builder()
+                .baseUrl("https://www.zillow.com/webservice/")
+                .build()
+        }
+        return retrofit2!!
+    }
 
     //open custom dialog for user to choose between selecting photo from gallery or take a photo from camera.
     override fun addPictureClicked() {

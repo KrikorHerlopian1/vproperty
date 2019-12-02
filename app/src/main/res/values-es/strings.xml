@@ -296,6 +296,7 @@
     <string name="stopped_listening">Dejó de escuchar .... Haga clic para comenzar</string>
     <string name="statistics">Estadística</string>
     <string name="properties">Propiedades</string>
+    <string name="estimate">El precio estimado de alquiler es</string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>

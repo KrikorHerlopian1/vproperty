@@ -296,6 +296,7 @@
     <string name="stopped_listening">Stopped Listening....Click to Start</string>
     <string name="statistics">Statistics</string>
     <string name="properties">Properties</string>
+    <string name="estimate">Estimated Rent price is </string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>

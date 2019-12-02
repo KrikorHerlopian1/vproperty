@@ -10,25 +10,26 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="---" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="675e4df6-2a73-4081-b2fb-c9608055fb6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_simplexml_2_6_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_simpleframework_simple_xml_2_7_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__stax_stax_1_2_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__stax_stax_api_1_0_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__xpp3_xpp3_1_1_3_3_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/edu/newhaven/krikorherlopian/android/vproperty/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/edu/newhaven/krikorherlopian/android/vproperty/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/interfaces/ApiInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/interfaces/ApiInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/step/StepHomeFacts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/step/StepHomeFacts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +40,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_API_26" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="FA6940306403" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -100,47 +101,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/LoginActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4695">
-              <caret line="339" column="24" selection-start-line="339" selection-start-column="24" selection-end-line="339" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="108" column="56" lean-forward="true" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
+            <state relative-caret-position="243">
+              <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="371" column="72" selection-start-line="371" selection-start-column="72" selection-end-line="371" selection-end-column="72" />
+              <folding>
+                <element signature="e#16789#16806#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/edu/newhaven/krikorherlopian/android/vproperty/ExampleInstrumentedTest.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-es/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state relative-caret-position="293">
+              <caret line="298" column="61" selection-start-line="298" selection-start-column="61" selection-end-line="298" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="298" column="26" selection-start-line="298" selection-start-column="18" selection-end-line="298" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -160,9 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>provider</find>
-      <find>startac</find>
-      <find>longitude</find>
       <find>geocoder</find>
       <find>te class SayTask extends AsyncTask&lt;String, Void, Strin</find>
       <find>toast</find>
@@ -190,6 +181,9 @@
       <find>googleLoginButton</find>
       <find>retrofit</find>
       <find>okhttp</find>
+      <find>sendnotif</find>
+      <find>getClient</find>
+      <find>toasty</find>
     </findStrings>
     <replaceStrings>
       <replace>context.resources</replace>
@@ -212,14 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/detail_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/SplashActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/floor_covering.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/adapter/RecylerViewAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/checkbox/CustomCheckBox.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/IAxisValueFormatter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/GameFragment.kt" />
@@ -261,14 +247,22 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/ChartFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/edu/newhaven/krikorherlopian/android/vproperty/ExampleInstrumentedTest.kt" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/RentZestimate.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/Result.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/Zestimate.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/interfaces/ApiInterface.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/step/StepHomeFacts.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="49" />
-    <option name="y" value="24" />
+    <option name="x" value="50" />
+    <option name="y" value="26" />
     <option name="width" value="1631" />
     <option name="height" value="957" />
   </component>
@@ -278,6 +272,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Course" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -295,76 +290,6 @@
               <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="vproperty" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -428,9 +353,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Course" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -492,7 +416,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android JUnit.CommonKtTest">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="CommonKtTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
@@ -622,13 +546,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
-    </task>
-    <task id="LOCAL-00160" summary="spanish translation">
-      <created>1574782107536</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1574782107536</updated>
     </task>
     <task id="LOCAL-00161" summary="english translation">
       <created>1574782139310</created>
@@ -966,7 +883,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575228232134</updated>
     </task>
-    <option name="localTasksCounter" value="209" />
+    <task id="LOCAL-00209" summary="bug fix">
+      <created>1575259678979</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1575259678980</updated>
+    </task>
+    <option name="localTasksCounter" value="210" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1011,11 +935,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="24" width="1631" height="957" extended-state="0" />
+    <frame x="50" y="26" width="1631" height="957" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.33480176" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -1024,9 +948,9 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3283237" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" weight="0.3283237" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" weight="0.34219652" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32911393" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="5" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.32949308" />
@@ -1046,7 +970,7 @@
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -1055,7 +979,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3283237" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" weight="0.3283237" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.49716803" visible="true" weight="0.34219652" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32911393" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" />
@@ -1142,61 +1066,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_search.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/SearchMyPropertyActivity.kt" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="59" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/MyPropertiesFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="41" column="62" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/interfaces/FragmentActivityCommunication.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="105" column="79" selection-start-line="105" selection-start-column="79" selection-end-line="105" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/CustomHomeMenuActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4020">
-          <caret line="309" selection-start-line="293" selection-start-column="3" selection-end-line="309" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/HomeMenuActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3660">
@@ -1444,10 +1313,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/interfaces/ApiInterface.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/edu/newhaven/krikorherlopian/android/vproperty/ExampleInstrumentedTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="345">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/Property.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" selection-start-line="5" selection-end-line="20" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1458,10 +1341,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/LoginActivity.kt">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4695">
-          <caret line="339" column="24" selection-start-line="339" selection-start-column="24" selection-end-line="339" selection-end-column="24" />
+        <state relative-caret-position="473">
+          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1473,31 +1356,99 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/RequestNotification.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/java/edu/newhaven/krikorherlopian/android/vproperty/CommonKtTest.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/Result.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="135">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/RentZestimate.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#62#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/model/Zestimate.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#62#136#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/interfaces/ApiInterface.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/step/StepHomeFacts.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
+          <folding>
+            <element signature="e#62#1076#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/LoginActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="203" column="28" lean-forward="true" selection-start-line="198" selection-start-column="20" selection-end-line="203" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/step/StepHomeAddress.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="108" column="56" lean-forward="true" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
+        <state relative-caret-position="243">
+          <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/edu/newhaven/krikorherlopian/android/vproperty/ExampleInstrumentedTest.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        <state relative-caret-position="197">
+          <caret line="298" column="26" selection-start-line="298" selection-start-column="18" selection-end-line="298" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="371" column="72" selection-start-line="371" selection-start-column="72" selection-end-line="371" selection-end-column="72" />
+          <folding>
+            <element signature="e#16789#16806#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-es/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="298" column="61" selection-start-line="298" selection-start-column="61" selection-end-line="298" selection-end-column="61" />
         </state>
       </provider>
     </entry>

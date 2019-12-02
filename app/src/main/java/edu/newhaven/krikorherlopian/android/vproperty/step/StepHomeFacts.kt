@@ -19,6 +19,7 @@ import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_step_home_facts.view.*
 
 
+
 class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var property: Property) :
     FrameLayout(context),
     Step {
@@ -101,6 +102,8 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
                 } else
                     priceLayout.hint = resources.getString(R.string.price)
             }
+
+
         } catch (e: Exception) {
         }
 
