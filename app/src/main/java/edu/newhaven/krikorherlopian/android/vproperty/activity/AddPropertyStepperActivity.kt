@@ -45,14 +45,19 @@ import kotlinx.android.synthetic.main.fragment_step_home_address.zipCodeInput
 import kotlinx.android.synthetic.main.stepper.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
+import org.w3c.dom.Document
+import org.w3c.dom.Element
+import org.xml.sax.InputSource
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
+import java.io.StringReader
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.xml.parsers.DocumentBuilderFactory
 
 //this is both to add property , and also edit property.
 class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperListener,
@@ -363,17 +368,62 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                             ) {
                                 if (response.isSuccessful) {
                                     var responseData = response.body()!!.string()
-                                    var amount =
-                                        responseData.substringAfter("<rentzestimate><amount currency=\"USD\">")
-                                            .substringBefore("</amount>")
-                                    if (amount != null && !amount.trim().equals("")) {
+                                    var doc = loadXMLFromString(responseData)
+                                    var nodeList =
+                                        doc.documentElement.getElementsByTagName("rentzestimate")
+                                    System.out.println("-----99---" + nodeList.length)
+                                    var minPrice = 0f
+                                    var maxPrice = 0f
+                                    for (i in 1..(nodeList.length - 1)) {
+                                        var nNode = nodeList.item(i)
+                                        var eElement = nNode as Element
+                                        if (i == 1) {
+                                            maxPrice = eElement.getElementsByTagName("amount")
+                                                .item(0)
+                                                .textContent.toFloat()
+                                            minPrice = eElement.getElementsByTagName("amount")
+                                                .item(0)
+                                                .textContent.toFloat()
+                                        }
+                                        if (maxPrice <= eElement.getElementsByTagName("amount")
+                                                .item(0)
+                                                .textContent.toFloat()
+                                        ) {
+                                            maxPrice = eElement.getElementsByTagName("amount")
+                                                .item(0)
+                                                .textContent.toFloat()
+                                        }
+                                        if (minPrice >= eElement.getElementsByTagName("amount")
+                                                .item(0)
+                                                .textContent.toFloat()
+                                        ) {
+                                            minPrice = eElement.getElementsByTagName("amount")
+                                                .item(0)
+                                                .textContent.toFloat()
+                                        }
+
+                                    }
+                                    if (minPrice > 0f) {
                                         Toasty.success(
                                             this@AddPropertyStepperActivity,
-                                            "" + resources.getString(R.string.estimate) + " " + amount + " USD",
-                                            Toast.LENGTH_SHORT,
+                                            "" + resources.getString(R.string.estimate) + " " + minPrice + " & " + maxPrice + " USD",
+                                            Toast.LENGTH_LONG,
                                             true
                                         ).show()
                                     }
+
+
+                                    /* var amount =
+                                         responseData.substringAfter("<rentzestimate><amount currency=\"USD\">")
+                                             .substringBefore("</amount>")
+                                     if (amount != null && !amount.trim().equals("")) {
+                                         Toasty.success(
+                                             this@AddPropertyStepperActivity,
+                                             "" + resources.getString(R.string.estimate) + " " + amount + " USD",
+                                             Toast.LENGTH_SHORT,
+                                             true
+                                         ).show()
+                                     }*/
                                 }
                             }
 
@@ -394,6 +444,13 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
             Log.d("RESULT****", "CANCELLED")
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun loadXMLFromString(xml: String): Document {
+        var factory = DocumentBuilderFactory.newInstance()
+        var builder = factory.newDocumentBuilder()
+        var is1 = InputSource(StringReader(xml))
+        return builder.parse(is1)
     }
 
     private var retrofit2: Retrofit? = null
