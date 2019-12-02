@@ -1,6 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
+/*import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -20,3 +20,5 @@ class ExampleInstrumentedTest {
         assertEquals("edu.newhaven.krikorherlopian.android.vproperty", appContext.packageName)
     }
 }
+*/
+class ExampleInstrumentedTest
