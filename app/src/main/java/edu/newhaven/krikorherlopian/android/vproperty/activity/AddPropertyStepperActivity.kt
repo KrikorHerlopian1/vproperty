@@ -401,7 +401,6 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                                                     .item(0)
                                                     .textContent.toFloat()
                                             }
-
                                         }
                                         if (minPrice > 0f) {
                                             Toasty.success(
