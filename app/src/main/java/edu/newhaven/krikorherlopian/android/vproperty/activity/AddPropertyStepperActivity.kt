@@ -351,7 +351,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                         }
 
 
-                        var apiService = getClient2().create(ApiInterface::class.java)
+                        var apiService = getSecondClient().create(ApiInterface::class.java)
                         var initialAddress = cityName.substringAfter(',')
                         var statePlace = initialAddress.substringBefore(',')
                         var zipeCode = initialAddress.substringAfter(',').substringBefore(',')
@@ -411,19 +411,6 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
                                             true
                                         ).show()
                                     }
-
-
-                                    /* var amount =
-                                         responseData.substringAfter("<rentzestimate><amount currency=\"USD\">")
-                                             .substringBefore("</amount>")
-                                     if (amount != null && !amount.trim().equals("")) {
-                                         Toasty.success(
-                                             this@AddPropertyStepperActivity,
-                                             "" + resources.getString(R.string.estimate) + " " + amount + " USD",
-                                             Toast.LENGTH_SHORT,
-                                             true
-                                         ).show()
-                                     }*/
                                 }
                             }
 
@@ -453,14 +440,14 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
         return builder.parse(is1)
     }
 
-    private var retrofit2: Retrofit? = null
-    fun getClient2(): Retrofit {
-        if (retrofit2 == null) {
-            retrofit2 = Retrofit.Builder()
+    private var zillowApi: Retrofit? = null
+    fun getSecondClient(): Retrofit {
+        if (zillowApi == null) {
+            zillowApi = Retrofit.Builder()
                 .baseUrl("https://www.zillow.com/webservice/")
                 .build()
         }
-        return retrofit2!!
+        return zillowApi!!
     }
 
     //open custom dialog for user to choose between selecting photo from gallery or take a photo from camera.
