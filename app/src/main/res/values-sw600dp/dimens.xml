@@ -13,7 +13,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="profile_image">75dp</dimen>
     <dimen name="logo_size">150dp</dimen>
-    <dimen name="image_map_size">200dp</dimen>
+    <dimen name="image_map_size">350dp</dimen>
     <dimen name="settings_list_icon_sizes">36dp</dimen>
     <dimen name="toolbar_height">72dp</dimen>
     <dimen name="drawable_padding">5dp</dimen>

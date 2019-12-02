@@ -182,6 +182,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
 
                 override fun getInfoContents(marker: Marker?): View {
                     var v: View? = null
+
                     var property: Property = propertyList.get(marker?.title?.toInt()!!)
                     if (property.isDisabled.trim().equals("Y")) {
                         v = layoutInflater.inflate(
@@ -192,18 +193,19 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             displayMetrics.widthPixels,
                             resources.getDimension(R.dimen.image_map_size).toInt()
                         )
+                        System.out.println("=========" + displayMetrics.widthPixels)
                     } else {
                         v = layoutInflater.inflate(
                             R.layout.map_info, null
                         )
                         markerS = marker
-
                         currentView = v.image
                         val displayMetrics = resources.displayMetrics
                         v.layoutParams = LinearLayout.LayoutParams(
                             displayMetrics.widthPixels,
                             resources.getDimension(R.dimen.image_map_size).toInt()
                         )
+                        System.out.println("=========" + displayMetrics.widthPixels)
                         val i = Integer.parseInt(marker.title)
                         if (i != -1) {
                             val property = propertyList.get(i)
