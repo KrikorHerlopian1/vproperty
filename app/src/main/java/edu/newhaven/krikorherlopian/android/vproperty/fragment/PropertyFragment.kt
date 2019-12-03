@@ -193,7 +193,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             displayMetrics.widthPixels,
                             resources.getDimension(R.dimen.image_map_size).toInt()
                         )
-                        System.out.println("=========" + displayMetrics.widthPixels)
                     } else {
                         v = layoutInflater.inflate(
                             R.layout.map_info, null
@@ -205,7 +204,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                             displayMetrics.widthPixels,
                             resources.getDimension(R.dimen.image_map_size).toInt()
                         )
-                        System.out.println("=========" + displayMetrics.widthPixels)
                         val i = Integer.parseInt(marker.title)
                         if (i != -1) {
                             val property = propertyList.get(i)

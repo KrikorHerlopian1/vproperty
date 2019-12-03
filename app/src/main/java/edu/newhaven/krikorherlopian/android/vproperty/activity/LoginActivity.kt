@@ -6,18 +6,25 @@ import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.GoogleAuthProvider
@@ -38,6 +45,7 @@ import java.util.concurrent.Executors
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var callbackManager: CallbackManager
     var sharedPref: SharedPreferences? = null
     private fun showProgressDialog() {
         //hide google login and fingerprint buttons and show curve loader. also disable login button.
@@ -54,10 +62,47 @@ class LoginActivity : AppCompatActivity() {
         loginButton.isEnabled = true
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         configureGoogleSign()
+
+
+        callbackManager = CallbackManager.Factory.create()
+        LoginManager.getInstance().logOut()
+        login_button.setReadPermissions("email", "public_profile")
+        login_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                val credential = FacebookAuthProvider.getCredential(loginResult.accessToken.token)
+                auth.signInWithCredential(credential)
+                    .addOnCompleteListener(this@LoginActivity) { task ->
+                        if (task.isSuccessful) {
+                            Log.d("TAG", "signInWithCredential:success")
+                            //val user = auth.currentUser
+                            loggedInUser = auth.currentUser
+                            startHomeMenuActivity()
+                        } else {
+                            Log.w("TAG", "signInWithCredential:failure", task.exception)
+                            Toasty.error(
+                                this@LoginActivity,
+                                task.exception?.message!!,
+                                Toast.LENGTH_LONG,
+                                true
+                            ).show()
+                            LoginManager.getInstance().logOut()
+                        }
+                    }
+            }
+
+            override fun onCancel() {
+            }
+
+            override fun onError(error: FacebookException) {
+            }
+        })
+
+
         getTokenAndRegisterForNotifications()
         setUpFonts()
         sharedPref = getSharedPreferences(
@@ -274,6 +319,9 @@ class LoginActivity : AppCompatActivity() {
                 fingerPrintSetup()
             }
             // login(email.text.toString(), password.text.toString(), true)
+        } else {
+            // Pass the activity result back to the Facebook SDK
+            callbackManager.onActivityResult(requestCode, resultCode, data)
         }
     }
 

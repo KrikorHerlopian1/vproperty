@@ -135,13 +135,35 @@
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp">
-
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/sign_in_button"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"></View>
+
+            <LinearLayout
+                android:id="@+id/fbLayout"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="#1877F2"
+                android:gravity="center_vertical">
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout

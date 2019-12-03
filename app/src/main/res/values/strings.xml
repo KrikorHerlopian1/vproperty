@@ -297,6 +297,8 @@
     <string name="statistics">Statistics</string>
     <string name="properties">Properties</string>
     <string name="estimate">Estimated Rent price is between</string>
+    <string name="facebook_app_id">2558624564245820</string>
+    <string name="fb_login_protocol_scheme">fb2558624564245820</string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>
