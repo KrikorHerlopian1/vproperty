@@ -128,7 +128,6 @@
         android:layout_marginBottom="5dp"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:id="@+id/googleLoginButton"
             android:layout_gravity="center_horizontal"
@@ -139,35 +138,50 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp">
 
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/sign_in_button"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="10dp"
-                android:layout_height="10dp"></View>
-
             <LinearLayout
-                android:id="@+id/fbLayout"
-                android:layout_width="0dp"
-                android:layout_marginTop="2dp"
-                android:elevation="8dp"
-                android:layout_height="42dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="#1877F2"
-                android:gravity="center_vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/login_button"
-                    android:layout_width="match_parent"
+                <edu.newhaven.krikorherlopian.android.vproperty.textview.LightTextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/login_with"
+                    android:textSize="@dimen/normalTextSize" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/sign_in_button"
+                        android:layout_width="@dimen/buttonHeight"
+                        android:layout_height="@dimen/buttonHeight"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/google" />
+
+                    <ImageButton
+                        android:id="@+id/login_fb_button"
+                        android:layout_width="@dimen/buttonHeight"
+                        android:layout_height="@dimen/buttonHeight"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/fb_box" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
 
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/invisible_fb_button"
+                android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
         </LinearLayout>
 
         <LinearLayout

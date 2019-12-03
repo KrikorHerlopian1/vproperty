@@ -71,8 +71,10 @@ class LoginActivity : AppCompatActivity() {
 
         callbackManager = CallbackManager.Factory.create()
         LoginManager.getInstance().logOut()
-        login_button.setReadPermissions("email", "public_profile")
-        login_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+        invisible_fb_button.setReadPermissions("email", "public_profile")
+        invisible_fb_button.registerCallback(
+            callbackManager,
+            object : FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 val credential = FacebookAuthProvider.getCredential(loginResult.accessToken.token)
                 auth.signInWithCredential(credential)
@@ -115,6 +117,9 @@ class LoginActivity : AppCompatActivity() {
         //setUpFonts()
         sign_in_button.setOnClickListener {
             googleSignInClicked()
+        }
+        login_fb_button.setOnClickListener {
+            invisible_fb_button.callOnClick()
         }
         loginButton.setOnClickListener {
             loginButtonClicked()
