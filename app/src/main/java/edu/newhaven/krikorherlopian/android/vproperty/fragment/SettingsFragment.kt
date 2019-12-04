@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
 import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.activity.CustomHomeMenuActivity
@@ -20,6 +22,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.activity.LoginActivity
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.RecylerViewAdapter
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ListClick
 import edu.newhaven.krikorherlopian.android.vproperty.model.SettingsItem
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.listview_fragment.view.*
 
 /*
@@ -32,6 +35,7 @@ class SettingsFragment : Fragment(),
     var signOutItem: SettingsItem? = null
     var versionItem: SettingsItem? = null
     var mapTypeItem: SettingsItem? = null
+    var deleteAccountItem: SettingsItem? = null
     var notifications: SettingsItem? = null
     var localeItem: SettingsItem? = null
     var list: MutableList<Any> = mutableListOf<Any>()
@@ -99,6 +103,11 @@ class SettingsFragment : Fragment(),
             R.drawable.ic_placeholder_location
         )
 
+        deleteAccountItem = SettingsItem(
+            root!!.resources.getString(R.string.delete_account), "",
+            R.drawable.ic_delete_white_24dp, 2
+        )
+
 
         when (mapType) {
             "normal" -> mapTypeItem?.subtitle =
@@ -130,6 +139,7 @@ class SettingsFragment : Fragment(),
         list.add(notifications!!)
         list.add(autoLoginItem!!)
         list.add(signOutItem!!)
+        list.add(deleteAccountItem!!)
         list.add(versionItem!!)
         adapter = RecylerViewAdapter(
             list, this, root?.context!!
@@ -180,6 +190,24 @@ class SettingsFragment : Fragment(),
                         }
                     }
             }
+        } else if (position == 6) {
+            val user = FirebaseAuth.getInstance().currentUser
+            //FirebaseAuth.getInstance().signOut()
+            user?.delete()
+                ?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toasty.success(
+                            root?.context!!,
+                            R.string.user_deleted,
+                            Toast.LENGTH_SHORT,
+                            true
+                        ).show()
+                        FirebaseAuth.getInstance().signOut()
+                        val intent = Intent(root?.context!!, LoginActivity::class.java)
+                        startActivity(intent)
+                        activity?.finish()
+                    }
+                }
         }
     }
 

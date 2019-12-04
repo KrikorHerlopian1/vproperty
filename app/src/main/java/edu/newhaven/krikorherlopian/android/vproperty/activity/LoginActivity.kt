@@ -99,10 +99,10 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onCancel() {
             }
-
             override fun onError(error: FacebookException) {
             }
         })
+
 
 
         getTokenAndRegisterForNotifications()
@@ -114,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         auth.signOut()
         fingerPrintSetup()
-        //setUpFonts()
+
         sign_in_button.setOnClickListener {
             googleSignInClicked()
         }

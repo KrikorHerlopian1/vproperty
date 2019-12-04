@@ -300,6 +300,8 @@
     <string name="facebook_app_id">2558624564245820</string>
     <string name="fb_login_protocol_scheme">fb2558624564245820</string>
     <string name="login_with">Or Login with</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="user_deleted">User Deleted</string>
     <string-array name="hometype">
         <item>@string/all</item>
         <item>@string/single_family</item>
