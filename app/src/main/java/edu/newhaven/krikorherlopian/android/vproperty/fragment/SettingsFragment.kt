@@ -192,7 +192,6 @@ class SettingsFragment : Fragment(),
             }
         } else if (position == 6) {
             val user = FirebaseAuth.getInstance().currentUser
-            //FirebaseAuth.getInstance().signOut()
             user?.delete()
                 ?.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
