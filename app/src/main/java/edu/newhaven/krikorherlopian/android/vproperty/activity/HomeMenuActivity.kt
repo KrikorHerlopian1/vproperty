@@ -1,7 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,7 +13,6 @@ import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
@@ -28,7 +26,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.mikelau.croperino.Croperino
 import com.mikelau.croperino.CroperinoConfig
 import com.mikelau.croperino.CroperinoFileUtil
-import edu.newhaven.krikorherlopian.android.vproperty.LocaleHelper
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
@@ -48,7 +45,7 @@ import java.util.*
         This page contains the home menu , first page after login.
         It has multiple menu options in navigation drawer, every menu assosciated with fragment.
  */
-class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
+class HomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommunication {
     var photoUrl: String? = ""
     private lateinit var appBarConfiguration: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -162,10 +159,6 @@ class HomeMenuActivity : AppCompatActivity(), FragmentActivityCommunication {
         )
         i.putExtra("argPojo", property)
         startActivity(i)
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
     }
 
     override fun startActivityDetWithTransition(property: Property, imageView: ImageView) {

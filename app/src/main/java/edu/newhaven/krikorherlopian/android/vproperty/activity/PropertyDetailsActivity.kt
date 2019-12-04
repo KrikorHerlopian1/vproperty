@@ -1,6 +1,5 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Rect
@@ -15,7 +14,6 @@ import android.view.MenuItem
 import android.view.PixelCopy
 import android.view.View
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
@@ -26,8 +24,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
-import edu.newhaven.krikorherlopian.android.vproperty.*
+import edu.newhaven.krikorherlopian.android.vproperty.R
+import edu.newhaven.krikorherlopian.android.vproperty.activityFunctionalities
+import edu.newhaven.krikorherlopian.android.vproperty.getMarkerIcon
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.ActivityFunctionalities
+import edu.newhaven.krikorherlopian.android.vproperty.loggedInUser
 import edu.newhaven.krikorherlopian.android.vproperty.model.ItemValuePair
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.amenities.view.*
@@ -41,7 +42,8 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 
-class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, ActivityFunctionalities {
+class PropertyDetailsActivity : CustomAppCompatActivity(), OnMapReadyCallback,
+    ActivityFunctionalities {
     lateinit var prop: Property
     var imagePath = ""
     override fun closeActivity() {
@@ -53,7 +55,7 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         setContentView(R.layout.property_details)
         activityFunctionalities = this
         prop = intent.getSerializableExtra("argPojo") as Property
-        setupToolBar()
+        setUpToolbar(toolbar)
         Picasso.get()
             .load(prop.photoUrl)
             .placeholder(R.drawable.placeholderdetail)
@@ -102,10 +104,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
             intent.putExtra("argPojo", prop)
             startActivity(intent)
         }
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
     }
 
     private fun setUpUtilityDetails() {
@@ -415,18 +413,6 @@ class PropertyDetailsActivity : AppCompatActivity(), OnMapReadyCallback, Activit
         )
     }
 
-    private fun setupToolBar() {
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar!!.title = prop.houseName
-        actionBar.elevation = 4.0F
-        actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setDisplayUseLogoEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
-            super.onBackPressed()
-        })
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId

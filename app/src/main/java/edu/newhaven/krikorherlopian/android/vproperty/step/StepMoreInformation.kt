@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_step_more_info.view.*
 class StepMoreInformation(context: Context, listener: OnNavigationBarListener, var prop: Property) :
     FrameLayout(context),
     Step {
-    internal var ms: View? = null
+    internal var view: View? = null
     @Nullable
     private var onNavigationBarListener: OnNavigationBarListener? = null
 
@@ -52,9 +52,9 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
         val v = LayoutInflater.from(context).inflate(R.layout.fragment_step_more_info, this, true)
         try {
             onNavigationBarListener = listener
-            ms = v
+            view = v
             setUpFonts()
-            ms?.picture!!.setOnClickListener {
+            view?.picture!!.setOnClickListener {
                 onNavigationBarListener?.addPictureClicked()
             }
 
@@ -62,13 +62,13 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
                 Glide.with(context).load(prop.photoUrl)
                     .placeholder(R.drawable.placeholderdetail)
                     .into(
-                        ms?.picture!!
+                        view?.picture!!
                     )
             } else {
                 Glide.with(context).load(R.drawable.placeholderdetail)
                     .placeholder(R.drawable.placeholderdetail)
                     .into(
-                        ms?.picture!!
+                        view?.picture!!
                     )
             }
 
@@ -80,7 +80,7 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
                             .addOnSuccessListener { document ->
                                 if (document != null) {
                                     var user = document.toObject(User::class.java)
-                                    ms?.contactinput?.setText(user?.phoneNumber)
+                                    view?.contactinput?.setText(user?.phoneNumber)
                                 } else {
                                 }
                             }
@@ -89,9 +89,9 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
                 } catch (e: Exception) {
                 }
             }
-            ms?.relatedWebsite?.setText(prop.relatedWebsite)
-            ms?.virtualtourinput?.setText(prop.virtualTour)
-            ms?.contactinput?.setText(prop.contactPhone)
+            view?.relatedWebsite?.setText(prop.relatedWebsite)
+            view?.virtualtourinput?.setText(prop.virtualTour)
+            view?.contactinput?.setText(prop.contactPhone)
         } catch (e: Exception) {
         }
 
@@ -103,11 +103,11 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
 
     override fun verifyStep(): VerificationError? {
         try {
-            val bitmap = (ms?.picture?.drawable as BitmapDrawable).bitmap
+            val bitmap = (view?.picture?.drawable as BitmapDrawable).bitmap
             onNavigationBarListener?.finishStep(
-                ms?.relatedWebsite?.text.toString(),
-                ms?.virtualtourinput?.text.toString(),
-                ms?.contactinput?.text.toString(),
+                view?.relatedWebsite?.text.toString(),
+                view?.virtualtourinput?.text.toString(),
+                view?.contactinput?.text.toString(),
                 bitmap
             )
         } catch (e: Exception) {

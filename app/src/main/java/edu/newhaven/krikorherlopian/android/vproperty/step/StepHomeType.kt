@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_step_home_type.view.*
 class StepHomeType(context: Context, listener: OnNavigationBarListener, var property: Property) :
     FrameLayout(context),
     Step, ListClick {
-    internal var ms: View? = null
+    internal var view: View? = null
     var posSelected = -1
     var typeCode: String? = ""
 
@@ -54,7 +54,7 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
         val v = LayoutInflater.from(context).inflate(R.layout.fragment_step_home_type, this, true)
         try {
             onNavigationBarListener = listener
-            ms = v
+            view = v
             var typeSingleFamily: HomeTypes =
                 HomeTypes("SIF", resources.getString(R.string.single_family))
             var typeCondo: HomeTypes = HomeTypes("CON", resources.getString(R.string.condo))
@@ -146,7 +146,7 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
             i = i + 1
         }
         posSelected = position
-        ms?.recyclerView?.adapter?.notifyDataSetChanged()
+        view?.recyclerView?.adapter?.notifyDataSetChanged()
         onNavigationBarListener?.addHomeType(typeCode!!)
     }
 

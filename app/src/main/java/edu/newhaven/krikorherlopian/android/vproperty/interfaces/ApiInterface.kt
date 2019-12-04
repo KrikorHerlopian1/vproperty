@@ -19,7 +19,5 @@ interface ApiInterface {
         @Query(encoded = true, value = "citystatezip") citystatezip: String,
         @Query(encoded = true, value = "rentzestimate") rentzestimate: String
     ): Call<okhttp3.ResponseBody>
-
-
 }
 

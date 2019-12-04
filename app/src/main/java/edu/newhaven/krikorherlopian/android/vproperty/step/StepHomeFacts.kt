@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_step_home_facts.view.*
 class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var property: Property) :
     FrameLayout(context),
     Step {
-    internal var ms: View? = null
+    internal var view: View? = null
     @Nullable
     private var onNavigationBarListener: OnNavigationBarListener? = null
 
@@ -50,7 +50,7 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
             LayoutInflater.from(context).inflate(R.layout.fragment_step_home_facts, this, true)
         try {
             onNavigationBarListener = listener
-            ms = layoutView
+            view = layoutView
             setUpFonts()
             layoutView.priceInput.setText("" + property.homeFacts.price)
             if (property.homeFacts.isSale) {
@@ -111,43 +111,43 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
 
     private fun setUpFonts() {
         var tf = Typeface.createFromAsset(context.assets, "" + font)
-        ms?.priceLayout?.typeface = tf
-        ms?.priceInput?.typeface = tf
+        view?.priceLayout?.typeface = tf
+        view?.priceInput?.typeface = tf
         forrent.typeface = tf
         forsale.typeface = tf
-        ms?.yearbuiltinput?.typeface = tf
-        ms?.yearbuilt?.typeface = tf
-        ms?.hoainput?.typeface = tf
-        ms?.hoalayout?.typeface = tf
-        ms?.modal_year_input?.typeface = tf
-        ms?.modal_year?.typeface = tf
-        ms?.floor_number_input?.typeface = tf
-        ms?.floor_number?.typeface = tf
-        ms?.finished_square_feet_input?.typeface = tf
-        ms?.finished_square_feet?.typeface = tf
-        ms?.garage_ft?.typeface = tf
-        ms?.garage_ft_input?.typeface = tf
-        ms?.basement_sq_ft?.typeface = tf
-        ms?.basement_sq_ft_input?.typeface = tf
-        ms?.lot_size?.typeface = tf
-        ms?.lot_size_input?.typeface = tf
+        view?.yearbuiltinput?.typeface = tf
+        view?.yearbuilt?.typeface = tf
+        view?.hoainput?.typeface = tf
+        view?.hoalayout?.typeface = tf
+        view?.modal_year_input?.typeface = tf
+        view?.modal_year?.typeface = tf
+        view?.floor_number_input?.typeface = tf
+        view?.floor_number?.typeface = tf
+        view?.finished_square_feet_input?.typeface = tf
+        view?.finished_square_feet?.typeface = tf
+        view?.garage_ft?.typeface = tf
+        view?.garage_ft_input?.typeface = tf
+        view?.basement_sq_ft?.typeface = tf
+        view?.basement_sq_ft_input?.typeface = tf
+        view?.lot_size?.typeface = tf
+        view?.lot_size_input?.typeface = tf
     }
 
     override fun verifyStep(): VerificationError? {
         try {
             var state = 0
             resetForms()
-            if (ms?.priceInput?.text.isNullOrBlank()) {
+            if (view?.priceInput?.text.isNullOrBlank()) {
                 state = 1
-                ms?.priceLayout?.error = resources.getString(R.string.enter_price)
+                view?.priceLayout?.error = resources.getString(R.string.enter_price)
             }
             if (state == 1) {
                 return VerificationError(resources.getString(R.string.enter_required_fields))
-            } else if (ms?.forrent?.isChecked == false && ms?.forsale?.isChecked == false) {
+            } else if (view?.forrent?.isChecked == false && view?.forsale?.isChecked == false) {
                 return VerificationError(resources.getString(R.string.choose_sale_rent))
             } else {
                 onNavigationBarListener?.addHomeFacts(
-                    ms?.priceInput?.text.toString(), forrent.isChecked, forsale.isChecked,
+                    view?.priceInput?.text.toString(), forrent.isChecked, forsale.isChecked,
                     "" + bed_number_picker.value, "" + bath_number_picker.value,
                     "" + rooms_number_picker.value, "" + parking_number_picker.value,
                     yearbuiltinput?.text.toString(), hoainput?.text.toString(),
@@ -164,8 +164,8 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
     }
 
     private fun resetForms() {
-        ms?.priceLayout?.error = null
-        ms?.priceLayout?.isErrorEnabled = false
+        view?.priceLayout?.error = null
+        view?.priceLayout?.isErrorEnabled = false
     }
 
     override fun onSelected() {

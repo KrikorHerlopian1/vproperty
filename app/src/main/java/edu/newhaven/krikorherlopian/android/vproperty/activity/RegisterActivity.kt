@@ -1,7 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
@@ -14,7 +13,6 @@ import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -47,7 +45,7 @@ import java.util.*
     and user is navigated back to login screen.
  */
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : CustomAppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var storage: FirebaseStorage
     var sharedPref: SharedPreferences? = null
@@ -72,9 +70,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
-    }
 
     private fun addProfileButtonClicked() {
         val alerBuilder = AlertDialog.Builder(this@RegisterActivity)

@@ -1,12 +1,8 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
-import android.content.Context
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.anupcowkur.statelin.Machine
 import com.anupcowkur.statelin.State
-import edu.newhaven.krikorherlopian.android.vproperty.LocaleHelper
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.fragment.SearchListFragment
 import edu.newhaven.krikorherlopian.android.vproperty.fragment.SearchMapFragment
@@ -14,7 +10,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.search_layout.*
 
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : CustomAppCompatActivity() {
     var title: String? = ""
     lateinit var prop: Property
     //state implemented to show either properties on map or lists.
@@ -36,7 +32,7 @@ class SearchActivity : AppCompatActivity() {
             val fragmentManager = supportFragmentManager
             fragmentManager.beginTransaction()
                 .replace(R.id.frame_container, fragment).commit()
-            setupToolBar()
+            setUpToolbar(toolbar)
 
             menu_layout.setOnClickListener {
                 when (machine.state) {
@@ -61,22 +57,5 @@ class SearchActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
         }
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
-    }
-
-    private fun setupToolBar() {
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar!!.title = resources.getString(R.string.search)
-        actionBar.elevation = 4.0F
-        actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setDisplayUseLogoEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
-            super.onBackPressed()
-        })
     }
 }

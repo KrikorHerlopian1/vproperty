@@ -1,7 +1,6 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.location.Geocoder
@@ -13,7 +12,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.anupcowkur.statelin.Machine
 import com.bumptech.glide.Glide
@@ -60,7 +58,7 @@ import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 
 //this is both to add property , and also edit property.
-class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperListener,
+class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.StepperListener,
     OnNavigationBarListener {
     val BASE_URL = "https://fcm.googleapis.com/"
     private var retrofit: Retrofit? = null
@@ -70,7 +68,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.stepper)
-        setupToolBar()
+        setUpToolbar(toolbar)
         machine.state = addModifyProperty
         try {
             //in case property to be edited, we would get all our property properties needed here.
@@ -86,22 +84,7 @@ class AddPropertyStepperActivity : AppCompatActivity(), StepperLayout.StepperLis
 
     }
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
-    }
 
-    private fun setupToolBar() {
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar!!.title = resources.getString(R.string.hometype)
-        actionBar.elevation = 4.0F
-        actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setDisplayUseLogoEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
-            super.onBackPressed()
-        })
-    }
 
     //call the map library for user to select the property location.
     fun showLocationPicker() {

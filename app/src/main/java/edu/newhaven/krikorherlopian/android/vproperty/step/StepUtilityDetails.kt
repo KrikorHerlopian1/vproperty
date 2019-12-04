@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.heating_type.view.*
 class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, var prop: Property) :
     FrameLayout(context),
     Step {
-    internal var ms: View? = null
+    internal var view: View? = null
     @Nullable
     private var onNavigationBarListener: OnNavigationBarListener? = null
 
@@ -52,31 +52,34 @@ class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, va
             LayoutInflater.from(context).inflate(R.layout.fragment_step_utility_details, this, true)
         try {
             onNavigationBarListener = listener
-            ms = v
+            view = v
 
-            ms?.coolingtypelayout?.central!!.isChecked = prop.utilityDetails.coolingType.central
-            ms?.coolingtypelayout?.evaporative!!.isChecked =
+            view?.coolingtypelayout?.central!!.isChecked = prop.utilityDetails.coolingType.central
+            view?.coolingtypelayout?.evaporative!!.isChecked =
                 prop.utilityDetails.coolingType.evaporative
-            ms?.coolingtypelayout?.geothermal_cooling!!.isChecked =
+            view?.coolingtypelayout?.geothermal_cooling!!.isChecked =
                 prop.utilityDetails.coolingType.geoThermal
-            ms?.coolingtypelayout?.refrigeration!!.isChecked =
+            view?.coolingtypelayout?.refrigeration!!.isChecked =
                 prop.utilityDetails.coolingType.refrigeration
-            ms?.coolingtypelayout?.solar!!.isChecked = prop.utilityDetails.coolingType.solar
-            ms?.coolingtypelayout?.wall_cooling!!.isChecked = prop.utilityDetails.coolingType.wall
-            ms?.coolingtypelayout?.other_cooling!!.isChecked = prop.utilityDetails.coolingType.other
-            ms?.coolingtypelayout?.none!!.isChecked = prop.utilityDetails.coolingType.none
+            view?.coolingtypelayout?.solar!!.isChecked = prop.utilityDetails.coolingType.solar
+            view?.coolingtypelayout?.wall_cooling!!.isChecked = prop.utilityDetails.coolingType.wall
+            view?.coolingtypelayout?.other_cooling!!.isChecked =
+                prop.utilityDetails.coolingType.other
+            view?.coolingtypelayout?.none!!.isChecked = prop.utilityDetails.coolingType.none
 
 
-            ms?.heatingtypelayout?.baseboard!!.isChecked = prop.utilityDetails.heatingType.baseboard
-            ms?.heatingtypelayout?.forced_air!!.isChecked =
+            view?.heatingtypelayout?.baseboard!!.isChecked =
+                prop.utilityDetails.heatingType.baseboard
+            view?.heatingtypelayout?.forced_air!!.isChecked =
                 prop.utilityDetails.heatingType.forcedAir
-            ms?.heatingtypelayout?.geothermal!!.isChecked =
+            view?.heatingtypelayout?.geothermal!!.isChecked =
                 prop.utilityDetails.heatingType.geoThermal
-            ms?.heatingtypelayout?.heat_pump!!.isChecked = prop.utilityDetails.heatingType.heatPump
-            ms?.heatingtypelayout?.other!!.isChecked = prop.utilityDetails.heatingType.other
-            ms?.heatingtypelayout?.radiant!!.isChecked = prop.utilityDetails.heatingType.radiant
-            ms?.heatingtypelayout?.stove!!.isChecked = prop.utilityDetails.heatingType.stove
-            ms?.heatingtypelayout?.wall!!.isChecked = prop.utilityDetails.heatingType.wall
+            view?.heatingtypelayout?.heat_pump!!.isChecked =
+                prop.utilityDetails.heatingType.heatPump
+            view?.heatingtypelayout?.other!!.isChecked = prop.utilityDetails.heatingType.other
+            view?.heatingtypelayout?.radiant!!.isChecked = prop.utilityDetails.heatingType.radiant
+            view?.heatingtypelayout?.stove!!.isChecked = prop.utilityDetails.heatingType.stove
+            view?.heatingtypelayout?.wall!!.isChecked = prop.utilityDetails.heatingType.wall
         } catch (e: Exception) {
         }
 
@@ -85,17 +88,17 @@ class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, va
     override fun verifyStep(): VerificationError? {
         try {
             var coolingType: CoolingType = CoolingType(
-                ms?.central!!.isChecked, ms?.evaporative!!.isChecked,
-                ms?.geothermal_cooling!!.isChecked, ms?.refrigeration!!.isChecked,
-                ms?.solar!!.isChecked, ms?.wall_cooling!!.isChecked,
-                ms?.other_cooling!!.isChecked, ms?.none!!.isChecked
+                view?.central!!.isChecked, view?.evaporative!!.isChecked,
+                view?.geothermal_cooling!!.isChecked, view?.refrigeration!!.isChecked,
+                view?.solar!!.isChecked, view?.wall_cooling!!.isChecked,
+                view?.other_cooling!!.isChecked, view?.none!!.isChecked
             )
 
             var heatingType: HeatingType = HeatingType(
-                ms?.baseboard!!.isChecked, ms?.forced_air!!.isChecked,
-                ms?.geothermal!!.isChecked, ms?.heat_pump!!.isChecked,
-                ms?.radiant!!.isChecked, ms?.stove!!.isChecked,
-                ms?.wall!!.isChecked, ms?.other!!.isChecked
+                view?.baseboard!!.isChecked, view?.forced_air!!.isChecked,
+                view?.geothermal!!.isChecked, view?.heat_pump!!.isChecked,
+                view?.radiant!!.isChecked, view?.stove!!.isChecked,
+                view?.wall!!.isChecked, view?.other!!.isChecked
             )
             var utilityDetails: UtilityDetails = UtilityDetails(heatingType, coolingType)
             onNavigationBarListener?.addUtilityDetails(utilityDetails)

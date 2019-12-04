@@ -35,34 +35,27 @@ class GameFragment : Fragment(), RewardedVideoAdListener {
     }
 
     override fun onRewardedVideoStarted() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRewarded(p0: RewardItem?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRewardedVideoAdLoaded() {
     }
 
     override fun onRewardedVideoAdFailedToLoad(p0: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRewardedVideoAdLeftApplication() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRewardedVideoAdOpened() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRewardedVideoCompleted() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRewardedVideoAdClosed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
     override fun onCreateView(
         inflater: LayoutInflater,

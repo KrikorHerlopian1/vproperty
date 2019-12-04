@@ -1,16 +1,13 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
-import edu.newhaven.krikorherlopian.android.vproperty.LocaleHelper
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.font
 import edu.newhaven.krikorherlopian.android.vproperty.isEmailValid
@@ -22,12 +19,12 @@ import kotlinx.android.synthetic.main.activity_forgot_password.*
     Validation done if email is valid and entered once submit link is clicked.
  */
 
-class ForgotPasswordActivity : AppCompatActivity() {
+class ForgotPasswordActivity : CustomAppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
-        setUpToolbar()
+        setUpToolbar(toolbar)
         setUpFonts()
         auth = FirebaseAuth.getInstance()
         forgotPasswordButton.setOnClickListener {
@@ -35,9 +32,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
     }
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
-    }
 
     private fun forgotPasswordButtonClicked() {
         if (email.text.isNullOrBlank()) {
@@ -56,18 +50,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpToolbar() {
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar!!.title = resources.getString(R.string.forgot_password)
-        actionBar.elevation = 4.0F
-        actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setDisplayUseLogoEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
-            super.onBackPressed()
-        })
-    }
 
     private fun setUpFonts() {
         var tf = Typeface.createFromAsset(assets, "" + font)

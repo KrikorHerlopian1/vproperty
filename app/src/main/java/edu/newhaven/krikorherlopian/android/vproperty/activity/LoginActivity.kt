@@ -1,6 +1,5 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
@@ -9,7 +8,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
@@ -42,7 +40,7 @@ import java.util.concurrent.Executors
     There is validation on username and email, in case user enters invalid email or leaves them empty when clicking login button for email/username.
  */
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : CustomAppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
@@ -210,10 +208,6 @@ class LoginActivity : AppCompatActivity() {
                     msg = getString(R.string.msg_subscribe_failed)
                 }
             }
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleHelper.onAttach(base))
     }
 
     private fun setError(
