@@ -93,12 +93,12 @@ class GameFragment : Fragment(), RewardedVideoAdListener {
         var count = 0
         //shuffle the arrays
         for (ima in IMAGES_ARRAY) {
-            var x1 = (0..9).random()
-            IMAGES_ARRAY[count] = IMAGES_ARRAY[x1]
-            IMAGES_ARRAY[x1] = ima
+            var randonNumber = (0..9).random()
+            IMAGES_ARRAY[count] = IMAGES_ARRAY[randonNumber]
+            IMAGES_ARRAY[randonNumber] = ima
             var value = questions[count]
-            questions[count] = questions[x1]
-            questions[x1] = value
+            questions[count] = questions[randonNumber]
+            questions[randonNumber] = value
             count = count + 1
         }
 
@@ -213,14 +213,14 @@ class GameFragment : Fragment(), RewardedVideoAdListener {
     fun shuffle(options: Array<String>, questions: Array<String>) {
         var count = 0
         for (ima in options) {
-            var x1 = (0..3).random()
+            var randonNumber = (0..3).random()
             var value = options[count]
-            options[count] = options[x1]
-            options[x1] = value
+            options[count] = options[randonNumber]
+            options[randonNumber] = value
             if (options[count].equals(questions[state])) {
                 correctAnswer = count
-            } else if (options[x1].equals(questions[state])) {
-                correctAnswer = x1
+            } else if (options[randonNumber].equals(questions[state])) {
+                correctAnswer = randonNumber
             }
             count = count + 1
         }
@@ -232,16 +232,16 @@ class GameFragment : Fragment(), RewardedVideoAdListener {
         var options = arrayOf(questions[i], "1", "2", "3")
         val ques = questions.clone()
         ques[i] = ques[9]
-        var x = (0..8).random()
-        options[1] = ques[x]
-        ques[x] = ques[8]
+        var randonNumber = (0..8).random()
+        options[1] = ques[randonNumber]
+        ques[randonNumber] = ques[8]
 
-        x = (0..7).random()
-        options[2] = ques[x]
-        ques[x] = ques[7]
+        randonNumber = (0..7).random()
+        options[2] = ques[randonNumber]
+        ques[randonNumber] = ques[7]
 
-        x = (0..6).random()
-        options[3] = ques[x]
+        randonNumber = (0..6).random()
+        options[3] = ques[randonNumber]
         return options
     }
 }

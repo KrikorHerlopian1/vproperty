@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.biometric.BiometricManager
@@ -34,7 +33,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 
 /*
-    Login Page implemented here. Email, Password to enter. Or login via google account. Or if user previously logged in with email username
+    Login Page implemented here. Email, Password to enter. Or login via google account.Or login with facebook account.
+    Or if user previously logged in with email username
     his credentials are stored on phone and next time is given fingerprint login option ( provided he has fingerprints enrolled, and hardware).
     Two Buttons on the page as well to take you to registration page, and forgot password page.
     There is validation on username and email, in case user enters invalid email or leaves them empty when clicking login button for email/username.
@@ -46,7 +46,7 @@ class LoginActivity : CustomAppCompatActivity() {
     private lateinit var callbackManager: CallbackManager
     var sharedPref: SharedPreferences? = null
     private fun showProgressDialog() {
-        //hide google login and fingerprint buttons and show curve loader. also disable login button.
+        //hide google/facebook login and fingerprint buttons and show curve loader. also disable login button.
         curveLoader.visibility = View.VISIBLE
         lfingerprint.visibility = View.GONE
         googleLoginButton.visibility = View.GONE
@@ -78,12 +78,10 @@ class LoginActivity : CustomAppCompatActivity() {
                 auth.signInWithCredential(credential)
                     .addOnCompleteListener(this@LoginActivity) { task ->
                         if (task.isSuccessful) {
-                            Log.d("TAG", "signInWithCredential:success")
                             //val user = auth.currentUser
                             loggedInUser = auth.currentUser
                             startHomeMenuActivity()
                         } else {
-                            Log.w("TAG", "signInWithCredential:failure", task.exception)
                             Toasty.error(
                                 this@LoginActivity,
                                 task.exception?.message!!,

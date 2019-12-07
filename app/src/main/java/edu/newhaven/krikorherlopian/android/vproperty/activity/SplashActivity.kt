@@ -11,20 +11,17 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 
 /*
-    Splash screen, every one second am changing the image on screen. An animation at start of application showing
-    different nice real estate images.Once last image reached,I call to start the login page.
+    Splash screen, every one second am changing the image on screen. Once last image reached,I navigate to login page.
+    If user has auto login option enabled, I auto log him directly to the application and skip the splash animation.
  */
 class SplashActivity : CustomAppCompatActivity() {
     var count = 1
     private lateinit var auth: FirebaseAuth
     var sharedPref: SharedPreferences? = null
-    var fromNotification: Boolean? = false
     var sec = 750L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        var bundle: Bundle? = intent.extras
-        fromNotification = bundle?.getBoolean("fromNotification")
         auth = FirebaseAuth.getInstance()
         sharedPref = getSharedPreferences(
             PREFS_FILENAME,

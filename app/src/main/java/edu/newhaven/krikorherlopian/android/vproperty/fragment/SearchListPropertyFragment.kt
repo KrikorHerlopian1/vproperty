@@ -54,18 +54,10 @@ class SearchListPropertyFragment : Fragment(), ListClick {
     }
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
         private const val ARG_SECTION_NUMBER = "section_number"
         private const val ARG_PARAM = "param"
         private const val ARG_MIN = "min"
         private const val ARG_MAX = "max"
-        /**   private const val ARG_SECTION_NUMBER = "section_number"
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         @JvmStatic
         fun newInstance(
             sectionNumber: Int,
@@ -79,7 +71,6 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                     putString(ARG_MIN, min)
                     putString(ARG_MAX, max)
-                    //   putString(ARG_PARAM, param)
                     putSerializable(ARG_PARAM, paramP)
                 }
             }

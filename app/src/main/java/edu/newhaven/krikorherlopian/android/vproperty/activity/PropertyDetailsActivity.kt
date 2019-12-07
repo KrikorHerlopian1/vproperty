@@ -45,7 +45,6 @@ import java.io.IOException
 class PropertyDetailsActivity : CustomAppCompatActivity(), OnMapReadyCallback,
     ActivityFunctionalities {
     lateinit var prop: Property
-    var imagePath = ""
     override fun closeActivity() {
         finish()
     }

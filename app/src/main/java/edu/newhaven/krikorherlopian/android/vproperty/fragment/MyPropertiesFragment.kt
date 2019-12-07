@@ -169,7 +169,6 @@ class MyPropertiesFragment : Fragment(), ListClick {
             }
             .addOnFailureListener { e ->
             }
-        // list.add(position, prop)
         adapter.add(position, prop)
     }
 

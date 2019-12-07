@@ -206,8 +206,30 @@ class FilterFragment : Fragment(), ListClick {
         root?.recyclerView?.adapter = adapter
     }
 
+    fun setUpExpand(view1: ImageView, view2: View) {
+        view1.setOnClickListener {
+            if (view2.visibility == View.VISIBLE) {
+                collapse(view2)
+                view1.setImageResource(R.drawable.arrowdown)
+            } else {
+                view1.setImageResource(R.drawable.right)
+                expand(view2)
+            }
+        }
+    }
     fun setUpExpandableLayouts() {
-
+        setUpExpand(root?.arrowdown_hometype!!, root?.recyclerView!!)
+        setUpExpand(root?.arrowdown_homefacts!!, root?.homeFactLayout!!)
+        setUpExpand(root?.arrowdown_appliances!!, root?.applianceslayout!!)
+        setUpExpand(root?.arrowdown_floor!!, root?.floorcoveringlayout!!)
+        setUpExpand(root?.arrowdown_room!!, root?.roomdetailslayout!!)
+        setUpExpand(root?.arrowdown_building!!, root?.buildingam!!)
+        setUpExpand(root?.arrowdown_exterior!!, root?.exteriorlayout!!)
+        setUpExpand(root?.arrow_outdoor!!, root?.outdoorlayout!!)
+        setUpExpand(root?.arrow_parking!!, root?.parkinglayout!!)
+        setUpExpand(root?.arrow_cooling!!, root?.coolinglayout!!)
+        setUpExpand(root?.arrow_heating!!, root?.heatingtypelayout!!)
+        /*
         root?.arrowdown_hometype?.setOnClickListener {
             if (root?.recyclerView?.visibility == View.VISIBLE) {
                 collapse(root?.recyclerView!!)
@@ -245,6 +267,8 @@ class FilterFragment : Fragment(), ListClick {
                 expand(root?.floorcoveringlayout!!)
             }
         }
+
+
 
         root?.arrowdown_room?.setOnClickListener {
             if (root?.roomdetailslayout?.visibility == View.VISIBLE) {
@@ -284,6 +308,7 @@ class FilterFragment : Fragment(), ListClick {
                 expand(root?.outdoorlayout!!)
             }
         }
+
         root?.arrow_parking?.setOnClickListener {
             if (root?.parkinglayout?.visibility == View.VISIBLE) {
                 collapse(root?.parkinglayout!!)
@@ -311,7 +336,7 @@ class FilterFragment : Fragment(), ListClick {
                 root?.arrow_heating?.setImageResource(R.drawable.right)
                 expand(root?.heatingtypelayout!!)
             }
-        }
+        }*/
     }
 
     fun collapse(v: View) {

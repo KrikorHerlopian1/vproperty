@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -253,16 +252,6 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
             when (requestCode) {
                 CroperinoConfig.REQUEST_TAKE_PHOTO ->
                     if (resultCode == Activity.RESULT_OK) {
-                        /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
-                        /* Croperino.runCropImage(
-                             CroperinoFileUtil.getTempFile(),
-                             this@AddPropertyStepperActivity,
-                             true,
-                             1,
-                             1,
-                             R.color.gray,
-                             R.color.gray_variant
-                         )*/
                         CroperinoFileUtil.newGalleryFile(data, this@AddPropertyStepperActivity)
                         Croperino.runCropImage(
                             photoFile,
@@ -332,80 +321,7 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
                                 addressName.setText(add)
                             }
                         }
-
-
-                        var apiService = getSecondClient().create(ApiInterface::class.java)
-                        var initialAddress = cityName.substringAfter(',')
-                        var statePlace = initialAddress.substringBefore(',')
-                        var zipeCode = initialAddress.substringAfter(',').substringBefore(',')
-                        val responseBodyCall = apiService.zestimate(
-                            "X1-ZWz1hi41bwnksr_5p30l",
-                            "" + address.substringBefore(','),
-                            "" + statePlace + "," + zipeCode,
-                            "true"
-                        )
-                        responseBodyCall.enqueue(object : Callback<okhttp3.ResponseBody> {
-                            override fun onResponse(
-                                call: retrofit2.Call<okhttp3.ResponseBody>,
-                                response: retrofit2.Response<okhttp3.ResponseBody>
-                            ) {
-                                if (response.isSuccessful) {
-                                    try {
-                                        var responseData = response.body()!!.string()
-                                        var doc = loadXMLFromString(responseData)
-                                        var nodeList =
-                                            doc.documentElement.getElementsByTagName("rentzestimate")
-                                        var minPrice = 0f
-                                        var maxPrice = 0f
-                                        for (i in 1..(nodeList.length - 1)) {
-                                            var nNode = nodeList.item(i)
-                                            var eElement = nNode as Element
-                                            if (i == 1) {
-                                                maxPrice = eElement.getElementsByTagName("amount")
-                                                    .item(0)
-                                                    .textContent.toFloat()
-                                                minPrice = eElement.getElementsByTagName("amount")
-                                                    .item(0)
-                                                    .textContent.toFloat()
-                                            }
-                                            if (maxPrice <= eElement.getElementsByTagName("amount")
-                                                    .item(0)
-                                                    .textContent.toFloat()
-                                            ) {
-                                                maxPrice = eElement.getElementsByTagName("amount")
-                                                    .item(0)
-                                                    .textContent.toFloat()
-                                            }
-                                            if (minPrice >= eElement.getElementsByTagName("amount")
-                                                    .item(0)
-                                                    .textContent.toFloat()
-                                            ) {
-                                                minPrice = eElement.getElementsByTagName("amount")
-                                                    .item(0)
-                                                    .textContent.toFloat()
-                                            }
-                                        }
-                                        if (minPrice > 0f) {
-                                            Toasty.success(
-                                                this@AddPropertyStepperActivity,
-                                                "" + resources.getString(R.string.estimate) + " " + minPrice + " & " + maxPrice + " USD",
-                                                Toast.LENGTH_LONG,
-                                                true
-                                            ).show()
-                                        }
-                                    } catch (e: java.lang.Exception) {
-                                    }
-
-                                }
-                            }
-
-                            override fun onFailure(
-                                call: retrofit2.Call<okhttp3.ResponseBody>,
-                                t: Throwable
-                            ) {
-                            }
-                        })
-
+                        checkZillowRentPrice(cityName, address)
                     } catch (e: Exception) {
                     }
 
@@ -413,11 +329,86 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
 
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
-            Log.d("RESULT****", "CANCELLED")
+            //canceled
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+
+    fun checkZillowRentPrice(cityName: String, address: String) {
+        var apiService = getSecondClient().create(ApiInterface::class.java)
+        var initialAddress = cityName.substringAfter(',')
+        var statePlace = initialAddress.substringBefore(',')
+        var zipeCode = initialAddress.substringAfter(',').substringBefore(',')
+        val responseBodyCall = apiService.zestimate(
+            "X1-ZWz1hi41bwnksr_5p30l",
+            "" + address.substringBefore(','),
+            "" + statePlace + "," + zipeCode,
+            "true"
+        )
+        responseBodyCall.enqueue(object : Callback<okhttp3.ResponseBody> {
+            override fun onResponse(
+                call: retrofit2.Call<okhttp3.ResponseBody>,
+                response: retrofit2.Response<okhttp3.ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    try {
+                        var responseData = response.body()!!.string()
+                        var doc = loadXMLFromString(responseData)
+                        var nodeList =
+                            doc.documentElement.getElementsByTagName("rentzestimate")
+                        var minPrice = 0f
+                        var maxPrice = 0f
+                        for (i in 1..(nodeList.length - 1)) {
+                            var nNode = nodeList.item(i)
+                            var eElement = nNode as Element
+                            if (i == 1) {
+                                maxPrice = eElement.getElementsByTagName("amount")
+                                    .item(0)
+                                    .textContent.toFloat()
+                                minPrice = eElement.getElementsByTagName("amount")
+                                    .item(0)
+                                    .textContent.toFloat()
+                            }
+                            if (maxPrice <= eElement.getElementsByTagName("amount")
+                                    .item(0)
+                                    .textContent.toFloat()
+                            ) {
+                                maxPrice = eElement.getElementsByTagName("amount")
+                                    .item(0)
+                                    .textContent.toFloat()
+                            }
+                            if (minPrice >= eElement.getElementsByTagName("amount")
+                                    .item(0)
+                                    .textContent.toFloat()
+                            ) {
+                                minPrice = eElement.getElementsByTagName("amount")
+                                    .item(0)
+                                    .textContent.toFloat()
+                            }
+                        }
+                        if (minPrice > 0f) {
+                            Toasty.success(
+                                this@AddPropertyStepperActivity,
+                                "" + resources.getString(R.string.estimate) + " " + minPrice + " & " + maxPrice + " USD",
+                                Toast.LENGTH_LONG,
+                                true
+                            ).show()
+                        }
+                    } catch (e: java.lang.Exception) {
+                    }
+
+                }
+            }
+
+            override fun onFailure(
+                call: retrofit2.Call<okhttp3.ResponseBody>,
+                t: Throwable
+            ) {
+            }
+        })
+
+    }
     fun loadXMLFromString(xml: String): Document {
         var factory = DocumentBuilderFactory.newInstance()
         var builder = factory.newDocumentBuilder()
