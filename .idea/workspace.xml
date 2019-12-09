@@ -15,14 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="675e4df6-2a73-4081-b2fb-c9608055fb6b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/CustomAppCompatActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/CustomAppCompatActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ForgotPasswordActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ForgotPasswordActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/SearchActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/SearchActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ShowImageActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ShowImageActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,43 +96,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ForgotPasswordActivity.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/CustomAppCompatActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="26" column="74" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/SearchActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="34" column="69" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
-              <folding>
-                <element signature="e#65#507#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="240">
+              <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ShowImageActivity.kt">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-              <folding>
-                <element signature="e#65#335#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -253,7 +222,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/SearchListPropertyFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/RegisterActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/MyFirebaseMessagingService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/fragment/ViewPagerPropertiesFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/chatbot/ChatbotFragment.java" />
@@ -263,6 +231,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/PropertyDetailsActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/SearchActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ShowImageActivity.kt" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
@@ -356,83 +325,6 @@
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="vproperty" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="VProperty" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/AndroidStudioProjects/VProperty" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="edu" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="newhaven" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="krikorherlopian" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="vproperty" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="activity" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -629,13 +521,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568725100881</updated>
-    </task>
-    <task id="LOCAL-00185" summary="manifest change">
-      <created>1574916282969</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1574916282969</updated>
     </task>
     <task id="LOCAL-00186" summary="manifest change">
       <created>1574962169987</created>
@@ -973,7 +858,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575910891979</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="final commit">
+      <created>1575911357995</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1575911357995</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1022,7 +914,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33480176" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -1039,7 +931,7 @@
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.32949308" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.502832" side_tool="true" weight="0.3283237" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Build" order="9" sideWeight="0.49779737" visible="true" weight="0.32601157" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49779737" weight="0.32601157" />
       <window_info anchor="bottom" id="Find" order="10" weight="0.3283237" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32947975" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -1192,13 +1084,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="354" column="28" lean-forward="true" selection-start-line="354" selection-start-column="28" selection-end-line="354" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1429,13 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/CustomAppCompatActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/AddPropertyStepperActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -1469,11 +1347,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/ShowImageActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        <state relative-caret-position="150">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
           <folding>
             <element signature="e#65#335#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/newhaven/krikorherlopian/android/vproperty/activity/CustomAppCompatActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
         </state>
       </provider>
     </entry>
