@@ -54,7 +54,7 @@ class PropertyDetailsActivity : CustomAppCompatActivity(), OnMapReadyCallback,
         setContentView(R.layout.property_details)
         activityFunctionalities = this
         prop = intent.getSerializableExtra("argPojo") as Property
-        setUpToolbar(toolbar)
+        setUpToolbar(toolbar, prop.houseName)
         Picasso.get()
             .load(prop.photoUrl)
             .placeholder(R.drawable.placeholderdetail)

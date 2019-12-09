@@ -18,7 +18,7 @@ class ShowImageActivity : CustomAppCompatActivity() {
             var url = bundle?.getString("url")
             var text = bundle?.getString("text")
             title = bundle?.getString("title")
-            setUpToolbar(toolbar)
+            setUpToolbar(toolbar, title!!)
             val handler = Handler()
             handler.postDelayed(object : Runnable {
                 override fun run() {

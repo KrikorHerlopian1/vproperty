@@ -32,7 +32,7 @@ class SearchActivity : CustomAppCompatActivity() {
             val fragmentManager = supportFragmentManager
             fragmentManager.beginTransaction()
                 .replace(R.id.frame_container, fragment).commit()
-            setUpToolbar(toolbar)
+            setUpToolbar(toolbar, resources.getString(R.string.search))
 
             menu_layout.setOnClickListener {
                 when (machine.state) {

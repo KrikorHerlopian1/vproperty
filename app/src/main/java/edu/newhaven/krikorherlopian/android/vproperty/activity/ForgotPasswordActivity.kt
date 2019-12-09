@@ -24,7 +24,7 @@ class ForgotPasswordActivity : CustomAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
-        setUpToolbar(toolbar)
+        setUpToolbar(toolbar, resources.getString(R.string.forgot_password))
         setUpFonts()
         auth = FirebaseAuth.getInstance()
         forgotPasswordButton.setOnClickListener {

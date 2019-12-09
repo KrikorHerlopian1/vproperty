@@ -67,7 +67,7 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.stepper)
-        setUpToolbar(toolbar)
+        setUpToolbar(toolbar, "")
         machine.state = addModifyProperty
         try {
             //in case property to be edited, we would get all our property properties needed here.
