@@ -36,7 +36,7 @@ class ViewPagerPropertiesFragment : Fragment() {
                         }
                         //.addTestDevice("A70D704E7B6A63E4EC37DC500C5F87F2")
                         val adRequest =
-                            AdRequest.Builder().addTestDevice("A70D704E7B6A63E4EC37DC500C5F87F2")
+                            AdRequest.Builder()
                                 .build()
                         root?.adView?.loadAd(adRequest)
                         root?.adView?.adListener = object : AdListener() {
