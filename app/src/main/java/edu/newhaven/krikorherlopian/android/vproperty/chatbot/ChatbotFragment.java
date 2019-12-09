@@ -61,7 +61,7 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.Property;
 public class ChatbotFragment extends Fragment {
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static final int RECORD_REQUEST_CODE = 101;
-    private static String TAG = "MainActivity";
+    private static String TAG = "ChatboFragment";
     StreamPlayer streamPlayer = new StreamPlayer();
     private RecyclerView recyclerView;
     private ChatAdapter mAdapter;
