@@ -45,7 +45,6 @@ class SearchListFragment : Fragment() {
                     try {
                         MobileAds.initialize(activity!!) {
                         }
-                        //.addTestDevice("A70D704E7B6A63E4EC37DC500C5F87F2")
                         val adRequest =
                             AdRequest.Builder().addTestDevice("A70D704E7B6A63E4EC37DC500C5F87F2")
                                 .build()
@@ -88,17 +87,9 @@ class SearchListFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
         private const val ARG_PARAM = "param"
         private const val ARG_MIN = "0"
         private const val ARG_MAX = "1"
-        /**   private const val ARG_SECTION_NUMBER = "section_number"
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         @JvmStatic
         fun newInstance(
             sectionNumber: Int,

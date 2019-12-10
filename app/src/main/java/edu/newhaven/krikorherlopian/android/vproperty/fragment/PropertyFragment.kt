@@ -329,7 +329,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    //
     private fun onLocationChanged(location: Location) {
         try {
             if (prevLocation != null) {
@@ -367,15 +366,6 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                 prevLocation = location
             }
 
-
-            /* mMap.moveCamera(
-                 CameraUpdateFactory.newLatLng(
-                     LatLng(
-                         location.latitude,
-                         location.longitude
-                     )
-                 )
-             )*/
         } catch (e: java.lang.Exception) {
         }
     }

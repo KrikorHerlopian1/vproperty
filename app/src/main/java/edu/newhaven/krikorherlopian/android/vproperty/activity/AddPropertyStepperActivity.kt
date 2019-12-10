@@ -440,7 +440,6 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
         }
         dialogView.camera.setOnClickListener {
             dispatchTakePictureIntent()
-            //Croperino.prepareCamera(this@AddPropertyStepperActivity)
             alert.dismiss()
         }
         dialogView.gallery.setOnClickListener {

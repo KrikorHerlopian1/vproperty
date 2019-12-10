@@ -124,7 +124,6 @@ class StepHomeType(context: Context, listener: OnNavigationBarListener, var prop
             v?.recyclerView?.apply {
                 layoutManager = GridLayoutManager(context, 2)
             }
-            //  v?.recyclerView?.layoutManager = LinearLayoutManager(context)
             v?.recyclerView?.itemAnimator = DefaultItemAnimator()
             v?.recyclerView?.adapter = adapter
 

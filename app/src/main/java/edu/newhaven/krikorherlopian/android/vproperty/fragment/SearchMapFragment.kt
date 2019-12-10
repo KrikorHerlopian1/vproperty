@@ -624,7 +624,6 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    //
     private fun onLocationChanged(location: Location) {
         try {
             if (prevLocation != null) {
@@ -719,17 +718,9 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
 
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
         private const val ARG_PARAM = "param"
         private const val ARG_MIN = "0"
         private const val ARG_MAX = "1"
-        /**   private const val ARG_SECTION_NUMBER = "section_number"
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         @JvmStatic
         fun newInstance(
             sectionNumber: Int,

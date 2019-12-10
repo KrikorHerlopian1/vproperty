@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class RequestNotificaton {
 
-    @SerializedName("token") //  "to" changed to token
+    @SerializedName("token")
     var token: String? = null
 
     @SerializedName("notification")

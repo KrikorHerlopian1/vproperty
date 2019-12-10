@@ -20,10 +20,7 @@ private val TAB_VALUES = arrayOf(
     "price"
 )
 
-/**
- * A [FragmentPagerAdapter] that returns a fragment corresponding to
- * one of the sections/tabs/pages.
- */
+
 class SearchTabViewPagerAdapter(
     private val context: Context,
     fm: FragmentManager,
@@ -34,8 +31,6 @@ class SearchTabViewPagerAdapter(
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
         return SearchListPropertyFragment.newInstance(
             position + 1,
             TAB_VALUES[position],

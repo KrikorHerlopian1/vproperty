@@ -315,7 +315,6 @@ class LoginActivity : CustomAppCompatActivity() {
                 password.setText(data.getStringExtra("pass"))
                 fingerPrintSetup()
             }
-            // login(email.text.toString(), password.text.toString(), true)
         } else {
             // Pass the activity result back to the Facebook SDK
             callbackManager.onActivityResult(requestCode, resultCode, data)
@@ -418,7 +417,6 @@ class LoginActivity : CustomAppCompatActivity() {
 
             val biometricManager = this.getSystemService(BiometricManager::class.java)
             if (biometricManager != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                // canAuthenticate ()
                 // Determine if biometrics can be used. In other words, determine if BiometricPrompt can be expected to be shown (hardware available, templates enrolled, user-enabled).
                 hardwareDetected =
                     (biometricManager.canAuthenticate() === BiometricManager.BIOMETRIC_SUCCESS)

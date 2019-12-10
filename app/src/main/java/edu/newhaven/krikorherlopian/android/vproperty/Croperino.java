@@ -22,9 +22,7 @@ import com.mikelau.croperino.InternalStorageContentProvider;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Mike on 9/15/2016.
- */
+
 public class Croperino {
 
     static public Uri mImageCaptureUri;

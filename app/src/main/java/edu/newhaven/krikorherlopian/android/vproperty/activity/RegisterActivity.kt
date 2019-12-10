@@ -83,7 +83,6 @@ class RegisterActivity : CustomAppCompatActivity() {
             alert.dismiss()
         }
         dialogView.camera.setOnClickListener {
-            // Croperino.prepareCamera(this@RegisterActivity)
             dispatchTakePictureIntent()
             alert.dismiss()
         }
@@ -328,7 +327,6 @@ class RegisterActivity : CustomAppCompatActivity() {
         when (requestCode) {
             CroperinoConfig.REQUEST_TAKE_PHOTO ->
                 if (resultCode == Activity.RESULT_OK) {
-                    /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
                     CroperinoFileUtil.newGalleryFile(data, this@RegisterActivity)
                     Croperino.runCropImage(
                         photoFile,

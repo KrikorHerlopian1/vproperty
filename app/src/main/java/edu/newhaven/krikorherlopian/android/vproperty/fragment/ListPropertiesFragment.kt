@@ -44,10 +44,6 @@ class ListPropertiesFragment : Fragment(), ListClick {
     }
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
         private const val ARG_SECTION_NUMBER = "section_number"
         private const val ARG_PARAM = "param"
 
@@ -83,7 +79,6 @@ class ListPropertiesFragment : Fragment(), ListClick {
             layoutManager = layoutManager1
         }
 
-        // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
         root?.recyclerView?.itemAnimator = DefaultItemAnimator()
         root?.recyclerView?.adapter = adapter
 

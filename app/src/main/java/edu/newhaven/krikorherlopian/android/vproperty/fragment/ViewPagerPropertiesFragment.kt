@@ -34,7 +34,6 @@ class ViewPagerPropertiesFragment : Fragment() {
                     try {
                         MobileAds.initialize(activity!!) {
                         }
-                        //.addTestDevice("A70D704E7B6A63E4EC37DC500C5F87F2")
                         val adRequest =
                             AdRequest.Builder()
                                 .build()

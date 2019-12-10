@@ -398,7 +398,6 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                             }
                         layoutManager = layoutManager1
                     }
-                    // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
                     root?.recyclerView?.itemAnimator = DefaultItemAnimator()
                     root?.recyclerView?.adapter = adapter
                     if (list.size > 0)
@@ -443,7 +442,6 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                                         }
                                     layoutManager = layoutManager1
                                 }
-                                // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
                                 root?.recyclerView?.itemAnimator = DefaultItemAnimator()
                                 root?.recyclerView?.adapter = adapter
                                 if (list.size > 0)
@@ -470,7 +468,6 @@ class SearchListPropertyFragment : Fragment(), ListClick {
                             }
                         layoutManager = layoutManager1
                     }
-                    // root?.recyclerView?.layoutManager = LinearLayoutManager(root?.context)
                     root?.recyclerView?.itemAnimator = DefaultItemAnimator()
                     root?.recyclerView?.adapter = adapter
                     if (list.size > 0)

@@ -204,7 +204,6 @@ public class ChatbotFragment extends Fragment {
                 }
             }
         }
-        // if (!permissionToRecordAccepted ) finish();
 
     }
 

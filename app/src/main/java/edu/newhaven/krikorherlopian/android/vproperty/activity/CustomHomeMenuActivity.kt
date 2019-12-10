@@ -58,8 +58,6 @@ class CustomHomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommun
         var displayName = bundle.getString("displayName")
         var email = bundle.getString("email")
         var page = bundle.getInt("page", 0)
-        //setUpPermissions(this)
-        //prepareCroperino()
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open,
@@ -230,16 +228,6 @@ class CustomHomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommun
         when (requestCode) {
             CroperinoConfig.REQUEST_TAKE_PHOTO ->
                 if (resultCode == Activity.RESULT_OK) {
-                    /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
-                    /* Croperino.runCropImage(
-                         CroperinoFileUtil.getTempFile(),
-                         this@CustomHomeMenuActivity,
-                         true,
-                         1,
-                         1,
-                         R.color.gray,
-                         R.color.gray_variant
-                     )*/
                     CroperinoFileUtil.newGalleryFile(data, this@CustomHomeMenuActivity)
                     Croperino.runCropImage(
                         photoFile,

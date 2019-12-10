@@ -58,9 +58,7 @@ class MyPropertiesFragment : Fragment(), ListClick {
 
         val swipeHandler = object : SwipeToDeleteCallback(context!!) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                //val adapter = root?.recyclerView?.adapter AS
                 deleteRow(viewHolder.adapterPosition)
-                //adapter.removeAt(viewHolder.adapterPosition)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)

@@ -53,8 +53,6 @@ class HomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommunicatio
         setContentView(R.layout.activity_menu)
         setSupportActionBar(toolbar)
         fragmentActivityCommunication = this
-        //setUpPermissions(this)
-        //prepareCroperino()
         var bundle: Bundle? = intent.extras
         var photoUrl = bundle!!.getString("photoUrl")
         var displayName = bundle.getString("displayName")
@@ -109,11 +107,6 @@ class HomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommunicatio
     }
 
     override fun addProfileButtonClicked() {
-        /*Croperino.prepareChooser(
-            this@RegisterActivity,
-            "" + resources.getString(R.string.capture_photo),
-            ContextCompat.getColor(this@RegisterActivity, R.color.colorPrimaryDark)
-        )*/
         val alerBuilder = AlertDialog.Builder(this@HomeMenuActivity)
         val dialogView = layoutInflater.inflate(R.layout.custom_croperino_dialog, null)
 
@@ -125,7 +118,6 @@ class HomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommunicatio
             alert.dismiss()
         }
         dialogView.camera.setOnClickListener {
-            //  edu.newhaven.krikorherlopian.android.vproperty.Croperino.prepareCamera(this@HomeMenuActivity)
             dispatchTakePictureIntent()
             alert.dismiss()
         }
@@ -241,16 +233,6 @@ class HomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommunicatio
         when (requestCode) {
             CroperinoConfig.REQUEST_TAKE_PHOTO ->
                 if (resultCode == Activity.RESULT_OK) {
-                    /* Parameters of runCropImage = File, Activity Context, Image is Scalable or Not, Aspect Ratio X, Aspect Ratio Y, Button Bar Color, Background Color */
-                    /*      Croperino.runCropImage(
-                         edu.newhaven.krikorherlopian.android.vproperty.Croperino.mImageCaptureUri.toFile(),
-                         this@HomeMenuActivity,
-                         true,
-                         1,
-                         1,
-                         R.color.gray,
-                         R.color.gray_variant
-                     )*/
                     CroperinoFileUtil.newGalleryFile(data, this@HomeMenuActivity)
                     Croperino.runCropImage(
                         photoFile,
