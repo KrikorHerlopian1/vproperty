@@ -3,14 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.newhaven.krikorherlopian.android.vproperty">
 
-
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
         android:xlargeScreens="true" />
-
     <uses-feature
         android:name="android.hardware.fingerprint"
         android:required="false" />
