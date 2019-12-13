@@ -7,3 +7,4 @@ data class Address(
     var zipCode: String = "", var longitude: String = "",
     var latitude: String = "", var descriptionAddress: String = ""
 ) : Serializable
+
