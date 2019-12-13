@@ -9,7 +9,6 @@ import edu.newhaven.krikorherlopian.android.vproperty.fragment.SearchMapFragment
 import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.search_layout.*
 
-
 class SearchActivity : CustomAppCompatActivity() {
     var title: String? = ""
     lateinit var prop: Property
