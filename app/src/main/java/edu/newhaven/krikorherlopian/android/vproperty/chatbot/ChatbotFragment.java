@@ -299,7 +299,6 @@ public class ChatbotFragment extends Fragment {
                                     mAdapter.notifyDataSetChanged();
                                     if (mAdapter.getItemCount() > 1) {
                                         recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount() - 1);
-
                                     }
 
                                 }

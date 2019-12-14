@@ -432,8 +432,6 @@ class PropertyDetailsActivity : CustomAppCompatActivity(), OnMapReadyCallback,
             if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
             }
-        } else if (id == R.id.share) {
-            takeScreenshot()
         }
         return super.onOptionsItemSelected(item)
     }
