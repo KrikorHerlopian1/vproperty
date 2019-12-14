@@ -10,7 +10,6 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import com.anupcowkur.statelin.Machine
 import com.bumptech.glide.Glide
@@ -23,8 +22,10 @@ import com.mikelau.croperino.Croperino
 import com.mikelau.croperino.CroperinoConfig
 import com.mikelau.croperino.CroperinoFileUtil
 import com.schibstedspain.leku.*
+import com.squareup.picasso.Picasso
 import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError
+import com.theartofdev.edmodo.cropper.CropImageView
 import edu.newhaven.krikorherlopian.android.vproperty.*
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.adapter.MyStepperAdapter
@@ -34,7 +35,6 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.add_property.*
 import kotlinx.android.synthetic.main.add_property.toolbar
-import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_step_home_address.addressName
 import kotlinx.android.synthetic.main.fragment_step_home_address.latitudeInput
 import kotlinx.android.synthetic.main.fragment_step_home_address.longitudeInput
@@ -250,6 +250,18 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && data != null) {
             when (requestCode) {
+                com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                    val result = com.theartofdev.edmodo.cropper.CropImage.getActivityResult(data)
+                    if (resultCode == Activity.RESULT_OK) {
+                        Picasso.get()
+                            .load(result.uri)
+                            .placeholder(R.drawable.profileplaceholder)
+                            .error(R.drawable.profileplaceholder)
+                            .fit()
+                            .into(picture!!)
+
+                    }
+                }
                 CroperinoConfig.REQUEST_TAKE_PHOTO ->
                     if (resultCode == Activity.RESULT_OK) {
                         CroperinoFileUtil.newGalleryFile(data, this@AddPropertyStepperActivity)
@@ -428,24 +440,10 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
 
     //open custom dialog for user to choose between selecting photo from gallery or take a photo from camera.
     override fun addPictureClicked() {
-        val alerBuilder = AlertDialog.Builder(this@AddPropertyStepperActivity)
-        val dialogView = layoutInflater.inflate(R.layout.custom_croperino_dialog, null)
-
-        alerBuilder.setView(dialogView)
-        val alert = alerBuilder.setCancelable(true).setTitle("").create()
-        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
-        alert.show()
-        dialogView.close.setOnClickListener {
-            alert.dismiss()
-        }
-        dialogView.camera.setOnClickListener {
-            dispatchTakePictureIntent()
-            alert.dismiss()
-        }
-        dialogView.gallery.setOnClickListener {
-            Croperino.prepareGallery(this@AddPropertyStepperActivity)
-            alert.dismiss()
-        }
+        com.theartofdev.edmodo.cropper.CropImage.activity()
+            .setGuidelines(CropImageView.Guidelines.ON)
+            .setAspectRatio(1, 1)
+            .start(this)
     }
 
     override fun addHomeFacts(

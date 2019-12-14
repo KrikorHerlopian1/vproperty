@@ -17,8 +17,8 @@ android {
         applicationId "edu.newhaven.krikorherlopian.android.vproperty"
         minSdkVersion 24
         targetSdkVersion 28
-        versionCode 7
-        versionName "1.0.6"
+        versionCode 8
+        versionName "1.0.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -100,6 +100,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx:19.1.0'
     //crop images library
     implementation 'com.github.mike14u:croperino:1.1.8'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
+
     //arc navigation drawer
     implementation 'com.rom4ek:arcnavigationview:1.0.3'
 

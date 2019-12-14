@@ -404,13 +404,19 @@ public class ChatbotFragment extends Fragment {
     }
 
     private void showError(final Exception e) {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(root.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-            }
-        });
+        try {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Toast.makeText(root.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    } catch (Exception e2) {
+                    }
+                }
+            });
+        } catch (Exception e1) {
+        }
+
     }
 
     private class SayTask extends AsyncTask<String, Void, String> {

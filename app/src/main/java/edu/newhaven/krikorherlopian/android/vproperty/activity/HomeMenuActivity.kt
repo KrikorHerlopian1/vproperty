@@ -12,7 +12,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
@@ -26,6 +25,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.mikelau.croperino.Croperino
 import com.mikelau.croperino.CroperinoConfig
 import com.mikelau.croperino.CroperinoFileUtil
+import com.squareup.picasso.Picasso
+import com.theartofdev.edmodo.cropper.CropImageView
 import edu.newhaven.krikorherlopian.android.vproperty.R
 import edu.newhaven.krikorherlopian.android.vproperty.fragmentActivityCommunication
 import edu.newhaven.krikorherlopian.android.vproperty.interfaces.FragmentActivityCommunication
@@ -34,7 +35,6 @@ import edu.newhaven.krikorherlopian.android.vproperty.model.Property
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.custom_croperino_dialog.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.io.File
 import java.io.IOException
@@ -107,24 +107,10 @@ class HomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommunicatio
     }
 
     override fun addProfileButtonClicked() {
-        val alerBuilder = AlertDialog.Builder(this@HomeMenuActivity)
-        val dialogView = layoutInflater.inflate(R.layout.custom_croperino_dialog, null)
-
-        alerBuilder.setView(dialogView)
-        val alert = alerBuilder.setCancelable(true).setTitle("").create()
-        alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
-        alert.show()
-        dialogView.close.setOnClickListener {
-            alert.dismiss()
-        }
-        dialogView.camera.setOnClickListener {
-            dispatchTakePictureIntent()
-            alert.dismiss()
-        }
-        dialogView.gallery.setOnClickListener {
-            Croperino.prepareGallery(this@HomeMenuActivity)
-            alert.dismiss()
-        }
+        com.theartofdev.edmodo.cropper.CropImage.activity()
+            .setGuidelines(CropImageView.Guidelines.ON)
+            .setAspectRatio(1, 1)
+            .start(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -231,6 +217,18 @@ class HomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommunicatio
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
+            com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                val result = com.theartofdev.edmodo.cropper.CropImage.getActivityResult(data)
+                if (resultCode == Activity.RESULT_OK) {
+                    Picasso.get()
+                        .load(result.uri)
+                        .placeholder(R.drawable.profileplaceholder)
+                        .error(R.drawable.profileplaceholder)
+                        .fit()
+                        .into(profile_image!!)
+
+                }
+            }
             CroperinoConfig.REQUEST_TAKE_PHOTO ->
                 if (resultCode == Activity.RESULT_OK) {
                     CroperinoFileUtil.newGalleryFile(data, this@HomeMenuActivity)

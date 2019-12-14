@@ -28,6 +28,8 @@ import com.google.firebase.storage.UploadTask
 import com.mikelau.croperino.Croperino
 import com.mikelau.croperino.CroperinoConfig
 import com.mikelau.croperino.CroperinoFileUtil
+import com.squareup.picasso.Picasso
+import com.theartofdev.edmodo.cropper.CropImageView
 import edu.newhaven.krikorherlopian.android.vproperty.*
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_register.*
@@ -66,7 +68,12 @@ class RegisterActivity : CustomAppCompatActivity() {
             registerButtonClicked()
         }
         profile_image.setOnClickListener {
-            addProfileButtonClicked()
+            com.theartofdev.edmodo.cropper.CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setAspectRatio(1, 1)
+                .start(this)
+
+            // addProfileButtonClicked()
         }
     }
 
@@ -325,6 +332,18 @@ class RegisterActivity : CustomAppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
+            com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                val result = com.theartofdev.edmodo.cropper.CropImage.getActivityResult(data)
+                if (resultCode == Activity.RESULT_OK) {
+                    Picasso.get()
+                        .load(result.uri)
+                        .placeholder(R.drawable.profileplaceholder)
+                        .error(R.drawable.profileplaceholder)
+                        .fit()
+                        .into(profile_image!!)
+
+                }
+            }
             CroperinoConfig.REQUEST_TAKE_PHOTO ->
                 if (resultCode == Activity.RESULT_OK) {
                     CroperinoFileUtil.newGalleryFile(data, this@RegisterActivity)
