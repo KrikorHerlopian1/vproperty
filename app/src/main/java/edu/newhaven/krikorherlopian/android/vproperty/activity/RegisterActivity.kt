@@ -72,8 +72,6 @@ class RegisterActivity : CustomAppCompatActivity() {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setAspectRatio(1, 1)
                 .start(this)
-
-            // addProfileButtonClicked()
         }
     }
 

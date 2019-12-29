@@ -41,29 +41,6 @@ class ViewPagerPropertiesFragment : Fragment() {
                         root?.adView?.adListener = object : AdListener() {
                             override fun onAdLoaded() {
                                 root?.adView?.visibility = View.VISIBLE
-                                // Code to be executed when an ad finishes loading.
-                            }
-
-                            override fun onAdFailedToLoad(errorCode: Int) {
-                                // Code to be executed when an ad request fails
-                            }
-
-                            override fun onAdOpened() {
-                                // Code to be executed when an ad opens an overlay that
-                                // covers the screen.
-                            }
-
-                            override fun onAdClicked() {
-                                // Code to be executed when the user clicks on an ad.
-                            }
-
-                            override fun onAdLeftApplication() {
-                                // Code to be executed when the user has left the app.
-                            }
-
-                            override fun onAdClosed() {
-                                // Code to be executed when the user is about to return
-                                // to the app after tapping on an ad.
                             }
                         }
                     } catch (e: Exception) {

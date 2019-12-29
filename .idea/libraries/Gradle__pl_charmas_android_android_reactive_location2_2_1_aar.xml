@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: pl.charmas.android:android-reactive-location2:2.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2e969d4ef613e5fc23526671bb8ce9dd/jetified-android-reactive-location2-2.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2e969d4ef613e5fc23526671bb8ce9dd/jetified-android-reactive-location2-2.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc1d79af9ee94db1cc6f473edef0460a/jetified-android-reactive-location2-2.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc1d79af9ee94db1cc6f473edef0460a/jetified-android-reactive-location2-2.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/pl.charmas.android/android-reactive-location2/2.1/e4e8a4f54398187f7461cad3abfc9833ec996f0/android-reactive-location2-2.1-javadoc.jar!/" />

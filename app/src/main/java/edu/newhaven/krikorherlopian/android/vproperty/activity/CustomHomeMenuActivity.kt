@@ -54,10 +54,7 @@ class CustomHomeMenuActivity : CustomAppCompatActivity(), FragmentActivityCommun
         setSupportActionBar(toolbar)
         fragmentActivityCommunication = this
         var bundle: Bundle? = intent.extras
-        var photoUrl = bundle!!.getString("photoUrl")
-        var displayName = bundle.getString("displayName")
-        var email = bundle.getString("email")
-        var page = bundle.getInt("page", 0)
+        var page = bundle?.getInt("page", 0)
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open,
