@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.step
 
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -95,6 +96,7 @@ class StepRoomDetails(context: Context, listener: OnNavigationBarListener, var p
             view?.roomdetailslayout?.walk_in_closet!!.isChecked =
                 prop.roomDetails.rooms.walkInCloset
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
     }
@@ -128,6 +130,7 @@ class StepRoomDetails(context: Context, listener: OnNavigationBarListener, var p
             var roomDetails: RoomDetails = RoomDetails(appliances, floorCovering, room)
             onNavigationBarListener?.addRoomDetails(roomDetails)
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
         return null

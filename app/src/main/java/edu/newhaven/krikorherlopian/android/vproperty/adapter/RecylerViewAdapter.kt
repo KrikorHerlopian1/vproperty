@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.adapter
 
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,7 @@ class RecylerViewAdapter(
             try {
                 holder.itemView.clearAnimation()
             } catch (e: Exception) {
+                Log.d("Recycler View Adapter", "Exception")
             }
             holder.itemView.clearAnimation()
         }

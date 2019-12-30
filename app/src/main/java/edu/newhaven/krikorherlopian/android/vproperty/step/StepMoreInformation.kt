@@ -3,6 +3,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.step
 import android.content.Context
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -87,12 +88,14 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
                             .addOnFailureListener { exception ->
                             }
                 } catch (e: Exception) {
+                    Log.d("step frag", "Exception")
                 }
             }
             view?.relatedWebsite?.setText(prop.relatedWebsite)
             view?.virtualtourinput?.setText(prop.virtualTour)
             view?.contactinput?.setText(prop.contactPhone)
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
     }
@@ -111,6 +114,7 @@ class StepMoreInformation(context: Context, listener: OnNavigationBarListener, v
                 bitmap
             )
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
         return null

@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -268,6 +269,7 @@ class SettingsFragment : Fragment(),
                     editor?.apply()
                 }
             } catch (e: Exception) {
+                Log.d("settings frag", "Exception")
             }
         }).setCancelable(true).setTitle(sel).create()
         alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
@@ -326,6 +328,7 @@ class SettingsFragment : Fragment(),
 
 
             } catch (e: Exception) {
+                Log.d("setting frag", "Exception")
             }
         }).setCancelable(true).setTitle(sel).create()
         alert.window?.attributes?.windowAnimations = R.style.DialogAnimation
@@ -381,6 +384,7 @@ class SettingsFragment : Fragment(),
 
 
             } catch (e: Exception) {
+                Log.d("setting frag", "Exception")
             }
         }).setCancelable(true).setTitle(sel).create()
         alert.window?.attributes?.windowAnimations = R.style.DialogAnimation

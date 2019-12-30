@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import androidx.core.content.FileProvider;
 
@@ -102,8 +103,9 @@ public class Croperino {
             ctx.startActivityForResult(intent, CroperinoConfig.REQUEST_TAKE_PHOTO);
         } catch (Exception e) {
             if (e instanceof ActivityNotFoundException) {
-
+                Log.d("Croperino", "Activity not found");
             } else if (e instanceof IOException) {
+                Log.d("Croperino", "IO Exception");
             } else {
             }
         }

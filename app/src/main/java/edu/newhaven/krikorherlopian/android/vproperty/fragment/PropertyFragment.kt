@@ -118,6 +118,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                         markerS.showInfoWindow()
                                     }
                                 } catch (e: java.lang.Exception) {
+                                    Log.d("property frag", "Exception")
                                 }
                             }
                             i = i + 1
@@ -141,6 +142,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                 addPropertyToMap(property, doc)
                             }
                         } catch (e: java.lang.Exception) {
+                            Log.d("property frag", "Exception")
                         }
 
                     }
@@ -250,6 +252,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                                                 marker.showInfoWindow()
                                             }
                                         } catch (e: Exception) {
+                                            Log.d("property frag", "Exception")
                                         }
 
                                     }
@@ -268,6 +271,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             })
 
         } catch (e: java.lang.Exception) {
+            Log.d("property frag", "Exception")
         }
     }
 
@@ -367,6 +371,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
             }
 
         } catch (e: java.lang.Exception) {
+            Log.d("property frag", "Exception")
         }
     }
 
@@ -408,6 +413,7 @@ class PropertyFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         } catch (e: java.lang.Exception) {
+            Log.d("property frag", "Exception")
         }
 
     }

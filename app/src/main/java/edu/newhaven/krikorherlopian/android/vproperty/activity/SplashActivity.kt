@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import edu.newhaven.krikorherlopian.android.vproperty.*
@@ -117,6 +118,7 @@ class SplashActivity : CustomAppCompatActivity() {
                     count++
                     animateImages()
                 } catch (e: Exception) {
+                    Log.d("Splash Activity", "Exception")
                 }
             }
         }, sec)

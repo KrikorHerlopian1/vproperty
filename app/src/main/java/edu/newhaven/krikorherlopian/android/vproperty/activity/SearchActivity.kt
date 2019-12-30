@@ -1,6 +1,7 @@
 package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.os.Bundle
+import android.util.Log
 import com.anupcowkur.statelin.Machine
 import com.anupcowkur.statelin.State
 import edu.newhaven.krikorherlopian.android.vproperty.R
@@ -55,6 +56,7 @@ class SearchActivity : CustomAppCompatActivity() {
             }
 
         } catch (e: Exception) {
+            Log.d("Search ACTIVITY", "Exception")
         }
     }
 }

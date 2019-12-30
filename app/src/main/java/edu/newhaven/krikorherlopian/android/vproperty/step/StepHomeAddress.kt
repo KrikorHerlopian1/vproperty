@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Typeface
 import android.location.Geocoder
 import android.location.Location
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -65,6 +66,7 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
             if (property.address.latitude.equals("") && property.address.longitude.equals(""))
                 getLocation()
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
     }
 
@@ -97,6 +99,7 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
                             }
                         }
                     } catch (e: Exception) {
+                        Log.d("step frag", "Exception")
                     }
 
                 }
@@ -158,6 +161,7 @@ class StepHomeAddress(context: Context, listener: OnNavigationBarListener, var p
                 )
 
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
         return null

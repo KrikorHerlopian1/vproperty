@@ -3,6 +3,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -254,7 +255,7 @@ class FilterFragment : Fragment(), ListClick {
                 (initialHeight / v.context.resources.displayMetrics.density).toInt().toLong()
             v.startAnimation(a)
         } catch (e: Exception) {
-
+            Log.d("filterfragment", "Exception")
         }
 
     }
@@ -282,6 +283,7 @@ class FilterFragment : Fragment(), ListClick {
                 (targetHeight / v.context.resources.displayMetrics.density).toInt().toLong()
             v.startAnimation(a)
         } catch (e: Exception) {
+            Log.d("filterfragment", "Exception")
         }
 
     }

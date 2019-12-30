@@ -3,6 +3,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.step
 
 import android.content.Context
 import android.graphics.Typeface
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -105,6 +106,7 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
 
 
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
     }
@@ -158,6 +160,7 @@ class StepHomeFacts(context: Context, listener: OnNavigationBarListener, var pro
             }
 
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
         return null

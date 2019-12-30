@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,6 +71,7 @@ class ProfileFragment : Fragment() {
                 }
 
         } catch (e: Exception) {
+            Log.d("profile frag", "Exception")
         }
 
 

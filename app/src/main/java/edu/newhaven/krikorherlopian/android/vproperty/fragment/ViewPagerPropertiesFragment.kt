@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.fragment
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,10 +45,12 @@ class ViewPagerPropertiesFragment : Fragment() {
                             }
                         }
                     } catch (e: Exception) {
+                        Log.d("view pager frag", "Exception")
                     }
                 }
             }, 1000)
         } catch (e: Exception) {
+            Log.d("view pager frag", "Exception")
         }
         return root
     }

@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.step
 
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -102,6 +103,7 @@ class StepBuildingDetails(context: Context, listener: OnNavigationBarListener, v
             view?.none!!.isChecked = prop.buildingDetails.parking.none
 
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
     }
@@ -151,6 +153,7 @@ class StepBuildingDetails(context: Context, listener: OnNavigationBarListener, v
                 BuildingDetails(exterior, buildingAminities, outdoorAminities, parking)
             onNavigationBarListener?.addBuildingDetails(buildingDetails)
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
         return null

@@ -93,6 +93,7 @@ public class ChatbotFragment extends Fragment {
             speechService = new SpeechToText(new IamAuthenticator(mContext.getString(R.string.STT_apikey)));
             speechService.setServiceUrl(mContext.getString(R.string.STT_url));
         } catch (Exception e) {
+            Log.d("chatbot", "Exception");
         }
     }
 
@@ -172,6 +173,7 @@ public class ChatbotFragment extends Fragment {
             sendMessage();
 
         } catch (Exception e) {
+            Log.d("chatbot", "Exception");
         }
         return root;
 
@@ -213,6 +215,7 @@ public class ChatbotFragment extends Fragment {
                     new String[]{Manifest.permission.RECORD_AUDIO},
                     MicrophoneHelper.REQUEST_PERMISSION);
         } catch (Exception e) {
+            Log.d("chatbot", "Exception");
         }
 
     }
@@ -278,6 +281,7 @@ public class ChatbotFragment extends Fragment {
                                     property.getAddress().setLatitude(location.getLatitude() + "");
                                     property.getAddress().setLongitude(location.getLongitude() + "");
                                 } catch (Exception e) {
+                                    Log.d("chatbot", "Exception");
                                 }
                                 Intent intent = new Intent(root.getContext(), SearchActivity.class);
                                 intent.putExtra("min", "0");
@@ -311,6 +315,7 @@ public class ChatbotFragment extends Fragment {
             });
             thread.start();
         } catch (Exception e) {
+            Log.d("chatbot", "Exception");
         }
     }
 
@@ -343,6 +348,7 @@ public class ChatbotFragment extends Fragment {
 
             }
         } catch (Exception e) {
+            Log.d("chatbot", "Exception");
         }
     }
 
@@ -369,6 +375,7 @@ public class ChatbotFragment extends Fragment {
                 return false;
             }
         } catch (Exception e) {
+            Log.d("chatbot", "Exception");
         }
 
         return false;
@@ -411,10 +418,12 @@ public class ChatbotFragment extends Fragment {
                     try {
                         Toast.makeText(root.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     } catch (Exception e2) {
+                        Log.d("chatbot", "Exception");
                     }
                 }
             });
         } catch (Exception e1) {
+            Log.d("chatbot", "Exception");
         }
 
     }
@@ -429,6 +438,7 @@ public class ChatbotFragment extends Fragment {
                     .accept(HttpMediaType.AUDIO_WAV)
                         .build()).execute().getResult());
             } catch (Exception e) {
+                Log.d("chatbot", "Exception");
             }
             return "Did synthesize";
         }

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.text.Html
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.PixelCopy
@@ -335,6 +336,7 @@ class PropertyDetailsActivity : CustomAppCompatActivity(), OnMapReadyCallback,
                     intents.putExtras(b)
                     startActivity(intents)
                 } catch (e: Exception) {
+                    Log.d("PropertDetailsActivity", "Exception")
                 }
             }
         }
@@ -362,6 +364,7 @@ class PropertyDetailsActivity : CustomAppCompatActivity(), OnMapReadyCallback,
                     intents.putExtras(b)
                     startActivity(intents)
                 } catch (e: Exception) {
+                    Log.d("PropertDetailsActivity", "Exception")
                 }
 
             }
@@ -491,6 +494,7 @@ class PropertyDetailsActivity : CustomAppCompatActivity(), OnMapReadyCallback,
             //share
             share(uri)
         } catch (e: IOException) {
+            Log.d("PropertDetailsActivity", "Exception")
         }
         return uri
     }

@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.step
 
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -81,6 +82,7 @@ class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, va
             view?.heatingtypelayout?.stove!!.isChecked = prop.utilityDetails.heatingType.stove
             view?.heatingtypelayout?.wall!!.isChecked = prop.utilityDetails.heatingType.wall
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
     }
@@ -103,6 +105,7 @@ class StepUtilityDetails(context: Context, listener: OnNavigationBarListener, va
             var utilityDetails: UtilityDetails = UtilityDetails(heatingType, coolingType)
             onNavigationBarListener?.addUtilityDetails(utilityDetails)
         } catch (e: Exception) {
+            Log.d("step frag", "Exception")
         }
 
         return null

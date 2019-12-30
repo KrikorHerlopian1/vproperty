@@ -136,6 +136,7 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
                                         markerS.showInfoWindow()
                                     }
                                 } catch (e: java.lang.Exception) {
+                                    Log.d("search map frag", "Exception")
                                 }
                             }
                             i = i + 1
@@ -159,6 +160,7 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
                                 addPropertyCheck(property, doc)
                             }
                         } catch (e: java.lang.Exception) {
+                            Log.d("search map frag", "Exception")
                         }
 
                     }
@@ -545,6 +547,7 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
                                                 marker.showInfoWindow()
                                             }
                                         } catch (e: Exception) {
+                                            Log.d("search map frag", "Exception")
                                         }
 
                                     }
@@ -563,6 +566,7 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
             })
 
         } catch (e: java.lang.Exception) {
+            Log.d("search map frag", "Exception")
         }
     }
 
@@ -662,15 +666,8 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
             }
 
 
-            /* mMap.moveCamera(
-                 CameraUpdateFactory.newLatLng(
-                     LatLng(
-                         location.latitude,
-                         location.longitude
-                     )
-                 )
-             )*/
         } catch (e: java.lang.Exception) {
+            Log.d("search map frag", "Exception")
         }
     }
 
@@ -712,6 +709,7 @@ class SearchMapFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         } catch (e: java.lang.Exception) {
+            Log.d("search map frag", "Exception")
         }
 
     }

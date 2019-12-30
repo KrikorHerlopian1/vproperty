@@ -2,6 +2,7 @@ package edu.newhaven.krikorherlopian.android.vproperty.activity
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.core.view.ViewCompat
 import com.squareup.picasso.Picasso
@@ -32,6 +33,7 @@ class ShowImageActivity : CustomAppCompatActivity() {
                 .placeholder(R.drawable.placeholderdetail)
                 .into(image)
         } catch (e: Exception) {
+            Log.d("Show Image Activity", "Exception")
         }
     }
 

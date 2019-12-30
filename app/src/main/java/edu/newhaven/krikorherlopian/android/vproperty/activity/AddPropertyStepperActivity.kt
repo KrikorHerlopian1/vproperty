@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.FileProvider
@@ -73,6 +74,7 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
             //in case property to be edited, we would get all our property properties needed here.
             property = intent.getSerializableExtra("argPojo") as Property
         } catch (e: Exception) {
+            Log.d("AddPropertyStepperActivity", "Exception")
         }
         storage = FirebaseStorage.getInstance()
         setUpPermissions(this)
@@ -335,6 +337,7 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
                         }
                         checkZillowRentPrice(cityName, address)
                     } catch (e: Exception) {
+                        Log.d("AddPropertyStepperActivity", "Exception")
                     }
 
                 }
@@ -408,6 +411,7 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
                             ).show()
                         }
                     } catch (e: java.lang.Exception) {
+                        Log.d("AddPropertyStepperActivity", "Exception")
                     }
 
                 }
@@ -556,6 +560,7 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
                     try {
                         activityFunctionalities?.closeActivity()
                     } catch (e: Exception) {
+                        Log.d("AddPropertyStepperActivity", "Exception")
                     }
                     val i = Intent(
                         this@AddPropertyStepperActivity,
@@ -592,6 +597,7 @@ class AddPropertyStepperActivity : CustomAppCompatActivity(), StepperLayout.Step
                     try {
                         activityFunctionalities?.closeActivity()
                     } catch (e: Exception) {
+                        Log.d("AddPropertyStepperActivity", "Exception")
                     }
                     val i = Intent(
                         this@AddPropertyStepperActivity,
