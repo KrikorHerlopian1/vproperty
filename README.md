@@ -1,4 +1,4 @@
-# final-project-KrikorHerlopian1
+# VProperty
 Android Class Final Year Project, University of New Haven
 
  A Real state application provides clients with data and information about properties available for sale or rent.  
